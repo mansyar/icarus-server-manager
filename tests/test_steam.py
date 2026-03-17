@@ -32,23 +32,22 @@ def test_download_steamcmd(mock_makedirs, mock_remove, mock_zip, mock_urlretriev
     mock_remove.assert_called_once()
 
 @patch("subprocess.Popen")
-@patch("steam_manager.SteamManager.is_installed")
-def test_install_server(mock_is_installed, mock_popen, steam_manager, tmp_path):
+def test_install_server(mock_popen, steam_manager, tmp_path):
     # Setup
-    mock_is_installed.return_value = True
-    mock_process = MagicMock()
-    mock_popen.return_value = mock_process
-    
-    install_dir = os.path.join(str(tmp_path), "icarus_server")
-    
-    # Execute
-    steam_manager.install_server(install_dir)
-    
-    # Verify
-    mock_popen.assert_called_once()
-    args, kwargs = mock_popen.call_args
-    cmd = args[0]
-    assert steam_manager.steamcmd_path in cmd
-    assert "+force_install_dir" in cmd
-    assert install_dir in cmd
-    assert "2089300" in cmd
+    with patch.object(SteamManager, "is_installed", return_value=True):
+        mock_process = MagicMock()
+        mock_popen.return_value = mock_process
+        
+        install_dir = os.path.join(str(tmp_path), "icarus_server")
+        
+        # Execute
+        steam_manager.install_server(install_dir)
+        
+        # Verify
+        mock_popen.assert_called_once()
+        args, kwargs = mock_popen.call_args
+        cmd = args[0]
+        assert steam_manager.steamcmd_path in cmd
+        assert "+force_install_dir" in cmd
+        assert install_dir in cmd
+        assert "2089300" in cmd
