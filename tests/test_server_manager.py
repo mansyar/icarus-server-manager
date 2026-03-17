@@ -87,3 +87,21 @@ def test_restart_server(mock_popen, manager):
     mock_old_process.terminate.assert_called_once()
     mock_popen.assert_called_once()
     assert manager.state["pid"] == 8888
+
+@patch("psutil.Process")
+def test_get_resource_usage(mock_psutil_process, manager):
+    mock_proc_instance = mock_psutil_process.return_value
+    mock_proc_instance.cpu_percent.return_value = 15.5
+    mock_memory_info = MagicMock()
+    mock_memory_info.rss = 1024 * 1024 * 512 # 512MB
+    mock_proc_instance.memory_info.return_value = mock_memory_info
+    
+    mock_process = MagicMock()
+    mock_process.pid = 1234
+    mock_process.poll.return_value = None
+    
+    usage = manager.get_resource_usage(mock_process)
+    
+    assert usage["cpu"] == 15.5
+    assert usage["ram_gb"] == 0.5
+    mock_psutil_process.assert_called_with(1234)

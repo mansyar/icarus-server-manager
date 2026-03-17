@@ -1,6 +1,7 @@
 import json
 import os
 import subprocess
+import psutil
 
 class ServerProcessManager:
     def __init__(self, state_file="server_state.json"):
@@ -64,3 +65,16 @@ class ServerProcessManager:
     def restart_server(self, old_process, exe_path, port=17777, query_port=27015):
         self.stop_server(old_process)
         return self.start_server(exe_path, port, query_port)
+
+    def get_resource_usage(self, process):
+        if not process or process.poll() is not None:
+            return {"cpu": 0.0, "ram_gb": 0.0}
+        
+        try:
+            p = psutil.Process(process.pid)
+            cpu = p.cpu_percent(interval=None)
+            ram_bytes = p.memory_info().rss
+            ram_gb = round(ram_bytes / (1024**3), 2)
+            return {"cpu": cpu, "ram_gb": ram_gb}
+        except (psutil.NoSuchProcess, psutil.AccessDenied):
+            return {"cpu": 0.0, "ram_gb": 0.0}
