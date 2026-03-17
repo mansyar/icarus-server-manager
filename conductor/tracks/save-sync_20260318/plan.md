@@ -20,17 +20,20 @@
     - [x] Track `last_sync_timestamp` in `server_state.json`.
 - [x] Task: Conductor - User Manual Verification 'Phase 2: Application Workflow Integration' (Protocol in workflow.md) 349d6e2
 
-## Phase 3: UI Development: "Save Sync" Tab
-- [ ] Task: Create the "Save Sync" tab in CustomTkinter.
-    - [ ] Implement the UI layout with a dropdown for SteamID selection and a "Sync Now" button.
-    - [ ] Add a "Last Sync" label and status indicator.
-- [ ] Task: Connect UI to `SaveSyncManager` and State.
-    - [ ] Populate the SteamID dropdown on app launch.
-    - [ ] Wire the "Sync Now" button to the manual sync logic.
-- [ ] Task: Final End-to-End Verification and Polishing.
-    - [ ] Conduct E2E testing for all triggers (Start, Stop, Manual).
-    - [ ] Verify non-blocking behavior during large file copies.
-- [ ] Task: Conductor - User Manual Verification 'Phase 3: UI Development: "Save Sync" Tab' (Protocol in workflow.md)
+## Phase 3: UI Development: "Save Sync" Tab [checkpoint: 7f8a3bc]
+- [x] Task: Create the "Save Sync" tab in CustomTkinter. 8a928b1
+    - [x] Implement the UI layout with a dropdown for SteamID selection and a "Sync Now" button.
+    - [x] Add a "Last Sync" label and status indicator.
+- [x] Task: Connect UI to `SaveSyncManager` and State. ff7fe9a
+    - [x] Populate the SteamID dropdown on app launch.
+    - [x] Wire the "Sync Now" button to the manual sync logic.
+- [x] Task: Final End-to-End Verification and Polishing. 31d9e59
+    - [x] Conduct E2E testing for all triggers (Start, Stop, Manual).
+    - [x] Verify non-blocking behavior during large file copies.
+- [x] Task: Conductor - User Manual Verification 'Phase 3: UI Development: "Save Sync" Tab' (Protocol in workflow.md) 7f8a3bc
+
+## Phase: Bug Fixes
+- [x] fix(save-sync): Correct local SteamID discovery path. 31d9e59
 
 ## Phase: Review Fixes
-- [ ] Task: Apply review suggestions
+- [x] Task: Apply review suggestions 3485d20
