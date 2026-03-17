@@ -25,7 +25,10 @@
 - [x] Task: UI for Smart Restart Configuration. (f79e597)
     - [x] Add time selection widget (e.g., dropdowns for HH:MM) to the manager settings.
     - [x] Add a toggle for 'Enable Smart Idle Restart'.
-- [ ] Task: Conductor - User Manual Verification 'Phase 2: Smart Idle Restart & Active Query' (Protocol in workflow.md)
+- [x] Task: Fix UI state sync and thread management after Smart Idle Restart. (58e9ed6)
+    - [x] Refactor `check_smart_restart` to avoid race conditions with log threads.
+    - [x] Ensure UI buttons remain in correct 'Running' state after auto-restart.
+- [x] Task: Conductor - User Manual Verification 'Phase 2: Smart Idle Restart & Active Query' (Protocol in workflow.md) (manual)
 
 ## Phase 3: Pre-flight Optimization Dialogs (TDD) [checkpoint: ]
 - [ ] Task: Implement System RAM Pre-flight Check.
