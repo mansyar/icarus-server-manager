@@ -31,9 +31,9 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 2: Smart Idle Restart & Active Query' (Protocol in workflow.md) (manual)
 
 ## Phase 3: Pre-flight Optimization Dialogs (TDD) [checkpoint: ]
-- [ ] Task: Implement System RAM Pre-flight Check.
-    - [ ] Write tests for checking system RAM percentage and thresholds.
-    - [ ] Implement `check_system_ram()` logic.
+- [x] Task: Implement System RAM Pre-flight Check. (7397b26)
+    - [x] Write tests for checking system RAM percentage and thresholds.
+    - [x] Implement `check_system_ram()` logic.
 - [ ] Task: Create Optimization UI Dialog.
     - [ ] Design and implement a CustomTkinter dialog for RAM recommendations.
     - [ ] Trigger dialog if system RAM is < 10% before server launch.
