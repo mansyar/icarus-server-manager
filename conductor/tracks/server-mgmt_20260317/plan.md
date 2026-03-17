@@ -12,7 +12,7 @@
     - [ ] Implement `stop_server()` (SIGTERM) and `restart_server()`.
 - [x] Task: Conductor - User Manual Verification 'Phase 1: Core Process Control Logic' (Protocol in workflow.md) (da9cfe2)
 
-## Phase 2: Monitoring and Output Capture (TDD)
+## Phase 2: Monitoring and Output Capture (TDD) [checkpoint: 2be4b76]
 - [x] Task: Implement Resource Monitoring. (028832e)
     - [ ] Write tests for `psutil` resource usage capturing (CPU/RAM).
     - [ ] Implement background monitoring loop with 5s interval.
@@ -22,7 +22,7 @@
 - [x] Task: Implement Crash Detection and Recovery. (034deff)
     - [ ] Write tests for the hybrid auto-restart logic (max 3 retries).
     - [ ] Implement `_on_process_exit()` handler and recovery logic.
-- [ ] Task: Conductor - User Manual Verification 'Phase 2: Monitoring and Output Capture' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 2: Monitoring and Output Capture' (Protocol in workflow.md) (2be4b76)
 
 ## Phase 3: UI Integration and Polishing
 - [ ] Task: Create UI components for server control.
