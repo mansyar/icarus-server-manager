@@ -97,10 +97,27 @@ class App(ctk.CTk):
         self.tabview = ctk.CTkTabview(self, command=self.on_tab_change)
         self.tabview.grid(row=0, column=0, padx=20, pady=(20, 10), sticky="nsew")
         self.server_tab = self.tabview.add("Server")
+        self.config_tab = self.tabview.add("Configuration")
         self.backups_tab = self.tabview.add("Backups")
         
         self.server_tab.grid_columnconfigure(0, weight=1)
+        self.config_tab.grid_columnconfigure(0, weight=1)
 
+        # Initialize Tabs
+        self.init_server_tab()
+        self.init_config_tab()
+
+        self.console_output = ctk.CTkTextbox(self, height=150, state="disabled")
+        self.console_output.grid(row=1, column=0, padx=20, pady=(0, 20), sticky="ew")
+
+        # Recover state
+        self.recover_state()
+
+        # Start monitoring loop
+        self.update_monitoring()
+
+    def init_server_tab(self) -> None:
+        """Initializes the Server management tab UI."""
         # Path Selection Frame (inside Server Tab)
         self.path_frame = ctk.CTkFrame(self.server_tab)
         self.path_frame.grid(row=0, column=0, padx=10, pady=(10, 5), sticky="ew")
@@ -198,29 +215,83 @@ class App(ctk.CTk):
         self.backup_retention_entry.grid(row=0, column=3, padx=5, pady=10)
         self.backup_retention_entry.insert(0, str(self.backup_manager.retention_limit))
 
-        # Backups Tab UI
-        self.backups_tab.grid_columnconfigure(0, weight=1)
-        self.backups_tab.grid_rowconfigure(1, weight=1)
+    def init_config_tab(self) -> None:
+        """Initializes the Configuration tab UI."""
+        self.config_scroll = ctk.CTkScrollableFrame(self.config_tab)
+        self.config_scroll.pack(fill="both", expand=True, padx=10, pady=10)
+        self.config_scroll.grid_columnconfigure(1, weight=1)
 
-        self.backups_header_label = ctk.CTkLabel(self.backups_tab, text="Available Backups", font=("Arial", 16, "bold"))
-        self.backups_header_label.grid(row=0, column=0, padx=10, pady=10)
+        # Server Name
+        ctk.CTkLabel(self.config_scroll, text="Server Name:").grid(row=0, column=0, padx=10, pady=10, sticky="w")
+        self.server_name_entry = ctk.CTkEntry(self.config_scroll)
+        self.server_name_entry.grid(row=0, column=1, padx=10, pady=10, sticky="ew")
 
-        self.backup_now_button = ctk.CTkButton(
-            self.backups_tab, text="Backup Now", command=self.manual_backup
+        # Server Password
+        ctk.CTkLabel(self.config_scroll, text="Server Password:").grid(row=1, column=0, padx=10, pady=10, sticky="w")
+        self.server_password_entry = ctk.CTkEntry(self.config_scroll, show="*")
+        self.server_password_entry.grid(row=1, column=1, padx=10, pady=10, sticky="ew")
+
+        # Admin Password
+        ctk.CTkLabel(self.config_scroll, text="Admin Password/ID:").grid(row=2, column=0, padx=10, pady=10, sticky="w")
+        self.admin_password_entry = ctk.CTkEntry(self.config_scroll, show="*")
+        self.admin_password_entry.grid(row=2, column=1, padx=10, pady=10, sticky="ew")
+
+        # Port
+        ctk.CTkLabel(self.config_scroll, text="Server Port:").grid(row=3, column=0, padx=10, pady=10, sticky="w")
+        self.server_port_entry = ctk.CTkEntry(self.config_scroll)
+        self.server_port_entry.grid(row=3, column=1, padx=10, pady=10, sticky="ew")
+
+        # Update on Launch
+        self.update_on_launch_var = ctk.BooleanVar(value=False)
+        self.update_on_launch_checkbox = ctk.CTkCheckBox(
+            self.config_scroll, text="Update on Launch", variable=self.update_on_launch_var
         )
-        self.backup_now_button.grid(row=0, column=1, padx=10, pady=10)
+        self.update_on_launch_checkbox.grid(row=4, column=0, columnspan=2, padx=10, pady=10, sticky="w")
 
-        self.backups_list_frame = ctk.CTkScrollableFrame(self.backups_tab)
-        self.backups_list_frame.grid(row=1, column=0, columnspan=2, padx=10, pady=10, sticky="nsew")
+        # Save Button
+        self.save_config_button = ctk.CTkButton(
+            self.config_scroll, text="Save Configuration", command=self.save_config
+        )
+        self.save_config_button.grid(row=5, column=0, columnspan=2, padx=10, pady=20)
+        
+        # Load initial values
+        self.load_config_to_gui()
 
-        self.console_output = ctk.CTkTextbox(self, height=150, state="disabled")
-        self.console_output.grid(row=1, column=0, padx=20, pady=(0, 20), sticky="ew")
+    def load_config_to_gui(self) -> None:
+        """Populates the Configuration GUI fields from INI manager."""
+        if not self.ini_manager:
+            return
+            
+        self.server_name_entry.delete(0, "end")
+        self.server_name_entry.insert(0, self.ini_manager.get_setting("SessionName") or "")
+        
+        self.server_password_entry.delete(0, "end")
+        self.server_password_entry.insert(0, self.ini_manager.get_setting("ServerPassword") or "")
+        
+        self.admin_password_entry.delete(0, "end")
+        self.admin_password_entry.insert(0, self.ini_manager.get_setting("AdminPassword") or "")
+        
+        self.server_port_entry.delete(0, "end")
+        self.server_port_entry.insert(0, self.ini_manager.get_setting("Port") or "17777")
+        
+        # Sentinel section for app-specific settings
+        update_val = self.ini_manager.get_setting("UpdateOnLaunch", section="Sentinel")
+        self.update_on_launch_var.set(update_val == "True")
 
-        # Recover state
-        self.recover_state()
-
-        # Start monitoring loop
-        self.update_monitoring()
+    def save_config(self) -> None:
+        """Saves values from the Configuration GUI back to INI file."""
+        if not self.ini_manager:
+            return
+            
+        self.ini_manager.set_setting("SessionName", self.server_name_entry.get())
+        self.ini_manager.set_setting("ServerPassword", self.server_password_entry.get())
+        self.ini_manager.set_setting("AdminPassword", self.admin_password_entry.get())
+        self.ini_manager.set_setting("Port", self.server_port_entry.get())
+        
+        self.ini_manager.set_setting("UpdateOnLaunch", str(self.update_on_launch_var.get()), section="Sentinel")
+        
+        self.ini_manager.save()
+        self.log("Configuration saved successfully to INI file.")
 
     def update_ini_manager(self) -> None:
         """Updates the INI manager with the current installation path."""
