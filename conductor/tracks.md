@@ -4,6 +4,9 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ## Active Tracks
 
+- [ ] **Track: Packaging & Distribution (MVP Release Prep)**
+*Link: [./tracks/packaging-distribution_20260318/](./tracks/packaging-distribution_20260318/)*
+
 ## Archived Tracks
 - [x] **Track: data-protection_20260317** - Implement automated timestamped backups, a retention policy, and a one-click restore browser. (Archived: 2026-03-17)
 - [x] **Track: coreui_20260317** - Implement core UI and SteamCMD server installation (Archived: 2026-03-17)
