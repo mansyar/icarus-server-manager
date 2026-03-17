@@ -217,8 +217,19 @@ class App(ctk.CTk):
 
     def init_config_tab(self) -> None:
         """Initializes the Configuration tab UI."""
-        self.config_scroll = ctk.CTkScrollableFrame(self.config_tab)
-        self.config_scroll.pack(fill="both", expand=True, padx=10, pady=10)
+        self.config_subtabview = ctk.CTkTabview(self.config_tab, command=self.on_config_tab_change)
+        self.config_subtabview.pack(fill="both", expand=True, padx=10, pady=10)
+        
+        self.basic_config_tab = self.config_subtabview.add("Basic")
+        self.advanced_config_tab = self.config_subtabview.add("Advanced")
+        
+        self.basic_config_tab.grid_columnconfigure(1, weight=1)
+        self.advanced_config_tab.grid_columnconfigure(0, weight=1)
+        self.advanced_config_tab.grid_rowconfigure(0, weight=1)
+
+        # Basic Config Fields
+        self.config_scroll = ctk.CTkScrollableFrame(self.basic_config_tab)
+        self.config_scroll.pack(fill="both", expand=True, padx=5, pady=5)
         self.config_scroll.grid_columnconfigure(1, weight=1)
 
         # Server Name
@@ -254,8 +265,45 @@ class App(ctk.CTk):
         )
         self.save_config_button.grid(row=5, column=0, columnspan=2, padx=10, pady=20)
         
+        # Advanced Config Fields
+        self.raw_ini_textbox = ctk.CTkTextbox(self.advanced_config_tab, font=("Consolas", 12))
+        self.raw_ini_textbox.grid(row=0, column=0, padx=10, pady=(10, 5), sticky="nsew")
+        
+        self.save_advanced_button = ctk.CTkButton(
+            self.advanced_config_tab, text="Save Advanced Changes", command=self.save_advanced_config
+        )
+        self.save_advanced_button.grid(row=1, column=0, padx=10, pady=(5, 10))
+        
         # Load initial values
         self.load_config_to_gui()
+
+    def on_config_tab_change(self) -> None:
+        """Handles internal configuration tab changes."""
+        if self.config_subtabview.get() == "Advanced":
+            self.load_raw_ini_to_gui()
+        else:
+            self.load_config_to_gui()
+
+    def load_raw_ini_to_gui(self) -> None:
+        """Loads the raw INI content into the advanced textbox."""
+        if not self.ini_manager:
+            return
+        
+        raw_text = self.ini_manager.get_raw_text()
+        self.raw_ini_textbox.delete("0.0", "end")
+        self.raw_ini_textbox.insert("0.0", raw_text)
+
+    def save_advanced_config(self) -> None:
+        """Saves the raw INI content from the advanced textbox."""
+        if not self.ini_manager:
+            return
+            
+        raw_text = self.raw_ini_textbox.get("0.0", "end").strip()
+        if raw_text:
+            self.ini_manager.save_raw_text(raw_text)
+            self.log("Advanced configuration saved and re-parsed.")
+            # Sync back to basic fields
+            self.load_config_to_gui()
 
     def load_config_to_gui(self) -> None:
         """Populates the Configuration GUI fields from INI manager."""
