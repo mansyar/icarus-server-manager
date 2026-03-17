@@ -28,13 +28,14 @@ class ServerProcessManager:
         smart_restart_time (str): The time (HH:MM) to perform the restart.
     """
 
-    def __init__(self, state_file="server_state.json", notification_manager=None, a2s_client=None):
+    def __init__(self, state_file="server_state.json", notification_manager=None, a2s_client=None, backup_manager=None):
         """Initializes the ServerProcessManager and loads existing state.
 
         Args:
             state_file (str): Path to the state persistence file.
             notification_manager (NotificationManager): Optional notification handler.
             a2s_client (A2SClient): Optional A2S client for querying.
+            backup_manager (BackupManager): Optional backup handler.
         """
         self.state_file = state_file
         self.state = {"pid": None, "status": "stopped"}
@@ -46,6 +47,7 @@ class ServerProcessManager:
         self.last_smart_restart_date = None
         self.notifications = notification_manager or NotificationManager()
         self.a2s_client = a2s_client or A2SClient()
+        self.backup_manager = backup_manager
         self.load_state()
 
     def load_state(self):
@@ -140,6 +142,10 @@ class ServerProcessManager:
                     process.kill()
         except (psutil.NoSuchProcess, ProcessLookupError, psutil.AccessDenied):
             pass
+        
+        # Trigger automated backup on stop
+        if self.backup_manager:
+            self.backup_manager.on_server_stop()
         
         self.state["pid"] = None
         self.state["status"] = "stopped"

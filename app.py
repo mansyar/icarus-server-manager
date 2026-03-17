@@ -1,6 +1,7 @@
 import customtkinter as ctk
 from steam_manager import SteamManager
 from server_manager import ServerProcessManager
+from backup_manager import BackupManager
 import threading
 import os
 import subprocess
@@ -69,8 +70,19 @@ class App(ctk.CTk):
         self.geometry("800x700")
         
         self.steam_manager = SteamManager()
-        self.server_manager = ServerProcessManager(state_file=state_file)
+        
+        # Initialize BackupManager
+        initial_server_path = os.path.join(os.getcwd(), "icarus_server")
+        self.backup_manager = BackupManager(
+            server_path=initial_server_path,
+            backup_path=os.path.join(os.getcwd(), "backups")
+        )
+        
+        self.server_manager = ServerProcessManager(state_file=state_file, backup_manager=self.backup_manager)
         self.server_process: Optional[subprocess.Popen] = None
+        
+        # Start backup timer
+        self.backup_manager.start_timer()
         
         # Grid layout
         self.grid_columnconfigure(0, weight=1)
@@ -316,6 +328,13 @@ class App(ctk.CTk):
         self.start_button.configure(state="disabled")
         self.stop_button.configure(state="normal")
         self.restart_button.configure(state="normal")
+        
+        # Update backup manager with latest server path (in case it was changed)
+        # We want the root of the server install, which is the parent of parent of parent of parent of exe_path
+        # Icarus/Binaries/Win64/IcarusServer-Win64-Shipping.exe -> Icarus is root
+        # Actually, get_server_executable knows the structure.
+        install_dir = self.path_entry.get().strip()
+        self.backup_manager.server_path = install_dir
         
         threading.Thread(
             target=self.run_server, args=(exe_path,), daemon=True
