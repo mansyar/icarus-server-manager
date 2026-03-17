@@ -71,4 +71,48 @@ def test_perform_backup_missing_prospects(backup_manager, tmp_path):
     backups = os.listdir(backup_manager.backup_path)
     assert len(backups) == 0
 
+def test_enforce_retention_deletes_oldest(backup_manager):
+    # Create 5 dummy backup files with different timestamps
+    backup_manager.retention_limit = 3
+    
+    # Files are sorted by name/timestamp, so older names are older files
+    files = [
+        "Prospects_2026-03-17_1000.zip",
+        "Prospects_2026-03-17_1100.zip",
+        "Prospects_2026-03-17_1200.zip",
+        "Prospects_2026-03-17_1300.zip",
+        "Prospects_2026-03-17_1400.zip",
+    ]
+    
+    for f in files:
+        with open(os.path.join(backup_manager.backup_path, f), "w") as f_obj:
+            f_obj.write("dummy")
+            
+    backup_manager._enforce_retention()
+    
+    remaining = sorted(os.listdir(backup_manager.backup_path))
+    assert len(remaining) == 3
+    # Should keep the 3 newest (1200, 1300, 1400)
+    assert "Prospects_2026-03-17_1000.zip" not in remaining
+    assert "Prospects_2026-03-17_1100.zip" not in remaining
+    assert "Prospects_2026-03-17_1200.zip" in remaining
+    assert "Prospects_2026-03-17_1300.zip" in remaining
+    assert "Prospects_2026-03-17_1400.zip" in remaining
+
+def test_enforce_retention_ignores_other_files(backup_manager):
+    backup_manager.retention_limit = 1
+    
+    with open(os.path.join(backup_manager.backup_path, "Prospects_2026-03-17_1000.zip"), "w") as f:
+        f.write("dummy")
+    with open(os.path.join(backup_manager.backup_path, "Prospects_2026-03-17_1100.zip"), "w") as f:
+        f.write("dummy")
+    with open(os.path.join(backup_manager.backup_path, "other_file.txt"), "w") as f:
+        f.write("dummy")
+        
+    backup_manager._enforce_retention()
+    
+    remaining = os.listdir(backup_manager.backup_path)
+    assert "other_file.txt" in remaining
+    assert len([f for f in remaining if f.startswith("Prospects_")]) == 1
+
 import os

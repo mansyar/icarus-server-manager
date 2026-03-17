@@ -75,8 +75,33 @@ class BackupManager:
         try:
             # zip creation is blocking, but called from timer thread or manual trigger (which should be threaded if from UI)
             shutil.make_archive(backup_file, "zip", prospects_dir)
+            self._enforce_retention()
         except Exception:
             # Log error or notify? PRD says "non-blocking execution" and "reliability"
             pass
+
+    def _enforce_retention(self) -> None:
+        """Deletes oldest backups if the limit is exceeded."""
+        if not os.path.exists(self.backup_path):
+            return
+
+        # List all Prospects_*.zip files
+        backups = [
+            f for f in os.listdir(self.backup_path)
+            if f.startswith("Prospects_") and f.endswith(".zip")
+        ]
+        
+        # Sort by name (which contains timestamp in YYYY-MM-DD_HHMM format)
+        backups.sort()
+
+        if len(backups) > self.retention_limit:
+            to_delete_count = len(backups) - self.retention_limit
+            to_delete = backups[:to_delete_count]
+            
+            for f in to_delete:
+                try:
+                    os.remove(os.path.join(self.backup_path, f))
+                except OSError:
+                    pass
 
 import shutil
