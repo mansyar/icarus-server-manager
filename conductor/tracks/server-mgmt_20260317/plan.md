@@ -31,7 +31,7 @@
 - [x] Task: Implement Live Console Log UI. (5c11299)
     - [ ] Integrate a scrollable text area for server log output.
     - [ ] Connect `ServerProcessManager` events to update the UI.
-- [ ] Task: Final Verification and Integration.
+- [x] Task: Final Verification and Integration. (eb26b72)
     - [ ] Conduct manual end-to-end testing (Start, Stop, Monitoring, Crash).
     - [ ] Ensure persistence works: close and reopen manager while server is running.
 - [ ] Task: Conductor - User Manual Verification 'Phase 3: UI Integration and Polishing' (Protocol in workflow.md)
