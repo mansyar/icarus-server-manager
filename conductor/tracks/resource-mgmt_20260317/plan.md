@@ -13,15 +13,15 @@
 - [x] Task: Make RAM Threshold configurable in the UI and persist settings. (b426a55)
     - [x] Write tests for saving/loading RAM threshold in `ServerProcessManager`.
     - [x] Add a numeric entry or slider to the UI for the threshold setting.
-- [ ] Task: Conductor - User Manual Verification 'Phase 1: Threshold Alerts & UI Feedback' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 1: Threshold Alerts & UI Feedback' (Protocol in workflow.md) (manual)
 
 ## Phase 2: Smart Idle Restart & Active Query (TDD) [checkpoint: ]
 - [x] Task: Implement A2S Query Client for Player Count. (e1c18ed)
     - [x] Write tests for querying a mock A2S_INFO server.
     - [x] Implement `A2SClient` to fetch current player count.
-- [ ] Task: Implement Smart Restart Scheduler.
-    - [ ] Write tests for scheduled restart logic (time comparison, player count check).
-    - [ ] Implement background timer/scheduler for maintenance time checks.
+- [x] Task: Implement Smart Restart Scheduler. (3c750f2)
+    - [x] Write tests for scheduled restart logic (time comparison, player count check).
+    - [x] Implement background timer/scheduler for maintenance time checks.
 - [ ] Task: UI for Smart Restart Configuration.
     - [ ] Add time selection widget (e.g., dropdowns for HH:MM) to the manager settings.
     - [ ] Add a toggle for 'Enable Smart Idle Restart'.
