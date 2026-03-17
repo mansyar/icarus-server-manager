@@ -3,6 +3,7 @@
 ## 1. Core Language
 * **Python (3.11+)**
   * Chosen for its rapid development capabilities and rich ecosystem of system management libraries.
+  * **Virtual Environment (`venv`):** A standard Python virtual environment is used to isolate project-specific dependencies and ensure consistency across development environments.
 
 ## 2. Desktop UI Framework
 * **CustomTkinter**
