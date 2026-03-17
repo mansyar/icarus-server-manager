@@ -14,14 +14,14 @@
 - [x] Task: Implement the event handler for "Save Changes" button to pass test. 3b15307
 - [x] Task: Conductor - User Manual Verification 'Phase 2: Configuration GUI Development' (Protocol in workflow.md) c5bbe74
 
-## Phase 3: Advanced Editor Integration
-- [~] Task: Create `tests/test_advanced_editor.py` with failing tests for Advanced section UI (text area) and its loading/saving mechanism.
-- [ ] Task: Implement the "Advanced Editor" sub-tab or section in the GUI.
-- [ ] Task: Connect the text area to read raw text from `ServerSettings.ini` and save back via the "Save Changes" button.
-- [ ] Task: Conductor - User Manual Verification 'Phase 3: Advanced Editor Integration' (Protocol in workflow.md)
+## Phase 3: Advanced Editor Integration [checkpoint: 1494aae]
+- [x] Task: Create `tests/test_advanced_editor.py` with failing tests for Advanced section UI (text area) and its loading/saving mechanism. 7cc574b
+- [x] Task: Implement the "Advanced Editor" sub-tab or section in the GUI. 7cc574b
+- [x] Task: Connect the text area to read raw text from `ServerSettings.ini` and save back via the "Save Changes" button. 7cc574b
+- [x] Task: Conductor - User Manual Verification 'Phase 3: Advanced Editor Integration' (Protocol in workflow.md) 1494aae
 
 ## Phase 4: Launch-Time Updates Integration
-- [ ] Task: Create/update `tests/test_server_launch.py` to add failing tests for the "Update on Launch" check before server start.
+- [~] Task: Create/update `tests/test_server_launch.py` to add failing tests for the "Update on Launch" check before server start.
 - [ ] Task: Modify the "Safe Launch" workflow to read the state of the "Update on Launch" checkbox.
 - [ ] Task: Implement logic to trigger SteamCMD update (`app_update 2089300`) if the checkbox is checked, prior to spawning the server process.
 - [ ] Task: Conductor - User Manual Verification 'Phase 4: Launch-Time Updates Integration' (Protocol in workflow.md)
