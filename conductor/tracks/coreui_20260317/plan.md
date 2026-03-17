@@ -1,10 +1,10 @@
 # Implementation Plan: Implement core UI and SteamCMD server installation
 
-## Phase 1: Foundation and UI Scaffolding
+## Phase 1: Foundation and UI Scaffolding [checkpoint: e161fab]
 - [x] Task: Setup project dependencies and basic CustomTkinter window (27d0191)
     - [ ] Write Tests (if applicable for GUI initialization)
     - [ ] Implement Feature
-- [ ] Task: Conductor - User Manual Verification 'Phase 1: Foundation and UI Scaffolding' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 1: Foundation and UI Scaffolding' (Protocol in workflow.md) (e161fab)
 
 ## Phase 2: SteamCMD Integration
 - [ ] Task: Implement SteamCMD download and extraction logic
