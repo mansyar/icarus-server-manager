@@ -40,3 +40,6 @@
 - [x] Task: Final Integration and Performance Verification. (26b29fe)
     - [x] Conduct E2E testing: Threshold alerts, scheduled restart (with/without players), and low-RAM pre-flight.
 - [x] Task: Conductor - User Manual Verification 'Phase 3: Pre-flight Optimization Dialogs' (Protocol in workflow.md) (manual)
+
+## Phase: Review Fixes
+- [x] Task: Apply review suggestions bd815c3
