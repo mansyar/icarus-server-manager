@@ -1,5 +1,6 @@
 $env:PYTHONPATH = "."
-$env:TCL_LIBRARY = "C:\Users\Ansyar\AppData\Local\Programs\Python\Python313\tcl\tcl8.6"
-$env:TK_LIBRARY = "C:\Users\Ansyar\AppData\Local\Programs\Python\Python313\tcl\tk8.6"
 .venv\Scripts\Activate.ps1
+$basePrefix = python -c "import sys; print(sys.base_prefix)"
+$env:TCL_LIBRARY = "$basePrefix\tcl\tcl8.6"
+$env:TK_LIBRARY = "$basePrefix\tcl\tk8.6"
 pytest

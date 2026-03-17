@@ -160,5 +160,3 @@ server_state.json
 task_note.txt
 phase_report.txt
 backups/
-
-venv/
