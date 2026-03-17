@@ -1,3 +1,5 @@
+"""Integration tests for the server launch sequence with update checks."""
+
 import pytest
 from unittest.mock import MagicMock, patch
 import os

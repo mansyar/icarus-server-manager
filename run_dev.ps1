@@ -3,4 +3,4 @@ $env:PYTHONPATH = "."
 $basePrefix = python -c "import sys; print(sys.base_prefix)"
 $env:TCL_LIBRARY = "$basePrefix\tcl\tcl8.6"
 $env:TK_LIBRARY = "$basePrefix\tcl\tk8.6"
-python src\main.py
+python app.py

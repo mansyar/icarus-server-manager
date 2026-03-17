@@ -1,3 +1,5 @@
+"""Unit tests for the INIManager class."""
+
 import pytest
 import os
 from core.ini_manager import INIManager

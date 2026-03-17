@@ -1,3 +1,5 @@
+"""Tests for the Configuration GUI structure and initial state."""
+
 import pytest
 import customtkinter as ctk
 from app import App

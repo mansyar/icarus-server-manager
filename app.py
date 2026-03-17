@@ -278,33 +278,35 @@ class App(ctk.CTk):
         self.load_config_to_gui()
 
     def on_config_tab_change(self) -> None:
-        """Handles internal configuration tab changes."""
+        """Handles internal configuration tab changes between Basic and Advanced."""
         if self.config_subtabview.get() == "Advanced":
             self.load_raw_ini_to_gui()
         else:
             self.load_config_to_gui()
 
     def load_raw_ini_to_gui(self) -> None:
-        """Loads the raw INI content into the advanced textbox."""
+        """Loads the raw INI content from the disk into the advanced textbox."""
         if not self.ini_manager:
             return
-        
+
         raw_text = self.ini_manager.get_raw_text()
         self.raw_ini_textbox.delete("0.0", "end")
         self.raw_ini_textbox.insert("0.0", raw_text)
 
     def save_advanced_config(self) -> None:
-        """Saves the raw INI content from the advanced textbox."""
+        """Saves the raw INI content from the advanced textbox back to the disk.
+
+        This also triggers a re-parsing of the INI file to update the basic fields.
+        """
         if not self.ini_manager:
             return
-            
+
         raw_text = self.raw_ini_textbox.get("0.0", "end").strip()
         if raw_text:
             self.ini_manager.save_raw_text(raw_text)
             self.log("Advanced configuration saved and re-parsed.")
             # Sync back to basic fields
             self.load_config_to_gui()
-
     def load_config_to_gui(self) -> None:
         """Populates the Configuration GUI fields from INI manager."""
         if not self.ini_manager:
