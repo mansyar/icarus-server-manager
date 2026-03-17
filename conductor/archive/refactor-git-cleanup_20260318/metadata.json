@@ -1,0 +1,8 @@
+{
+  "track_id": "refactor-git-cleanup_20260318",
+  "type": "chore",
+  "status": "new",
+  "created_at": "2026-03-18T00:00:00Z",
+  "updated_at": "2026-03-18T00:00:00Z",
+  "description": "refactor the folder structure to use a flat layout with icarus_sentinel package and remove magicmock from git cache"
+}
