@@ -2,6 +2,7 @@ import customtkinter as ctk
 from steam_manager import SteamManager
 from server_manager import ServerProcessManager
 from backup_manager import BackupManager
+from core.ini_manager import INIManager
 import threading
 import os
 import subprocess
@@ -81,6 +82,9 @@ class App(ctk.CTk):
         self.server_manager = ServerProcessManager(state_file=state_file, backup_manager=self.backup_manager)
         self.server_process: Optional[subprocess.Popen] = None
         
+        # Initialize INI Manager
+        self.ini_manager: Optional[INIManager] = None
+        
         # Start backup timer
         self.backup_manager.start_timer()
         
@@ -108,6 +112,9 @@ class App(ctk.CTk):
         self.path_entry = ctk.CTkEntry(self.path_frame)
         self.path_entry.grid(row=0, column=1, padx=5, pady=10, sticky="ew")
         self.path_entry.insert(0, os.path.join(os.getcwd(), "icarus_server"))
+        
+        # Now that path_entry is initialized, we can update INI manager
+        self.update_ini_manager()
 
         self.browse_button = ctk.CTkButton(
             self.path_frame, text="Browse", width=80, command=self.browse_path
@@ -215,6 +222,26 @@ class App(ctk.CTk):
         # Start monitoring loop
         self.update_monitoring()
 
+    def update_ini_manager(self) -> None:
+        """Updates the INI manager with the current installation path."""
+        install_dir = self.path_entry.get().strip() if hasattr(self, "path_entry") else os.path.join(os.getcwd(), "icarus_server")
+        ini_path = os.path.join(
+            install_dir, "Icarus", "Saved", "Config", "WindowsServer", "ServerSettings.ini"
+        )
+        
+        # Ensure directory exists for INI file
+        os.makedirs(os.path.dirname(ini_path), exist_ok=True)
+        
+        if not self.ini_manager:
+            self.ini_manager = INIManager(ini_path)
+        else:
+            self.ini_manager.file_path = ini_path
+            self.ini_manager.load()
+        
+        # Ensure file exists on disk for verification/first-run
+        if not os.path.exists(ini_path):
+            self.ini_manager.save()
+
     def save_settings(self) -> None:
         """Saves current settings from the UI to the manager."""
         try:
@@ -270,6 +297,7 @@ class App(ctk.CTk):
         if directory:
             self.path_entry.delete(0, "end")
             self.path_entry.insert(0, directory)
+            self.update_ini_manager()
 
     def log(self, message: str) -> None:
         """Appends a message to the console output text box.
