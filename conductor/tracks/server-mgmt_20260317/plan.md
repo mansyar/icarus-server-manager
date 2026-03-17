@@ -13,7 +13,7 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 1: Core Process Control Logic' (Protocol in workflow.md) (da9cfe2)
 
 ## Phase 2: Monitoring and Output Capture (TDD)
-- [ ] Task: Implement Resource Monitoring.
+- [x] Task: Implement Resource Monitoring. (028832e)
     - [ ] Write tests for `psutil` resource usage capturing (CPU/RAM).
     - [ ] Implement background monitoring loop with 5s interval.
 - [ ] Task: Implement Log Output Capture.
