@@ -35,3 +35,6 @@
     - [ ] Conduct manual end-to-end testing (Start, Stop, Monitoring, Crash).
     - [ ] Ensure persistence works: close and reopen manager while server is running.
 - [x] Task: Conductor - User Manual Verification 'Phase 3: UI Integration and Polishing' (Protocol in workflow.md) (eb26b72)
+
+## Phase: Review Fixes
+- [x] Task: Apply review suggestions (ffb79de)
