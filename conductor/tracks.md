@@ -4,5 +4,5 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ---
 
-- [~] **Track: Implement the ability to start, stop, and monitor the Icarus server process.**
+- [x] **Track: Implement the ability to start, stop, and monitor the Icarus server process.**
 *Link: [./tracks/server-mgmt_20260317/](./tracks/server-mgmt_20260317/)*
