@@ -14,5 +14,5 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ---
 
-- [ ] **Track: I want to add a functionality: syncing (two ways) save files of my local single player and the dedicated server.**
+- [x] **Track: I want to add a functionality: syncing (two ways) save files of my local single player and the dedicated server.**
 *Link: [./tracks/save-sync_20260318/](./tracks/save-sync_20260318/)*
