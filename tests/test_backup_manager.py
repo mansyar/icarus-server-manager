@@ -44,3 +44,31 @@ def test_on_server_stop_trigger(backup_manager):
     with patch.object(backup_manager, "_perform_backup") as mock_backup:
         backup_manager.on_server_stop()
         mock_backup.assert_called_once()
+
+def test_perform_backup_creates_zip(backup_manager):
+    # Add a dummy file to Prospects
+    prospects_path = os.path.join(backup_manager.server_path, "Icarus", "Saved", "PlayerData", "DedicatedServer", "Prospects")
+    test_file = os.path.join(prospects_path, "test_save.txt")
+    with open(test_file, "w") as f:
+        f.write("test data")
+        
+    backup_manager._perform_backup()
+    
+    # Check if a zip file was created in backup_path
+    backups = os.listdir(backup_manager.backup_path)
+    assert len(backups) == 1
+    assert backups[0].endswith(".zip")
+    assert "Prospects_" in backups[0]
+
+def test_perform_backup_missing_prospects(backup_manager, tmp_path):
+    # Set server_path to a non-existent directory or one without Prospects
+    backup_manager.server_path = str(tmp_path / "empty_server")
+    os.mkdir(backup_manager.server_path)
+    
+    # Should not raise exception, just not create backup
+    backup_manager._perform_backup()
+    
+    backups = os.listdir(backup_manager.backup_path)
+    assert len(backups) == 0
+
+import os

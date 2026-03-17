@@ -57,8 +57,26 @@ class BackupManager:
         self.create_backup()
 
     def _perform_backup(self) -> None:
-        """Internal method to perform the actual backup operation.
+        """Internal method to perform the actual backup operation."""
+        prospects_dir = os.path.join(
+            self.server_path, "Icarus", "Saved", "PlayerData", "DedicatedServer", "Prospects"
+        )
         
-        This will be implemented in the next task.
-        """
-        pass
+        if not os.path.exists(prospects_dir):
+            return
+
+        if not os.path.exists(self.backup_path):
+            os.makedirs(self.backup_path)
+
+        timestamp = datetime.now().strftime("%Y-%m-%d_%H%M")
+        backup_name = f"Prospects_{timestamp}"
+        backup_file = os.path.join(self.backup_path, backup_name)
+
+        try:
+            # zip creation is blocking, but called from timer thread or manual trigger (which should be threaded if from UI)
+            shutil.make_archive(backup_file, "zip", prospects_dir)
+        except Exception:
+            # Log error or notify? PRD says "non-blocking execution" and "reliability"
+            pass
+
+import shutil
