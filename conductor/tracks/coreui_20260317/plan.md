@@ -7,7 +7,7 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 1: Foundation and UI Scaffolding' (Protocol in workflow.md) (e161fab)
 
 ## Phase 2: SteamCMD Integration
-- [ ] Task: Implement SteamCMD download and extraction logic
+- [x] Task: Implement SteamCMD download and extraction logic (9aa45fd)
     - [ ] Write Tests
     - [ ] Implement Feature
 - [ ] Task: Implement server installation via SteamCMD
