@@ -393,13 +393,32 @@ class App(ctk.CTk):
             self.after(0, self.log, f"Save Sync: Starting synchronization for SteamID {self.selected_steam_id}...")
             try:
                 self.save_sync_manager.sync_prospects(self.selected_steam_id)
-                self.after(0, self.log, "Save Sync: Synchronization complete.")
+                
+                # Update last sync timestamp
+                now = threading.current_thread().name # Just to have something unique if needed, but we'll use datetime
+                import datetime
+                timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                self.server_manager.state["last_sync_timestamp"] = timestamp
+                self.server_manager.save_state()
+
+                self.after(0, self.log, f"Save Sync: Synchronization complete at {timestamp}.")
             except Exception as e:
                 self.after(0, self.log, f"Save Sync: Error during synchronization: {str(e)}")
             if callback:
                 self.after(0, callback)
 
         threading.Thread(target=_run_sync, daemon=True).start()
+
+    def perform_manual_sync(self) -> None:
+        """Manually triggers save synchronization, ensuring server is stopped."""
+        if self.server_process:
+            messagebox.showwarning(
+                "Server Running", 
+                "Please stop the server before performing a manual sync to avoid data corruption."
+            )
+            return
+        
+        self.sync_saves()
 
     def save_settings(self) -> None:
         """Saves current settings from the UI to the manager."""
