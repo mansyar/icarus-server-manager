@@ -6,6 +6,8 @@ from backup_manager import BackupManager
 def test_server_stop_triggers_backup(tmp_path):
     state_file = tmp_path / "server_state.json"
     mock_backup_mgr = MagicMock(spec=BackupManager)
+    mock_backup_mgr.interval_minutes = 30.0
+    mock_backup_mgr.retention_limit = 50
     
     # Initialize manager with mock backup manager
     manager = ServerProcessManager(state_file=str(state_file), backup_manager=mock_backup_mgr)
@@ -30,6 +32,8 @@ def test_server_stop_works_without_backup_mgr(tmp_path):
 def test_server_restart_triggers_backup(tmp_path):
     state_file = tmp_path / "server_state.json"
     mock_backup_mgr = MagicMock(spec=BackupManager)
+    mock_backup_mgr.interval_minutes = 30.0
+    mock_backup_mgr.retention_limit = 50
     manager = ServerProcessManager(state_file=str(state_file), backup_manager=mock_backup_mgr)
     
     with patch.object(manager, "start_server") as mock_start:

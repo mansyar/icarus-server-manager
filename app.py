@@ -167,8 +167,26 @@ class App(ctk.CTk):
         self.restart_time_entry.grid(row=0, column=2, padx=5, pady=10)
         self.restart_time_entry.insert(0, self.server_manager.smart_restart_time)
 
+        # Backup Settings
+        self.backup_settings_frame = ctk.CTkFrame(self)
+        self.backup_settings_frame.grid(row=5, column=0, padx=20, pady=10, sticky="ew")
+
+        self.backup_interval_label = ctk.CTkLabel(self.backup_settings_frame, text="Backup Interval (min):")
+        self.backup_interval_label.grid(row=0, column=0, padx=(10, 5), pady=10)
+
+        self.backup_interval_entry = ctk.CTkEntry(self.backup_settings_frame, width=60)
+        self.backup_interval_entry.grid(row=0, column=1, padx=5, pady=10)
+        self.backup_interval_entry.insert(0, str(int(self.backup_manager.interval_minutes)))
+
+        self.backup_retention_label = ctk.CTkLabel(self.backup_settings_frame, text="Max Backups:")
+        self.backup_retention_label.grid(row=0, column=2, padx=(10, 5), pady=10)
+
+        self.backup_retention_entry = ctk.CTkEntry(self.backup_settings_frame, width=60)
+        self.backup_retention_entry.grid(row=0, column=3, padx=5, pady=10)
+        self.backup_retention_entry.insert(0, str(self.backup_manager.retention_limit))
+
         self.console_output = ctk.CTkTextbox(self, state="disabled")
-        self.console_output.grid(row=5, column=0, padx=20, pady=20, sticky="nsew")
+        self.console_output.grid(row=6, column=0, padx=20, pady=20, sticky="nsew")
 
         # Recover state
         self.recover_state()
@@ -185,10 +203,22 @@ class App(ctk.CTk):
             self.server_manager.smart_restart_enabled = self.smart_restart_var.get()
             self.server_manager.smart_restart_time = self.restart_time_entry.get().strip()
             
+            # Update Backup Settings
+            interval = float(self.backup_interval_entry.get())
+            retention = int(self.backup_retention_entry.get())
+            
+            # Stop timer if interval changed significantly or to restart with new interval
+            if interval != self.backup_manager.interval_minutes:
+                self.backup_manager.stop_timer()
+                self.backup_manager.interval_minutes = interval
+                self.backup_manager.start_timer()
+            
+            self.backup_manager.retention_limit = retention
+            
             self.server_manager.save_state()
             self.log("Settings saved.")
         except ValueError:
-            self.log("Error: RAM Threshold must be a valid number.")
+            self.log("Error: Settings must contain valid numbers.")
 
     def recover_state(self) -> None:
         """Attempts to recover the server process from saved state."""

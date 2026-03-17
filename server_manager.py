@@ -63,6 +63,10 @@ class ServerProcessManager:
                     self.smart_restart_enabled = self.state.get("smart_restart_enabled", False)
                     self.smart_restart_time = self.state.get("smart_restart_time", "04:00")
                     self.last_smart_restart_date = self.state.get("last_smart_restart_date")
+                    
+                    if self.backup_manager:
+                        self.backup_manager.interval_minutes = self.state.get("backup_interval_minutes", 30.0)
+                        self.backup_manager.retention_limit = self.state.get("backup_retention_limit", 50)
             except (json.JSONDecodeError, IOError):
                 self.state = {"pid": None, "status": "stopped"}
                 self.ram_threshold_gb = 16.0
@@ -78,6 +82,11 @@ class ServerProcessManager:
             self.state["smart_restart_enabled"] = self.smart_restart_enabled
             self.state["smart_restart_time"] = self.smart_restart_time
             self.state["last_smart_restart_date"] = self.last_smart_restart_date
+            
+            if self.backup_manager:
+                self.state["backup_interval_minutes"] = self.backup_manager.interval_minutes
+                self.state["backup_retention_limit"] = self.backup_manager.retention_limit
+                
             with open(self.state_file, "w") as f:
                 json.dump(self.state, f)
         except IOError:
