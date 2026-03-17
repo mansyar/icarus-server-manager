@@ -28,7 +28,7 @@
 - [x] Task: Implement One-Click Restore Logic [39c3912]
     - [ ] Write tests for extracting a backup and handling errors (e.g., locked files) safely
     - [ ] Implement the extraction logic to overwrite the active `Prospects` folder
-- [ ] Task: Integrate Restore with UI
+- [x] Task: Integrate Restore with UI [d72a2e3]
     - [ ] Wire the "Restore" button to the extraction logic and show appropriate success/error notifications
     - [ ] Add a "Backup Now" manual trigger button to the UI
 - [ ] Task: Conductor - User Manual Verification 'Phase 3: Backup Browser & Restore UI' (Protocol in workflow.md)
