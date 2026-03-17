@@ -1,6 +1,6 @@
 # Implementation Plan: Server Process Management (Track: server-mgmt)
 
-## Phase 1: Core Process Control Logic (TDD)
+## Phase 1: Core Process Control Logic (TDD) [checkpoint: ea1e840]
 - [x] Task: Define the `ServerProcessManager` class and basic state management. (22660ff)
     - [ ] Write tests for `ServerProcessManager` initialization and state loading/saving (server_state.json).
     - [ ] Implement `ServerProcessManager` state logic.
