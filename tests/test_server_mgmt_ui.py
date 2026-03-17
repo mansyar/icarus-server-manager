@@ -28,7 +28,8 @@ def test_start_server_ui(mock_exists, mock_thread, app_instance):
     app_instance.path_entry = MagicMock()
     app_instance.path_entry.get.return_value = "C:/icarus"
     
-    with patch.object(app_instance, "get_server_executable") as mock_get_exe:
+    with patch.object(app_instance, "get_server_executable") as mock_get_exe, \
+         patch.object(app_instance.server_manager, "get_available_system_ram_pct", return_value=50.0):
         mock_get_exe.return_value = "C:/icarus/IcarusServer.exe"
         app_instance.start_server()
         

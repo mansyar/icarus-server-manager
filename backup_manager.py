@@ -1,6 +1,7 @@
 import os
 import threading
 import zipfile
+import shutil
 from datetime import datetime
 from typing import Optional
 
@@ -75,9 +76,10 @@ class BackupManager:
         )
 
         try:
-            # Ensure Prospects directory exists
-            if not os.path.exists(prospects_dir):
-                os.makedirs(prospects_dir)
+            # Ensure Prospects directory exists and is empty before restore
+            if os.path.exists(prospects_dir):
+                shutil.rmtree(prospects_dir)
+            os.makedirs(prospects_dir)
 
             with zipfile.ZipFile(zip_path, 'r') as zip_ref:
                 zip_ref.extractall(prospects_dir)
@@ -132,5 +134,3 @@ class BackupManager:
                     os.remove(os.path.join(self.backup_path, f))
                 except OSError:
                     pass
-
-import shutil
