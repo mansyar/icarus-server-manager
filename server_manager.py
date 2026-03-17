@@ -30,6 +30,7 @@ class ServerProcessManager:
         self.state = {"pid": None, "status": "stopped"}
         self.restart_count = 0
         self.max_restarts = 3
+        self.ram_threshold_gb = 16.0
         self.load_state()
 
     def load_state(self):
@@ -159,6 +160,17 @@ class ServerProcessManager:
             cpu = p.cpu_percent(interval=None)
             ram_bytes = p.memory_info().rss
             ram_gb = round(ram_bytes / (1024**3), 2)
+            
+            # Threshold Monitoring
+            if ram_gb > self.ram_threshold_gb:
+                if self.state["status"] == "running":
+                    self.state["status"] = "warning"
+                    self.save_state()
+            elif ram_gb <= self.ram_threshold_gb:
+                if self.state["status"] == "warning":
+                    self.state["status"] = "running"
+                    self.save_state()
+
             return {"cpu": cpu, "ram_gb": ram_gb}
         except (psutil.NoSuchProcess, psutil.AccessDenied):
             return {"cpu": 0.0, "ram_gb": 0.0}
