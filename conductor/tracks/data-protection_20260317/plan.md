@@ -1,7 +1,7 @@
 # Implementation Plan: Data Protection & Backups
 
 ## Phase 1: Automated Backup Engine (TDD)
-- [ ] Task: Define `BackupManager` class and trigger logic
+- [x] Task: Define `BackupManager` class and trigger logic [8d5a4fc]
     - [ ] Write tests for background timer interval execution and manual trigger
     - [ ] Implement `BackupManager` background thread and timer logic
 - [ ] Task: Implement Folder Zipping
