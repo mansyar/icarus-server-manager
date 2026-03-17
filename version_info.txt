@@ -29,14 +29,14 @@ VSVersionInfo(
       [
       StringTable(
         u'040904B0',
-        [StringProperty(u'CompanyName', u'Icarus Sentinel Team'),
-        StringProperty(u'FileDescription', u'Icarus Sentinel Server Manager'),
-        StringProperty(u'FileVersion', u'1.0.0.0'),
-        StringProperty(u'InternalName', u'IcarusSentinel'),
-        StringProperty(u'LegalCopyright', u'Copyright (c) 2026'),
-        StringProperty(u'OriginalFilename', u'IcarusSentinel.exe'),
-        StringProperty(u'ProductName', u'Icarus Sentinel'),
-        StringProperty(u'ProductVersion', u'1.0.0.0')])
+        [StringStruct(u'CompanyName', u'Icarus Sentinel Team'),
+        StringStruct(u'FileDescription', u'Icarus Sentinel Server Manager'),
+        StringStruct(u'FileVersion', u'1.0.0.0'),
+        StringStruct(u'InternalName', u'IcarusSentinel'),
+        StringStruct(u'LegalCopyright', u'Copyright (c) 2026'),
+        StringStruct(u'OriginalFilename', u'IcarusSentinel.exe'),
+        StringStruct(u'ProductName', u'Icarus Sentinel'),
+        StringStruct(u'ProductVersion', u'1.0.0.0')])
       ]), 
     VarFileInfo([VarProperty(u'Translation', [1033, 1200])])
   ]
