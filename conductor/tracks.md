@@ -12,3 +12,6 @@ This file tracks all major tracks for the project. Each track has its own detail
 - [x] **Track: python-venv_20260317** - Implement Python virtual environment for the project. (Archived: 2026-03-17)
 
 ---
+
+- [ ] **Track: Server Configuration & INI Management**
+*Link: [./tracks/server-config-ini_20260317/](./tracks/server-config-ini_20260317/)*
