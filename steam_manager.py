@@ -2,9 +2,11 @@ import os
 import urllib.request
 import zipfile
 import shutil
+import subprocess
 
 class SteamManager:
     STEAMCMD_URL = "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_win32.zip"
+    ICARUS_APPID = "2089300"
 
     def __init__(self, root_dir=None):
         if root_dir is None:
@@ -30,7 +32,32 @@ class SteamManager:
             zip_ref.extractall(self.steamcmd_dir)
         
         # Clean up
-        os.remove(zip_path)
+        if os.path.exists(zip_path):
+            os.remove(zip_path)
 
     def is_installed(self):
         return os.path.exists(self.steamcmd_path)
+
+    def install_server(self, install_dir):
+        """Installs or updates the Icarus server."""
+        if not self.is_installed():
+            self.download_steamcmd()
+
+        cmd = [
+            self.steamcmd_path,
+            "+force_install_dir", install_dir,
+            "+login", "anonymous",
+            "+app_update", self.ICARUS_APPID, "validate",
+            "+quit"
+        ]
+        
+        process = subprocess.Popen(
+            cmd,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            text=True,
+            bufsize=1,
+            universal_newlines=True
+        )
+        
+        return process
