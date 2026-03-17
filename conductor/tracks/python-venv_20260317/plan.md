@@ -1,10 +1,10 @@
 # Implementation Plan: Python Virtual Environment
 
 ## Phase 1: Environment Initialization
-- [~] Task: Initialize standard Python `venv` in `.venv` directory
-- [~] Task: Create `.gitignore` to exclude `.venv` and Python artifacts (`__pycache__`, etc.)
-- [~] Task: Create `requirements.txt` with core dependencies (`customtkinter`, `psutil`, `winotify`, `python-a2s`)
-- [~] Task: Create basic `src/main.py` and `tests/test_main.py` skeletons to establish the test-driven workflow structure
+- [x] Task: Initialize standard Python `venv` in `.venv` directory [d54c2ea]
+- [x] Task: Create `.gitignore` to exclude `.venv` and Python artifacts (`__pycache__`, etc.) [d54c2ea]
+- [x] Task: Create `requirements.txt` with core dependencies (`customtkinter`, `psutil`, `winotify`, `python-a2s`) [d54c2ea]
+- [x] Task: Create basic `src/main.py` and `tests/test_main.py` skeletons to establish the test-driven workflow structure [d54c2ea]
 - [ ] Task: Conductor - User Manual Verification 'Environment Initialization' (Protocol in workflow.md)
 
 ## Phase 2: Workflow Automation
