@@ -25,3 +25,6 @@
 - [x] Task: Modify the "Safe Launch" workflow to read the state of the "Update on Launch" checkbox. a92ed36
 - [x] Task: Implement logic to trigger SteamCMD update (`app_update 2089300`) if the checkbox is checked, prior to spawning the server process. a92ed36
 - [x] Task: Conductor - User Manual Verification 'Phase 4: Launch-Time Updates Integration' (Protocol in workflow.md) 9bb6502
+
+## Phase: Review Fixes
+- [x] Task: Apply review suggestions c20726b
