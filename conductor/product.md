@@ -127,7 +127,8 @@
 * **Requirement 3.5:** Backup Retention: Permanently **Delete Oldest** backups when the retention limit is reached to save space.
 
 ### 4.4 UI/UX Experience
-* **Requirement 4.1:** **Detailed Feedback:** Display real-time console output from SteamCMD and server initialization within a scrollable text box to provide transparency during long-running tasks.
+* **Requirement 4.1:** **Detailed Feedback:** Display real-time console output from SteamCMD and server initialization within a persistent scrollable text box at the bottom of the application window.
+* **Requirement 4.2:** **Tabbed Navigation:** Use a tabbed interface to separate core server management from advanced features like the backup browser.
 
 ---
 
