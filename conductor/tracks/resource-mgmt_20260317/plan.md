@@ -4,9 +4,9 @@
 - [x] Task: Extend `ServerProcessManager` to handle threshold alerts. (0add448)
     - [x] Write tests for `ServerProcessManager` monitoring logic with thresholds.
     - [x] Implement threshold monitoring and state update (Warning state).
-- [ ] Task: Implement Windows Notification Support.
-    - [ ] Write tests for `NotificationManager` (mocking system toast calls).
-    - [ ] Implement system notifications for threshold breaches.
+- [x] Task: Implement Windows Notification Support. (e8b215a)
+    - [x] Write tests for `NotificationManager` (mocking system toast calls).
+    - [x] Implement system notifications for threshold breaches.
 - [ ] Task: Update UI for Threshold States.
     - [ ] Add visual indicators (color/icon change) for RAM threshold alerts.
     - [ ] Connect threshold state to the manager log.
