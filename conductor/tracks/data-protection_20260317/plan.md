@@ -12,14 +12,14 @@
     - [ ] Implement integration between `ServerProcessManager` (or equivalent) and `BackupManager`
 - [x] Task: Conductor - User Manual Verification 'Phase 1: Automated Backup Engine' (Protocol in workflow.md) [c30d96a]
 
-## Phase 2: Retention Policy Management (TDD)
+## Phase 2: Retention Policy Management (TDD) [checkpoint: d50b1ce]
 - [x] Task: Implement 'Delete Oldest' Logic [9e045ac]
     - [ ] Write tests for identifying and deleting the oldest backup files based on a limit
     - [ ] Implement `BackupManager` logic to enforce the configurable retention limit
 - [x] Task: UI Configuration for Retention & Interval [6da2946]
     - [ ] Write tests for saving/loading backup settings (interval, retention limit)
     - [ ] Implement UI elements in settings to configure the backup interval and maximum backups to keep
-- [ ] Task: Conductor - User Manual Verification 'Phase 2: Retention Policy Management' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 2: Retention Policy Management' (Protocol in workflow.md) [d50b1ce]
 
 ## Phase 3: Backup Browser & Restore UI (TDD)
 - [ ] Task: Create 'Backups' Tab UI
