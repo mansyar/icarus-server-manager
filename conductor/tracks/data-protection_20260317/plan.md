@@ -1,6 +1,6 @@
 # Implementation Plan: Data Protection & Backups
 
-## Phase 1: Automated Backup Engine (TDD)
+## Phase 1: Automated Backup Engine (TDD) [checkpoint: c30d96a]
 - [x] Task: Define `BackupManager` class and trigger logic [8d5a4fc]
     - [ ] Write tests for background timer interval execution and manual trigger
     - [ ] Implement `BackupManager` background thread and timer logic
@@ -10,7 +10,7 @@
 - [x] Task: Server Stop Trigger [3b117fc]
     - [ ] Write tests to verify the `BackupManager` is called when the server shuts down safely
     - [ ] Implement integration between `ServerProcessManager` (or equivalent) and `BackupManager`
-- [ ] Task: Conductor - User Manual Verification 'Phase 1: Automated Backup Engine' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 1: Automated Backup Engine' (Protocol in workflow.md) [c30d96a]
 
 ## Phase 2: Retention Policy Management (TDD)
 - [ ] Task: Implement 'Delete Oldest' Logic
