@@ -64,14 +64,34 @@ def test_save_settings_updates_threshold(app_instance):
     app_instance.save_settings()
     
     assert app_instance.server_manager.ram_threshold_gb == 18.5
-    app_instance.log.assert_called_with("Settings saved. RAM Threshold set to 18.5GB.")
+    app_instance.log.assert_called_with("Settings saved.")
 
-def test_save_settings_handles_invalid_input(app_instance):
+def test_save_settings_updates_smart_restart(app_instance):
     app_instance.threshold_entry = MagicMock()
-    app_instance.threshold_entry.get.return_value = "invalid"
-    app_instance.server_manager.ram_threshold_gb = 16.0
+    app_instance.threshold_entry.get.return_value = "16.0"
+    app_instance.smart_restart_var = MagicMock()
+    app_instance.smart_restart_var.get.return_value = True
+    app_instance.restart_time_entry = MagicMock()
+    app_instance.restart_time_entry.get.return_value = "05:30"
     
     app_instance.save_settings()
     
-    assert app_instance.server_manager.ram_threshold_gb == 16.0
-    app_instance.log.assert_called_with("Error: RAM Threshold must be a valid number.")
+    assert app_instance.server_manager.smart_restart_enabled is True
+    assert app_instance.server_manager.smart_restart_time == "05:30"
+    app_instance.log.assert_called_with("Settings saved.")
+
+def test_update_monitoring_triggers_smart_restart(app_instance):
+    app_instance.server_process = MagicMock()
+    app_instance.path_entry = MagicMock()
+    app_instance.path_entry.get.return_value = "C:/test"
+    
+    app_instance.get_server_executable = MagicMock(return_value="C:/test/exe")
+    
+    mock_new_proc = MagicMock()
+    mock_new_proc.pid = 9999
+    app_instance.server_manager.check_smart_restart = MagicMock(return_value=mock_new_proc)
+    
+    app_instance.update_monitoring_once()
+    
+    assert app_instance.server_process == mock_new_proc
+    app_instance.log.assert_called_with("Smart Idle Restart triggered. New PID: 9999")

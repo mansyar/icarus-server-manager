@@ -86,8 +86,26 @@ class App(ctk.CTk):
         )
         self.save_settings_button.grid(row=0, column=2, padx=(5, 10), pady=10)
 
+        # Smart Restart Settings
+        self.smart_restart_frame = ctk.CTkFrame(self)
+        self.smart_restart_frame.grid(row=4, column=0, padx=20, pady=10, sticky="ew")
+
+        self.smart_restart_var = ctk.BooleanVar(value=self.server_manager.smart_restart_enabled)
+        self.smart_restart_switch = ctk.CTkSwitch(
+            self.smart_restart_frame, text="Enable Smart Idle Restart", 
+            variable=self.smart_restart_var, command=self.save_settings
+        )
+        self.smart_restart_switch.grid(row=0, column=0, padx=10, pady=10)
+
+        self.restart_time_label = ctk.CTkLabel(self.smart_restart_frame, text="Maintenance Time (HH:MM):")
+        self.restart_time_label.grid(row=0, column=1, padx=(10, 5), pady=10)
+
+        self.restart_time_entry = ctk.CTkEntry(self.smart_restart_frame, width=60)
+        self.restart_time_entry.grid(row=0, column=2, padx=5, pady=10)
+        self.restart_time_entry.insert(0, self.server_manager.smart_restart_time)
+
         self.console_output = ctk.CTkTextbox(self, state="disabled")
-        self.console_output.grid(row=4, column=0, padx=20, pady=20, sticky="nsew")
+        self.console_output.grid(row=5, column=0, padx=20, pady=20, sticky="nsew")
 
         # Recover state
         self.recover_state()
@@ -100,8 +118,12 @@ class App(ctk.CTk):
         try:
             threshold = float(self.threshold_entry.get())
             self.server_manager.ram_threshold_gb = threshold
+            
+            self.server_manager.smart_restart_enabled = self.smart_restart_var.get()
+            self.server_manager.smart_restart_time = self.restart_time_entry.get().strip()
+            
             self.server_manager.save_state()
-            self.log(f"Settings saved. RAM Threshold set to {threshold}GB.")
+            self.log("Settings saved.")
         except ValueError:
             self.log("Error: RAM Threshold must be a valid number.")
 
@@ -309,6 +331,14 @@ class App(ctk.CTk):
                     self.log(f"WARNING: High RAM usage detected! (>{self.server_manager.ram_threshold_gb}GB)")
             else:
                 self.after(0, lambda: self.ram_label.configure(text_color=["gray10", "gray90"])) # Default CTk color
+
+            # Check for smart restart
+            exe_path = self.get_server_executable(self.path_entry.get().strip())
+            if exe_path:
+                new_proc = self.server_manager.check_smart_restart(exe_path)
+                if new_proc:
+                    self.server_process = new_proc
+                    self.log(f"Smart Idle Restart triggered. New PID: {new_proc.pid}")
 
 def main() -> None:
     """Entry point for the application."""
