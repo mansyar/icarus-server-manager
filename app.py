@@ -141,16 +141,58 @@ class App(ctk.CTk):
         self.path_entry.configure(state="normal")
 
     def start_server(self) -> None:
-        """Starts the server process (Placeholder for now)."""
-        pass
+        """Starts the server process in a separate thread."""
+        exe_path = self.path_entry.get().strip()
+        if not exe_path or not os.path.exists(exe_path):
+            self.log("Error: Invalid server executable path.")
+            return
+
+        self.start_button.configure(state="disabled")
+        self.stop_button.configure(state="normal")
+        self.restart_button.configure(state="normal")
+        
+        threading.Thread(
+            target=self.run_server, args=(exe_path,), daemon=True
+        ).start()
+
+    def run_server(self, exe_path: str) -> None:
+        """Starts the server and streams logs."""
+        try:
+            self.server_process = self.server_manager.start_server(exe_path)
+            self.log(f"Server started (PID: {self.server_process.pid})")
+            
+            # Start log streaming (blocks until process exit)
+            self.server_manager.stream_logs(self.server_process, lambda line: self.after(0, self.log, line))
+            
+            # If stream_logs returns, the process has exited
+            self.after(0, self.on_server_exit)
+        except Exception as e:
+            self.after(0, self.log, f"Server error: {str(e)}")
+            self.after(0, self.on_server_exit)
+
+    def on_server_exit(self) -> None:
+        """Handles server process exit UI updates."""
+        self.log("Server process has exited.")
+        self.start_button.configure(state="normal")
+        self.stop_button.configure(state="disabled")
+        self.restart_button.configure(state="disabled")
+        self.cpu_label.configure(text="CPU: 0.0%")
+        self.ram_label.configure(text="RAM: 0.00GB")
 
     def stop_server(self) -> None:
-        """Stops the server process (Placeholder for now)."""
-        pass
+        """Stops the server process."""
+        if self.server_process:
+            self.log("Stopping server...")
+            self.server_manager.stop_server(self.server_process)
 
     def restart_server(self) -> None:
-        """Restarts the server process (Placeholder for now)."""
-        pass
+        """Restarts the server process."""
+        exe_path = self.path_entry.get().strip()
+        if self.server_process and exe_path:
+            self.log("Restarting server...")
+            self.server_manager.stop_server(self.server_process)
+            # start_server will be called by the thread or manually
+            self.start_server()
 
 def main() -> None:
     """Entry point for the application."""
