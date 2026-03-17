@@ -7,6 +7,8 @@ class ServerProcessManager:
     def __init__(self, state_file="server_state.json"):
         self.state_file = state_file
         self.state = {"pid": None, "status": "stopped"}
+        self.restart_count = 0
+        self.max_restarts = 3
         self.load_state()
 
     def load_state(self):
@@ -86,3 +88,12 @@ class ServerProcessManager:
         for line in iter(process.stdout.readline, ""):
             if line:
                 callback(line.strip())
+
+    def handle_crash(self, exe_path):
+        if self.restart_count < self.max_restarts:
+            self.restart_count += 1
+            return self.start_server(exe_path)
+        else:
+            self.state["status"] = "crashed"
+            self.save_state()
+            return None

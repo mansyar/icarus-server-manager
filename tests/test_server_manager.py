@@ -117,3 +117,30 @@ def test_stream_logs(manager):
     manager.stream_logs(mock_process, callback)
     
     assert lines == ["line 1", "line 2"]
+
+@patch("server_manager.ServerProcessManager.start_server")
+def test_handle_crash_auto_restarts(mock_start_server, manager):
+    manager.restart_count = 0
+    manager.max_restarts = 3
+    
+    server_exe = "C:/icarus/IcarusServer.exe"
+    
+    # Simulate a crash
+    manager.handle_crash(server_exe)
+    
+    assert manager.restart_count == 1
+    mock_start_server.assert_called_once_with(server_exe)
+
+@patch("server_manager.ServerProcessManager.start_server")
+def test_handle_crash_stops_after_max_restarts(mock_start_server, manager):
+    manager.restart_count = 3
+    manager.max_restarts = 3
+    
+    server_exe = "C:/icarus/IcarusServer.exe"
+    
+    # Simulate a crash
+    manager.handle_crash(server_exe)
+    
+    assert manager.restart_count == 3
+    mock_start_server.assert_not_called()
+    assert manager.state["status"] == "crashed"
