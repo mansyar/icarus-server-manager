@@ -1,6 +1,6 @@
 # Implementation Plan: Advanced Resource Management (Track: resource-mgmt)
 
-## Phase 1: Threshold Alerts & UI Feedback (TDD) [checkpoint: ]
+## Phase 1: Threshold Alerts & UI Feedback (TDD) [checkpoint: dc5cdf2]
 - [x] Task: Extend `ServerProcessManager` to handle threshold alerts. (0add448)
     - [x] Write tests for `ServerProcessManager` monitoring logic with thresholds.
     - [x] Implement threshold monitoring and state update (Warning state).
