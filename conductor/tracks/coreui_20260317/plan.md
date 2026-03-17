@@ -16,7 +16,7 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 2: SteamCMD Integration' (Protocol in workflow.md) (dffd86e)
 
 ## Phase 3: UI Feedback for Installation
-- [ ] Task: Add scrollable text box to UI for SteamCMD console output
+- [x] Task: Add scrollable text box to UI for SteamCMD console output (dd5faf6)
     - [ ] Write Tests
     - [ ] Implement Feature
 - [ ] Task: Conductor - User Manual Verification 'Phase 3: UI Feedback for Installation' (Protocol in workflow.md)
