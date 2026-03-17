@@ -11,8 +11,10 @@
 
 ## 3. System Management & Core Libraries
 * **psutil** & **subprocess**
-  * `psutil` will be used for real-time monitoring of CPU and RAM usage.
-  * `subprocess` will handle executing SteamCMD and the Icarus Dedicated Server process.
+  * `psutil`: Real-time monitoring of CPU and RAM usage.
+  * `subprocess`: Executing SteamCMD and the Icarus Dedicated Server process.
+* **PyInstaller**
+  * Compiles the Python application into a standalone Windows executable (`.exe`).
 * **winotify**
   * Used for sending Windows system notifications (toasts) for threshold alerts.
 * **shutil** & **os.path**

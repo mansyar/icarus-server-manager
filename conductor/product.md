@@ -54,7 +54,7 @@
 
 ### 5.1 The "First Run" Workflow
 1. User launches `IcarusSentinel.exe`.
-2. Manager checks for `steamcmd.exe` in the root folder.
+2. Manager checks for `steamcmd.exe` in its working directory.
     * *If missing:* Manager downloads SteamCMD from Valve's official CDN.
 3. Manager prompts user for an install directory.
 4. Manager executes SteamCMD to download the 15GB+ Icarus Dedicated Server files.
@@ -88,7 +88,7 @@
 
 ## 6. Non-Functional Requirements
 * **Efficiency:** Manager RAM usage < 100MB.
-* **Portability:** Single executable/folder distribution (No Python install required).
+* **Portability:** Single executable/folder distribution (compiled via PyInstaller, no Python install required).
 * **Independence:** Server process continues running even if the Manager UI is closed.
 
 ---
@@ -143,6 +143,7 @@
 ### 4.4 UI/UX Experience
 * **Requirement 4.1:** **Detailed Feedback:** Display real-time console output from SteamCMD and server initialization within a persistent scrollable text box at the bottom of the application window.
 * **Requirement 4.2:** **Tabbed Navigation:** Use a tabbed interface to separate core server management from advanced features like the backup browser.
+* **Requirement 4.3:** **About & Versioning:** Clearly display the application version and provide an "About" dialog for credits and system information.
 
 ---
 
@@ -150,7 +151,7 @@
 
 ### 5.1 The "First Run" Workflow
 1. User launches `IcarusSentinel.exe`.
-2. Manager checks for `steamcmd.exe` in the root folder.
+2. Manager checks for `steamcmd.exe` in its working directory.
     * *If missing:* Manager downloads SteamCMD from Valve's official CDN.
 3. Manager prompts user for an install directory.
 4. Manager executes SteamCMD to download the 15GB+ Icarus Dedicated Server files.
@@ -184,7 +185,7 @@
 
 ## 6. Non-Functional Requirements
 * **Efficiency:** Manager RAM usage < 100MB.
-* **Portability:** Single executable/folder distribution (No Python install required).
+* **Portability:** Single executable/folder distribution (compiled via PyInstaller, no Python install required).
 * **Independence:** Server process continues running even if the Manager UI is closed.
 
 ---
