@@ -3,7 +3,7 @@
 This file tracks all major tracks for the project. Each track has its own detailed plan in its respective folder.
 
 ## Active Tracks
-- [ ] **Track: Implement automated timestamped backups, a retention policy, and a one-click restore browser.**
+- [~] **Track: Implement automated timestamped backups, a retention policy, and a one-click restore browser.**
 *Link: [./tracks/data-protection_20260317/](./tracks/data-protection_20260317/)*
 
 ## Archived Tracks
