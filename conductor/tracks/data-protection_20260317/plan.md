@@ -4,7 +4,7 @@
 - [x] Task: Define `BackupManager` class and trigger logic [8d5a4fc]
     - [ ] Write tests for background timer interval execution and manual trigger
     - [ ] Implement `BackupManager` background thread and timer logic
-- [ ] Task: Implement Folder Zipping
+- [x] Task: Implement Folder Zipping [3da0bae]
     - [ ] Write tests for archiving the `Prospects` folder using `shutil` or `zipfile`
     - [ ] Implement the archiving function, ensuring non-blocking execution
 - [ ] Task: Server Stop Trigger
