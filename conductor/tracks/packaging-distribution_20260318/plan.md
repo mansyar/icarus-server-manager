@@ -4,7 +4,7 @@
 - [x] Task: Install PyInstaller and create build script. [87b691d]
     - [ ] Update `requirements.txt` with `pyinstaller` dependency.
     - [ ] Write a script or command to compile the `icarus_sentinel` application into a standalone executable (`IcarusSentinel.exe`).
-- [ ] Task: Configure PyInstaller specs.
+- [x] Task: Configure PyInstaller specs. [b32b037]
     - [ ] Configure PyInstaller to include required non-Python data files (e.g., UI assets, `customtkinter` theme, default `server_state.json` or `.ini` configuration files).
     - [ ] Add version information and application icon.
 - [ ] Task: Conductor - User Manual Verification 'Phase 1: Local Executable Compilation' (Protocol in workflow.md)
