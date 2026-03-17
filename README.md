@@ -8,7 +8,8 @@ A modern, portable server manager for Icarus, designed for simplicity and reliab
 -   **Smart Idle Restart:** Automatically restarts your server during idle periods to maintain performance.
 -   **Automated Backups:** Configurable backup intervals and retention policies for your world data.
 -   **Save Synchronization:** Bidirectional sync between local and dedicated server saves.
--   **Portability:** Single executable distribution—no Python installation required.
+-   **Portability:** Single executable distribution - no Python installation required.
+
 
 ## Installation
 1.  **Download:** Download the latest `IcarusSentinel.zip` from the [Releases](https://github.com/your-username/icarus-server-manager/releases) page.

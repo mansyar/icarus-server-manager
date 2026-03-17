@@ -1,17 +1,19 @@
-from icarus_sentinel import __version__
+import datetime
+import os
+import subprocess
+import threading
+from tkinter import filedialog, messagebox
+from typing import Optional, Callable
+
 import customtkinter as ctk
+import psutil
+
+from icarus_sentinel import __version__
 from icarus_sentinel.steam_manager import SteamManager
 from icarus_sentinel.server_manager import ServerProcessManager
 from icarus_sentinel.backup_manager import BackupManager
 from icarus_sentinel.core.ini_manager import INIManager
 from icarus_sentinel.core.save_sync_manager import SaveSyncManager
-import threading
-import datetime
-import os
-import subprocess
-import psutil
-from tkinter import filedialog, messagebox
-from typing import Optional, Callable
 
 class RamOptimizationDialog(ctk.CTkToplevel):
     """Dialog shown when system RAM is low before server launch."""
