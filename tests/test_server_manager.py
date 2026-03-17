@@ -5,7 +5,7 @@ import subprocess
 import psutil
 from unittest.mock import patch, MagicMock
 
-from server_manager import ServerProcessManager
+from icarus_sentinel.server_manager import ServerProcessManager
 
 @pytest.fixture
 def state_file(tmp_path):
@@ -28,14 +28,14 @@ def test_save_state(manager, state_file):
     with open(str(state_file), "r") as f:
         saved_state = json.load(f)
     assert saved_state == {
-        "pid": 1234, 
-        "status": "running", 
+        "pid": 1234,
+        "status": "running",
         "ram_threshold_gb": 16.0,
         "smart_restart_enabled": False,
         "smart_restart_time": "04:00",
-        "last_smart_restart_date": None
+        "last_smart_restart_date": None,
+        "last_sync_timestamp": None
     }
-
 def test_save_state_io_error(manager, state_file):
     with patch("builtins.open", side_effect=IOError):
         manager.save_state()

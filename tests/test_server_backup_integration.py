@@ -1,7 +1,7 @@
 import pytest
 from unittest.mock import MagicMock, patch
-from server_manager import ServerProcessManager
-from backup_manager import BackupManager
+from icarus_sentinel.server_manager import ServerProcessManager
+from icarus_sentinel.backup_manager import BackupManager
 
 def test_server_stop_triggers_backup(tmp_path):
     state_file = tmp_path / "server_state.json"

@@ -1,9 +1,9 @@
 import pytest
 from unittest.mock import patch, MagicMock
 
-from notification_manager import NotificationManager
+from icarus_sentinel.notification_manager import NotificationManager
 
-@patch("notification_manager.Notification")
+@patch("icarus_sentinel.notification_manager.Notification")
 def test_notify_calls_winotify(mock_notification_class):
     mock_notification_instance = mock_notification_class.return_value
     manager = NotificationManager()

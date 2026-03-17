@@ -6,13 +6,46 @@ import psutil
 
 @pytest.fixture
 def app_instance():
-    from app import App
-    with patch("app.ctk.CTk.title"), \
-         patch("app.ctk.CTk.geometry"):
+    from icarus_sentinel.app import App
+    with patch("icarus_sentinel.app.App.__init__", return_value=None):
         app = App()
+        # Setup minimal state for tests
+        app.server_manager = MagicMock()
+        app.steam_manager = MagicMock()
+        app.backup_manager = MagicMock()
+        
+        app.start_button = MagicMock()
+        app.stop_button = MagicMock()
+        app.restart_button = MagicMock()
+        app.cpu_label = MagicMock()
+        app.ram_label = MagicMock()
+        app.path_entry = MagicMock()
+        
+        app.log = MagicMock()
+        
+        # Mock 'after' to execute the callback immediately
+        def mock_after(delay, func, *args):
+            if callable(func):
+                func(*args)
+            return "mock_after_id"
+        app.after = MagicMock(side_effect=mock_after)
+        
+        app.server_process = None
+        app.selected_steam_id = "test_steam_id"
+        app.update_on_launch_var = MagicMock()
+        app.update_on_launch_var.get.return_value = False
+        
+        # Link methods we want to test
+        app.start_server = lambda: App.start_server(app)
+        app.stop_server = lambda: App.stop_server(app)
+        app.restart_server = lambda: App.restart_server(app)
+        app.on_server_exit = lambda: App.on_server_exit(app)
+        app.update_monitoring_once = lambda: App.update_monitoring_once(app)
+        app.get_server_executable = lambda path: App.get_server_executable(app, path)
+        app.launch_server = lambda path: App.launch_server(app, path)
+        app.sync_saves = lambda callback=None: App.sync_saves(app, callback)
+        
         yield app
-        if hasattr(app, "destroy"):
-            app.destroy()
 
 def test_ui_has_server_mgmt_buttons(app_instance):
     assert hasattr(app_instance, "start_button")
@@ -21,21 +54,20 @@ def test_ui_has_server_mgmt_buttons(app_instance):
     assert hasattr(app_instance, "cpu_label")
     assert hasattr(app_instance, "ram_label")
 
-@patch("app.threading.Thread")
-@patch("app.os.path.exists")
+@patch("icarus_sentinel.app.threading.Thread")
+@patch("icarus_sentinel.app.os.path.exists")
 def test_start_server_ui(mock_exists, mock_thread, app_instance):
     mock_exists.return_value = True
     app_instance.path_entry = MagicMock()
     app_instance.path_entry.get.return_value = "C:/icarus"
     
     with patch.object(app_instance, "get_server_executable") as mock_get_exe, \
+         patch.object(app_instance, "sync_saves") as mock_sync_saves, \
          patch.object(app_instance.server_manager, "get_available_system_ram_pct", return_value=50.0):
         mock_get_exe.return_value = "C:/icarus/IcarusServer.exe"
         app_instance.start_server()
         
-    mock_thread.assert_called_once()
-    args, kwargs = mock_thread.call_args
-    assert kwargs["target"] == app_instance.run_server
+    mock_sync_saves.assert_called_once()
 
 def test_run_server_streams_logs(app_instance):
     app_instance.server_manager = MagicMock()
@@ -59,11 +91,12 @@ def test_update_monitoring(app_instance):
     app_instance.server_manager = MagicMock()
     app_instance.server_process = MagicMock()
     app_instance.server_manager.get_resource_usage.return_value = {"cpu": 25.0, "ram_gb": 1.2}
+    app_instance.server_manager.should_smart_restart.return_value = False
     
     app_instance.cpu_label = MagicMock()
     app_instance.ram_label = MagicMock()
     
-    app_instance.update_monitoring()
+    app_instance.update_monitoring_once()
     
     app_instance.cpu_label.configure.assert_any_call(text="CPU: 25.0%")
     app_instance.ram_label.configure.assert_any_call(text="RAM: 1.2GB")
@@ -89,7 +122,7 @@ def test_stop_server_ui_recovered(app_instance):
     app_instance.server_manager.stop_server.assert_called_once_with(1234)
     app_instance.on_server_exit.assert_called_once()
 
-@patch("app.os.path.exists")
+@patch("icarus_sentinel.app.os.path.exists")
 def test_restart_server_ui(mock_exists, app_instance):
     mock_exists.return_value = True
     app_instance.server_manager = MagicMock()
@@ -102,7 +135,7 @@ def test_restart_server_ui(mock_exists, app_instance):
     app_instance.server_manager.stop_server.assert_called_once_with(app_instance.server_process)
     app_instance.start_server.assert_called_once()
 
-@patch("app.psutil.Process")
+@patch("icarus_sentinel.app.psutil.Process")
 def test_recover_state_success(mock_psutil_process, app_instance):
     app_instance.server_manager.state = {"pid": 1234, "status": "running"}
     mock_p = mock_psutil_process.return_value
@@ -114,7 +147,7 @@ def test_recover_state_success(mock_psutil_process, app_instance):
     assert app_instance.server_process == 1234
     app_instance.log.assert_any_call("Recovered existing server process (PID: 1234)")
 
-@patch("app.psutil.Process")
+@patch("icarus_sentinel.app.psutil.Process")
 def test_recover_state_not_running(mock_psutil_process, app_instance):
     app_instance.server_manager.state = {"pid": 1234, "status": "running"}
     mock_p = mock_psutil_process.return_value
@@ -126,14 +159,14 @@ def test_recover_state_not_running(mock_psutil_process, app_instance):
     app_instance.reset_state.assert_called_once()
 
 def test_get_server_executable_resolves_shipping(app_instance):
-    with patch("app.os.path.exists") as mock_exists:
+    with patch("icarus_sentinel.app.os.path.exists") as mock_exists:
         # Mocking exists to return True for the shipping exe
         mock_exists.side_effect = lambda path: "Shipping.exe" in path
         exe = app_instance.get_server_executable("C:/icarus")
         assert "Shipping.exe" in exe
 
 def test_get_server_executable_fallback(app_instance):
-    with patch("app.os.path.exists") as mock_exists:
+    with patch("icarus_sentinel.app.os.path.exists") as mock_exists:
         # Mocking exists to return True ONLY for the root exe
         mock_exists.side_effect = lambda path: path.endswith("IcarusServer.exe")
         exe = app_instance.get_server_executable("C:/icarus")

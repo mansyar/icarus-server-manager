@@ -10,8 +10,8 @@ import os
 import subprocess
 import psutil
 from datetime import datetime
-from notification_manager import NotificationManager
-from a2s_client import A2SClient
+from icarus_sentinel.notification_manager import NotificationManager
+from icarus_sentinel.a2s_client import A2SClient
 
 class ServerProcessManager:
     """Manages the lifecycle and resource monitoring of the Icarus server process.
@@ -48,6 +48,7 @@ class ServerProcessManager:
         self.notifications = notification_manager or NotificationManager()
         self.a2s_client = a2s_client or A2SClient()
         self.backup_manager = backup_manager
+        self.last_sync_timestamp = None
         self.load_state()
 
     def load_state(self):

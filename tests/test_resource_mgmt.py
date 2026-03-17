@@ -1,6 +1,6 @@
 import pytest
 from unittest.mock import patch, MagicMock
-from server_manager import ServerProcessManager
+from icarus_sentinel.server_manager import ServerProcessManager
 import psutil
 
 @pytest.fixture

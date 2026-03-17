@@ -2,7 +2,7 @@
 
 import pytest
 import os
-from core.ini_manager import INIManager
+from icarus_sentinel.core.ini_manager import INIManager
 
 @pytest.fixture
 def ini_file(tmp_path):

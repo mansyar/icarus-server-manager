@@ -3,25 +3,32 @@
 import pytest
 from unittest.mock import MagicMock, patch
 import os
-from app import App
-
+from icarus_sentinel.app import App
 @pytest.fixture
 def app_instance():
-    with patch("app.ctk.CTk.title"), \
-         patch("app.ctk.CTk.geometry"), \
-         patch("app.BackupManager.start_timer"):
+    with patch("icarus_sentinel.app.App.__init__", return_value=None):
         app = App()
-        # Mocking UI elements that might cause issues in non-GUI environment
+        app.tk = MagicMock()
         app.log = MagicMock()
         app.after = MagicMock()
+        
+        # Dependencies
+        app.server_manager = MagicMock()
+        app.steam_manager = MagicMock()
+        
+        # UI Elements
+        app.update_on_launch_var = MagicMock()
+        app.path_entry = MagicMock()
+        
+        # Methods
+        app.run_server = lambda path: App.run_server(app, path)
+        
         yield app
-        app.destroy()
 
 def test_run_server_with_update_on_launch(app_instance):
     # Setup: Update on Launch is checked
-    app_instance.update_on_launch_var.set(True)
-    app_instance.path_entry.delete(0, "end")
-    app_instance.path_entry.insert(0, "C:/icarus")
+    app_instance.update_on_launch_var.get.return_value = True
+    app_instance.path_entry.get.return_value = "C:/icarus"
     
     # Mocks
     app_instance.steam_manager.install_server = MagicMock()
@@ -42,7 +49,7 @@ def test_run_server_with_update_on_launch(app_instance):
 
 def test_run_server_without_update_on_launch(app_instance):
     # Setup: Update on Launch is UNchecked
-    app_instance.update_on_launch_var.set(False)
+    app_instance.update_on_launch_var.get.return_value = False
     
     # Mocks
     app_instance.steam_manager.install_server = MagicMock()

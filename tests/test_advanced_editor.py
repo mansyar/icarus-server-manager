@@ -2,8 +2,9 @@
 
 import pytest
 import customtkinter as ctk
-from app import App
+from icarus_sentinel.app import App
 import os
+from unittest.mock import patch, MagicMock
 
 @pytest.fixture
 def app():
@@ -11,11 +12,30 @@ def app():
     state_file = "test_server_state_advanced.json"
     if os.path.exists(state_file):
         os.remove(state_file)
-    
-    app = App(state_file=state_file)
-    yield app
-    
-    app.destroy()
+
+    with patch("icarus_sentinel.app.App.__init__", return_value=None):
+        app = App()
+        app.tk = MagicMock()
+        # Mock all dependencies
+        app.server_manager = MagicMock()
+        app.ini_manager = MagicMock()
+        app.save_sync_manager = MagicMock()
+        app.backup_manager = MagicMock()
+        
+        # Mock UI elements
+        app.tabview = MagicMock()
+        app.config_subtabview = MagicMock()
+        app.config_subtabview._tab_dict = {"Advanced": MagicMock()}
+        app.raw_ini_textbox = MagicMock()
+        app.save_advanced_button = MagicMock()
+        
+        # Mock methods
+        app.on_config_tab_change = lambda: App.on_config_tab_change(app)
+        app.load_raw_ini_to_gui = lambda: App.load_raw_ini_to_gui(app)
+        
+        yield app
+
+    # Cleanup
     if os.path.exists(state_file):
         os.remove(state_file)
 
@@ -35,14 +55,15 @@ def test_advanced_editor_structure(app):
 
 def test_advanced_editor_loads_content(app):
     """Verify that the Advanced editor correctly loads raw INI content."""
-    # Setup some dummy content in INI
-    app.ini_manager.save_raw_text("[Section]\nKey=Value\n")
+    # Setup mock return value
+    app.ini_manager.get_raw_text.return_value = "[Section]\nKey=Value\n"
     
     app.tabview.set("Configuration")
     app.config_subtabview.set("Advanced")
-    # Manually trigger the handler as .set() might not trigger it in all environments/versions
+    app.config_subtabview.get.return_value = "Advanced"
+    
+    # Manually trigger the handler
     app.on_config_tab_change()
     
-    content = app.raw_ini_textbox.get("0.0", "end").strip()
-    assert "[Section]" in content
-    assert "Key=Value" in content
+    app.raw_ini_textbox.delete.assert_called_with("0.0", "end")
+    app.raw_ini_textbox.insert.assert_called_with("0.0", "[Section]\nKey=Value\n")

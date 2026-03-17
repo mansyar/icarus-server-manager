@@ -1,6 +1,6 @@
 import pytest
 from unittest.mock import patch, MagicMock
-from server_manager import ServerProcessManager
+from icarus_sentinel.server_manager import ServerProcessManager
 from datetime import datetime
 
 @pytest.fixture
@@ -20,7 +20,7 @@ def test_smart_restart_logic_returns_true_if_empty(manager):
     manager.a2s_client = mock_a2s
     
     # Simulate it's 04:00
-    with patch("server_manager.datetime") as mock_datetime:
+    with patch("icarus_sentinel.server_manager.datetime") as mock_datetime:
         mock_datetime.now.return_value = datetime(2026, 3, 17, 4, 0)
         mock_datetime.strptime = datetime.strptime
         
@@ -39,7 +39,7 @@ def test_smart_restart_logic_returns_false_if_players_present(manager):
     mock_a2s.get_player_count.return_value = 3
     manager.a2s_client = mock_a2s
     
-    with patch("server_manager.datetime") as mock_datetime:
+    with patch("icarus_sentinel.server_manager.datetime") as mock_datetime:
         mock_datetime.now.return_value = datetime(2026, 3, 17, 4, 0)
         
         should_restart = manager.should_smart_restart()
@@ -50,7 +50,7 @@ def test_smart_restart_logic_returns_false_if_not_enabled(manager):
     manager.smart_restart_enabled = False
     manager.smart_restart_time = "04:00"
     
-    with patch("server_manager.datetime") as mock_datetime:
+    with patch("icarus_sentinel.server_manager.datetime") as mock_datetime:
         mock_datetime.now.return_value = datetime(2026, 3, 17, 4, 0)
         
         assert manager.should_smart_restart() is False
@@ -66,7 +66,7 @@ def test_smart_restart_logic_cooldown_same_day(manager):
     mock_a2s.get_player_count.return_value = 0
     manager.a2s_client = mock_a2s
     
-    with patch("server_manager.datetime") as mock_datetime:
+    with patch("icarus_sentinel.server_manager.datetime") as mock_datetime:
         mock_datetime.now.return_value = datetime(2026, 3, 17, 4, 0)
         
         # Should be False because it already triggered today

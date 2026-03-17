@@ -1,8 +1,8 @@
 import os
 import shutil
 import pytest
-from core.save_sync_manager import SaveSyncManager
-from core.ini_manager import INIManager
+from icarus_sentinel.core.save_sync_manager import SaveSyncManager
+from icarus_sentinel.core.ini_manager import INIManager
 
 @pytest.fixture
 def mock_env(tmp_path, monkeypatch):

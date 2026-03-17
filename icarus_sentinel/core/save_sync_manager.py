@@ -2,7 +2,7 @@ import os
 import shutil
 import glob
 from typing import List, Optional
-from core.ini_manager import INIManager
+from icarus_sentinel.core.ini_manager import INIManager
 
 class SaveSyncManager:
     """Manages two-way synchronization of save files between local and server."""

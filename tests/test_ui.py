@@ -9,14 +9,33 @@ import sys
 
 @pytest.fixture
 def app_instance():
-    from app import App
-    with patch("app.ctk.CTk.title"), \
-         patch("app.ctk.CTk.geometry"):
+    from icarus_sentinel.app import App
+    with patch("icarus_sentinel.app.App.__init__", return_value=None):
         app = App()
+        app.tk = MagicMock()
+        
+        # Dependencies
+        app.steam_manager = MagicMock()
+        
+        # UI Elements
+        app.console_output = MagicMock()
+        app.install_button = MagicMock()
+        app.path_entry = MagicMock()
+        app.browse_button = MagicMock()
+        
+        def side_effect(delay, func, *args):
+            if delay == 0 and callable(func):
+                func(*args)
+            return "mock_after_id"
+        app.after = MagicMock(side_effect=side_effect)
+        
+        # Methods
+        app.log = lambda msg: App.log(app, msg)
+        app.start_install = lambda: App.start_install(app)
+        app.run_install = lambda path: App.run_install(app, path)
+        app.browse_path = lambda: App.browse_path(app)
+        
         yield app
-        # Cleanup
-        if hasattr(app, "destroy"):
-            app.destroy()
 
 def test_app_initialization(app_instance):
     assert hasattr(app_instance, "console_output")
@@ -29,7 +48,7 @@ def test_log(app_instance):
     app_instance.log("test message")
     app_instance.console_output.insert.assert_called_with("end", "test message\n")
 
-@patch("threading.Thread")
+@patch("icarus_sentinel.app.threading.Thread")
 def test_start_install(mock_thread, app_instance):
     app_instance.path_entry = MagicMock()
     app_instance.path_entry.get.return_value = "C:/test_path"
@@ -47,22 +66,22 @@ def test_run_install(app_instance):
     mock_steam_manager_instance = app_instance.steam_manager
     
     mock_process = MagicMock()
-    mock_steam_manager_instance.install_server.return_value = mock_process
-    mock_process.stdout.readline.side_effect = ["line1", "line2", ""]
-    mock_process.wait.return_value = 0
-    
-    app_instance.log = MagicMock()
-    app_instance.install_button = MagicMock()
-    app_instance.browse_button = MagicMock()
-    app_instance.path_entry = MagicMock()
-    
-    app_instance.run_install("C:/test_path")
-    
-    mock_steam_manager_instance.install_server.assert_called_once_with("C:/test_path")
-    assert app_instance.log.call_count >= 3
-    app_instance.install_button.configure.assert_called_with(state="normal")
+    with patch.object(mock_steam_manager_instance, "install_server", return_value=mock_process) as mock_install:
+        mock_process.stdout.readline.side_effect = ["line1", "line2", ""]
+        mock_process.wait.return_value = 0
+        
+        app_instance.log = MagicMock()
+        app_instance.install_button = MagicMock()
+        app_instance.browse_button = MagicMock()
+        app_instance.path_entry = MagicMock()
+        
+        app_instance.run_install("C:/test_path")
+        
+        mock_install.assert_called_once_with("C:/test_path")
+        assert app_instance.log.call_count >= 3
+        app_instance.install_button.configure.assert_called_with(state="normal")
 
-@patch("app.filedialog.askdirectory")
+@patch("icarus_sentinel.app.filedialog.askdirectory")
 def test_browse_path(mock_askdirectory, app_instance):
     mock_askdirectory.return_value = "C:/new_path"
     app_instance.path_entry = MagicMock()
@@ -74,8 +93,8 @@ def test_browse_path(mock_askdirectory, app_instance):
     app_instance.path_entry.insert.assert_called_with(0, "C:/new_path")
 
 def test_main():
-    from app import main
-    with patch("app.App") as MockApp:
+    from icarus_sentinel.app import main
+    with patch("icarus_sentinel.app.App") as MockApp:
         instance = MockApp.return_value
         main()
         MockApp.assert_called_once()

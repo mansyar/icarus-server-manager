@@ -1,7 +1,7 @@
 import pytest
 from unittest.mock import patch, MagicMock
 
-from a2s_client import A2SClient
+from icarus_sentinel.a2s_client import A2SClient
 
 @patch("a2s.info")
 def test_get_player_count_success(mock_a2s_info):

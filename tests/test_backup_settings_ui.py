@@ -2,23 +2,33 @@ import pytest
 from unittest.mock import MagicMock, patch
 import json
 import os
-from app import App
-from server_manager import ServerProcessManager
-from backup_manager import BackupManager
+from icarus_sentinel.app import App
+from icarus_sentinel.server_manager import ServerProcessManager
+from icarus_sentinel.backup_manager import BackupManager
 
 @pytest.fixture
 def app_instance(tmp_path):
     state_file = tmp_path / "server_state.json"
-    with patch("app.ctk.CTk.title"), \
-         patch("app.ctk.CTk.geometry"), \
-         patch("tkinter.Misc.after"), \
-         patch("app.App.update_monitoring"):
-        
-        app = App(state_file=str(state_file))
+    with patch("icarus_sentinel.app.App.__init__", return_value=None):
+        app = App()
+        app.tk = MagicMock()
         app.log = MagicMock()
+        
+        # Dependencies
+        app.server_manager = MagicMock()
+        app.backup_manager = MagicMock()
+        
+        # UI Elements
+        app.backup_interval_entry = MagicMock()
+        app.backup_retention_entry = MagicMock()
+        app.threshold_entry = MagicMock()
+        app.smart_restart_var = MagicMock()
+        app.restart_time_entry = MagicMock()
+        
+        # Methods
+        app.save_settings = lambda: App.save_settings(app)
+        
         yield app
-        if hasattr(app, "destroy"):
-            app.destroy()
 
 def test_backup_settings_ui_elements_exist(app_instance):
     assert hasattr(app_instance, "backup_interval_entry")

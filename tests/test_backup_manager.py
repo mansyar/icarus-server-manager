@@ -1,7 +1,7 @@
 import pytest
 from unittest.mock import MagicMock, patch
 import time
-from backup_manager import BackupManager
+from icarus_sentinel.backup_manager import BackupManager
 
 @pytest.fixture
 def backup_manager(tmp_path):

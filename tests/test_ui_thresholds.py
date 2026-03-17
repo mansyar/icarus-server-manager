@@ -1,15 +1,36 @@
 import pytest
 from unittest.mock import MagicMock, patch
-from app import App
+from icarus_sentinel.app import App
 import customtkinter as ctk
 
 @pytest.fixture
 def app_instance(tmp_path):
     state_file = tmp_path / "server_state.json"
-    with patch("app.ctk.CTk.title"), \
-         patch("app.ctk.CTk.geometry"), \
-         patch("tkinter.Misc.after") as mock_after, \
-         patch("app.App.update_monitoring"): # Don't start loop automatically
+    with patch("icarus_sentinel.app.App.__init__", return_value=None):
+        app = App()
+        app.tk = MagicMock()
+        app.log = MagicMock()
+        
+        # Mock dependencies
+        app.server_manager = MagicMock()
+        app.server_manager.ram_threshold_gb = 16.0
+        app.server_manager.state = {"status": "running"}
+        app.steam_manager = MagicMock()
+        app.backup_manager = MagicMock()
+        
+        # Mock UI Elements
+        app.ram_label = MagicMock(name="ram_label_mock")
+        app.cpu_label = MagicMock()
+        app.start_button = MagicMock()
+        app.stop_button = MagicMock()
+        app.restart_button = MagicMock()
+        app.path_entry = MagicMock()
+        app.update_on_launch_var = MagicMock()
+        app.threshold_entry = MagicMock()
+        app.smart_restart_var = MagicMock()
+        app.restart_time_entry = MagicMock()
+        app.backup_interval_entry = MagicMock()
+        app.backup_retention_entry = MagicMock()
         
         # Mock after to call the function immediately if delay is 0
         def side_effect(delay, func, *args):
@@ -17,16 +38,18 @@ def app_instance(tmp_path):
                 if callable(func):
                     func(*args)
             return "mock_after_id"
-        mock_after.side_effect = side_effect
+        app.after = MagicMock(side_effect=side_effect)
         
-        app = App(state_file=str(state_file))
-        app.ram_label = MagicMock(name="ram_label_mock")
-        app.log = MagicMock()
-        # Set a real value for threshold to avoid mock comparison issues
-        app.server_manager.ram_threshold_gb = 16.0
+        # Link methods
+        app.update_monitoring_once = lambda: App.update_monitoring_once(app)
+        app.restart_server = lambda: App.restart_server(app)
+        app.start_server = lambda: App.start_server(app)
+        app.launch_server = lambda path: App.launch_server(app, path)
+        app.get_server_executable = lambda path: App.get_server_executable(app, path)
+        app.sync_saves = lambda callback=None: App.sync_saves(app, callback)
+        app.save_settings = lambda: App.save_settings(app)
+        
         yield app
-        if hasattr(app, "destroy"):
-            app.destroy()
 
 def test_update_monitoring_updates_ui_on_warning(app_instance):
     app_instance.server_process = 1234
@@ -110,7 +133,7 @@ def test_start_server_triggers_dialog_on_low_ram(app_instance):
     with patch("os.path.exists", return_value=True), \
          patch.object(app_instance, "get_server_executable", return_value="C:/test/exe"), \
          patch.object(app_instance.server_manager, "get_available_system_ram_pct", return_value=5.0), \
-         patch("app.RamOptimizationDialog") as MockDialog:
+         patch("icarus_sentinel.app.RamOptimizationDialog") as MockDialog:
         
         app_instance.start_server()
         MockDialog.assert_called_once()

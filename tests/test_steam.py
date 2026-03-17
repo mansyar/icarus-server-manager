@@ -2,7 +2,7 @@ import pytest
 import os
 import shutil
 from unittest.mock import patch, MagicMock
-from steam_manager import SteamManager
+from icarus_sentinel.steam_manager import SteamManager
 
 @pytest.fixture
 def steam_manager(tmp_path):
