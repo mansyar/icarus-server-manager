@@ -22,9 +22,9 @@
 - [x] Task: Implement Smart Restart Scheduler. (3c750f2)
     - [x] Write tests for scheduled restart logic (time comparison, player count check).
     - [x] Implement background timer/scheduler for maintenance time checks.
-- [ ] Task: UI for Smart Restart Configuration.
-    - [ ] Add time selection widget (e.g., dropdowns for HH:MM) to the manager settings.
-    - [ ] Add a toggle for 'Enable Smart Idle Restart'.
+- [x] Task: UI for Smart Restart Configuration. (f79e597)
+    - [x] Add time selection widget (e.g., dropdowns for HH:MM) to the manager settings.
+    - [x] Add a toggle for 'Enable Smart Idle Restart'.
 - [ ] Task: Conductor - User Manual Verification 'Phase 2: Smart Idle Restart & Active Query' (Protocol in workflow.md)
 
 ## Phase 3: Pre-flight Optimization Dialogs (TDD) [checkpoint: ]
