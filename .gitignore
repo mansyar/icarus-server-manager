@@ -156,7 +156,7 @@ cython_debug/
 # Project specific ignores
 steamcmd/
 icarus_server/
-server_state.json
+/server_state.json
 task_note.txt
 phase_report.txt
 backups/

@@ -4,3 +4,4 @@ winotify
 python-a2s
 pytest
 pytest-cov
+pyinstaller

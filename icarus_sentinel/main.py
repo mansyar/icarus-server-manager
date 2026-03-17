@@ -1,8 +1,9 @@
-"""Main entry point for Icarus Server Manager."""
+from icarus_sentinel.app import App
 
 def main():
-    """Prints a welcome message to the console."""
-    print("Hello from Icarus Server Manager!")
+    """Main entry point for Icarus Server Manager."""
+    app = App()
+    app.mainloop()
 
 if __name__ == "__main__":
     main()

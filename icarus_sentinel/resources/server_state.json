@@ -1,0 +1,10 @@
+{
+  "pid": null,
+  "status": "stopped",
+  "ram_threshold_gb": 16.0,
+  "smart_restart_enabled": false,
+  "smart_restart_time": "04:00",
+  "last_smart_restart_date": null,
+  "backup_interval_minutes": 30.0,
+  "backup_retention_limit": 50
+}
