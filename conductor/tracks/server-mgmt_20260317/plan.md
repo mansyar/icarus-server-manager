@@ -19,7 +19,7 @@
 - [x] Task: Implement Log Output Capture. (2d5332c)
     - [ ] Write tests for capturing stdout/stderr from a process.
     - [ ] Implement non-blocking log reader thread.
-- [ ] Task: Implement Crash Detection and Recovery.
+- [x] Task: Implement Crash Detection and Recovery. (034deff)
     - [ ] Write tests for the hybrid auto-restart logic (max 3 retries).
     - [ ] Implement `_on_process_exit()` handler and recovery logic.
 - [ ] Task: Conductor - User Manual Verification 'Phase 2: Monitoring and Output Capture' (Protocol in workflow.md)
