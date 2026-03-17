@@ -8,6 +8,6 @@
 - [x] Task: Conductor - User Manual Verification 'Environment Initialization' (Protocol in workflow.md) [5dcc9f3]
 
 ## Phase 2: Workflow Automation
-- [ ] Task: Create `run_dev.ps1` script to seamlessly activate `.venv` and run `src/main.py`
-- [ ] Task: Create `run_tests.ps1` script to seamlessly activate `.venv` and execute the test suite
+- [x] Task: Create `run_dev.ps1` script to seamlessly activate `.venv` and run `src/main.py` [3de0291]
+- [x] Task: Create `run_tests.ps1` script to seamlessly activate `.venv` and execute the test suite [3de0291]
 - [ ] Task: Conductor - User Manual Verification 'Workflow Automation' (Protocol in workflow.md)
