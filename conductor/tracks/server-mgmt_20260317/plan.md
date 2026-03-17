@@ -7,7 +7,7 @@
 - [x] Task: Implement Start Server functionality. (f1d664b)
     - [ ] Write tests for starting a mock process with specific flags.
     - [ ] Implement `start_server()` using `subprocess.Popen`.
-- [ ] Task: Implement Stop and Restart functionality.
+- [x] Task: Implement Stop and Restart functionality. (baf66d7)
     - [ ] Write tests for graceful termination and restart logic.
     - [ ] Implement `stop_server()` (SIGTERM) and `restart_server()`.
 - [ ] Task: Conductor - User Manual Verification 'Phase 1: Core Process Control Logic' (Protocol in workflow.md)
