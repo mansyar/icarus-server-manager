@@ -268,3 +268,12 @@ class ServerProcessManager:
             return True
         
         return False
+
+    def get_available_system_ram_pct(self):
+        """Calculates the percentage of available system RAM.
+
+        Returns:
+            float: Percentage of available RAM (0-100).
+        """
+        mem = psutil.virtual_memory()
+        return round((mem.available / mem.total) * 100, 2)
