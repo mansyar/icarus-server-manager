@@ -1,10 +1,10 @@
 # Implementation Plan: Server Configuration & INI Management
 
-## Phase 1: INI Parsing & Core Logic
-- [ ] Task: Create `tests/test_ini_manager.py` with failing tests for reading, parsing, and saving `ServerSettings.ini`.
-- [ ] Task: Implement `core/ini_manager.py` using `configparser` to pass tests.
-- [ ] Task: Update `main.py` (or relevant setup) to initialize `ini_manager` with the correct file path.
-- [ ] Task: Conductor - User Manual Verification 'Phase 1: INI Parsing & Core Logic' (Protocol in workflow.md)
+## Phase 1: INI Parsing & Core Logic [checkpoint: 221b3c8]
+- [x] Task: Create `tests/test_ini_manager.py` with failing tests for reading, parsing, and saving `ServerSettings.ini`. c594184
+- [x] Task: Implement `core/ini_manager.py` using `configparser` to pass tests. c594184
+- [x] Task: Update `main.py` (or relevant setup) to initialize `ini_manager` with the correct file path. c594184
+- [x] Task: Conductor - User Manual Verification 'Phase 1: INI Parsing & Core Logic' (Protocol in workflow.md) 221b3c8
 
 ## Phase 2: Configuration GUI Development
 - [ ] Task: Create `tests/test_config_gui.py` with failing tests for the Configuration tab structure (fields for Name, Password, Admin ID, Port, Update checkbox, Save button).
