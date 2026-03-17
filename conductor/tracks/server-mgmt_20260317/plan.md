@@ -16,7 +16,7 @@
 - [x] Task: Implement Resource Monitoring. (028832e)
     - [ ] Write tests for `psutil` resource usage capturing (CPU/RAM).
     - [ ] Implement background monitoring loop with 5s interval.
-- [ ] Task: Implement Log Output Capture.
+- [x] Task: Implement Log Output Capture. (2d5332c)
     - [ ] Write tests for capturing stdout/stderr from a process.
     - [ ] Implement non-blocking log reader thread.
 - [ ] Task: Implement Crash Detection and Recovery.
