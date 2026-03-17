@@ -6,14 +6,14 @@
     - [ ] Implement Feature
 - [x] Task: Conductor - User Manual Verification 'Phase 1: Foundation and UI Scaffolding' (Protocol in workflow.md) (e161fab)
 
-## Phase 2: SteamCMD Integration
+## Phase 2: SteamCMD Integration [checkpoint: dffd86e]
 - [x] Task: Implement SteamCMD download and extraction logic (9aa45fd)
     - [ ] Write Tests
     - [ ] Implement Feature
 - [x] Task: Implement server installation via SteamCMD (c9bdb67)
     - [ ] Write Tests
     - [ ] Implement Feature
-- [ ] Task: Conductor - User Manual Verification 'Phase 2: SteamCMD Integration' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 2: SteamCMD Integration' (Protocol in workflow.md) (dffd86e)
 
 ## Phase 3: UI Feedback for Installation
 - [ ] Task: Add scrollable text box to UI for SteamCMD console output
