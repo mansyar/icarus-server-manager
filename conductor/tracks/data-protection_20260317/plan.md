@@ -22,7 +22,7 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 2: Retention Policy Management' (Protocol in workflow.md) [d50b1ce]
 
 ## Phase 3: Backup Browser & Restore UI (TDD)
-- [ ] Task: Create 'Backups' Tab UI
+- [x] Task: Create 'Backups' Tab UI [50ae2b5]
     - [ ] Implement the CustomTkinter "Backups" tab in the main window
     - [ ] Implement the list view of available backups with timestamps
 - [ ] Task: Implement One-Click Restore Logic
