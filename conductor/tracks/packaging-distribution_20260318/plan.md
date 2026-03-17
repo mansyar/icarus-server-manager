@@ -7,7 +7,7 @@
 - [x] Task: Configure PyInstaller specs. [b32b037]
     - [ ] Configure PyInstaller to include required non-Python data files (e.g., UI assets, `customtkinter` theme, default `server_state.json` or `.ini` configuration files).
     - [ ] Add version information and application icon.
-- [ ] Task: Conductor - User Manual Verification 'Phase 1: Local Executable Compilation' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 1: Local Executable Compilation' (Protocol in workflow.md)
 
 ## Phase 2: Build Artifacts and Documentation
 - [ ] Task: Create `README.md` containing quick-start instructions and basic troubleshooting steps.
