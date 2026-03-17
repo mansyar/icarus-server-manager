@@ -15,5 +15,5 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ---
 
-- [ ] **Track: refactor the folder structure to use a flat layout with icarus_sentinel package and remove magicmock from git cache**
+- [x] **Track: refactor the folder structure to use a flat layout with icarus_sentinel package and remove magicmock from git cache**
 *Link: [./tracks/refactor-git-cleanup_20260318/](./tracks/refactor-git-cleanup_20260318/)*
