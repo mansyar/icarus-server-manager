@@ -1,56 +1,22 @@
 import pytest
 from unittest.mock import MagicMock, patch
-import sys
 import os
+import sys
 
-# Define a mock base class
-class MockCTk:
-    def __init__(self, *args, **kwargs):
-        pass
-    def title(self, title):
-        pass
-    def geometry(self, geometry):
-        pass
-    def mainloop(self):
-        pass
-    def grid_columnconfigure(self, *args, **kwargs):
-        pass
-    def grid_rowconfigure(self, *args, **kwargs):
-        pass
-    def after(self, ms, func, *args):
-        # Call immediately if ms is 0 (UI update), but not for long waits (monitoring loop)
-        if ms == 0:
-            func(*args)
-    def configure(self, *args, **kwargs):
-        pass
-    def grid(self, *args, **kwargs):
-        pass
-
-class MockCTkFrame(MockCTk):
-    pass
-
-# Mock the entire customtkinter module
-customtkinter = MagicMock()
-customtkinter.CTk = MockCTk
-customtkinter.CTkFrame = MockCTkFrame
-customtkinter.CTkButton = MagicMock()
-customtkinter.CTkTextbox = MagicMock()
-customtkinter.CTkLabel = MagicMock()
-customtkinter.CTkEntry = MagicMock()
-sys.modules["customtkinter"] = customtkinter
-
-# Mock steam_manager
-mock_steam_manager = MagicMock()
-sys.modules["steam_manager"] = mock_steam_manager
-
-import app
-from app import App
+# app will be reloaded by conftest.py if needed, but we need to import it here for tests
+# However, to avoid import errors before the fixture runs, we can import it inside fixtures or tests
+# or just rely on the fact that conftest.py mocks sys.modules before any test in this file runs.
 
 @pytest.fixture
 def app_instance():
-    with patch.object(App, "title"), \
-         patch.object(App, "geometry"):
-        return App()
+    from app import App
+    with patch("app.ctk.CTk.title"), \
+         patch("app.ctk.CTk.geometry"):
+        app = App()
+        yield app
+        # Cleanup
+        if hasattr(app, "destroy"):
+            app.destroy()
 
 def test_app_initialization(app_instance):
     assert hasattr(app_instance, "console_output")
@@ -77,10 +43,8 @@ def test_start_install(mock_thread, app_instance):
     assert kwargs["target"] == app_instance.run_install
     assert kwargs["args"] == ("C:/test_path",)
 
-@patch("app.SteamManager")
-def test_run_install(mock_steam_manager_class, app_instance):
-    mock_steam_manager_instance = mock_steam_manager_class.return_value
-    app_instance.steam_manager = mock_steam_manager_instance
+def test_run_install(app_instance):
+    mock_steam_manager_instance = app_instance.steam_manager
     
     mock_process = MagicMock()
     mock_steam_manager_instance.install_server.return_value = mock_process
@@ -110,8 +74,9 @@ def test_browse_path(mock_askdirectory, app_instance):
     app_instance.path_entry.insert.assert_called_with(0, "C:/new_path")
 
 def test_main():
+    from app import main
     with patch("app.App") as MockApp:
         instance = MockApp.return_value
-        app.main()
+        main()
         MockApp.assert_called_once()
         instance.mainloop.assert_called_once()

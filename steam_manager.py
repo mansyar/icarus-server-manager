@@ -8,7 +8,7 @@ from typing import Optional
 class SteamManager:
     """Manager for SteamCMD installation and server deployment."""
     
-    STEAMCMD_URL = "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_win32.zip"
+    STEAMCMD_URL = "https://steamcdn-a.akamaihd.net/client/installer/steamcmd.zip"
     ICARUS_APPID = "2089300"
 
     def __init__(self, root_dir: Optional[str] = None) -> None:
