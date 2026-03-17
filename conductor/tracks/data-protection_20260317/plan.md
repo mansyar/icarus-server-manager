@@ -13,7 +13,7 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 1: Automated Backup Engine' (Protocol in workflow.md) [c30d96a]
 
 ## Phase 2: Retention Policy Management (TDD)
-- [ ] Task: Implement 'Delete Oldest' Logic
+- [x] Task: Implement 'Delete Oldest' Logic [9e045ac]
     - [ ] Write tests for identifying and deleting the oldest backup files based on a limit
     - [ ] Implement `BackupManager` logic to enforce the configurable retention limit
 - [ ] Task: UI Configuration for Retention & Interval
