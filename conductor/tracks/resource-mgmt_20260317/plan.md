@@ -37,6 +37,6 @@
 - [x] Task: Create Optimization UI Dialog. (26b29fe)
     - [x] Design and implement a CustomTkinter dialog for RAM recommendations.
     - [x] Trigger dialog if system RAM is < 10% before server launch.
-- [ ] Task: Final Integration and Performance Verification.
-    - [ ] Conduct E2E testing: Threshold alerts, scheduled restart (with/without players), and low-RAM pre-flight.
-- [ ] Task: Conductor - User Manual Verification 'Phase 3: Pre-flight Optimization Dialogs' (Protocol in workflow.md)
+- [x] Task: Final Integration and Performance Verification. (26b29fe)
+    - [x] Conduct E2E testing: Threshold alerts, scheduled restart (with/without players), and low-RAM pre-flight.
+- [x] Task: Conductor - User Manual Verification 'Phase 3: Pre-flight Optimization Dialogs' (Protocol in workflow.md) (manual)
