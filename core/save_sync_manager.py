@@ -16,7 +16,7 @@ class SaveSyncManager:
         """Returns the root directory for local Steam player data."""
         if not self.local_appdata:
             return None
-        return os.path.join(self.local_appdata, "Icarus", "Saved", "PlayerData", "Steam")
+        return os.path.join(self.local_appdata, "Icarus", "Saved", "PlayerData")
 
     def list_local_steam_ids(self) -> List[str]:
         """Lists available SteamIDs in the local save root."""
