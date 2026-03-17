@@ -83,6 +83,7 @@ class ServerProcessManager:
             self.state["smart_restart_enabled"] = self.smart_restart_enabled
             self.state["smart_restart_time"] = self.smart_restart_time
             self.state["last_smart_restart_date"] = self.last_smart_restart_date
+            self.state["last_sync_timestamp"] = self.last_sync_timestamp
             
             if self.backup_manager:
                 self.state["backup_interval_minutes"] = self.backup_manager.interval_minutes

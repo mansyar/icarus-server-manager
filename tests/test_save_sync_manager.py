@@ -11,10 +11,10 @@ def mock_env(tmp_path, monkeypatch):
     monkeypatch.setenv("LOCALAPPDATA", str(local_appdata))
     
     # Create local structure
-    steam_root = local_appdata / "Icarus" / "Saved" / "PlayerData" / "Steam"
-    steam_root.mkdir(parents=True)
+    player_data_root = local_appdata / "Icarus" / "Saved" / "PlayerData"
+    player_data_root.mkdir(parents=True)
     
-    steam_id_dir = steam_root / "12345678"
+    steam_id_dir = player_data_root / "12345678"
     steam_id_dir.mkdir()
     
     local_prospects = steam_id_dir / "Prospects"

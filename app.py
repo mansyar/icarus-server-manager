@@ -5,6 +5,7 @@ from backup_manager import BackupManager
 from core.ini_manager import INIManager
 from core.save_sync_manager import SaveSyncManager
 import threading
+import datetime
 import os
 import subprocess
 import psutil
@@ -438,7 +439,6 @@ class App(ctk.CTk):
                 self.save_sync_manager.sync_prospects(self.selected_steam_id)
                 
                 # Update last sync timestamp
-                import datetime
                 timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
                 self.server_manager.state["last_sync_timestamp"] = timestamp
                 self.server_manager.save_state()
