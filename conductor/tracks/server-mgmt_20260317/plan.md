@@ -24,7 +24,7 @@
     - [ ] Implement `_on_process_exit()` handler and recovery logic.
 - [x] Task: Conductor - User Manual Verification 'Phase 2: Monitoring and Output Capture' (Protocol in workflow.md) (2be4b76)
 
-## Phase 3: UI Integration and Polishing
+## Phase 3: UI Integration and Polishing [checkpoint: f1d18da]
 - [x] Task: Create UI components for server control. (0c63a1c)
     - [ ] Add Start/Stop/Restart buttons to the main CustomTkinter window.
     - [ ] Add CPU/RAM display labels.
