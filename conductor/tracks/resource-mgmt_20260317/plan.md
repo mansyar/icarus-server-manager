@@ -16,9 +16,9 @@
 - [ ] Task: Conductor - User Manual Verification 'Phase 1: Threshold Alerts & UI Feedback' (Protocol in workflow.md)
 
 ## Phase 2: Smart Idle Restart & Active Query (TDD) [checkpoint: ]
-- [ ] Task: Implement A2S Query Client for Player Count.
-    - [ ] Write tests for querying a mock A2S_INFO server.
-    - [ ] Implement `A2SClient` to fetch current player count.
+- [x] Task: Implement A2S Query Client for Player Count. (e1c18ed)
+    - [x] Write tests for querying a mock A2S_INFO server.
+    - [x] Implement `A2SClient` to fetch current player count.
 - [ ] Task: Implement Smart Restart Scheduler.
     - [ ] Write tests for scheduled restart logic (time comparison, player count check).
     - [ ] Implement background timer/scheduler for maintenance time checks.
