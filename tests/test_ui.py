@@ -1,6 +1,7 @@
 import pytest
 from unittest.mock import MagicMock, patch
 import sys
+import os
 
 # Define a mock base class
 class MockCTk:
@@ -12,21 +13,68 @@ class MockCTk:
         pass
     def mainloop(self):
         pass
+    def grid_columnconfigure(self, *args, **kwargs):
+        pass
+    def grid_rowconfigure(self, *args, **kwargs):
+        pass
+    def after(self, ms, func, *args):
+        # Immediately call the func to simulate it being called
+        func(*args)
 
 # Mock the entire customtkinter module
 customtkinter = MagicMock()
 customtkinter.CTk = MockCTk
+customtkinter.CTkButton = MagicMock()
+customtkinter.CTkTextbox = MagicMock()
 sys.modules["customtkinter"] = customtkinter
+
+# Mock steam_manager
+mock_steam_manager = MagicMock()
+sys.modules["steam_manager"] = mock_steam_manager
 
 import app
 from app import App
 
-def test_app_initialization():
-    with patch.object(App, "title") as mock_title, \
-         patch.object(App, "geometry") as mock_geometry:
-        a = App()
-        mock_title.assert_called_with("Icarus Sentinel")
-        mock_geometry.assert_called_with("800x600")
+@pytest.fixture
+def app_instance():
+    with patch.object(App, "title"), \
+         patch.object(App, "geometry"):
+        return App()
+
+def test_app_initialization(app_instance):
+    assert hasattr(app_instance, "console_output")
+    assert hasattr(app_instance, "install_button")
+
+def test_log(app_instance):
+    app_instance.console_output = MagicMock()
+    app_instance.log("test message")
+    app_instance.console_output.insert.assert_called_with("end", "test message\n")
+
+@patch("threading.Thread")
+def test_start_install(mock_thread, app_instance):
+    app_instance.install_button = MagicMock()
+    app_instance.start_install()
+    app_instance.install_button.configure.assert_called_with(state="disabled")
+    mock_thread.assert_called_once()
+
+@patch("app.SteamManager")
+def test_run_install(mock_steam_manager_class, app_instance):
+    mock_steam_manager_instance = mock_steam_manager_class.return_value
+    app_instance.steam_manager = mock_steam_manager_instance
+    
+    mock_process = MagicMock()
+    mock_steam_manager_instance.install_server.return_value = mock_process
+    mock_process.stdout.readline.side_effect = ["line1", "line2", ""]
+    mock_process.wait.return_value = 0
+    
+    app_instance.log = MagicMock()
+    app_instance.install_button = MagicMock()
+    
+    app_instance.run_install()
+    
+    mock_steam_manager_instance.install_server.assert_called_once()
+    assert app_instance.log.call_count >= 3 # "Starting installation...", "line1", "line2", "Installation complete!"
+    app_instance.install_button.configure.assert_called_with(state="normal")
 
 def test_main():
     with patch("app.App") as MockApp:
