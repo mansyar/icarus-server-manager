@@ -1,4 +1,4 @@
-# Track server-mgmt_20260317 Context
+# Track resource-mgmt_20260317 Context
 
 - [Specification](./spec.md)
 - [Implementation Plan](./plan.md)
