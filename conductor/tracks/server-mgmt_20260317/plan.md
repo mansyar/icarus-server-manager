@@ -28,7 +28,7 @@
 - [x] Task: Create UI components for server control. (0c63a1c)
     - [ ] Add Start/Stop/Restart buttons to the main CustomTkinter window.
     - [ ] Add CPU/RAM display labels.
-- [ ] Task: Implement Live Console Log UI.
+- [x] Task: Implement Live Console Log UI. (5c11299)
     - [ ] Integrate a scrollable text area for server log output.
     - [ ] Connect `ServerProcessManager` events to update the UI.
 - [ ] Task: Final Verification and Integration.
