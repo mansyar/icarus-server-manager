@@ -7,7 +7,7 @@
 - [x] Task: Implement Folder Zipping [3da0bae]
     - [ ] Write tests for archiving the `Prospects` folder using `shutil` or `zipfile`
     - [ ] Implement the archiving function, ensuring non-blocking execution
-- [ ] Task: Server Stop Trigger
+- [x] Task: Server Stop Trigger [3b117fc]
     - [ ] Write tests to verify the `BackupManager` is called when the server shuts down safely
     - [ ] Implement integration between `ServerProcessManager` (or equivalent) and `BackupManager`
 - [ ] Task: Conductor - User Manual Verification 'Phase 1: Automated Backup Engine' (Protocol in workflow.md)
