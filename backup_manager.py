@@ -1,0 +1,64 @@
+import os
+import threading
+from datetime import datetime
+from typing import Optional
+
+class BackupManager:
+    """Manages automated and manual backups for the Icarus server."""
+
+    def __init__(self, server_path: str, backup_path: str, interval_minutes: float = 30.0, retention_limit: int = 50):
+        self.server_path = server_path
+        self.backup_path = backup_path
+        self.interval_minutes = interval_minutes
+        self.retention_limit = retention_limit
+        self.timer: Optional[threading.Timer] = None
+        self._is_running = False
+
+    def start_timer(self) -> None:
+        """Starts the recurring backup timer."""
+        if self._is_running:
+            return
+        
+        self._is_running = True
+        self._schedule_next_backup()
+
+    def stop_timer(self) -> None:
+        """Stops the recurring backup timer."""
+        self._is_running = False
+        if self.timer:
+            self.timer.cancel()
+            self.timer = None
+
+    def _schedule_next_backup(self) -> None:
+        """Schedules the next backup event."""
+        if not self._is_running:
+            return
+            
+        # Convert minutes to seconds
+        interval_seconds = self.interval_minutes * 60
+        self.timer = threading.Timer(interval_seconds, self._timer_callback)
+        self.timer.daemon = True
+        self.timer.start()
+
+    def _timer_callback(self) -> None:
+        """Callback for the background timer."""
+        if not self._is_running:
+            return
+            
+        self.create_backup()
+        self._schedule_next_backup()
+
+    def create_backup(self) -> None:
+        """Triggers an immediate backup."""
+        self._perform_backup()
+
+    def on_server_stop(self) -> None:
+        """Triggered when the server process is stopped."""
+        self.create_backup()
+
+    def _perform_backup(self) -> None:
+        """Internal method to perform the actual backup operation.
+        
+        This will be implemented in the next task.
+        """
+        pass
