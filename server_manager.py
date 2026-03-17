@@ -43,6 +43,7 @@ class ServerProcessManager:
         self.ram_threshold_gb = 16.0
         self.smart_restart_enabled = False
         self.smart_restart_time = "04:00"
+        self.last_smart_restart_date = None
         self.notifications = notification_manager or NotificationManager()
         self.a2s_client = a2s_client or A2SClient()
         self.load_state()
@@ -233,32 +234,37 @@ class ServerProcessManager:
             self.save_state()
             return None
 
-    def check_smart_restart(self, exe_path, port=17777, query_port=27015):
-        """Checks if a smart restart should be performed based on time and player count.
+    def should_smart_restart(self, query_port=27015):
+        """Checks if a smart restart should be triggered.
 
         Args:
-            exe_path (str): Path to the server executable.
-            port (int): Game port.
             query_port (int): Query port for A2S.
 
         Returns:
-            Optional[subprocess.Popen]: The new process if restarted, else None.
+            bool: True if restart should be triggered, else False.
         """
         if not self.smart_restart_enabled:
-            return None
+            return False
         
-        # Check current time against scheduled time
-        now = datetime.now().strftime("%H:%M")
-        if now != self.smart_restart_time:
-            return None
+        now_dt = datetime.now()
+        now_time = now_dt.strftime("%H:%M")
+        today_date = now_dt.strftime("%Y-%m-%d")
+
+        if now_time != self.smart_restart_time:
+            return False
+        
+        # Don't trigger multiple times in the same minute/day
+        if self.last_smart_restart_date == today_date:
+            return False
         
         # Only restart if server is running
         if self.state["status"] not in ["running", "warning"] or self.state["pid"] is None:
-            return None
+            return False
 
         # Check player count
         players = self.a2s_client.get_player_count(port=query_port)
         if players == 0:
-            return self.restart_server(self.state["pid"], exe_path, port, query_port)
+            self.last_smart_restart_date = today_date
+            return True
         
-        return None
+        return False

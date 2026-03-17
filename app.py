@@ -333,12 +333,9 @@ class App(ctk.CTk):
                 self.after(0, lambda: self.ram_label.configure(text_color=["gray10", "gray90"])) # Default CTk color
 
             # Check for smart restart
-            exe_path = self.get_server_executable(self.path_entry.get().strip())
-            if exe_path:
-                new_proc = self.server_manager.check_smart_restart(exe_path)
-                if new_proc:
-                    self.server_process = new_proc
-                    self.log(f"Smart Idle Restart triggered. New PID: {new_proc.pid}")
+            if self.server_manager.should_smart_restart():
+                self.log("Smart Idle Restart condition met. Triggering restart...")
+                self.after(0, self.restart_server)
 
 def main() -> None:
     """Entry point for the application."""
