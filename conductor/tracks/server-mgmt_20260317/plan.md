@@ -25,7 +25,7 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 2: Monitoring and Output Capture' (Protocol in workflow.md) (2be4b76)
 
 ## Phase 3: UI Integration and Polishing
-- [ ] Task: Create UI components for server control.
+- [x] Task: Create UI components for server control. (0c63a1c)
     - [ ] Add Start/Stop/Restart buttons to the main CustomTkinter window.
     - [ ] Add CPU/RAM display labels.
 - [ ] Task: Implement Live Console Log UI.
