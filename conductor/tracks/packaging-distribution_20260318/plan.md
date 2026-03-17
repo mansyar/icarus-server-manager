@@ -10,9 +10,9 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 1: Local Executable Compilation' (Protocol in workflow.md)
 
 ## Phase 2: Build Artifacts and Documentation
-- [ ] Task: Create `README.md` containing quick-start instructions and basic troubleshooting steps.
-- [ ] Task: Create a script (e.g., Python or PowerShell) to automate bundling the built executable and `README.md` into a release `.zip` archive.
-- [ ] Task: Conductor - User Manual Verification 'Phase 2: Build Artifacts and Documentation' (Protocol in workflow.md)
+- [x] Task: Create `README.md` containing quick-start instructions and basic troubleshooting steps. [d9e45d6]
+- [x] Task: Create a script (e.g., Python or PowerShell) to automate bundling the built executable and `README.md` into a release `.zip` archive. [ebc4efd]
+- [x] Task: Conductor - User Manual Verification 'Phase 2: Build Artifacts and Documentation' (Protocol in workflow.md)
 
 ## Phase 3: Automated CI/CD Setup
 - [ ] Task: Create a GitHub Actions workflow `.yml` file.
