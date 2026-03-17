@@ -3,6 +3,7 @@ from steam_manager import SteamManager
 from server_manager import ServerProcessManager
 from backup_manager import BackupManager
 from core.ini_manager import INIManager
+from core.save_sync_manager import SaveSyncManager
 import threading
 import os
 import subprocess
@@ -85,6 +86,14 @@ class App(ctk.CTk):
         # Initialize INI Manager
         self.ini_manager: Optional[INIManager] = None
         
+        # Initialize SaveSyncManager
+        self.save_sync_manager = SaveSyncManager(
+            server_path=initial_server_path,
+            ini_manager=None # Will be updated when ini_manager is ready
+        )
+        self.selected_steam_id: Optional[str] = None
+        self.refresh_steam_ids()
+
         # Start backup timer
         self.backup_manager.start_timer()
         
@@ -359,9 +368,38 @@ class App(ctk.CTk):
             self.ini_manager.file_path = ini_path
             self.ini_manager.load()
         
+        # Update SaveSyncManager with new server path and ini_manager
+        self.save_sync_manager.server_path = install_dir
+        self.save_sync_manager.ini_manager = self.ini_manager
+
         # Ensure file exists on disk for verification/first-run
         if not os.path.exists(ini_path):
             self.ini_manager.save()
+
+    def refresh_steam_ids(self) -> None:
+        """Discovers local SteamIDs and sets a default if none selected."""
+        ids = self.save_sync_manager.list_local_steam_ids()
+        if ids and not self.selected_steam_id:
+            self.selected_steam_id = ids[0]
+            
+    def sync_saves(self, callback: Optional[Callable] = None) -> None:
+        """Triggers bidirectional save synchronization in a background thread."""
+        if not self.selected_steam_id:
+            self.log("Save Sync: No SteamID selected. Skipping sync.")
+            if callback: callback()
+            return
+
+        def _run_sync():
+            self.after(0, self.log, f"Save Sync: Starting synchronization for SteamID {self.selected_steam_id}...")
+            try:
+                self.save_sync_manager.sync_prospects(self.selected_steam_id)
+                self.after(0, self.log, "Save Sync: Synchronization complete.")
+            except Exception as e:
+                self.after(0, self.log, f"Save Sync: Error during synchronization: {str(e)}")
+            if callback:
+                self.after(0, callback)
+
+        threading.Thread(target=_run_sync, daemon=True).start()
 
     def save_settings(self) -> None:
         """Saves current settings from the UI to the manager."""
@@ -529,16 +567,14 @@ class App(ctk.CTk):
         self.stop_button.configure(state="normal")
         self.restart_button.configure(state="normal")
         
-        # Update backup manager with latest server path (in case it was changed)
-        # We want the root of the server install, which is the parent of parent of parent of parent of exe_path
-        # Icarus/Binaries/Win64/IcarusServer-Win64-Shipping.exe -> Icarus is root
-        # Actually, get_server_executable knows the structure.
+        # Update backup manager with latest server path
         install_dir = self.path_entry.get().strip()
         self.backup_manager.server_path = install_dir
         
-        threading.Thread(
+        # Trigger Save Sync before launch
+        self.sync_saves(callback=lambda: threading.Thread(
             target=self.run_server, args=(exe_path,), daemon=True
-        ).start()
+        ).start())
 
     def run_server(self, exe_path: str) -> None:
         """Starts the server and streams logs."""
@@ -587,6 +623,9 @@ class App(ctk.CTk):
         self.restart_button.configure(state="disabled")
         self.cpu_label.configure(text="CPU: 0.0%")
         self.ram_label.configure(text="RAM: 0.00GB")
+        
+        # Trigger Save Sync after stop
+        self.sync_saves()
 
     def stop_server(self) -> None:
         """Stops the server process."""
