@@ -14,6 +14,7 @@ def test_build_function_calls_pyinstaller():
         args = mock_run.call_args[0][0]
         assert "--onefile" in args
         assert "--windowed" in args
+        assert "--version-file=version_info.txt" in args
         assert "IcarusSentinel" in " ".join(args)
 
 def test_pyinstaller_installed():
@@ -27,12 +28,14 @@ def test_build_script_exists():
     """Verify that the build script exists."""
     assert os.path.exists("build_exe.py"), "build_exe.py script does not exist."
 
-def test_build_script_is_executable():
-    """Verify that build_exe.py is executable and has correct boilerplate."""
+def test_build_includes_data_files():
+    """Verify that build() includes the necessary data files."""
     import sys
     sys.path.append(".")
     import build_exe
-    assert hasattr(build_exe, "build")
-    with open("build_exe.py", "r") as f:
-        content = f.read()
-    assert "import PyInstaller.__main__" in content
+    with patch("PyInstaller.__main__.run") as mock_run:
+        build_exe.build()
+        args = mock_run.call_args[0][0]
+        # Check for server_state.json
+        data_args = [a for a in args if a.startswith("--add-data")]
+        assert any("server_state.json" in a for a in data_args)

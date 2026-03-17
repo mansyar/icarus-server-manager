@@ -99,3 +99,13 @@ def test_main():
         main()
         MockApp.assert_called_once()
         instance.mainloop.assert_called_once()
+
+@patch("icarus_sentinel.app.messagebox.showinfo")
+def test_show_about(mock_showinfo, app_instance):
+    from icarus_sentinel.app import App
+    app_instance.show_about = lambda: App.show_about(app_instance)
+    app_instance.show_about()
+    mock_showinfo.assert_called_once()
+    args, kwargs = mock_showinfo.call_args
+    assert "Icarus Sentinel" in args[0]
+    assert "v1.0.0" in args[1]

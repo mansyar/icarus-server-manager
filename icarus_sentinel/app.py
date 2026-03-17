@@ -1,3 +1,4 @@
+from icarus_sentinel import __version__
 import customtkinter as ctk
 from icarus_sentinel.steam_manager import SteamManager
 from icarus_sentinel.server_manager import ServerProcessManager
@@ -122,7 +123,20 @@ class App(ctk.CTk):
         self.init_backups_tab()
 
         self.console_output = ctk.CTkTextbox(self, height=150, state="disabled")
-        self.console_output.grid(row=1, column=0, padx=20, pady=(0, 20), sticky="ew")
+        self.console_output.grid(row=1, column=0, padx=20, pady=(0, 5), sticky="ew")
+
+        # Version & About Label
+        self.bottom_frame = ctk.CTkFrame(self, fg_color="transparent")
+        self.bottom_frame.grid(row=2, column=0, padx=20, pady=(0, 5), sticky="ew")
+        
+        self.about_btn = ctk.CTkButton(
+            self.bottom_frame, text="About", width=50, height=20, 
+            fg_color="gray", command=self.show_about
+        )
+        self.about_btn.pack(side="left")
+
+        self.version_label = ctk.CTkLabel(self.bottom_frame, text=f"v{__version__}", font=("Arial", 10))
+        self.version_label.pack(side="right")
 
         # Recover state
         self.recover_state()
@@ -761,6 +775,16 @@ class App(ctk.CTk):
         """Handles tab selection events."""
         if self.tabview.get() == "Backups":
             self.refresh_backups_list()
+
+    def show_about(self) -> None:
+        """Shows the About dialog."""
+        messagebox.showinfo(
+            "About Icarus Sentinel",
+            f"Icarus Sentinel v{__version__}\n\n"
+            "A modern, portable server manager for Icarus.\n"
+            "Built with CustomTkinter and PyInstaller.\n\n"
+            "Copyright (c) 2026 Icarus Sentinel Team"
+        )
 
     def manual_backup(self) -> None:
         """Triggers a manual backup."""

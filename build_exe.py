@@ -20,6 +20,7 @@ def build():
         "--onefile",
         "--windowed",
         "--clean",
+        "--version-file=version_info.txt",
     ]
     
     # Add data files
