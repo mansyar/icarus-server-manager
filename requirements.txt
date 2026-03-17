@@ -1,5 +1,6 @@
 customtkinter
 psutil
+winotify
 pytest
 pytest-cov
 packaging

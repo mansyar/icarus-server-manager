@@ -12,6 +12,8 @@
 * **psutil** & **subprocess**
   * `psutil` will be used for real-time monitoring of CPU and RAM usage.
   * `subprocess` will handle executing SteamCMD and the Icarus Dedicated Server process.
+* **winotify**
+  * Used for sending Windows system notifications (toasts) for threshold alerts.
 
 ## 4. Data Storage & Configuration
 * **JSON / INI files**

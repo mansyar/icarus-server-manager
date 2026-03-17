@@ -9,6 +9,7 @@ import json
 import os
 import subprocess
 import psutil
+from notification_manager import NotificationManager
 
 class ServerProcessManager:
     """Manages the lifecycle and resource monitoring of the Icarus server process.
@@ -18,19 +19,23 @@ class ServerProcessManager:
         state (dict): Current server state, including PID and status.
         restart_count (int): Current count of automatic restarts since last manual start.
         max_restarts (int): Maximum allowed automatic restarts upon crash.
+        ram_threshold_gb (float): Threshold in GB for RAM usage alerts.
+        notifications (NotificationManager): Handler for system notifications.
     """
 
-    def __init__(self, state_file="server_state.json"):
+    def __init__(self, state_file="server_state.json", notification_manager=None):
         """Initializes the ServerProcessManager and loads existing state.
 
         Args:
             state_file (str): Path to the state persistence file.
+            notification_manager (NotificationManager): Optional notification handler.
         """
         self.state_file = state_file
         self.state = {"pid": None, "status": "stopped"}
         self.restart_count = 0
         self.max_restarts = 3
         self.ram_threshold_gb = 16.0
+        self.notifications = notification_manager or NotificationManager()
         self.load_state()
 
     def load_state(self):
@@ -166,6 +171,10 @@ class ServerProcessManager:
                 if self.state["status"] == "running":
                     self.state["status"] = "warning"
                     self.save_state()
+                    self.notifications.notify(
+                        "High RAM Usage Alert",
+                        f"Icarus Server is using {ram_gb}GB of RAM, exceeding the {self.ram_threshold_gb}GB threshold."
+                    )
             elif ram_gb <= self.ram_threshold_gb:
                 if self.state["status"] == "warning":
                     self.state["status"] = "running"
