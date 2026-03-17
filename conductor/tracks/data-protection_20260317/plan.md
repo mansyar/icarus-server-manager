@@ -21,7 +21,7 @@
     - [ ] Implement UI elements in settings to configure the backup interval and maximum backups to keep
 - [x] Task: Conductor - User Manual Verification 'Phase 2: Retention Policy Management' (Protocol in workflow.md) [d50b1ce]
 
-## Phase 3: Backup Browser & Restore UI (TDD)
+## Phase 3: Backup Browser & Restore UI (TDD) [checkpoint: a0e79b1]
 - [x] Task: Create 'Backups' Tab UI [50ae2b5]
     - [ ] Implement the CustomTkinter "Backups" tab in the main window
     - [ ] Implement the list view of available backups with timestamps
@@ -31,4 +31,4 @@
 - [x] Task: Integrate Restore with UI [d72a2e3]
     - [ ] Wire the "Restore" button to the extraction logic and show appropriate success/error notifications
     - [ ] Add a "Backup Now" manual trigger button to the UI
-- [ ] Task: Conductor - User Manual Verification 'Phase 3: Backup Browser & Restore UI' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 3: Backup Browser & Restore UI' (Protocol in workflow.md) [a0e79b1]
