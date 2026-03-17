@@ -84,16 +84,22 @@ class App(ctk.CTk):
         # Start backup timer
         self.backup_manager.start_timer()
         
-        # Grid layout
+        # Main Grid layout
         self.grid_columnconfigure(0, weight=1)
-        self.grid_rowconfigure(0, weight=0)
-        self.grid_rowconfigure(1, weight=0)
-        self.grid_rowconfigure(2, weight=0)
-        self.grid_rowconfigure(3, weight=1)
+        self.grid_rowconfigure(0, weight=1) # Tabview expands
+        self.grid_rowconfigure(1, weight=0) # Console fixed at bottom
 
-        # Path Selection Frame
-        self.path_frame = ctk.CTkFrame(self)
-        self.path_frame.grid(row=0, column=0, padx=20, pady=(20, 10), sticky="ew")
+        # Tabview
+        self.tabview = ctk.CTkTabview(self, command=self.on_tab_change)
+        self.tabview.grid(row=0, column=0, padx=20, pady=(20, 10), sticky="nsew")
+        self.server_tab = self.tabview.add("Server")
+        self.backups_tab = self.tabview.add("Backups")
+        
+        self.server_tab.grid_columnconfigure(0, weight=1)
+
+        # Path Selection Frame (inside Server Tab)
+        self.path_frame = ctk.CTkFrame(self.server_tab)
+        self.path_frame.grid(row=0, column=0, padx=10, pady=(10, 5), sticky="ew")
         self.path_frame.grid_columnconfigure(1, weight=1)
 
         self.path_label = ctk.CTkLabel(self.path_frame, text="Install Path:")
@@ -108,15 +114,15 @@ class App(ctk.CTk):
         )
         self.browse_button.grid(row=0, column=2, padx=(5, 10), pady=10)
 
-        # Actions
+        # Actions (inside Server Tab)
         self.install_button = ctk.CTkButton(
-            self, text="Install/Update Server", command=self.start_install
+            self.server_tab, text="Install/Update Server", command=self.start_install
         )
-        self.install_button.grid(row=1, column=0, padx=20, pady=10)
+        self.install_button.grid(row=1, column=0, padx=10, pady=5)
 
-        # Server Control Frame
-        self.mgmt_frame = ctk.CTkFrame(self)
-        self.mgmt_frame.grid(row=2, column=0, padx=20, pady=10, sticky="ew")
+        # Server Control Frame (inside Server Tab)
+        self.mgmt_frame = ctk.CTkFrame(self.server_tab)
+        self.mgmt_frame.grid(row=2, column=0, padx=10, pady=5, sticky="ew")
         
         self.start_button = ctk.CTkButton(self.mgmt_frame, text="Start Server", command=self.start_server)
         self.start_button.grid(row=0, column=0, padx=10, pady=10)
@@ -133,9 +139,9 @@ class App(ctk.CTk):
         self.ram_label = ctk.CTkLabel(self.mgmt_frame, text="RAM: 0.00GB")
         self.ram_label.grid(row=0, column=4, padx=10, pady=10)
 
-        # Settings Frame
-        self.settings_frame = ctk.CTkFrame(self)
-        self.settings_frame.grid(row=3, column=0, padx=20, pady=10, sticky="ew")
+        # Settings Frame (inside Server Tab)
+        self.settings_frame = ctk.CTkFrame(self.server_tab)
+        self.settings_frame.grid(row=3, column=0, padx=10, pady=5, sticky="ew")
 
         self.threshold_label = ctk.CTkLabel(self.settings_frame, text="RAM Threshold (GB):")
         self.threshold_label.grid(row=0, column=0, padx=(10, 5), pady=10)
@@ -149,9 +155,9 @@ class App(ctk.CTk):
         )
         self.save_settings_button.grid(row=0, column=2, padx=(5, 10), pady=10)
 
-        # Smart Restart Settings
-        self.smart_restart_frame = ctk.CTkFrame(self)
-        self.smart_restart_frame.grid(row=4, column=0, padx=20, pady=10, sticky="ew")
+        # Smart Restart Settings (inside Server Tab)
+        self.smart_restart_frame = ctk.CTkFrame(self.server_tab)
+        self.smart_restart_frame.grid(row=4, column=0, padx=10, pady=5, sticky="ew")
 
         self.smart_restart_var = ctk.BooleanVar(value=self.server_manager.smart_restart_enabled)
         self.smart_restart_switch = ctk.CTkSwitch(
@@ -167,9 +173,9 @@ class App(ctk.CTk):
         self.restart_time_entry.grid(row=0, column=2, padx=5, pady=10)
         self.restart_time_entry.insert(0, self.server_manager.smart_restart_time)
 
-        # Backup Settings
-        self.backup_settings_frame = ctk.CTkFrame(self)
-        self.backup_settings_frame.grid(row=5, column=0, padx=20, pady=10, sticky="ew")
+        # Backup Settings (inside Server Tab)
+        self.backup_settings_frame = ctk.CTkFrame(self.server_tab)
+        self.backup_settings_frame.grid(row=5, column=0, padx=10, pady=5, sticky="ew")
 
         self.backup_interval_label = ctk.CTkLabel(self.backup_settings_frame, text="Backup Interval (min):")
         self.backup_interval_label.grid(row=0, column=0, padx=(10, 5), pady=10)
@@ -185,8 +191,18 @@ class App(ctk.CTk):
         self.backup_retention_entry.grid(row=0, column=3, padx=5, pady=10)
         self.backup_retention_entry.insert(0, str(self.backup_manager.retention_limit))
 
-        self.console_output = ctk.CTkTextbox(self, state="disabled")
-        self.console_output.grid(row=6, column=0, padx=20, pady=20, sticky="nsew")
+        # Backups Tab UI
+        self.backups_tab.grid_columnconfigure(0, weight=1)
+        self.backups_tab.grid_rowconfigure(1, weight=1)
+
+        self.backups_header_label = ctk.CTkLabel(self.backups_tab, text="Available Backups", font=("Arial", 16, "bold"))
+        self.backups_header_label.grid(row=0, column=0, padx=10, pady=10)
+
+        self.backups_list_frame = ctk.CTkScrollableFrame(self.backups_tab)
+        self.backups_list_frame.grid(row=1, column=0, padx=10, pady=10, sticky="nsew")
+
+        self.console_output = ctk.CTkTextbox(self, height=150, state="disabled")
+        self.console_output.grid(row=1, column=0, padx=20, pady=(0, 20), sticky="ew")
 
         # Recover state
         self.recover_state()
@@ -445,6 +461,56 @@ class App(ctk.CTk):
             if self.server_manager.should_smart_restart():
                 self.log("Smart Idle Restart condition met. Triggering restart...")
                 self.after(0, self.restart_server)
+
+    def on_tab_change(self) -> None:
+        """Handles tab selection events."""
+        if self.tabview.get() == "Backups":
+            self.refresh_backups_list()
+
+    def refresh_backups_list(self) -> None:
+        """Updates the backups list in the UI."""
+        # Clear existing
+        for widget in self.backups_list_frame.winfo_children():
+            widget.destroy()
+
+        if not os.path.exists(self.backup_manager.backup_path):
+            ctk.CTkLabel(self.backups_list_frame, text="No backups found.").pack(pady=20)
+            return
+
+        backups = [
+            f for f in os.listdir(self.backup_manager.backup_path)
+            if f.startswith("Prospects_") and f.endswith(".zip")
+        ]
+        backups.sort(reverse=True) # Newest first
+
+        if not backups:
+            ctk.CTkLabel(self.backups_list_frame, text="No backups found.").pack(pady=20)
+            return
+
+        for backup in backups:
+            row = ctk.CTkFrame(self.backups_list_frame)
+            row.pack(fill="x", padx=5, pady=2, side="top")
+            
+            # Format label (e.g., Prospects_2026-03-17_1000.zip -> 2026-03-17 10:00)
+            try:
+                ts_part = backup.replace("Prospects_", "").replace(".zip", "")
+                display_name = ts_part.replace("_", " ")
+            except Exception:
+                display_name = backup
+
+            label = ctk.CTkLabel(row, text=display_name, anchor="w")
+            label.pack(side="left", padx=10, fill="x", expand=True)
+            
+            restore_btn = ctk.CTkButton(
+                row, text="Restore", width=80, 
+                command=lambda b=backup: self.confirm_restore(b)
+            )
+            restore_btn.pack(side="right", padx=5, pady=2)
+
+    def confirm_restore(self, backup_name: str) -> None:
+        """Placeholder for restore confirmation."""
+        # This will be implemented in the next task
+        self.log(f"Restore requested for: {backup_name}")
 
 def main() -> None:
     """Entry point for the application."""
