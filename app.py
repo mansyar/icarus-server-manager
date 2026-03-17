@@ -263,13 +263,26 @@ class App(ctk.CTk):
             self.start_server()
 
     def update_monitoring(self) -> None:
-        """Updates the resource usage labels every 5 seconds."""
+        """Scheduled task to refresh monitoring data."""
+        self.update_monitoring_once()
+        self.after(5000, self.update_monitoring)
+
+    def update_monitoring_once(self) -> None:
+        """Updates the resource usage labels and checks for threshold alerts."""
         if self.server_process:
+            old_status = self.server_manager.state["status"]
             usage = self.server_manager.get_resource_usage(self.server_process)
+            new_status = self.server_manager.state["status"]
+            
             self.after(0, lambda: self.cpu_label.configure(text=f"CPU: {usage['cpu']}%"))
             self.after(0, lambda: self.ram_label.configure(text=f"RAM: {usage['ram_gb']}GB"))
             
-        self.after(5000, self.update_monitoring)
+            if new_status == "warning":
+                self.after(0, lambda: self.ram_label.configure(text_color="orange"))
+                if old_status != "warning":
+                    self.log(f"WARNING: High RAM usage detected! (>{self.server_manager.ram_threshold_gb}GB)")
+            else:
+                self.after(0, lambda: self.ram_label.configure(text_color=["gray10", "gray90"])) # Default CTk color
 
 def main() -> None:
     """Entry point for the application."""
