@@ -12,22 +12,26 @@ class SaveSyncManager:
         self.ini_manager = ini_manager
         self.local_appdata = os.environ.get("LOCALAPPDATA")
 
-    def get_local_save_root(self) -> Optional[str]:
+    def get_local_save_path(self) -> Optional[str]:
         """Returns the root directory for local Steam player data."""
         if not self.local_appdata:
             return None
         return os.path.join(self.local_appdata, "Icarus", "Saved", "PlayerData", "Steam")
 
-    def list_steam_ids(self) -> List[str]:
+    def list_local_steam_ids(self) -> List[str]:
         """Lists available SteamIDs in the local save root."""
-        root = self.get_local_save_root()
+        root = self.get_local_save_path()
         if not root or not os.path.exists(root):
             return []
         return [d for d in os.listdir(root) if os.path.isdir(os.path.join(root, d))]
 
+    def list_steam_ids(self) -> List[str]:
+        """Alias for list_local_steam_ids for backward compatibility if needed, but we should use list_local_steam_ids."""
+        return self.list_local_steam_ids()
+
     def get_local_prospects_dir(self, steam_id: str) -> Optional[str]:
         """Returns the local Prospects directory for a specific SteamID."""
-        root = self.get_local_save_root()
+        root = self.get_local_save_path()
         if not root:
             return None
         return os.path.join(root, steam_id, "Prospects")

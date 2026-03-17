@@ -44,7 +44,7 @@ def sync_manager(mock_env):
     return SaveSyncManager(server_path=str(server_path), ini_manager=ini_manager)
 
 def test_list_steam_ids(sync_manager):
-    ids = sync_manager.list_steam_ids()
+    ids = sync_manager.list_local_steam_ids()
     assert "12345678" in ids
 
 def test_list_prospects(sync_manager):
