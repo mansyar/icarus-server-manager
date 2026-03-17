@@ -4,6 +4,7 @@ from server_manager import ServerProcessManager
 import threading
 import os
 import subprocess
+import psutil
 from tkinter import filedialog
 from typing import Optional
 
@@ -71,6 +72,35 @@ class App(ctk.CTk):
 
         self.console_output = ctk.CTkTextbox(self, state="disabled")
         self.console_output.grid(row=3, column=0, padx=20, pady=20, sticky="nsew")
+
+        # Recover state
+        self.recover_state()
+
+        # Start monitoring loop
+        self.update_monitoring()
+
+    def recover_state(self) -> None:
+        """Attempts to recover the server process from saved state."""
+        saved_pid = self.server_manager.state.get("pid")
+        if saved_pid:
+            try:
+                p = psutil.Process(saved_pid)
+                if p.is_running():
+                    self.log(f"Recovered existing server process (PID: {saved_pid})")
+                    self.server_process = saved_pid
+                    self.start_button.configure(state="disabled")
+                    self.stop_button.configure(state="normal")
+                    self.restart_button.configure(state="normal")
+                else:
+                    self.reset_state()
+            except (psutil.NoSuchProcess, psutil.AccessDenied):
+                self.reset_state()
+
+    def reset_state(self) -> None:
+        """Resets the server state in the manager."""
+        self.server_manager.state["pid"] = None
+        self.server_manager.state["status"] = "stopped"
+        self.server_manager.save_state()
 
     def browse_path(self) -> None:
         """Opens a directory dialog and updates the installation path entry."""
@@ -193,6 +223,15 @@ class App(ctk.CTk):
             self.server_manager.stop_server(self.server_process)
             # start_server will be called by the thread or manually
             self.start_server()
+
+    def update_monitoring(self) -> None:
+        """Updates the resource usage labels every 5 seconds."""
+        if self.server_process:
+            usage = self.server_manager.get_resource_usage(self.server_process)
+            self.after(0, lambda: self.cpu_label.configure(text=f"CPU: {usage['cpu']}%"))
+            self.after(0, lambda: self.ram_label.configure(text=f"RAM: {usage['ram_gb']}GB"))
+            
+        self.after(5000, self.update_monitoring)
 
 def main() -> None:
     """Entry point for the application."""

@@ -69,11 +69,21 @@ class ServerProcessManager:
         return self.start_server(exe_path, port, query_port)
 
     def get_resource_usage(self, process):
-        if not process or process.poll() is not None:
+        if not process:
+            return {"cpu": 0.0, "ram_gb": 0.0}
+        
+        # Accept either a subprocess.Popen object or a raw PID (for recovery)
+        pid = process.pid if hasattr(process, "pid") else process
+        
+        # If it's a Popen object, check if it's still running
+        if hasattr(process, "poll") and process.poll() is not None:
             return {"cpu": 0.0, "ram_gb": 0.0}
         
         try:
-            p = psutil.Process(process.pid)
+            p = psutil.Process(pid)
+            if not p.is_running():
+                return {"cpu": 0.0, "ram_gb": 0.0}
+                
             cpu = p.cpu_percent(interval=None)
             ram_bytes = p.memory_info().rss
             ram_gb = round(ram_bytes / (1024**3), 2)

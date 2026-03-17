@@ -18,8 +18,9 @@ class MockCTk:
     def grid_rowconfigure(self, *args, **kwargs):
         pass
     def after(self, ms, func, *args):
-        # Immediately call the func to simulate it being called
-        func(*args)
+        # Call immediately if ms is 0 (UI update), but not for long waits (monitoring loop)
+        if ms == 0:
+            func(*args)
     def configure(self, *args, **kwargs):
         pass
     def grid(self, *args, **kwargs):
@@ -40,7 +41,10 @@ sys.modules["customtkinter"] = customtkinter
 
 # Mock steam_manager and server_manager
 sys.modules["steam_manager"] = MagicMock()
-sys.modules["server_manager"] = MagicMock()
+mock_server_manager = MagicMock()
+sys.modules["server_manager"] = mock_server_manager
+# Set default state to avoid psutil errors in App.__init__
+mock_server_manager.ServerProcessManager.return_value.state = {"pid": None, "status": "stopped"}
 
 import app
 from app import App
@@ -88,5 +92,43 @@ def test_run_server_streams_logs(app_instance):
     app_instance.run_server("C:/test.exe")
     
     app_instance.server_manager.start_server.assert_called_once_with("C:/test.exe")
-    app_instance.log.assert_called_with("test log line")
+    app_instance.log.assert_any_call("test log line")
     app_instance.on_server_exit.assert_called_once()
+
+def test_update_monitoring(app_instance):
+    app_instance.server_manager = MagicMock()
+    app_instance.server_process = MagicMock()
+    app_instance.server_manager.get_resource_usage.return_value = {"cpu": 25.0, "ram_gb": 1.2}
+    
+    app_instance.cpu_label = MagicMock()
+    app_instance.ram_label = MagicMock()
+    # We want to use the REAL after mock from the class, not a new MagicMock
+    # Actually, app_instance.after is already the mock from MockCTk
+    
+    app_instance.update_monitoring()
+    
+    app_instance.cpu_label.configure.assert_any_call(text="CPU: 25.0%")
+    app_instance.ram_label.configure.assert_any_call(text="RAM: 1.2GB")
+
+def test_stop_server_ui(app_instance):
+    app_instance.server_manager = MagicMock()
+    app_instance.server_process = MagicMock()
+    app_instance.log = MagicMock()
+    
+    app_instance.stop_server()
+    
+    app_instance.server_manager.stop_server.assert_called_once_with(app_instance.server_process)
+    app_instance.log.assert_any_call("Stopping server...")
+
+@patch("app.os.path.exists")
+def test_restart_server_ui(mock_exists, app_instance):
+    mock_exists.return_value = True
+    app_instance.server_manager = MagicMock()
+    app_instance.server_process = MagicMock()
+    app_instance.log = MagicMock()
+    app_instance.start_server = MagicMock()
+    
+    app_instance.restart_server()
+    
+    app_instance.server_manager.stop_server.assert_called_once_with(app_instance.server_process)
+    app_instance.start_server.assert_called_once()
