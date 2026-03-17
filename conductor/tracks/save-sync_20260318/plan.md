@@ -10,15 +10,15 @@
     - [x] Ensure safe copy (temporary backup during overwrite).
 - [x] Task: Conductor - User Manual Verification 'Phase 1: Core Save Sync Logic' (Protocol in workflow.md) 75a03dd
 
-## Phase 2: Application Workflow Integration
-- [ ] Task: Integrate Save Sync with Server Lifecycle.
-    - [ ] Modify `app.py` to trigger sync from Local to Server on "Start Server".
-    - [ ] Modify `app.py` to trigger sync from Server to Local on "Stop Server".
-    - [ ] Ensure sync operations run in background threads to keep UI responsive.
-- [ ] Task: Implement Manual Sync Trigger and Status Tracking.
-    - [ ] Add `perform_manual_sync()` method to `App` class.
-    - [ ] Track `last_sync_timestamp` in `server_state.json`.
-- [ ] Task: Conductor - User Manual Verification 'Phase 2: Application Workflow Integration' (Protocol in workflow.md)
+## Phase 2: Application Workflow Integration [checkpoint: 349d6e2]
+- [x] Task: Integrate Save Sync with Server Lifecycle. bbd30d6
+    - [x] Modify `app.py` to trigger sync from Local to Server on "Start Server".
+    - [x] Modify `app.py` to trigger sync from Server to Local on "Stop Server".
+    - [x] Ensure sync operations run in background threads to keep UI responsive.
+- [x] Task: Implement Manual Sync Trigger and Status Tracking. a44d8e5
+    - [x] Add `perform_manual_sync()` method to `App` class.
+    - [x] Track `last_sync_timestamp` in `server_state.json`.
+- [x] Task: Conductor - User Manual Verification 'Phase 2: Application Workflow Integration' (Protocol in workflow.md) 349d6e2
 
 ## Phase 3: UI Development: "Save Sync" Tab
 - [ ] Task: Create the "Save Sync" tab in CustomTkinter.
