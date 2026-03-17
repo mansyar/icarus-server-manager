@@ -42,6 +42,12 @@
 * **Requirement 3.3:** Automated `.zip` backups every 30m and upon shutdown.
 * **Requirement 3.4:** Backup browser with one-click restore (overwrite current save with backup).
 
+### 4.4 Save File Synchronization
+* **Requirement 4.1:** Two-way synchronization of world saves between local and server.
+* **Requirement 4.2:** "Keep Newest" conflict policy based on file modification timestamps.
+* **Requirement 4.3:** Automatic sync triggers on server Start (Local -> Server) and Stop (Server -> Local).
+* **Requirement 4.4:** Manual sync trigger with SteamID discovery.
+
 ---
 
 ## 5. Core Workflows (The Logic Flow)
@@ -69,6 +75,14 @@
 3. Manager identifies the `/Saved/PlayerData/DedicatedServer/Prospects` folder.
 4. Manager creates a timestamped ZIP (e.g., `Prospects_2026-03-17_1200.zip`).
 5. Manager checks the "Retention Limit" (e.g., keep only the last 50 backups) and deletes the oldest if necessary.
+
+### 5.4 The "Save Sync" Workflow
+1. **Trigger A (Start):** User clicks "Start Server". Manager syncs newest local saves to the server.
+2. **Trigger B (Stop):** User clicks "Stop Server". Manager syncs newest server saves back to local.
+3. **Trigger C (Manual):** User clicks "Sync Now" in the Save Sync tab.
+4. Manager scans `%LocalAppData%\Icarus\Saved\PlayerData` for SteamIDs.
+5. Manager performs bidirectional sync, overwriting older files with newer ones.
+6. Safe copy mechanism ensures backups are created before overwriting.
 
 ---
 
@@ -157,6 +171,14 @@
 3. Manager identifies the `/Saved/PlayerData/DedicatedServer/Prospects` folder.
 4. Manager creates a timestamped ZIP (e.g., `Prospects_2026-03-17_1200.zip`).
 5. Manager checks the "Retention Limit" (e.g., keep only the last 50 backups) and deletes the oldest if necessary.
+
+### 5.4 The "Save Sync" Workflow
+1. **Trigger A (Start):** User clicks "Start Server". Manager syncs newest local saves to the server.
+2. **Trigger B (Stop):** User clicks "Stop Server". Manager syncs newest server saves back to local.
+3. **Trigger C (Manual):** User clicks "Sync Now" in the Save Sync tab.
+4. Manager scans `%LocalAppData%\Icarus\Saved\PlayerData` for SteamIDs.
+5. Manager performs bidirectional sync, overwriting older files with newer ones.
+6. Safe copy mechanism ensures backups are created before overwriting.
 
 ---
 
