@@ -53,7 +53,9 @@ def test_update_monitoring_logs_warning_once(app_instance):
     
     app_instance.server_manager.get_resource_usage.side_effect = side_effect
     
-    app_instance.update_monitoring_once()
+    # Mock get_server_executable to return None to skip smart restart path search
+    with patch.object(app_instance, "get_server_executable", return_value=None):
+        app_instance.update_monitoring_once()
     
     app_instance.log.assert_called_with("WARNING: High RAM usage detected! (>16.0GB)")
 
@@ -86,12 +88,29 @@ def test_update_monitoring_triggers_smart_restart(app_instance):
     app_instance.path_entry.get.return_value = "C:/test"
     
     app_instance.get_server_executable = MagicMock(return_value="C:/test/exe")
+    app_instance.server_manager.should_smart_restart = MagicMock(return_value=True)
     
-    mock_new_proc = MagicMock()
-    mock_new_proc.pid = 9999
-    app_instance.server_manager.check_smart_restart = MagicMock(return_value=mock_new_proc)
+    with patch.object(app_instance, "restart_server") as mock_restart:
+        app_instance.update_monitoring_once()
+        mock_restart.assert_called_once()
+        app_instance.log.assert_called_with("Smart Idle Restart condition met. Triggering restart...")
+
+def test_start_server_triggers_dialog_on_low_ram(app_instance):
+    app_instance.path_entry = MagicMock()
+    app_instance.path_entry.get.return_value = "C:/test"
+    app_instance.get_server_executable = MagicMock(return_value="C:/test/exe")
+    app_instance.server_manager.get_available_system_ram_pct = MagicMock(return_value=5.0)
     
-    app_instance.update_monitoring_once()
+    with patch("app.RamOptimizationDialog") as MockDialog:
+        app_instance.start_server()
+        MockDialog.assert_called_once()
+
+def test_start_server_launches_immediately_on_normal_ram(app_instance):
+    app_instance.path_entry = MagicMock()
+    app_instance.path_entry.get.return_value = "C:/test"
+    app_instance.get_server_executable = MagicMock(return_value="C:/test/exe")
+    app_instance.server_manager.get_available_system_ram_pct = MagicMock(return_value=15.0)
     
-    assert app_instance.server_process == mock_new_proc
-    app_instance.log.assert_called_with("Smart Idle Restart triggered. New PID: 9999")
+    with patch.object(app_instance, "launch_server") as mock_launch:
+        app_instance.start_server()
+        mock_launch.assert_called_once_with("C:/test/exe")

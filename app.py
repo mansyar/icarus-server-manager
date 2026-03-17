@@ -6,7 +6,52 @@ import os
 import subprocess
 import psutil
 from tkinter import filedialog
-from typing import Optional
+from typing import Optional, Callable
+
+class RamOptimizationDialog(ctk.CTkToplevel):
+    """Dialog shown when system RAM is low before server launch."""
+
+    def __init__(self, parent, available_pct: float, on_confirm: Callable):
+        super().__init__(parent)
+        self.title("System Resource Warning")
+        self.geometry("400x300")
+        self.on_confirm = on_confirm
+        
+        self.label = ctk.CTkLabel(
+            self, 
+            text=f"CRITICAL: Low System RAM detected!\nOnly {available_pct}% available.",
+            text_color="red",
+            font=("Arial", 16, "bold")
+        )
+        self.label.pack(padx=20, pady=20)
+
+        self.info_text = ctk.CTkTextbox(self, width=350, height=100)
+        self.info_text.pack(padx=20, pady=10)
+        self.info_text.insert("0.0", "Recommendations:\n"
+                                     "- Close memory-heavy applications (Chrome, etc.)\n"
+                                     "- Consider restarting your computer.\n"
+                                     "- Launching now may cause server instability or crashes.")
+        self.info_text.configure(state="disabled")
+
+        self.btn_frame = ctk.CTkFrame(self)
+        self.btn_frame.pack(padx=20, pady=20, fill="x")
+
+        self.launch_anyway_btn = ctk.CTkButton(
+            self.btn_frame, text="Launch Anyway", command=self.confirm
+        )
+        self.launch_anyway_btn.pack(side="left", padx=10, expand=True)
+
+        self.cancel_btn = ctk.CTkButton(
+            self.btn_frame, text="Cancel", fg_color="gray", command=self.destroy
+        )
+        self.cancel_btn.pack(side="right", padx=10, expand=True)
+
+        # Make modal
+        self.grab_set()
+
+    def confirm(self):
+        self.on_confirm()
+        self.destroy()
 
 class App(ctk.CTk):
     """Main application class for Icarus Sentinel."""
@@ -253,6 +298,15 @@ class App(ctk.CTk):
             self.log("Error: Could not find IcarusServer executable in the selected directory.")
             return
 
+        # Pre-flight Check
+        available_pct = self.server_manager.get_available_system_ram_pct()
+        if available_pct < 10.0:
+            RamOptimizationDialog(self, available_pct, lambda: self.launch_server(exe_path))
+        else:
+            self.launch_server(exe_path)
+
+    def launch_server(self, exe_path: str) -> None:
+        """Helper to actually launch the server thread."""
         self.start_button.configure(state="disabled")
         self.stop_button.configure(state="normal")
         self.restart_button.configure(state="normal")
