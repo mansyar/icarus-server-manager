@@ -48,3 +48,18 @@ def test_list_backups_ui(app_instance, tmp_path):
     # Depending on how I implement it, this might change. 
     # Let's assume 2 backups = at least 2 widgets in the list.
     assert len(children) >= 2
+
+def test_backup_now_button_exists(app_instance):
+    assert hasattr(app_instance, "backup_now_button")
+
+@patch("tkinter.messagebox.askyesno", return_value=True)
+def test_confirm_restore_calls_restore(mock_ask, app_instance):
+    with patch.object(app_instance.backup_manager, "restore_backup") as mock_restore:
+        app_instance.confirm_restore("test_backup.zip")
+        mock_ask.assert_called_once()
+        mock_restore.assert_called_with("test_backup.zip")
+
+def test_manual_backup_trigger_ui(app_instance):
+    with patch.object(app_instance.backup_manager, "create_backup") as mock_create:
+        app_instance.manual_backup()
+        mock_create.assert_called_once()

@@ -6,7 +6,7 @@ import threading
 import os
 import subprocess
 import psutil
-from tkinter import filedialog
+from tkinter import filedialog, messagebox
 from typing import Optional, Callable
 
 class RamOptimizationDialog(ctk.CTkToplevel):
@@ -198,8 +198,13 @@ class App(ctk.CTk):
         self.backups_header_label = ctk.CTkLabel(self.backups_tab, text="Available Backups", font=("Arial", 16, "bold"))
         self.backups_header_label.grid(row=0, column=0, padx=10, pady=10)
 
+        self.backup_now_button = ctk.CTkButton(
+            self.backups_tab, text="Backup Now", command=self.manual_backup
+        )
+        self.backup_now_button.grid(row=0, column=1, padx=10, pady=10)
+
         self.backups_list_frame = ctk.CTkScrollableFrame(self.backups_tab)
-        self.backups_list_frame.grid(row=1, column=0, padx=10, pady=10, sticky="nsew")
+        self.backups_list_frame.grid(row=1, column=0, columnspan=2, padx=10, pady=10, sticky="nsew")
 
         self.console_output = ctk.CTkTextbox(self, height=150, state="disabled")
         self.console_output.grid(row=1, column=0, padx=20, pady=(0, 20), sticky="ew")
@@ -467,6 +472,21 @@ class App(ctk.CTk):
         if self.tabview.get() == "Backups":
             self.refresh_backups_list()
 
+    def manual_backup(self) -> None:
+        """Triggers a manual backup."""
+        self.log("Starting manual backup...")
+        # Update server path in case it changed
+        self.backup_manager.server_path = self.path_entry.get().strip()
+        
+        # Run in thread to not block UI
+        threading.Thread(target=self._run_manual_backup, daemon=True).start()
+
+    def _run_manual_backup(self) -> None:
+        """Helper to run backup in thread."""
+        self.backup_manager.create_backup()
+        self.after(0, self.log, "Manual backup complete.")
+        self.after(0, self.refresh_backups_list)
+
     def refresh_backups_list(self) -> None:
         """Updates the backups list in the UI."""
         # Clear existing
@@ -508,9 +528,37 @@ class App(ctk.CTk):
             restore_btn.pack(side="right", padx=5, pady=2)
 
     def confirm_restore(self, backup_name: str) -> None:
-        """Placeholder for restore confirmation."""
-        # This will be implemented in the next task
-        self.log(f"Restore requested for: {backup_name}")
+        """Shows a confirmation dialog before restoring a backup."""
+        # Ensure server is stopped
+        if self.server_process:
+            messagebox.showwarning(
+                "Server Running", 
+                "Please stop the server before restoring a backup."
+            )
+            return
+
+        confirmed = messagebox.askyesno(
+            "Confirm Restore",
+            f"Are you sure you want to restore the backup '{backup_name}'?\n\n"
+            "This will OVERWRITE your current save progress."
+        )
+        if confirmed:
+            self.perform_restore(backup_name)
+
+    def perform_restore(self, backup_name: str) -> None:
+        """Executes the restore operation in a background thread."""
+        self.log(f"Restoring backup: {backup_name}...")
+        threading.Thread(
+            target=self._run_restore, args=(backup_name,), daemon=True
+        ).start()
+
+    def _run_restore(self, backup_name: str) -> None:
+        """Helper to run restore in thread."""
+        success = self.backup_manager.restore_backup(backup_name)
+        if success:
+            self.after(0, self.log, f"Restore of '{backup_name}' successful.")
+        else:
+            self.after(0, self.log, f"ERROR: Failed to restore '{backup_name}'.")
 
 def main() -> None:
     """Entry point for the application."""
