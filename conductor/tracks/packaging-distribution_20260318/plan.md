@@ -1,7 +1,7 @@
 # Implementation Plan: Packaging & Distribution (MVP Release Prep)
 
 ## Phase 1: Local Executable Compilation
-- [ ] Task: Install PyInstaller and create build script.
+- [x] Task: Install PyInstaller and create build script. [87b691d]
     - [ ] Update `requirements.txt` with `pyinstaller` dependency.
     - [ ] Write a script or command to compile the `icarus_sentinel` application into a standalone executable (`IcarusSentinel.exe`).
 - [ ] Task: Configure PyInstaller specs.
