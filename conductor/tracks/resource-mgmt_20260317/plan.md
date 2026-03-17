@@ -10,6 +10,9 @@
 - [x] Task: Update UI for Threshold States. (6b4e06f)
     - [x] Add visual indicators (color/icon change) for RAM threshold alerts.
     - [x] Connect threshold state to the manager log.
+- [x] Task: Make RAM Threshold configurable in the UI and persist settings. (b426a55)
+    - [x] Write tests for saving/loading RAM threshold in `ServerProcessManager`.
+    - [x] Add a numeric entry or slider to the UI for the threshold setting.
 - [ ] Task: Conductor - User Manual Verification 'Phase 1: Threshold Alerts & UI Feedback' (Protocol in workflow.md)
 
 ## Phase 2: Smart Idle Restart & Active Query (TDD) [checkpoint: ]
