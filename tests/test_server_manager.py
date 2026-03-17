@@ -27,7 +27,13 @@ def test_save_state(manager, state_file):
     assert os.path.exists(str(state_file))
     with open(str(state_file), "r") as f:
         saved_state = json.load(f)
-    assert saved_state == {"pid": 1234, "status": "running", "ram_threshold_gb": 16.0}
+    assert saved_state == {
+        "pid": 1234, 
+        "status": "running", 
+        "ram_threshold_gb": 16.0,
+        "smart_restart_enabled": False,
+        "smart_restart_time": "04:00"
+    }
 
 def test_save_state_io_error(manager, state_file):
     with patch("builtins.open", side_effect=IOError):

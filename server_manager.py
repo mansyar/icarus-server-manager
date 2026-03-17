@@ -9,7 +9,9 @@ import json
 import os
 import subprocess
 import psutil
+from datetime import datetime
 from notification_manager import NotificationManager
+from a2s_client import A2SClient
 
 class ServerProcessManager:
     """Manages the lifecycle and resource monitoring of the Icarus server process.
@@ -21,21 +23,28 @@ class ServerProcessManager:
         max_restarts (int): Maximum allowed automatic restarts upon crash.
         ram_threshold_gb (float): Threshold in GB for RAM usage alerts.
         notifications (NotificationManager): Handler for system notifications.
+        a2s_client (A2SClient): Handler for game server queries.
+        smart_restart_enabled (bool): Whether scheduled restarts are enabled.
+        smart_restart_time (str): The time (HH:MM) to perform the restart.
     """
 
-    def __init__(self, state_file="server_state.json", notification_manager=None):
+    def __init__(self, state_file="server_state.json", notification_manager=None, a2s_client=None):
         """Initializes the ServerProcessManager and loads existing state.
 
         Args:
             state_file (str): Path to the state persistence file.
             notification_manager (NotificationManager): Optional notification handler.
+            a2s_client (A2SClient): Optional A2S client for querying.
         """
         self.state_file = state_file
         self.state = {"pid": None, "status": "stopped"}
         self.restart_count = 0
         self.max_restarts = 3
         self.ram_threshold_gb = 16.0
+        self.smart_restart_enabled = False
+        self.smart_restart_time = "04:00"
         self.notifications = notification_manager or NotificationManager()
+        self.a2s_client = a2s_client or A2SClient()
         self.load_state()
 
     def load_state(self):
@@ -48,15 +57,21 @@ class ServerProcessManager:
                 with open(self.state_file, "r") as f:
                     self.state = json.load(f)
                     self.ram_threshold_gb = self.state.get("ram_threshold_gb", 16.0)
+                    self.smart_restart_enabled = self.state.get("smart_restart_enabled", False)
+                    self.smart_restart_time = self.state.get("smart_restart_time", "04:00")
             except (json.JSONDecodeError, IOError):
                 self.state = {"pid": None, "status": "stopped"}
                 self.ram_threshold_gb = 16.0
+                self.smart_restart_enabled = False
+                self.smart_restart_time = "04:00"
 
     def save_state(self):
         """Saves the current server state to the persistent JSON file.
         """
         try:
             self.state["ram_threshold_gb"] = self.ram_threshold_gb
+            self.state["smart_restart_enabled"] = self.smart_restart_enabled
+            self.state["smart_restart_time"] = self.smart_restart_time
             with open(self.state_file, "w") as f:
                 json.dump(self.state, f)
         except IOError:
@@ -217,3 +232,33 @@ class ServerProcessManager:
             self.state["status"] = "crashed"
             self.save_state()
             return None
+
+    def check_smart_restart(self, exe_path, port=17777, query_port=27015):
+        """Checks if a smart restart should be performed based on time and player count.
+
+        Args:
+            exe_path (str): Path to the server executable.
+            port (int): Game port.
+            query_port (int): Query port for A2S.
+
+        Returns:
+            Optional[subprocess.Popen]: The new process if restarted, else None.
+        """
+        if not self.smart_restart_enabled:
+            return None
+        
+        # Check current time against scheduled time
+        now = datetime.now().strftime("%H:%M")
+        if now != self.smart_restart_time:
+            return None
+        
+        # Only restart if server is running
+        if self.state["status"] not in ["running", "warning"] or self.state["pid"] is None:
+            return None
+
+        # Check player count
+        players = self.a2s_client.get_player_count(port=query_port)
+        if players == 0:
+            return self.restart_server(self.state["pid"], exe_path, port, query_port)
+        
+        return None
