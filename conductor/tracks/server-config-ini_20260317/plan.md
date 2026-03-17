@@ -20,8 +20,8 @@
 - [x] Task: Connect the text area to read raw text from `ServerSettings.ini` and save back via the "Save Changes" button. 7cc574b
 - [x] Task: Conductor - User Manual Verification 'Phase 3: Advanced Editor Integration' (Protocol in workflow.md) 1494aae
 
-## Phase 4: Launch-Time Updates Integration
-- [~] Task: Create/update `tests/test_server_launch.py` to add failing tests for the "Update on Launch" check before server start.
-- [ ] Task: Modify the "Safe Launch" workflow to read the state of the "Update on Launch" checkbox.
-- [ ] Task: Implement logic to trigger SteamCMD update (`app_update 2089300`) if the checkbox is checked, prior to spawning the server process.
-- [ ] Task: Conductor - User Manual Verification 'Phase 4: Launch-Time Updates Integration' (Protocol in workflow.md)
+## Phase 4: Launch-Time Updates Integration [checkpoint: 9bb6502]
+- [x] Task: Create/update `tests/test_server_launch.py` to add failing tests for the "Update on Launch" check before server start. a92ed36
+- [x] Task: Modify the "Safe Launch" workflow to read the state of the "Update on Launch" checkbox. a92ed36
+- [x] Task: Implement logic to trigger SteamCMD update (`app_update 2089300`) if the checkbox is checked, prior to spawning the server process. a92ed36
+- [x] Task: Conductor - User Manual Verification 'Phase 4: Launch-Time Updates Integration' (Protocol in workflow.md) 9bb6502
