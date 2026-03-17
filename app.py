@@ -541,6 +541,26 @@ class App(ctk.CTk):
     def run_server(self, exe_path: str) -> None:
         """Starts the server and streams logs."""
         try:
+            # Check for Update on Launch
+            if self.update_on_launch_var.get():
+                install_dir = self.path_entry.get().strip()
+                self.after(0, self.log, "Update on Launch enabled. Checking for updates...")
+                
+                process = self.steam_manager.install_server(install_dir)
+                
+                # Stream update output to console
+                if process.stdout:
+                    for line in iter(process.stdout.readline, ""):
+                        if line:
+                            self.after(0, self.log, line.strip())
+                    process.stdout.close()
+                
+                return_code = process.wait()
+                if return_code == 0:
+                    self.after(0, self.log, "Update complete. Starting server...")
+                else:
+                    self.after(0, self.log, f"Update failed (Code: {return_code}). Attempting to start server anyway...")
+
             self.server_process = self.server_manager.start_server(exe_path)
             self.log(f"Server started (PID: {self.server_process.pid})")
             
