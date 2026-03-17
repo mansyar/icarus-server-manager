@@ -14,6 +14,8 @@
   * `subprocess` will handle executing SteamCMD and the Icarus Dedicated Server process.
 * **winotify**
   * Used for sending Windows system notifications (toasts) for threshold alerts.
+* **python-a2s**
+  * Used for querying the Icarus Dedicated Server via the Valve A2S protocol to fetch real-time player counts.
 
 ## 4. Data Storage & Configuration
 * **JSON / INI files**

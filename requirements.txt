@@ -1,6 +1,7 @@
 customtkinter
 psutil
 winotify
+python-a2s
 pytest
 pytest-cov
 packaging
