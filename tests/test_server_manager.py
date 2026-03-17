@@ -62,3 +62,28 @@ def test_start_server(mock_popen, manager):
     
     assert manager.state["pid"] == 9999
     assert manager.state["status"] == "running"
+
+def test_stop_server(manager):
+    mock_process = MagicMock()
+    manager.stop_server(mock_process)
+    
+    mock_process.terminate.assert_called_once()
+    assert manager.state["pid"] is None
+    assert manager.state["status"] == "stopped"
+
+@patch("subprocess.Popen")
+def test_restart_server(mock_popen, manager):
+    # Mock current running process
+    mock_old_process = MagicMock()
+    
+    # Mock new process from restart
+    mock_new_process = MagicMock()
+    mock_new_process.pid = 8888
+    mock_popen.return_value = mock_new_process
+    
+    server_exe = "C:/icarus/IcarusServer.exe"
+    manager.restart_server(mock_old_process, server_exe)
+    
+    mock_old_process.terminate.assert_called_once()
+    mock_popen.assert_called_once()
+    assert manager.state["pid"] == 8888

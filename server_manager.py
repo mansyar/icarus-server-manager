@@ -44,3 +44,23 @@ class ServerProcessManager:
         self.state["status"] = "running"
         self.save_state()
         return process
+
+    def stop_server(self, process):
+        if process:
+            try:
+                process.terminate()
+                # We don't want to block indefinitely, but a short wait is good for state sync
+                try:
+                    process.wait(timeout=5)
+                except subprocess.TimeoutExpired:
+                    process.kill()
+            except ProcessLookupError:
+                pass
+        
+        self.state["pid"] = None
+        self.state["status"] = "stopped"
+        self.save_state()
+
+    def restart_server(self, old_process, exe_path, port=17777, query_port=27015):
+        self.stop_server(old_process)
+        return self.start_server(exe_path, port, query_port)
