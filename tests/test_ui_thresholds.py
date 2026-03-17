@@ -56,3 +56,22 @@ def test_update_monitoring_logs_warning_once(app_instance):
     app_instance.update_monitoring_once()
     
     app_instance.log.assert_called_with("WARNING: High RAM usage detected! (>16.0GB)")
+
+def test_save_settings_updates_threshold(app_instance):
+    app_instance.threshold_entry = MagicMock()
+    app_instance.threshold_entry.get.return_value = "18.5"
+    
+    app_instance.save_settings()
+    
+    assert app_instance.server_manager.ram_threshold_gb == 18.5
+    app_instance.log.assert_called_with("Settings saved. RAM Threshold set to 18.5GB.")
+
+def test_save_settings_handles_invalid_input(app_instance):
+    app_instance.threshold_entry = MagicMock()
+    app_instance.threshold_entry.get.return_value = "invalid"
+    app_instance.server_manager.ram_threshold_gb = 16.0
+    
+    app_instance.save_settings()
+    
+    assert app_instance.server_manager.ram_threshold_gb == 16.0
+    app_instance.log.assert_called_with("Error: RAM Threshold must be a valid number.")

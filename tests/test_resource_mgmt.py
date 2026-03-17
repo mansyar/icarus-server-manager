@@ -91,3 +91,27 @@ def test_get_resource_usage_does_not_spam_notifications(mock_psutil_process, man
     # Second call - status already 'warning', should NOT notify again
     manager.get_resource_usage(1234)
     assert mock_notifications.notify.call_count == 1
+
+def test_ram_threshold_is_configurable(manager):
+    assert manager.ram_threshold_gb == 16.0 # Default
+    manager.ram_threshold_gb = 20.0
+    assert manager.ram_threshold_gb == 20.0
+
+def test_save_state_includes_ram_threshold(manager):
+    manager.ram_threshold_gb = 18.5
+    manager.save_state()
+    
+    import json
+    with open(manager.state_file, "r") as f:
+        saved_state = json.load(f)
+    assert saved_state["ram_threshold_gb"] == 18.5
+
+def test_load_state_restores_ram_threshold(tmp_path):
+    state_file = tmp_path / "server_state.json"
+    initial_state = {"pid": None, "status": "stopped", "ram_threshold_gb": 22.0}
+    import json
+    with open(str(state_file), "w") as f:
+        json.dump(initial_state, f)
+    
+    manager = ServerProcessManager(state_file=str(state_file))
+    assert manager.ram_threshold_gb == 22.0

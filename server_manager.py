@@ -47,13 +47,16 @@ class ServerProcessManager:
             try:
                 with open(self.state_file, "r") as f:
                     self.state = json.load(f)
+                    self.ram_threshold_gb = self.state.get("ram_threshold_gb", 16.0)
             except (json.JSONDecodeError, IOError):
                 self.state = {"pid": None, "status": "stopped"}
+                self.ram_threshold_gb = 16.0
 
     def save_state(self):
         """Saves the current server state to the persistent JSON file.
         """
         try:
+            self.state["ram_threshold_gb"] = self.ram_threshold_gb
             with open(self.state_file, "w") as f:
                 json.dump(self.state, f)
         except IOError:

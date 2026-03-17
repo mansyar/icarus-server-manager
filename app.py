@@ -70,14 +70,40 @@ class App(ctk.CTk):
         self.ram_label = ctk.CTkLabel(self.mgmt_frame, text="RAM: 0.00GB")
         self.ram_label.grid(row=0, column=4, padx=10, pady=10)
 
+        # Settings Frame
+        self.settings_frame = ctk.CTkFrame(self)
+        self.settings_frame.grid(row=3, column=0, padx=20, pady=10, sticky="ew")
+
+        self.threshold_label = ctk.CTkLabel(self.settings_frame, text="RAM Threshold (GB):")
+        self.threshold_label.grid(row=0, column=0, padx=(10, 5), pady=10)
+
+        self.threshold_entry = ctk.CTkEntry(self.settings_frame, width=60)
+        self.threshold_entry.grid(row=0, column=1, padx=5, pady=10)
+        self.threshold_entry.insert(0, str(self.server_manager.ram_threshold_gb))
+
+        self.save_settings_button = ctk.CTkButton(
+            self.settings_frame, text="Save Settings", width=100, command=self.save_settings
+        )
+        self.save_settings_button.grid(row=0, column=2, padx=(5, 10), pady=10)
+
         self.console_output = ctk.CTkTextbox(self, state="disabled")
-        self.console_output.grid(row=3, column=0, padx=20, pady=20, sticky="nsew")
+        self.console_output.grid(row=4, column=0, padx=20, pady=20, sticky="nsew")
 
         # Recover state
         self.recover_state()
 
         # Start monitoring loop
         self.update_monitoring()
+
+    def save_settings(self) -> None:
+        """Saves current settings from the UI to the manager."""
+        try:
+            threshold = float(self.threshold_entry.get())
+            self.server_manager.ram_threshold_gb = threshold
+            self.server_manager.save_state()
+            self.log(f"Settings saved. RAM Threshold set to {threshold}GB.")
+        except ValueError:
+            self.log("Error: RAM Threshold must be a valid number.")
 
     def recover_state(self) -> None:
         """Attempts to recover the server process from saved state."""
