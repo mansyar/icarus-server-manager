@@ -32,3 +32,6 @@
     - [ ] Wire the "Restore" button to the extraction logic and show appropriate success/error notifications
     - [ ] Add a "Backup Now" manual trigger button to the UI
 - [x] Task: Conductor - User Manual Verification 'Phase 3: Backup Browser & Restore UI' (Protocol in workflow.md) [a0e79b1]
+
+## Phase: Review Fixes
+- [x] Task: Apply review suggestions [8d735a5]
