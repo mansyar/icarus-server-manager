@@ -41,3 +41,24 @@ def test_load_state_corrupted_file(state_file):
     
     manager = ServerProcessManager(state_file=str(state_file))
     assert manager.state == {"pid": None, "status": "stopped"}
+
+@patch("subprocess.Popen")
+def test_start_server(mock_popen, manager):
+    mock_process = MagicMock()
+    mock_process.pid = 9999
+    mock_popen.return_value = mock_process
+    
+    server_exe = "C:/icarus/IcarusServer.exe"
+    # Create the directory so os.path.dirname doesn't fail if we check it
+    manager.start_server(server_exe, port=17777, query_port=27015)
+    
+    mock_popen.assert_called_once()
+    args, kwargs = mock_popen.call_args
+    cmd = args[0]
+    assert server_exe in cmd
+    assert "-Port=17777" in cmd
+    assert "-QueryPort=27015" in cmd
+    assert "-Log" in cmd
+    
+    assert manager.state["pid"] == 9999
+    assert manager.state["status"] == "running"
