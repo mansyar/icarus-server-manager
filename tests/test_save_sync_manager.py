@@ -73,3 +73,39 @@ def test_sync_to_local(sync_manager):
     
     local_dir = sync_manager.get_local_prospects_dir("12345678")
     assert os.path.exists(os.path.join(local_dir, "ServerSave.json"))
+
+def test_sync_prospects_conflict_policy(sync_manager, mock_env):
+    local_dir = sync_manager.get_local_prospects_dir("12345678")
+    server_dir = sync_manager.get_server_prospects_dir()
+    
+    prospect = "ConflictSave"
+    local_file = os.path.join(local_dir, f"{prospect}.json")
+    server_file = os.path.join(server_dir, f"{prospect}.json")
+    
+    # Case 1: Local is newer
+    with open(local_file, "w") as f:
+        f.write('{"version": "newer"}')
+    os.utime(local_file, (1000, 1000))
+    
+    with open(server_file, "w") as f:
+        f.write('{"version": "older"}')
+    os.utime(server_file, (500, 500))
+    
+    # Sync bidirectional
+    sync_manager.sync_prospects("12345678")
+    
+    with open(server_file, "r") as f:
+        assert "newer" in f.read()
+
+    # Case 2: Server is newer
+    os.utime(local_file, (500, 500))
+    os.utime(server_file, (1000, 1000))
+    
+    with open(server_file, "w") as f:
+        f.write('{"version": "even_newer"}')
+    os.utime(server_file, (1000, 1000))
+
+    sync_manager.sync_prospects("12345678")
+
+    with open(local_file, "r") as f:
+        assert "even_newer" in f.read()

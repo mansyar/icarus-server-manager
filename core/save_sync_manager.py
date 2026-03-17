@@ -84,6 +84,52 @@ class SaveSyncManager:
 
         os.makedirs(local_dir, exist_ok=True)
         dst = os.path.join(local_dir, f"{prospect_name}.json")
-        shutil.copy2(src, dst)
+        self._safe_copy(src, dst)
 
         return True
+
+    def _safe_copy(self, src: str, dst: str):
+        """Copies src to dst safely by using a temporary file."""
+        temp_dst = dst + ".tmp"
+        shutil.copy2(src, temp_dst)
+        if os.path.exists(dst):
+            # Create a backup of the original if it exists
+            backup_dst = dst + ".bak"
+            shutil.copy2(dst, backup_dst)
+        
+        os.replace(temp_dst, dst)
+
+    def sync_prospects(self, steam_id: str):
+        """Perform bidirectional sync between local and server prospects."""
+        local_dir = self.get_local_prospects_dir(steam_id)
+        server_dir = self.get_server_prospects_dir()
+
+        if not local_dir or not os.path.exists(local_dir):
+            return
+
+        os.makedirs(server_dir, exist_ok=True)
+
+        local_prospects = self.list_prospects(local_dir)
+        server_prospects = self.list_prospects(server_dir)
+
+        all_prospects = set(local_prospects) | set(server_prospects)
+
+        for prospect in all_prospects:
+            local_path = os.path.join(local_dir, f"{prospect}.json")
+            server_path = os.path.join(server_dir, f"{prospect}.json")
+
+            local_exists = os.path.exists(local_path)
+            server_exists = os.path.exists(server_path)
+
+            if local_exists and server_exists:
+                local_mtime = os.path.getmtime(local_path)
+                server_mtime = os.path.getmtime(server_path)
+
+                if local_mtime > server_mtime:
+                    self._safe_copy(local_path, server_path)
+                elif server_mtime > local_mtime:
+                    self._safe_copy(server_path, local_path)
+            elif local_exists:
+                self._safe_copy(local_path, server_path)
+            elif server_exists:
+                self._safe_copy(server_path, local_path)
