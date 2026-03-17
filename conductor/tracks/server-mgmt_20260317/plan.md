@@ -10,7 +10,7 @@
 - [x] Task: Implement Stop and Restart functionality. (baf66d7)
     - [ ] Write tests for graceful termination and restart logic.
     - [ ] Implement `stop_server()` (SIGTERM) and `restart_server()`.
-- [ ] Task: Conductor - User Manual Verification 'Phase 1: Core Process Control Logic' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 1: Core Process Control Logic' (Protocol in workflow.md) (da9cfe2)
 
 ## Phase 2: Monitoring and Output Capture (TDD)
 - [ ] Task: Implement Resource Monitoring.
