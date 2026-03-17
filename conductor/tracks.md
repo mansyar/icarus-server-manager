@@ -12,5 +12,5 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ---
 
-- [ ] **Track: implement python venv for the project**
+- [~] **Track: implement python venv for the project**
 *Link: [./tracks/python-venv_20260317/](./tracks/python-venv_20260317/)*
