@@ -1,14 +1,14 @@
 # Implementation Plan: Save File Synchronization (Track: save-sync)
 
-## Phase 1: Core Save Sync Logic (TDD)
-- [ ] Task: Implement `SaveSyncManager` for path resolution and file discovery.
-    - [ ] Write tests for identifying local SteamID folders.
-    - [ ] Implement `list_local_steam_ids()` and `get_local_save_path()`.
-- [ ] Task: Implement Bidirectional Sync Logic with Conflict Policy.
-    - [ ] Write tests for comparing file timestamps and determining "newest" file.
-    - [ ] Implement `sync_prospects(local_path, server_path, direction)` logic.
-    - [ ] Ensure safe copy (temporary backup during overwrite).
-- [ ] Task: Conductor - User Manual Verification 'Phase 1: Core Save Sync Logic' (Protocol in workflow.md)
+## Phase 1: Core Save Sync Logic (TDD) [checkpoint: 75a03dd]
+- [x] Task: Implement `SaveSyncManager` for path resolution and file discovery. daa900e
+    - [x] Write tests for identifying local SteamID folders.
+    - [x] Implement `list_local_steam_ids()` and `get_local_save_path()`.
+- [x] Task: Implement Bidirectional Sync Logic with Conflict Policy. 003fd11
+    - [x] Write tests for comparing file timestamps and determining "newest" file.
+    - [x] Implement `sync_prospects(local_path, server_path, direction)` logic.
+    - [x] Ensure safe copy (temporary backup during overwrite).
+- [x] Task: Conductor - User Manual Verification 'Phase 1: Core Save Sync Logic' (Protocol in workflow.md) 75a03dd
 
 ## Phase 2: Application Workflow Integration
 - [ ] Task: Integrate Save Sync with Server Lifecycle.
