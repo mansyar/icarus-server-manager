@@ -25,7 +25,7 @@
 - [x] Task: Create 'Backups' Tab UI [50ae2b5]
     - [ ] Implement the CustomTkinter "Backups" tab in the main window
     - [ ] Implement the list view of available backups with timestamps
-- [ ] Task: Implement One-Click Restore Logic
+- [x] Task: Implement One-Click Restore Logic [39c3912]
     - [ ] Write tests for extracting a backup and handling errors (e.g., locked files) safely
     - [ ] Implement the extraction logic to overwrite the active `Prospects` folder
 - [ ] Task: Integrate Restore with UI
