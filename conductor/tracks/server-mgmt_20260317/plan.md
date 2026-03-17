@@ -4,7 +4,7 @@
 - [x] Task: Define the `ServerProcessManager` class and basic state management. (22660ff)
     - [ ] Write tests for `ServerProcessManager` initialization and state loading/saving (server_state.json).
     - [ ] Implement `ServerProcessManager` state logic.
-- [ ] Task: Implement Start Server functionality.
+- [x] Task: Implement Start Server functionality. (f1d664b)
     - [ ] Write tests for starting a mock process with specific flags.
     - [ ] Implement `start_server()` using `subprocess.Popen`.
 - [ ] Task: Implement Stop and Restart functionality.
