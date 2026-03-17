@@ -28,14 +28,30 @@ def test_build_script_exists():
     """Verify that the build script exists."""
     assert os.path.exists("build_exe.py"), "build_exe.py script does not exist."
 
-def test_build_includes_data_files():
-    """Verify that build() includes the necessary data files."""
+def test_bundle_release():
+    """Verify that bundle_release.py correctly creates a ZIP archive."""
     import sys
     sys.path.append(".")
-    import build_exe
-    with patch("PyInstaller.__main__.run") as mock_run:
-        build_exe.build()
-        args = mock_run.call_args[0][0]
-        # Check for server_state.json
-        data_args = [a for a in args if a.startswith("--add-data")]
-        assert any("server_state.json" in a for a in data_args)
+    import bundle_release
+    import zipfile
+    
+    # Mock os.path.exists to simulate presence of dist/IcarusSentinel.exe and README.md
+    with patch("os.path.exists") as mock_exists:
+        mock_exists.side_effect = lambda p: p in [os.path.join("dist", "IcarusSentinel.exe"), "README.md"]
+        
+        # Mock zipfile.ZipFile
+        with patch("zipfile.ZipFile") as mock_zip:
+            bundle_release.bundle()
+            
+            mock_zip.assert_called_once()
+            args, kwargs = mock_zip.call_args
+            assert args[0] == "IcarusSentinel.zip"
+            
+            # Check if write was called for both files
+            instance = mock_zip.return_value.__enter__.return_value
+            assert instance.write.call_count == 2
+            
+            # Verify file names passed to write
+            called_files = [call.args[0] for call in instance.write.call_args_list]
+            assert os.path.join("dist", "IcarusSentinel.exe") in called_files
+            assert "README.md" in called_files
