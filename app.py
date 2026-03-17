@@ -107,14 +107,17 @@ class App(ctk.CTk):
         self.tabview.grid(row=0, column=0, padx=20, pady=(20, 10), sticky="nsew")
         self.server_tab = self.tabview.add("Server")
         self.config_tab = self.tabview.add("Configuration")
+        self.save_sync_tab = self.tabview.add("Save Sync")
         self.backups_tab = self.tabview.add("Backups")
         
         self.server_tab.grid_columnconfigure(0, weight=1)
         self.config_tab.grid_columnconfigure(0, weight=1)
+        self.save_sync_tab.grid_columnconfigure(0, weight=1)
 
         # Initialize Tabs
         self.init_server_tab()
         self.init_config_tab()
+        self.init_save_sync_tab()
 
         self.console_output = ctk.CTkTextbox(self, height=150, state="disabled")
         self.console_output.grid(row=1, column=0, padx=20, pady=(0, 20), sticky="ew")
@@ -223,6 +226,41 @@ class App(ctk.CTk):
         self.backup_retention_entry = ctk.CTkEntry(self.backup_settings_frame, width=60)
         self.backup_retention_entry.grid(row=0, column=3, padx=5, pady=10)
         self.backup_retention_entry.insert(0, str(self.backup_manager.retention_limit))
+
+    def init_save_sync_tab(self) -> None:
+        """Initializes the Save Sync tab UI."""
+        self.sync_frame = ctk.CTkFrame(self.save_sync_tab)
+        self.sync_frame.grid(row=0, column=0, padx=20, pady=20, sticky="nsew")
+        self.sync_frame.grid_columnconfigure(1, weight=1)
+
+        # SteamID Selection
+        ctk.CTkLabel(self.sync_frame, text="Local SteamID:").grid(row=0, column=0, padx=10, pady=10, sticky="w")
+        self.steam_id_dropdown = ctk.CTkOptionMenu(
+            self.sync_frame, 
+            values=["None Found"], 
+            command=self.on_steam_id_selected
+        )
+        self.steam_id_dropdown.grid(row=0, column=1, padx=10, pady=10, sticky="ew")
+
+        # Sync Button
+        self.manual_sync_btn = ctk.CTkButton(
+            self.sync_frame, text="Sync Now", command=self.perform_manual_sync
+        )
+        self.manual_sync_btn.grid(row=1, column=0, columnspan=2, padx=10, pady=20)
+
+        # Last Sync Info
+        self.last_sync_label = ctk.CTkLabel(
+            self.sync_frame, 
+            text=f"Last Sync: {self.server_manager.state.get('last_sync_timestamp', 'Never')}"
+        )
+        self.last_sync_label.grid(row=2, column=0, columnspan=2, padx=10, pady=10)
+
+        self.refresh_steam_ids()
+
+    def on_steam_id_selected(self, steam_id: str) -> None:
+        """Handles SteamID selection from the dropdown."""
+        self.selected_steam_id = steam_id
+        self.log(f"Save Sync: Selected SteamID {steam_id}")
 
     def init_config_tab(self) -> None:
         """Initializes the Configuration tab UI."""
@@ -379,8 +417,13 @@ class App(ctk.CTk):
     def refresh_steam_ids(self) -> None:
         """Discovers local SteamIDs and sets a default if none selected."""
         ids = self.save_sync_manager.list_local_steam_ids()
-        if ids and not self.selected_steam_id:
-            self.selected_steam_id = ids[0]
+        if ids:
+            if hasattr(self, "steam_id_dropdown"):
+                self.steam_id_dropdown.configure(values=ids)
+            if not self.selected_steam_id:
+                self.selected_steam_id = ids[0]
+                if hasattr(self, "steam_id_dropdown"):
+                    self.steam_id_dropdown.set(ids[0])
             
     def sync_saves(self, callback: Optional[Callable] = None) -> None:
         """Triggers bidirectional save synchronization in a background thread."""
@@ -395,13 +438,14 @@ class App(ctk.CTk):
                 self.save_sync_manager.sync_prospects(self.selected_steam_id)
                 
                 # Update last sync timestamp
-                now = threading.current_thread().name # Just to have something unique if needed, but we'll use datetime
                 import datetime
                 timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
                 self.server_manager.state["last_sync_timestamp"] = timestamp
                 self.server_manager.save_state()
 
                 self.after(0, self.log, f"Save Sync: Synchronization complete at {timestamp}.")
+                if hasattr(self, "last_sync_label"):
+                    self.after(0, lambda: self.last_sync_label.configure(text=f"Last Sync: {timestamp}"))
             except Exception as e:
                 self.after(0, self.log, f"Save Sync: Error during synchronization: {str(e)}")
             if callback:
