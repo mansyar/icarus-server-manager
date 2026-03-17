@@ -60,11 +60,13 @@ class ServerProcessManager:
                     self.ram_threshold_gb = self.state.get("ram_threshold_gb", 16.0)
                     self.smart_restart_enabled = self.state.get("smart_restart_enabled", False)
                     self.smart_restart_time = self.state.get("smart_restart_time", "04:00")
+                    self.last_smart_restart_date = self.state.get("last_smart_restart_date")
             except (json.JSONDecodeError, IOError):
                 self.state = {"pid": None, "status": "stopped"}
                 self.ram_threshold_gb = 16.0
                 self.smart_restart_enabled = False
                 self.smart_restart_time = "04:00"
+                self.last_smart_restart_date = None
 
     def save_state(self):
         """Saves the current server state to the persistent JSON file.
@@ -73,6 +75,7 @@ class ServerProcessManager:
             self.state["ram_threshold_gb"] = self.ram_threshold_gb
             self.state["smart_restart_enabled"] = self.smart_restart_enabled
             self.state["smart_restart_time"] = self.smart_restart_time
+            self.state["last_smart_restart_date"] = self.last_smart_restart_date
             with open(self.state_file, "w") as f:
                 json.dump(self.state, f)
         except IOError:

@@ -32,7 +32,8 @@ def test_save_state(manager, state_file):
         "status": "running", 
         "ram_threshold_gb": 16.0,
         "smart_restart_enabled": False,
-        "smart_restart_time": "04:00"
+        "smart_restart_time": "04:00",
+        "last_smart_restart_date": None
     }
 
 def test_save_state_io_error(manager, state_file):

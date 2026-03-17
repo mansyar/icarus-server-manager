@@ -19,7 +19,10 @@ class RamOptimizationDialog(ctk.CTkToplevel):
         
         self.label = ctk.CTkLabel(
             self, 
-            text=f"CRITICAL: Low System RAM detected!\nOnly {available_pct}% available.",
+            text=(
+                f"CRITICAL: Low System RAM detected!\n"
+                f"Only {available_pct}% available."
+            ),
             text_color="red",
             font=("Arial", 16, "bold")
         )
@@ -27,10 +30,13 @@ class RamOptimizationDialog(ctk.CTkToplevel):
 
         self.info_text = ctk.CTkTextbox(self, width=350, height=100)
         self.info_text.pack(padx=20, pady=10)
-        self.info_text.insert("0.0", "Recommendations:\n"
-                                     "- Close memory-heavy applications (Chrome, etc.)\n"
-                                     "- Consider restarting your computer.\n"
-                                     "- Launching now may cause server instability or crashes.")
+        self.info_text.insert(
+            "0.0", 
+            "Recommendations:\n"
+            "- Close memory-heavy applications (Chrome, etc.)\n"
+            "- Consider restarting your computer.\n"
+            "- Launching now may cause server instability or crashes."
+        )
         self.info_text.configure(state="disabled")
 
         self.btn_frame = ctk.CTkFrame(self)
@@ -56,14 +62,14 @@ class RamOptimizationDialog(ctk.CTkToplevel):
 class App(ctk.CTk):
     """Main application class for Icarus Sentinel."""
 
-    def __init__(self) -> None:
+    def __init__(self, state_file: str = "server_state.json") -> None:
         """Initializes the main application window and its components."""
         super().__init__()
         self.title("Icarus Sentinel")
         self.geometry("800x700")
         
         self.steam_manager = SteamManager()
-        self.server_manager = ServerProcessManager()
+        self.server_manager = ServerProcessManager(state_file=state_file)
         self.server_process: Optional[subprocess.Popen] = None
         
         # Grid layout
