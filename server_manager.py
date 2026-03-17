@@ -78,3 +78,11 @@ class ServerProcessManager:
             return {"cpu": cpu, "ram_gb": ram_gb}
         except (psutil.NoSuchProcess, psutil.AccessDenied):
             return {"cpu": 0.0, "ram_gb": 0.0}
+
+    def stream_logs(self, process, callback):
+        if not process or not process.stdout:
+            return
+            
+        for line in iter(process.stdout.readline, ""):
+            if line:
+                callback(line.strip())

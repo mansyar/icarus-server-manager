@@ -105,3 +105,15 @@ def test_get_resource_usage(mock_psutil_process, manager):
     assert usage["cpu"] == 15.5
     assert usage["ram_gb"] == 0.5
     mock_psutil_process.assert_called_with(1234)
+
+def test_stream_logs(manager):
+    mock_process = MagicMock()
+    mock_process.stdout.readline.side_effect = ["line 1", "line 2", ""]
+    
+    lines = []
+    def callback(line):
+        lines.append(line)
+        
+    manager.stream_logs(mock_process, callback)
+    
+    assert lines == ["line 1", "line 2"]
