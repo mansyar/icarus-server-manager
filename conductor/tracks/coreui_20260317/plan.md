@@ -10,7 +10,7 @@
 - [x] Task: Implement SteamCMD download and extraction logic (9aa45fd)
     - [ ] Write Tests
     - [ ] Implement Feature
-- [ ] Task: Implement server installation via SteamCMD
+- [x] Task: Implement server installation via SteamCMD (c9bdb67)
     - [ ] Write Tests
     - [ ] Implement Feature
 - [ ] Task: Conductor - User Manual Verification 'Phase 2: SteamCMD Integration' (Protocol in workflow.md)
