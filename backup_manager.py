@@ -1,5 +1,6 @@
 import os
 import threading
+import zipfile
 from datetime import datetime
 from typing import Optional
 
@@ -55,6 +56,34 @@ class BackupManager:
     def on_server_stop(self) -> None:
         """Triggered when the server process is stopped."""
         self.create_backup()
+
+    def restore_backup(self, backup_name: str) -> bool:
+        """Restores a backup ZIP file to the Prospects folder.
+        
+        Args:
+            backup_name (str): The filename of the ZIP backup to restore.
+            
+        Returns:
+            bool: True if successful, False otherwise.
+        """
+        zip_path = os.path.join(self.backup_path, backup_name)
+        if not os.path.exists(zip_path):
+            return False
+
+        prospects_dir = os.path.join(
+            self.server_path, "Icarus", "Saved", "PlayerData", "DedicatedServer", "Prospects"
+        )
+
+        try:
+            # Ensure Prospects directory exists
+            if not os.path.exists(prospects_dir):
+                os.makedirs(prospects_dir)
+
+            with zipfile.ZipFile(zip_path, 'r') as zip_ref:
+                zip_ref.extractall(prospects_dir)
+            return True
+        except Exception:
+            return False
 
     def _perform_backup(self) -> None:
         """Internal method to perform the actual backup operation."""

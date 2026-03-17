@@ -115,4 +115,31 @@ def test_enforce_retention_ignores_other_files(backup_manager):
     assert "other_file.txt" in remaining
     assert len([f for f in remaining if f.startswith("Prospects_")]) == 1
 
+def test_restore_backup_extracts_files(backup_manager, tmp_path):
+    # Create a dummy backup zip
+    source_content = tmp_path / "source_content"
+    source_content.mkdir()
+    (source_content / "save.txt").write_text("restored data")
+    
+    backup_file = os.path.join(backup_manager.backup_path, "Prospects_test")
+    shutil.make_archive(backup_file, "zip", str(source_content))
+    
+    # Perform restore
+    backup_manager.restore_backup("Prospects_test.zip")
+    
+    # Verify file was restored to Prospects
+    prospects_path = os.path.join(backup_manager.server_path, "Icarus", "Saved", "PlayerData", "DedicatedServer", "Prospects")
+    restored_file = os.path.join(prospects_path, "save.txt")
+    assert os.path.exists(restored_file)
+    with open(restored_file, "r") as f:
+        assert f.read() == "restored data"
+
+def test_restore_backup_missing_file(backup_manager):
+    # Should not raise exception
+    try:
+        backup_manager.restore_backup("non_existent.zip")
+    except Exception as e:
+        pytest.fail(f"restore_backup raised exception on missing file: {e}")
+
+import shutil
 import os
