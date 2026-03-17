@@ -49,16 +49,27 @@ class ServerProcessManager:
         return process
 
     def stop_server(self, process):
-        if process:
-            try:
+        if not process:
+            return
+
+        try:
+            if isinstance(process, int):
+                # Handle raw PID (from state recovery)
+                p = psutil.Process(process)
+                p.terminate()
+                try:
+                    p.wait(timeout=5)
+                except psutil.TimeoutExpired:
+                    p.kill()
+            else:
+                # Handle subprocess.Popen object
                 process.terminate()
-                # We don't want to block indefinitely, but a short wait is good for state sync
                 try:
                     process.wait(timeout=5)
                 except subprocess.TimeoutExpired:
                     process.kill()
-            except ProcessLookupError:
-                pass
+        except (psutil.NoSuchProcess, ProcessLookupError, psutil.AccessDenied):
+            pass
         
         self.state["pid"] = None
         self.state["status"] = "stopped"

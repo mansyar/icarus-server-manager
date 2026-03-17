@@ -18,8 +18,9 @@ class MockCTk:
     def grid_rowconfigure(self, *args, **kwargs):
         pass
     def after(self, ms, func, *args):
-        # Immediately call the func to simulate it being called
-        func(*args)
+        # Call immediately if ms is 0 (UI update), but not for long waits (monitoring loop)
+        if ms == 0:
+            func(*args)
     def configure(self, *args, **kwargs):
         pass
     def grid(self, *args, **kwargs):

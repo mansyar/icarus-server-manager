@@ -170,11 +170,39 @@ class App(ctk.CTk):
         self.browse_button.configure(state="normal")
         self.path_entry.configure(state="normal")
 
+    def get_server_executable(self, install_dir: str) -> Optional[str]:
+        """Resolves the path to the actual server executable.
+
+        Args:
+            install_dir: The base installation directory.
+
+        Returns:
+            The full path to the executable, or None if not found.
+        """
+        # Common relative path for Icarus Dedicated Server
+        shipping_exe = os.path.join(
+            install_dir, "Icarus", "Binaries", "Win64", "IcarusServer-Win64-Shipping.exe"
+        )
+        if os.path.exists(shipping_exe):
+            return shipping_exe
+        
+        # Fallback to root exe if present (though usually just a launcher)
+        root_exe = os.path.join(install_dir, "IcarusServer.exe")
+        if os.path.exists(root_exe):
+            return root_exe
+            
+        return None
+
     def start_server(self) -> None:
         """Starts the server process in a separate thread."""
-        exe_path = self.path_entry.get().strip()
-        if not exe_path or not os.path.exists(exe_path):
-            self.log("Error: Invalid server executable path.")
+        install_dir = self.path_entry.get().strip()
+        if not install_dir or not os.path.exists(install_dir):
+            self.log("Error: Invalid installation directory.")
+            return
+
+        exe_path = self.get_server_executable(install_dir)
+        if not exe_path:
+            self.log("Error: Could not find IcarusServer executable in the selected directory.")
             return
 
         self.start_button.configure(state="disabled")
@@ -202,7 +230,11 @@ class App(ctk.CTk):
 
     def on_server_exit(self) -> None:
         """Handles server process exit UI updates."""
+        if self.server_process is None:
+            return
+
         self.log("Server process has exited.")
+        self.server_process = None
         self.start_button.configure(state="normal")
         self.stop_button.configure(state="disabled")
         self.restart_button.configure(state="disabled")
@@ -214,6 +246,12 @@ class App(ctk.CTk):
         if self.server_process:
             self.log("Stopping server...")
             self.server_manager.stop_server(self.server_process)
+            
+            # If it's a PID (recovered process), the log reader thread isn't running,
+            # so we manually trigger the exit UI cleanup.
+            if isinstance(self.server_process, int):
+                self.on_server_exit()
+            self.log("Server stop signal sent successfully.")
 
     def restart_server(self) -> None:
         """Restarts the server process."""
