@@ -15,7 +15,7 @@
     - [x] Add a numeric entry or slider to the UI for the threshold setting.
 - [x] Task: Conductor - User Manual Verification 'Phase 1: Threshold Alerts & UI Feedback' (Protocol in workflow.md) (manual)
 
-## Phase 2: Smart Idle Restart & Active Query (TDD) [checkpoint: ]
+## Phase 2: Smart Idle Restart & Active Query (TDD) [checkpoint: 7930fb9]
 - [x] Task: Implement A2S Query Client for Player Count. (e1c18ed)
     - [x] Write tests for querying a mock A2S_INFO server.
     - [x] Implement `A2SClient` to fetch current player count.
