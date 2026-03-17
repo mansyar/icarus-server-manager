@@ -7,9 +7,9 @@
 - [x] Task: Implement Windows Notification Support. (e8b215a)
     - [x] Write tests for `NotificationManager` (mocking system toast calls).
     - [x] Implement system notifications for threshold breaches.
-- [ ] Task: Update UI for Threshold States.
-    - [ ] Add visual indicators (color/icon change) for RAM threshold alerts.
-    - [ ] Connect threshold state to the manager log.
+- [x] Task: Update UI for Threshold States. (6b4e06f)
+    - [x] Add visual indicators (color/icon change) for RAM threshold alerts.
+    - [x] Connect threshold state to the manager log.
 - [ ] Task: Conductor - User Manual Verification 'Phase 1: Threshold Alerts & UI Feedback' (Protocol in workflow.md)
 
 ## Phase 2: Smart Idle Restart & Active Query (TDD) [checkpoint: ]
