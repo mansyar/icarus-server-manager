@@ -16,7 +16,7 @@
 - [x] Task: Implement 'Delete Oldest' Logic [9e045ac]
     - [ ] Write tests for identifying and deleting the oldest backup files based on a limit
     - [ ] Implement `BackupManager` logic to enforce the configurable retention limit
-- [ ] Task: UI Configuration for Retention & Interval
+- [x] Task: UI Configuration for Retention & Interval [6da2946]
     - [ ] Write tests for saving/loading backup settings (interval, retention limit)
     - [ ] Implement UI elements in settings to configure the backup interval and maximum backups to keep
 - [ ] Task: Conductor - User Manual Verification 'Phase 2: Retention Policy Management' (Protocol in workflow.md)
