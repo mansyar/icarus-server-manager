@@ -9,7 +9,7 @@
     - [ ] Refactor the main entry point to use a new `App` class inheriting from `customtkinter.CTk`.
     - [ ] Write tests for `App` initialization and core structure.
     - [ ] Implement the base grid layout (Sidebar, Main Content, Bottom Console).
-- [ ] **Task: Conductor - User Manual Verification 'Phase 1' (Protocol in workflow.md)**
+- [x] **Task: Conductor - User Manual Verification 'Phase 1' (Protocol in workflow.md)**
 
 ## Phase 2: Core UI Components Implementation
 - [ ] **Task: Implement Sidebar Navigation**
