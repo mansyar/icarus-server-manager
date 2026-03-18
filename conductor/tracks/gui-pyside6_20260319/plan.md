@@ -1,7 +1,7 @@
 # Implementation Plan: GUI Overhaul - PySide6 Industrial Transition
 
 ## Phase 1: Environment and Core Window Setup
-- [ ] Task: Update Tech Stack and Requirements
+- [x] Task: Update Tech Stack and Requirements (da12b6f)
     - [ ] Add PySide6 and pytest-qt to requirements.txt and update tech-stack.md.
 - [ ] Task: Create `tests/ui/test_main_window.py` with failing test for window initialization.
 - [ ] Task: Implement `MainWindow` class inheriting from `QMainWindow` in `icarus_sentinel/ui/main_window.py`.
