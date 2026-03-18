@@ -15,7 +15,7 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 2: Modernizing Threading & MVC Wiring' (Protocol in workflow.md) (a1aee40)
 
 ## Phase 3: Sidebar and Navigation
-- [ ] Task: Create `tests/ui/test_sidebar.py` with failing tests for sidebar buttons and view switching logic.
+- [x] Task: Create `tests/ui/test_sidebar.py` with failing tests for sidebar buttons and view switching logic. (19f9b4f)
 - [ ] Task: Implement the left-aligned `SidebarWidget` with navigation buttons (Dashboard, Settings, Backups, etc.).
 - [ ] Task: Implement a `QStackedWidget` in the central area to handle view transitions.
 - [ ] Task: Apply initial QSS/QML styling and user-provided icons to the sidebar.
