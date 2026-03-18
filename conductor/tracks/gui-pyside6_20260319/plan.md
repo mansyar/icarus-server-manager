@@ -14,12 +14,12 @@
 - [x] Task: Define Qt Signals (`Signal`) on workers to communicate state changes back to the main thread. (4ce2bdf)
 - [x] Task: Conductor - User Manual Verification 'Phase 2: Modernizing Threading & MVC Wiring' (Protocol in workflow.md) (a1aee40)
 
-## Phase 3: Sidebar and Navigation
+## Phase 3: Sidebar and Navigation [checkpoint: ed59e09]
 - [x] Task: Create `tests/ui/test_sidebar.py` with failing tests for sidebar buttons and view switching logic. (19f9b4f)
-- [ ] Task: Implement the left-aligned `SidebarWidget` with navigation buttons (Dashboard, Settings, Backups, etc.).
-- [ ] Task: Implement a `QStackedWidget` in the central area to handle view transitions.
-- [ ] Task: Apply initial QSS/QML styling and user-provided icons to the sidebar.
-- [ ] Task: Conductor - User Manual Verification 'Phase 3: Sidebar and Navigation' (Protocol in workflow.md)
+- [x] Task: Implement the left-aligned `SidebarWidget` with navigation buttons (Dashboard, Settings, Backups, etc.). (e6dbbe3)
+- [x] Task: Implement a `QStackedWidget` in the central area to handle view transitions. (e6dbbe3)
+- [x] Task: Apply initial QSS/QML styling and user-provided icons to the sidebar. (e6dbbe3)
+- [x] Task: Conductor - User Manual Verification 'Phase 3: Sidebar and Navigation' (Protocol in workflow.md) (ed59e09)
 
 ## Phase 4: Recreating the Dashboard (The Mockup)
 - [ ] Task: Create `tests/ui/test_dashboard_view.py` with failing tests for dashboard components (metrics, console, massive button).
