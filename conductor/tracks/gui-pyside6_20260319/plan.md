@@ -1,0 +1,45 @@
+# Implementation Plan: GUI Overhaul - PySide6 Industrial Transition
+
+## Phase 1: Environment and Core Window Setup
+- [ ] Task: Update Tech Stack and Requirements
+    - [ ] Add PySide6 and pytest-qt to requirements.txt and update tech-stack.md.
+- [ ] Task: Create `tests/ui/test_main_window.py` with failing test for window initialization.
+- [ ] Task: Implement `MainWindow` class inheriting from `QMainWindow` in `icarus_sentinel/ui/main_window.py`.
+- [ ] Task: Refactor application entry point (`main.py`) to launch the PySide6 app.
+- [ ] Task: Conductor - User Manual Verification 'Phase 1: Environment and Core Window Setup' (Protocol in workflow.md)
+
+## Phase 2: Modernizing Threading & MVC Wiring
+- [ ] Task: Create `tests/core/test_qthread_workers.py` to test Qt-based background workers.
+- [ ] Task: Refactor the `Controller` class to manage `QThread` instances instead of standard Python threads for server launch, monitoring, and backups.
+- [ ] Task: Define Qt Signals (`Signal`) on workers to communicate state changes back to the main thread.
+- [ ] Task: Conductor - User Manual Verification 'Phase 2: Modernizing Threading & MVC Wiring' (Protocol in workflow.md)
+
+## Phase 3: Sidebar and Navigation
+- [ ] Task: Create `tests/ui/test_sidebar.py` with failing tests for sidebar buttons and view switching logic.
+- [ ] Task: Implement the left-aligned `SidebarWidget` with navigation buttons (Dashboard, Settings, Backups, etc.).
+- [ ] Task: Implement a `QStackedWidget` in the central area to handle view transitions.
+- [ ] Task: Apply initial QSS/QML styling and user-provided icons to the sidebar.
+- [ ] Task: Conductor - User Manual Verification 'Phase 3: Sidebar and Navigation' (Protocol in workflow.md)
+
+## Phase 4: Recreating the Dashboard (The Mockup)
+- [ ] Task: Create `tests/ui/test_dashboard_view.py` with failing tests for dashboard components (metrics, console, massive button).
+- [ ] Task: Implement `DashboardView` widget.
+- [ ] Task: Implement `MetricsWidget` with custom glowing progress bars using QSS or custom paint events.
+- [ ] Task: Implement the "Orbital Launch" `ControlWidget` utilizing the caution-striped texture.
+- [ ] Task: Implement the persistent `ConsoleWidget` for real-time logs.
+- [ ] Task: Apply the deep space background, metallic plate backgrounds, and overall industrial QSS styling to match the mockup exactly.
+- [ ] Task: Connect Controller signals (CPU/RAM updates, logs, server state) to the Dashboard UI slots.
+- [ ] Task: Conductor - User Manual Verification 'Phase 4: Recreating the Dashboard (The Mockup)' (Protocol in workflow.md)
+
+## Phase 5: Migrating Remaining Views
+- [ ] Task: Create test and implement `SettingsView` (mapping to INIManager).
+- [ ] Task: Create test and implement `BackupsView` (mapping to BackupManager).
+- [ ] Task: Create test and implement `SaveSyncView` (mapping to SaveSyncManager).
+- [ ] Task: Apply cohesive QSS styling to these secondary views to ensure they fit the industrial theme.
+- [ ] Task: Conductor - User Manual Verification 'Phase 5: Migrating Remaining Views' (Protocol in workflow.md)
+
+## Phase 6: Cleanup and Finalization
+- [ ] Task: Delete all obsolete CustomTkinter code (`app.py`, old ui folders).
+- [ ] Task: Delete legacy `test_ui.py`, `test_responsive.py`, etc., that relied on Tkinter.
+- [ ] Task: Verify executable compilation (`build_exe.py`) works correctly with PySide6.
+- [ ] Task: Conductor - User Manual Verification 'Phase 6: Cleanup and Finalization' (Protocol in workflow.md)
