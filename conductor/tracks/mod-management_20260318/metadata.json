@@ -1,8 +1,0 @@
-{
-  "track_id": "mod-management_20260318",
-  "type": "feature",
-  "status": "new",
-  "created_at": "2026-03-18T14:56:00Z",
-  "updated_at": "2026-03-18T14:56:00Z",
-  "description": "Mod Management: Support for installing and updating Icarus server mods directly within the manager."
-}
