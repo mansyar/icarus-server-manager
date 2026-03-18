@@ -8,11 +8,11 @@
 - [x] Task: Refactor application entry point (`main.py`) to launch the PySide6 app. (1d79a26)
 - [x] Task: Conductor - User Manual Verification 'Phase 1: Environment and Core Window Setup' (Protocol in workflow.md) (5b43688)
 
-## Phase 2: Modernizing Threading & MVC Wiring
+## Phase 2: Modernizing Threading & MVC Wiring [checkpoint: a1aee40]
 - [x] Task: Create `tests/core/test_qthread_workers.py` to test Qt-based background workers. (ea23caa)
 - [x] Task: Refactor the `Controller` class to manage `QThread` instances instead of standard Python threads for server launch, monitoring, and backups. (4ce2bdf)
 - [x] Task: Define Qt Signals (`Signal`) on workers to communicate state changes back to the main thread. (4ce2bdf)
-- [ ] Task: Conductor - User Manual Verification 'Phase 2: Modernizing Threading & MVC Wiring' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 2: Modernizing Threading & MVC Wiring' (Protocol in workflow.md) (a1aee40)
 
 ## Phase 3: Sidebar and Navigation
 - [ ] Task: Create `tests/ui/test_sidebar.py` with failing tests for sidebar buttons and view switching logic.
