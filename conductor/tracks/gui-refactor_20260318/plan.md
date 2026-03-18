@@ -5,7 +5,7 @@
     - [ ] Create `style_config.py` with hex colors and theme settings (Background, Sidebar, Accents, Typography).
     - [ ] Write tests for `style_config.py`.
     - [ ] Implement and verify style constants.
-- [ ] **Task: Rewrite Main Application Class (`App`)**
+- [x] **Task: Rewrite Main Application Class (`App`)** 20b7011
     - [ ] Refactor the main entry point to use a new `App` class inheriting from `customtkinter.CTk`.
     - [ ] Write tests for `App` initialization and core structure.
     - [ ] Implement the base grid layout (Sidebar, Main Content, Bottom Console).
