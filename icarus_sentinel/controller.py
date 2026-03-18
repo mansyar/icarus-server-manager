@@ -3,6 +3,7 @@ import os
 import threading
 import psutil
 from typing import Optional, Callable
+from icarus_sentinel import constants
 
 class Controller:
     """Orchestrates logic between UI and Managers for Icarus Sentinel."""
@@ -105,7 +106,24 @@ class Controller:
                         process.stdout.close()
                     process.wait()
                 
-                self.ui.server_process = self.ui.server_manager.start_server(exe_path)
+                port = int(self.ui.ini_manager.get_setting("Port") or constants.DEFAULT_PORT)
+                query_port = int(self.ui.ini_manager.get_setting("QueryPort") or constants.DEFAULT_QUERY_PORT)
+                server_name = self.ui.ini_manager.get_setting("SessionName") or constants.DEFAULT_SERVER_NAME
+                max_players = int(self.ui.ini_manager.get_setting("MaxPlayers") or 8)
+                password = self.ui.ini_manager.get_setting("ServerPassword")
+                admin_password = self.ui.ini_manager.get_setting("AdminPassword")
+                no_steam = self.ui.ini_manager.get_setting("NoSteam", section=constants.SECTION_SENTINEL) == "True"
+                
+                self.ui.server_process = self.ui.server_manager.start_server(
+                    exe_path, 
+                    port=port, 
+                    query_port=query_port, 
+                    server_name=server_name,
+                    max_players=max_players,
+                    password=password,
+                    admin_password=admin_password,
+                    no_steam=no_steam
+                )
                 self.ui.server_manager.stream_logs(self.ui.server_process, lambda line: self.ui.after(0, lambda m=line: self.ui.log(m)))
                 self.ui.after(0, self.ui.on_server_exit)
             except Exception as e:

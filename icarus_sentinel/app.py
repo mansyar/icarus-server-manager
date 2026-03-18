@@ -220,24 +220,34 @@ class App(ctk.CTk):
         """Populates the Configuration GUI fields from INI manager."""
         if not self.ini_manager or not hasattr(self, "server_name_entry"): return
         self.server_name_entry.delete(0, "end")
-        self.server_name_entry.insert(0, self.ini_manager.get_setting("SessionName") or "")
+        self.server_name_entry.insert(0, self.ini_manager.get_setting("SessionName") or constants.DEFAULT_SERVER_NAME)
         self.server_password_entry.delete(0, "end")
         self.server_password_entry.insert(0, self.ini_manager.get_setting("ServerPassword") or "")
         self.admin_password_entry.delete(0, "end")
         self.admin_password_entry.insert(0, self.ini_manager.get_setting("AdminPassword") or "")
         self.server_port_entry.delete(0, "end")
-        self.server_port_entry.insert(0, self.ini_manager.get_setting("Port") or "17777")
+        self.server_port_entry.insert(0, self.ini_manager.get_setting("Port") or constants.DEFAULT_PORT)
+        if hasattr(self, "query_port_entry"):
+            self.query_port_entry.delete(0, "end")
+            self.query_port_entry.insert(0, self.ini_manager.get_setting("QueryPort") or constants.DEFAULT_QUERY_PORT)
         update_val = self.ini_manager.get_setting("UpdateOnLaunch", section=constants.SECTION_SENTINEL)
         self.update_on_launch_var.set(update_val == "True")
+        if hasattr(self, "no_steam_var"):
+            no_steam_val = self.ini_manager.get_setting("NoSteam", section=constants.SECTION_SENTINEL)
+            self.no_steam_var.set(no_steam_val == "True")
 
     def save_config(self) -> None:
         """Saves values from the Configuration GUI back to INI file."""
         if not self.ini_manager or not hasattr(self, "server_name_entry"): return
         self.ini_manager.set_setting("SessionName", self.server_name_entry.get())
         self.ini_manager.set_setting("ServerPassword", self.server_password_entry.get())
-        self.ini_manager.set_setting("AdminPassword", self.admin_password_entry.get())
+        self.admin_password_entry.get() and self.ini_manager.set_setting("AdminPassword", self.admin_password_entry.get())
         self.ini_manager.set_setting("Port", self.server_port_entry.get())
+        if hasattr(self, "query_port_entry"):
+            self.ini_manager.set_setting("QueryPort", self.query_port_entry.get())
         self.ini_manager.set_setting("UpdateOnLaunch", str(self.update_on_launch_var.get()), section=constants.SECTION_SENTINEL)
+        if hasattr(self, "no_steam_var"):
+            self.ini_manager.set_setting("NoSteam", str(self.no_steam_var.get()), section=constants.SECTION_SENTINEL)
         self.ini_manager.save()
         self.log("Configuration saved successfully.")
 

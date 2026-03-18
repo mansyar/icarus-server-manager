@@ -27,10 +27,10 @@ class INIManager:
                 self.config.read_file(f)
         else:
             # Initialize with default section if missing
-            if not self.config.has_section("/Script/IcarusServer.IcarusServerSettings"):
-                self.config.add_section("/Script/IcarusServer.IcarusServerSettings")
+            if not self.config.has_section("SessionSettings"):
+                self.config.add_section("SessionSettings")
 
-    def get_setting(self, key: str, section: str = "/Script/IcarusServer.IcarusServerSettings") -> Optional[str]:
+    def get_setting(self, key: str, section: str = "SessionSettings") -> Optional[str]:
         """Retrieves a setting value from a specific section.
 
         Args:
@@ -44,7 +44,7 @@ class INIManager:
             return self.config.get(section, key)
         return None
 
-    def set_setting(self, key: str, value: str, section: str = "/Script/IcarusServer.IcarusServerSettings") -> None:
+    def set_setting(self, key: str, value: str, section: str = "SessionSettings") -> None:
         """Sets a setting value in a specific section.
 
         Args:

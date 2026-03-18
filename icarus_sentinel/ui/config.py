@@ -50,19 +50,33 @@ class ConfigView(ctk.CTkScrollableFrame):
         self.server_port_entry.grid(row=3, column=1, padx=10, pady=10, sticky="ew")
         self.app.server_port_entry = self.server_port_entry
 
+        # Query Port
+        ctk.CTkLabel(self.config_scroll, text="Query Port:").grid(row=4, column=0, padx=10, pady=10, sticky="w")
+        self.query_port_entry = ctk.CTkEntry(self.config_scroll)
+        self.query_port_entry.grid(row=4, column=1, padx=10, pady=10, sticky="ew")
+        self.app.query_port_entry = self.query_port_entry
+
         # Update on Launch
         self.update_on_launch_var = ctk.BooleanVar(value=False)
         self.app.update_on_launch_var = self.update_on_launch_var
         self.update_on_launch_checkbox = ctk.CTkCheckBox(
             self.config_scroll, text="Update on Launch", variable=self.update_on_launch_var
         )
-        self.update_on_launch_checkbox.grid(row=4, column=0, columnspan=2, padx=10, pady=10, sticky="w")
+        self.update_on_launch_checkbox.grid(row=5, column=0, columnspan=2, padx=10, pady=5, sticky="w")
+
+        # Disable Steam Auth (NoSteam)
+        self.no_steam_var = ctk.BooleanVar(value=False)
+        self.app.no_steam_var = self.no_steam_var
+        self.no_steam_checkbox = ctk.CTkCheckBox(
+            self.config_scroll, text="Disable Steam Auth (-NOSTEAM)", variable=self.no_steam_var
+        )
+        self.no_steam_checkbox.grid(row=6, column=0, columnspan=2, padx=10, pady=5, sticky="w")
 
         # Save Button
         self.save_config_button = ctk.CTkButton(
             self.config_scroll, text="Save Configuration", command=self.app.save_config
         )
-        self.save_config_button.grid(row=5, column=0, columnspan=2, padx=10, pady=20)
+        self.save_config_button.grid(row=7, column=0, columnspan=2, padx=10, pady=20)
         
         # Advanced Config Fields
         self.raw_ini_textbox = ctk.CTkTextbox(self.advanced_config_tab, font=("Consolas", 12))

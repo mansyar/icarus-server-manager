@@ -95,13 +95,18 @@ class ServerProcessManager:
         except IOError:
             pass
 
-    def start_server(self, exe_path, port=17777, query_port=27015):
+    def start_server(self, exe_path, port=17777, query_port=27015, server_name="Icarus Server", max_players=8, password=None, admin_password=None, no_steam=False):
         """Starts the Icarus server process with the specified configuration.
 
         Args:
             exe_path (str): Full path to the IcarusServer executable.
             port (int): The game port to use. Defaults to 17777.
             query_port (int): The query port to use. Defaults to 27015.
+            server_name (str): The name for the Steam server.
+            max_players (int): Maximum player count.
+            password (str): Join password.
+            admin_password (str): Admin password.
+            no_steam (bool): Whether to disable Steam authentication.
 
         Returns:
             subprocess.Popen: The started process object.
@@ -110,8 +115,17 @@ class ServerProcessManager:
             exe_path,
             f"-Port={port}",
             f"-QueryPort={query_port}",
+            f"-SteamServerName={server_name}",
+            f"-maxplayers={max_players}",
             "-Log"
         ]
+        
+        if no_steam:
+            cmd.append("-NOSTEAM")
+        if password:
+            cmd.append(f"-JoinPassword={password}")
+        if admin_password:
+            cmd.append(f"-AdminPassword={admin_password}")
         
         process = subprocess.Popen(
             cmd,
