@@ -13,7 +13,10 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 2: UI Integration' (Protocol in workflow.md) 6a9f8f2
 
 ## Phase 3: Final Verification and Polishing
-- [ ] Task: Run full test suite for the Mod Management feature.
-- [ ] Task: Manually verify the end-to-end flow: Select Mod -> Install (Auto-create folder) -> List -> Remove.
-- [ ] Task: Ensure feedback and the "Client Sync Warning" are prominent and accurate.
-- [ ] Task: Conductor - User Manual Verification 'Phase 3: Final Verification and Polishing' (Protocol in workflow.md)
+- [x] Task: Run full test suite for the Mod Management feature. 258d843
+- [~] Task: Manually verify the end-to-end flow: Select Mod -> Install (Auto-create folder) -> List -> Remove.
+- [~] Task: Ensure feedback and the "Client Sync Warning" are prominent and accurate.
+- [~] Task: Conductor - User Manual Verification 'Phase 3: Final Verification and Polishing' (Protocol in workflow.md)
+
+## Phase: Review Fixes
+- [x] Task: Apply review suggestions 284a84c
