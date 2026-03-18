@@ -12,18 +12,18 @@
   * Use encouraging language, especially during the initial setup phase.
 
 ## 3. Visual Branding & Theme
-* **Style:** Native Windows 11
+* **Style:** Charcoal & Orange (Modern Industrial)
 * **Guidelines:**
-  * Utilize Fluent Design principles, such as rounded corners and subtle drop shadows.
-  * Ensure the app feels like a natural extension of the Windows OS environment.
-  * Respect system-level Dark/Light mode preferences if possible, or default to a modern dark theme.
+  * Base Palette: Use `#141414` for app background and `#1A1A1A` for sidebars.
+  * Accents: Use bright orange (`#FF8C00`) for primary action buttons, progress bar fills, and console text.
+  * Geometry: Apply rounded corners (`10px` - `15px`) to all container frames and buttons for a modern feel.
 
 ## 4. User Experience (UX) Layout
-* **Style:** Tabbed Interface
+* **Style:** Sidebar Navigation
 * **Guidelines:**
-  * Segment features logically into distinct tabs (e.g., Dashboard, Server Settings, Backups, Logs).
-  * Ensure the "Dashboard" tab provides an immediate, at-a-glance view of server health (RAM/CPU, Status).
-  * Keep navigation persistent and clearly visible at the top or side of the window.
+  * Segment features into functional views toggled by a persistent left-aligned sidebar.
+  * Ensure the "Dashboard" view provides an immediate, high-impact view of server metrics and the primary "Orbital Launch" control.
+  * Use scrollable frames for dashboard views to maintain usability across various window sizes.
 
 ## 5. Error Handling & Messaging
 * **Style:** Empathetic & Helpful

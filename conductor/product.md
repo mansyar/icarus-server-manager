@@ -148,9 +148,10 @@
 * **Requirement 3.5:** Backup Retention: Permanently **Delete Oldest** backups when the retention limit is reached to save space.
 
 ### 4.4 UI/UX Experience
-* **Requirement 4.1:** **Detailed Feedback:** Display real-time console output from SteamCMD and server initialization within a persistent scrollable text box at the bottom of the application window.
-* **Requirement 4.2:** **Tabbed Navigation:** Use a tabbed interface to separate core server management from advanced features like the backup browser.        
-* **Requirement 4.3:** **About & Versioning:** Clearly display the application version and provide an "About" dialog for credits and system information.       
+* **Requirement 4.1:** **Detailed Feedback:** Display real-time console output from SteamCMD and server initialization within a persistent, monospace orange-on-black textbox anchored at the bottom of the window.
+* **Requirement 4.2:** **Sidebar-Driven Navigation:** Utilize a fixed left-aligned sidebar for primary navigation, separating functional views (Dashboard, Configuration, Save Sync, etc.) without top-level tabs.
+* **Requirement 4.3:** **Brand Visual Identity:** Apply a consistent dark charcoal and orange brand theme across the application, featuring massive, bold action buttons and horizontal progress bars for resource metrics.
+* **Requirement 4.4:** **About & Versioning:** Clearly display the application version and provide an "About" dialog for credits and system information.
 
 ### 4.5 Mod Management
 * **Requirement 5.1:** Dedicated "Mods" tab for installing and listing server mods.
