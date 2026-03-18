@@ -21,15 +21,15 @@
 - [x] Task: Apply initial QSS/QML styling and user-provided icons to the sidebar. (e6dbbe3)
 - [x] Task: Conductor - User Manual Verification 'Phase 3: Sidebar and Navigation' (Protocol in workflow.md) (ed59e09)
 
-## Phase 4: Recreating the Dashboard (The Mockup)
+## Phase 4: Recreating the Dashboard (The Mockup) [checkpoint: d7a2d61]
 - [x] Task: Create `tests/ui/test_dashboard_view.py` with failing tests for dashboard components (metrics, console, massive button). (9973f60)
-- [ ] Task: Implement `DashboardView` widget.
-- [ ] Task: Implement `MetricsWidget` with custom glowing progress bars using QSS or custom paint events.
-- [ ] Task: Implement the "Orbital Launch" `ControlWidget` utilizing the caution-striped texture.
-- [ ] Task: Implement the persistent `ConsoleWidget` for real-time logs.
-- [ ] Task: Apply the deep space background, metallic plate backgrounds, and overall industrial QSS styling to match the mockup exactly.
-- [ ] Task: Connect Controller signals (CPU/RAM updates, logs, server state) to the Dashboard UI slots.
-- [ ] Task: Conductor - User Manual Verification 'Phase 4: Recreating the Dashboard (The Mockup)' (Protocol in workflow.md)
+- [x] Task: Implement `DashboardView` widget. (2183831)
+- [x] Task: Implement `MetricsWidget` with custom glowing progress bars using QSS or custom paint events. (2183831)
+- [x] Task: Implement the "Orbital Launch" `ControlWidget` utilizing the caution-striped texture. (2183831)
+- [x] Task: Implement the persistent `ConsoleWidget` for real-time logs. (2183831)
+- [x] Task: Apply the deep space background, metallic plate backgrounds, and overall industrial QSS styling to match the mockup exactly. (2183831)
+- [x] Task: Connect Controller signals (CPU/RAM updates, logs, server state) to the Dashboard UI slots. (2183831)
+- [x] Task: Conductor - User Manual Verification 'Phase 4: Recreating the Dashboard (The Mockup)' (Protocol in workflow.md) (d7a2d61)
 
 ## Phase 5: Migrating Remaining Views
 - [ ] Task: Create test and implement `SettingsView` (mapping to INIManager).
