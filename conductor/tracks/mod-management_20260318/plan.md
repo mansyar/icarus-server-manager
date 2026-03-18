@@ -1,9 +1,9 @@
 # Implementation Plan: Mod Management (Feature)
 
-## Phase 1: Core Mod Logic (TDD)
+## Phase 1: Core Mod Logic (TDD) [checkpoint: 69ae324]
 - [x] Task: Create `tests/test_mod_manager.py` with failing tests for directory resolution, folder creation, installation (copy/extract), listing, and removal. 64bfccd
 - [x] Task: Implement `core/mod_manager.py` with `ModManager` class handling `install_mod`, `remove_mod`, and `list_mods`. 64bfccd
-- [~] Task: Conductor - User Manual Verification 'Phase 1: Core Mod Logic' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 1: Core Mod Logic' (Protocol in workflow.md) 69ae324
 
 ## Phase 2: UI Integration (TDD)
 - [ ] Task: Create `tests/test_mod_gui.py` with failing tests for tab structure, list display, and sync warning visibility.
