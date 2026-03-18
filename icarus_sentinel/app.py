@@ -118,6 +118,43 @@ class App(ctk.CTk):
         # Sidebar
         self.sidebar_frame = ctk.CTkFrame(self, width=200, corner_radius=0, fg_color=style_config.SIDEBAR_BG)
         self.sidebar_frame.grid(row=0, column=0, sticky="nsew")
+        self.sidebar_frame.grid_rowconfigure(5, weight=1) # Spacer
+
+        self.sidebar_logo_label = ctk.CTkLabel(
+            self.sidebar_frame, 
+            text="ICARUS\nSENTINEL", 
+            font=(style_config.FONT_MAIN[0], 20, "bold"),
+            text_color=style_config.ACCENT_COLOR
+        )
+        self.sidebar_logo_label.grid(row=0, column=0, padx=20, pady=(20, 10))
+
+        self.nav_dashboard_btn = ctk.CTkButton(
+            self.sidebar_frame, text="Dashboard", corner_radius=0, height=40, border_spacing=10,
+            fg_color="transparent", text_color=("gray10", "gray90"), hover_color=("gray70", "gray30"),
+            anchor="w", command=lambda: self.select_tab("Server")
+        )
+        self.nav_dashboard_btn.grid(row=1, column=0, sticky="ew")
+
+        self.nav_settings_btn = ctk.CTkButton(
+            self.sidebar_frame, text="Configuration", corner_radius=0, height=40, border_spacing=10,
+            fg_color="transparent", text_color=("gray10", "gray90"), hover_color=("gray70", "gray30"),
+            anchor="w", command=lambda: self.select_tab("Configuration")
+        )
+        self.nav_settings_btn.grid(row=2, column=0, sticky="ew")
+
+        self.nav_backups_btn = ctk.CTkButton(
+            self.sidebar_frame, text="Backups", corner_radius=0, height=40, border_spacing=10,
+            fg_color="transparent", text_color=("gray10", "gray90"), hover_color=("gray70", "gray30"),
+            anchor="w", command=lambda: self.select_tab("Backups")
+        )
+        self.nav_backups_btn.grid(row=3, column=0, sticky="ew")
+
+        self.nav_mods_btn = ctk.CTkButton(
+            self.sidebar_frame, text="Mods", corner_radius=0, height=40, border_spacing=10,
+            fg_color="transparent", text_color=("gray10", "gray90"), hover_color=("gray70", "gray30"),
+            anchor="w", command=lambda: self.select_tab("Mods")
+        )
+        self.nav_mods_btn.grid(row=4, column=0, sticky="ew")
         
         # Main Content Frame
         self.main_content_frame = ctk.CTkFrame(self, fg_color="transparent")
@@ -926,6 +963,11 @@ class App(ctk.CTk):
             if self.server_manager.should_smart_restart():
                 self.log("Smart Idle Restart condition met. Triggering restart...")
                 self.after(0, self.restart_server)
+
+    def select_tab(self, name: str) -> None:
+        """Switch to the specified tab and update UI selection."""
+        self.tabview.set(name)
+        # We will add button highlighting here in Phase 3
 
     def on_tab_change(self) -> None:
         """Handles tab selection events."""
