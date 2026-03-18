@@ -47,10 +47,10 @@ def test_refresh_mod_list(app_instance):
     # I'll check for insert calls
     assert app_instance.mod_list.insert.called
 
-@patch("icarus_sentinel.app.filedialog.askopenfilename")
-def test_install_mod_flow(mock_askopen, app_instance):
+@patch("icarus_sentinel.app.filedialog.askopenfilenames")
+def test_install_mod_flow_single(mock_askopen, app_instance):
     from icarus_sentinel.app import App
-    mock_askopen.return_value = "C:/downloads/awesome_mod.pak"
+    mock_askopen.return_value = ["C:/downloads/awesome_mod.pak"]
     
     app_instance.install_mod_ui = lambda: App.install_mod_ui(app_instance)
     app_instance.refresh_mod_list = MagicMock()
@@ -59,3 +59,18 @@ def test_install_mod_flow(mock_askopen, app_instance):
     
     app_instance.mod_manager.install_mod.assert_called_with("C:/downloads/awesome_mod.pak")
     app_instance.refresh_mod_list.assert_called_once()
+
+@patch("icarus_sentinel.app.filedialog.askopenfilenames")
+def test_install_multiple_mods_flow(mock_askopen, app_instance):
+    from icarus_sentinel.app import App
+    mock_askopen.return_value = ["C:/downloads/mod1.pak", "C:/downloads/mod2.zip"]
+    
+    app_instance.install_mod_ui = lambda: App.install_mod_ui(app_instance)
+    app_instance.refresh_mod_list = MagicMock()
+    
+    app_instance.install_mod_ui()
+    
+    assert app_instance.mod_manager.install_mod.call_count == 2
+    app_instance.mod_manager.install_mod.assert_any_call("C:/downloads/mod1.pak")
+    app_instance.mod_manager.install_mod.assert_any_call("C:/downloads/mod2.zip")
+    app_instance.refresh_mod_list.assert_called()

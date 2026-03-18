@@ -314,20 +314,22 @@ class App(ctk.CTk):
         self.mod_list.configure(state="disabled")
 
     def install_mod_ui(self) -> None:
-        """Opens file dialog and installs selected mod."""
-        file_path = filedialog.askopenfilename(
-            title="Select Mod File",
+        """Opens file dialog and installs selected mods."""
+        file_paths = filedialog.askopenfilenames(
+            title="Select Mod Files",
             filetypes=[("Mod Files", "*.pak *.zip"), ("PAK Files", "*.pak"), ("ZIP Archives", "*.zip")]
         )
-        if file_path:
-            self.log(f"Installing mod: {os.path.basename(file_path)}...")
-            try:
-                self.mod_manager.install_mod(file_path)
-                self.log("Mod installed successfully.")
-                self.refresh_mod_list()
-            except Exception as e:
-                self.log(f"Error installing mod: {str(e)}")
-                messagebox.showerror("Installation Error", f"Failed to install mod: {str(e)}")
+        if file_paths:
+            for file_path in file_paths:
+                self.log(f"Installing mod: {os.path.basename(file_path)}...")
+                try:
+                    self.mod_manager.install_mod(file_path)
+                    self.log(f"Mod '{os.path.basename(file_path)}' installed successfully.")
+                except Exception as e:
+                    self.log(f"Error installing mod '{os.path.basename(file_path)}': {str(e)}")
+                    messagebox.showerror("Installation Error", f"Failed to install mod '{os.path.basename(file_path)}': {str(e)}")
+            
+            self.refresh_mod_list()
 
     def remove_mod_ui(self) -> None:
         """Prompts for mod name and removes it."""

@@ -5,7 +5,7 @@ This feature adds a new "Mods" tab to the Icarus Sentinel UI, allowing users to 
 
 ## Functional Requirements
 - **Requirement 1:** A new top-level "Mods" tab in the CustomTkinter UI.
-- **Requirement 2:** A "Select Mod" button with a file picker supporting `.pak` and `.zip` files.
+- **Requirement 2:** A "Select Mod" button with a file picker supporting multiple `.pak` and `.zip` files.
 - **Requirement 3:** **Automatic Installation:** 
     - Create the `\Icarus\Content\Paks\mods` directory if it does not exist.
     - If a `.zip` file is selected, extract the `.pak` file(s) from it.
