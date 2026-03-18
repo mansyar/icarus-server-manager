@@ -16,6 +16,8 @@ def app_instance():
         
         # Dependencies
         app.steam_manager = MagicMock()
+        app.ini_manager = None
+        app.save_sync_manager = MagicMock()
         
         # UI Elements
         app.console_output = MagicMock()

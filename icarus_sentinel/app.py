@@ -8,13 +8,17 @@ from typing import Optional, Callable
 import customtkinter as ctk
 import psutil
 
-from icarus_sentinel import __version__
+from icarus_sentinel import __version__, style_config
 from icarus_sentinel.steam_manager import SteamManager
 from icarus_sentinel.server_manager import ServerProcessManager
 from icarus_sentinel.backup_manager import BackupManager
 from icarus_sentinel.core.ini_manager import INIManager
 from icarus_sentinel.core.save_sync_manager import SaveSyncManager
 from icarus_sentinel.core.mod_manager import ModManager
+
+# Set appearance and theme
+ctk.set_appearance_mode("Dark")
+ctk.set_default_color_theme("blue") # We will override with our own colors
 
 class RamOptimizationDialog(ctk.CTkToplevel):
     """Dialog shown when system RAM is low before server launch."""
@@ -32,11 +36,11 @@ class RamOptimizationDialog(ctk.CTkToplevel):
                 f"Only {available_pct}% available."
             ),
             text_color="red",
-            font=("Arial", 16, "bold")
+            font=(style_config.FONT_MAIN[0], 16, "bold")
         )
         self.label.pack(padx=20, pady=20)
 
-        self.info_text = ctk.CTkTextbox(self, width=350, height=100)
+        self.info_text = ctk.CTkTextbox(self, width=350, height=100, fg_color=style_config.CONSOLE_BG, text_color=style_config.CONSOLE_TEXT)
         self.info_text.pack(padx=20, pady=10)
         self.info_text.insert(
             "0.0", 
@@ -51,7 +55,7 @@ class RamOptimizationDialog(ctk.CTkToplevel):
         self.btn_frame.pack(padx=20, pady=20, fill="x")
 
         self.launch_anyway_btn = ctk.CTkButton(
-            self.btn_frame, text="Launch Anyway", command=self.confirm
+            self.btn_frame, text="Launch Anyway", fg_color=style_config.ACCENT_COLOR, command=self.confirm
         )
         self.launch_anyway_btn.pack(side="left", padx=10, expand=True)
 
@@ -74,7 +78,8 @@ class App(ctk.CTk):
         """Initializes the main application window and its components."""
         super().__init__()
         self.title("Icarus Sentinel")
-        self.geometry("800x700")
+        self.geometry("1100x700")
+        self.configure(fg_color=style_config.APP_BG)
         
         self.steam_manager = SteamManager()
         
@@ -106,13 +111,24 @@ class App(ctk.CTk):
         self.backup_manager.start_timer()
         
         # Main Grid layout
-        self.grid_columnconfigure(0, weight=1)
-        self.grid_rowconfigure(0, weight=1) # Tabview expands
-        self.grid_rowconfigure(1, weight=0) # Console fixed at bottom
+        self.grid_columnconfigure(0, weight=0) # Sidebar
+        self.grid_columnconfigure(1, weight=1) # Main content area
+        self.grid_rowconfigure(0, weight=1)
 
-        # Tabview
-        self.tabview = ctk.CTkTabview(self, command=self.on_tab_change)
-        self.tabview.grid(row=0, column=0, padx=20, pady=(20, 10), sticky="nsew")
+        # Sidebar
+        self.sidebar_frame = ctk.CTkFrame(self, width=200, corner_radius=0, fg_color=style_config.SIDEBAR_BG)
+        self.sidebar_frame.grid(row=0, column=0, sticky="nsew")
+        
+        # Main Content Frame
+        self.main_content_frame = ctk.CTkFrame(self, fg_color="transparent")
+        self.main_content_frame.grid(row=0, column=1, sticky="nsew", padx=20, pady=20)
+        self.main_content_frame.grid_columnconfigure(0, weight=1)
+        self.main_content_frame.grid_rowconfigure(0, weight=1) # Upper content
+        self.main_content_frame.grid_rowconfigure(1, weight=0) # Console
+
+        # Temp Tabview inside main_content_frame (will be replaced by navigation in Phase 2)
+        self.tabview = ctk.CTkTabview(self.main_content_frame, command=self.on_tab_change)
+        self.tabview.grid(row=0, column=0, padx=0, pady=(0, 10), sticky="nsew")
         self.server_tab = self.tabview.add("Server")
         self.config_tab = self.tabview.add("Configuration")
         self.save_sync_tab = self.tabview.add("Save Sync")
@@ -131,12 +147,20 @@ class App(ctk.CTk):
         self.init_backups_tab()
         self.init_mods_tab()
 
-        self.console_output = ctk.CTkTextbox(self, height=150, state="disabled")
-        self.console_output.grid(row=1, column=0, padx=20, pady=(0, 5), sticky="ew")
+        # Console
+        self.console_output = ctk.CTkTextbox(
+            self.main_content_frame, 
+            height=150, 
+            state="disabled",
+            fg_color=style_config.CONSOLE_BG,
+            text_color=style_config.CONSOLE_TEXT,
+            font=style_config.FONT_MONO
+        )
+        self.console_output.grid(row=1, column=0, sticky="ew")
 
-        # Version & About Label
-        self.bottom_frame = ctk.CTkFrame(self, fg_color="transparent")
-        self.bottom_frame.grid(row=2, column=0, padx=20, pady=(0, 5), sticky="ew")
+        # Bottom Frame (Status/Version)
+        self.bottom_frame = ctk.CTkFrame(self.main_content_frame, fg_color="transparent")
+        self.bottom_frame.grid(row=2, column=0, pady=(5, 0), sticky="ew")
         
         self.about_btn = ctk.CTkButton(
             self.bottom_frame, text="About", width=50, height=20, 
@@ -144,7 +168,7 @@ class App(ctk.CTk):
         )
         self.about_btn.pack(side="left")
 
-        self.version_label = ctk.CTkLabel(self.bottom_frame, text=f"v{__version__}", font=("Arial", 10))
+        self.version_label = ctk.CTkLabel(self.bottom_frame, text=f"v{__version__}", font=(style_config.FONT_MAIN[0], 10))
         self.version_label.pack(side="right")
 
         # Recover state
