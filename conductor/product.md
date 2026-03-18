@@ -48,6 +48,13 @@
 * **Requirement 4.3:** Automatic sync triggers on server Start (Local -> Server) and Stop (Server -> Local).
 * **Requirement 4.4:** Manual sync trigger with SteamID discovery.
 
+### 4.5 Mod Management
+* **Requirement 5.1:** Dedicated "Mods" tab for installing and listing server mods.
+* **Requirement 5.2:** Support for manual selection of `.pak` and `.zip` mod files.
+* **Requirement 5.3:** Automatic extraction of `.pak` files from `.zip` archives.
+* **Requirement 5.4:** Automatic creation of the server's mod directory if missing.
+* **Requirement 5.5:** "Client Sync Warning" to inform users about mod version matching.
+
 ---
 
 ## 5. Core Workflows (The Logic Flow)
@@ -142,8 +149,15 @@
 
 ### 4.4 UI/UX Experience
 * **Requirement 4.1:** **Detailed Feedback:** Display real-time console output from SteamCMD and server initialization within a persistent scrollable text box at the bottom of the application window.
-* **Requirement 4.2:** **Tabbed Navigation:** Use a tabbed interface to separate core server management from advanced features like the backup browser.
-* **Requirement 4.3:** **About & Versioning:** Clearly display the application version and provide an "About" dialog for credits and system information.
+* **Requirement 4.2:** **Tabbed Navigation:** Use a tabbed interface to separate core server management from advanced features like the backup browser.        
+* **Requirement 4.3:** **About & Versioning:** Clearly display the application version and provide an "About" dialog for credits and system information.       
+
+### 4.5 Mod Management
+* **Requirement 5.1:** Dedicated "Mods" tab for installing and listing server mods.
+* **Requirement 5.2:** Support for manual selection of `.pak` and `.zip` mod files.
+* **Requirement 5.3:** Automatic extraction of `.pak` files from `.zip` archives.
+* **Requirement 5.4:** Automatic creation of the server's mod directory if missing.
+* **Requirement 5.5:** "Client Sync Warning" to inform users about mod version matching.
 
 ---
 
@@ -198,5 +212,4 @@
 ---
 
 ## 8. Future Roadmap
-* **Mod Management:** Support for installing and updating Icarus server mods directly within the manager.
 * **Player Activity Tracking:** Track player join/leave events and display a live player list in the UI.
