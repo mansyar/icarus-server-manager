@@ -9,7 +9,7 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 1: Environment and Core Window Setup' (Protocol in workflow.md) (5b43688)
 
 ## Phase 2: Modernizing Threading & MVC Wiring
-- [ ] Task: Create `tests/core/test_qthread_workers.py` to test Qt-based background workers.
+- [x] Task: Create `tests/core/test_qthread_workers.py` to test Qt-based background workers. (ea23caa)
 - [ ] Task: Refactor the `Controller` class to manage `QThread` instances instead of standard Python threads for server launch, monitoring, and backups.
 - [ ] Task: Define Qt Signals (`Signal`) on workers to communicate state changes back to the main thread.
 - [ ] Task: Conductor - User Manual Verification 'Phase 2: Modernizing Threading & MVC Wiring' (Protocol in workflow.md)
