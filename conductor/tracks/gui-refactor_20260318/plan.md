@@ -1,0 +1,44 @@
+# Implementation Plan: GUI Refactor - Icarus Sentinel Dashboard
+
+## Phase 1: Foundation (Theme, Layout)
+- [ ] **Task: Setup Style Configuration (`style_config.py`)**
+    - [ ] Create `style_config.py` with hex colors and theme settings (Background, Sidebar, Accents, Typography).
+    - [ ] Write tests for `style_config.py`.
+    - [ ] Implement and verify style constants.
+- [ ] **Task: Rewrite Main Application Class (`App`)**
+    - [ ] Refactor the main entry point to use a new `App` class inheriting from `customtkinter.CTk`.
+    - [ ] Write tests for `App` initialization and core structure.
+    - [ ] Implement the base grid layout (Sidebar, Main Content, Bottom Console).
+- [ ] **Task: Conductor - User Manual Verification 'Phase 1' (Protocol in workflow.md)**
+
+## Phase 2: Core UI Components Implementation
+- [ ] **Task: Implement Sidebar Navigation**
+    - [ ] Implement the left-aligned `SidebarFrame` with navigation buttons (Dashboard, Settings, Backups, etc.).
+    - [ ] Write tests for sidebar button interactions.
+    - [ ] Style the sidebar background and buttons.
+- [ ] **Task: Implement Dashboard Center Metrics**
+    - [ ] Implement `MetricsFrame` with styled horizontal `CTkProgressBar` widgets for CPU and RAM.
+    - [ ] Write tests for metrics display updates.
+    - [ ] Style labels and progress bars with accent colors.
+- [ ] **Task: Implement Server Control & Massive Button**
+    - [ ] Implement `ControlFrame` featuring the massive "Initiate Orbital Launch" button.
+    - [ ] Write tests for button callback functionality.
+    - [ ] Style the button with large padding, bold fonts, and accent colors.
+- [ ] **Task: Implement Bottom Console**
+    - [ ] Create a persistent `CTkTextbox` at the bottom of the window for real-time console logs.
+    - [ ] Write tests for console log insertion and auto-scrolling.
+    - [ ] Style the console with a pitch-black background and bright orange monospace text.
+- [ ] **Task: Conductor - User Manual Verification 'Phase 2' (Protocol in workflow.md)**
+
+## Phase 3: Integration & Styling Refinement
+- [ ] **Task: Final Styling and Padding Adjustments**
+    - [ ] Apply `corner_radius` (10-15px) to all frames and components.
+    - [ ] Refine padding (`padx`, `pady`) across all sections for a clean, uncrowded feel.
+    - [ ] Verify hover effects and visual feedback.
+- [ ] **Task: Responsive Layout Verification**
+    - [ ] Ensure the UI handles resizing gracefully with appropriate weight distributions.
+    - [ ] Write tests for window geometry and layout persistence.
+- [ ] **Task: Cleanup and Documentation**
+    - [ ] Remove legacy UI code and redundant styles.
+    - [ ] Document the new UI architecture in code comments and README.
+- [ ] **Task: Conductor - User Manual Verification 'Phase 3' (Protocol in workflow.md)**

@@ -4,6 +4,12 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ## Active Tracks
 
+---
+
+- [ ] **Track: GUI Refactor - Icarus Sentinel Dashboard**
+*Link: [./tracks/gui-refactor_20260318/](./tracks/gui-refactor_20260318/)*
+
+
 
 ## Archived Tracks
 - [x] **Track: Mod Management: Support for installing and updating Icarus server mods directly within the manager.** (Archived: 2026-03-18)
