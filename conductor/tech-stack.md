@@ -22,7 +22,9 @@
 * **python-a2s**
   * Used for querying the Icarus Dedicated Server via the Valve A2S protocol to fetch real-time player counts.
 
-## 4. Data Storage & Configuration
-* **JSON / INI files**
-  * Standard `.ini` files will be used to manipulate the server's own configuration directly.
-  * Application-specific settings (like backup retention limits) will be stored in lightweight `JSON` files.
+## 4. Data Storage & Architecture
+* **Modular Architecture**
+  * The application follows a strict modular design to ensure maintainability.
+  * **File Size Limit:** No single source file shall exceed 500 lines of code.
+  * **Separation of Concerns:** UI components are isolated into dedicated view modules (`icarus_sentinel/ui/`), while business logic is orchestrated by a centralized `Controller`.
+  * **Data Storage:** Standard `.ini` files are used for server configuration, and application-specific state is stored in lightweight `JSON` files.
