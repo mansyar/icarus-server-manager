@@ -82,7 +82,17 @@ def test_run_server_streams_logs(app_instance):
     
     app_instance.controller.run_server("C:/test.exe")
     
-    app_instance.server_manager.start_server.assert_called_once_with("C:/test.exe")
+    from unittest.mock import ANY
+    app_instance.server_manager.start_server.assert_called_once_with(
+        "C:/test.exe",
+        port=ANY,
+        query_port=ANY,
+        server_name=ANY,
+        max_players=ANY,
+        password=ANY,
+        admin_password=ANY,
+        no_steam=ANY
+    )
     app_instance.log.assert_any_call("test log line")
     app_instance.on_server_exit.assert_called_once()
 

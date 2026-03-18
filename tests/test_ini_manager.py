@@ -22,14 +22,16 @@ def manager(ini_file):
     return INIManager(str(ini_file))
 
 def test_load_settings(manager):
-    assert manager.get_setting("SessionName") == "TestServer"
-    assert manager.get_setting("ServerPassword") == "secret"
-    assert manager.get_setting("AdminPassword") == "admin123"
-    assert manager.get_setting("Port") == "17777"
+    section = "/Script/IcarusServer.IcarusServerSettings"
+    assert manager.get_setting("SessionName", section=section) == "TestServer"
+    assert manager.get_setting("ServerPassword", section=section) == "secret"
+    assert manager.get_setting("AdminPassword", section=section) == "admin123"
+    assert manager.get_setting("Port", section=section) == "17777"
 
 def test_set_and_save_settings(manager, ini_file):
-    manager.set_setting("SessionName", "NewName")
-    manager.set_setting("Port", "18888")
+    section = "/Script/IcarusServer.IcarusServerSettings"
+    manager.set_setting("SessionName", "NewName", section=section)
+    manager.set_setting("Port", "18888", section=section)
     manager.save()
     
     with open(str(ini_file), "r") as f:
@@ -45,12 +47,13 @@ def test_get_raw_text(manager, ini_file):
     assert "[/Script/IcarusServer.IcarusServerSettings]" in raw_text
 
 def test_save_raw_text(manager, ini_file):
-    new_raw_content = "[/Script/IcarusServer.IcarusServerSettings]\nSessionName=RawEdited\n"
+    section = "/Script/IcarusServer.IcarusServerSettings"
+    new_raw_content = f"[{section}]\nSessionName=RawEdited\n"
     manager.save_raw_text(new_raw_content)
     
     # Reload to verify
     manager.load()
-    assert manager.get_setting("SessionName") == "RawEdited"
+    assert manager.get_setting("SessionName", section=section) == "RawEdited"
     
     with open(str(ini_file), "r") as f:
         assert f.read() == new_raw_content
