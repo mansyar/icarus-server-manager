@@ -10,25 +10,42 @@ class SidebarWidget(QFrame):
 
     def __init__(self, parent=None):
         super().__init__(parent)
-        self.setFixedWidth(200)
+        self.setFixedWidth(220)
         self.setObjectName("Sidebar")
         self.setup_ui()
         self.apply_styles()
 
     def setup_ui(self):
         layout = QVBoxLayout(self)
-        layout.setContentsMargins(0, 20, 0, 20)
-        layout.setSpacing(5)
+        layout.setContentsMargins(15, 30, 15, 30)
+        layout.setSpacing(12)
 
-        # Logo
+        # Logo with Accent Line
+        self.logo_container = QWidget()
+        logo_layout = QVBoxLayout(self.logo_container)
+        logo_layout.setContentsMargins(0, 0, 0, 20)
+        
         logo_label = QLabel("ICARUS\nSENTINEL")
         logo_label.setAlignment(Qt.AlignCenter)
-        logo_label.setStyleSheet(f"color: {style_config.ACCENT_COLOR}; font-weight: bold; font-size: 20px; margin-bottom: 20px;")
-        layout.addWidget(logo_label)
+        logo_label.setStyleSheet(f"""
+            color: {style_config.ACCENT_COLOR}; 
+            font-family: 'Segoe UI Black', sans-serif;
+            font-weight: bold; 
+            font-size: 22px; 
+            letter-spacing: 2px;
+        """)
+        
+        accent_line = QFrame()
+        accent_line.setFixedHeight(2)
+        accent_line.setStyleSheet(f"background-color: qlineargradient(x1:0, y1:0, x2:1, y2:0, stop:0 transparent, stop:0.5 {style_config.ACCENT_COLOR}, stop:1 transparent);")
+        
+        logo_layout.addWidget(logo_label)
+        logo_layout.addWidget(accent_line)
+        layout.addWidget(self.logo_container)
 
         # Navigation Buttons
         self.dashboard_btn = self._create_nav_btn("Dashboard", "dashboard", "icon_dashboard.PNG")
-        self.settings_btn = self._create_nav_btn("Configuration", "settings", "icon_settings.PNG")
+        self.settings_btn = self._create_nav_btn("Server Settings", "settings", "icon_settings.PNG")
         self.backups_btn = self._create_nav_btn("Backups", "backups", "icon_backup.PNG")
         self.sync_btn = self._create_nav_btn("Save Sync", "sync", "icon__save_sync.PNG")
         self.mods_btn = self._create_nav_btn("Mods", "mods", "icon_mods.PNG")
@@ -45,7 +62,7 @@ class SidebarWidget(QFrame):
         btn = QPushButton(text)
         btn.setCheckable(True)
         btn.setAutoExclusive(True)
-        btn.setFixedHeight(40)
+        btn.setFixedHeight(45)
         btn.setCursor(Qt.PointingHandCursor)
         
         # Load Icon
@@ -60,24 +77,29 @@ class SidebarWidget(QFrame):
     def apply_styles(self):
         self.setStyleSheet(f"""
             QFrame#Sidebar {{
-                background-color: {style_config.SIDEBAR_BG};
+                background-color: transparent;
                 border: none;
             }}
             QPushButton {{
-                color: #A0A0A0;
-                background-color: transparent;
-                border: none;
+                color: #DDDDDD;
+                background-color: rgba(50, 50, 50, 180);
+                border: 1px solid #444;
+                border-radius: 10px;
                 text-align: left;
-                padding-left: 20px;
+                padding-left: 15px;
+                font-family: 'Segoe UI', sans-serif;
                 font-size: 14px;
+                font-weight: 500;
             }}
             QPushButton:hover {{
-                background-color: #2A2A2A;
-                color: {style_config.TEXT_PRIMARY};
+                background-color: rgba(60, 60, 60, 200);
+                color: white;
+                border-color: #555;
             }}
             QPushButton:checked {{
-                background-color: #333333;
+                background-color: rgba(255, 140, 0, 20);
                 color: {style_config.ACCENT_COLOR};
-                border-left: 3px solid {style_config.ACCENT_COLOR};
+                border: 2px solid {style_config.ACCENT_COLOR};
+                font-weight: bold;
             }}
         """)

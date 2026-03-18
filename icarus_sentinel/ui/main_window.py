@@ -1,6 +1,7 @@
 import os
-from PySide6.QtWidgets import QMainWindow, QWidget, QHBoxLayout, QStackedWidget, QLabel
+from PySide6.QtWidgets import QMainWindow, QWidget, QHBoxLayout, QStackedWidget, QLabel, QFrame
 from PySide6.QtCore import Qt
+from PySide6.QtGui import QPixmap, QPalette, QBrush
 from icarus_sentinel.controller import Controller
 from icarus_sentinel.steam_manager import SteamManager
 from icarus_sentinel.server_manager import ServerProcessManager
@@ -16,8 +17,10 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Icarus Sentinel")
-        self.resize(1200, 800)
-        self.setStyleSheet(f"background-color: {style_config.APP_BG}; color: {style_config.TEXT_PRIMARY};")
+        self.resize(1200, 850)
+        
+        # Set Window Background
+        self.apply_window_background()
         
         # Initialize Managers
         self.steam_manager = SteamManager()
@@ -43,11 +46,41 @@ class MainWindow(QMainWindow):
         # Initialize Controller
         self.controller = Controller(self)
         
+        self.server_process = None
         self.setup_ui()
         self.setup_timer()
 
+    def apply_window_background(self):
+        bg_path = os.path.join("assets", "backgound_space.png")
+        if os.path.exists(bg_path):
+            original_pixmap = QPixmap(bg_path)
+            scaled_pixmap = original_pixmap.scaled(self.size(), Qt.KeepAspectRatioByExpanding, Qt.SmoothTransformation)
+            
+            # Create a transparent version by painting a dark overlay
+            from PySide6.QtGui import QPainter
+            dimmed_pixmap = QPixmap(scaled_pixmap.size())
+            dimmed_pixmap.fill(Qt.black) # Base color
+            
+            painter = QPainter(dimmed_pixmap)
+            painter.setOpacity(0.4) # Adjust background visibility (0.0 to 1.0)
+            painter.drawPixmap(0, 0, scaled_pixmap)
+            painter.end()
+            
+            palette = self.palette()
+            palette.setBrush(QPalette.Window, QBrush(dimmed_pixmap))
+            self.setPalette(palette)
+            self.setAutoFillBackground(True)
+        else:
+            self.setStyleSheet(f"background-color: {style_config.APP_BG};")
+
+    def resizeEvent(self, event):
+        # Update background on resize
+        self.apply_window_background()
+        super().resizeEvent(event)
+
     def setup_ui(self):
         central_widget = QWidget()
+        central_widget.setStyleSheet("background: transparent;")
         self.setCentralWidget(central_widget)
         
         layout = QHBoxLayout(central_widget)
@@ -61,6 +94,7 @@ class MainWindow(QMainWindow):
         
         # Stacked Content Area
         self.content_stack = QStackedWidget()
+        self.content_stack.setStyleSheet("background: transparent;")
         layout.addWidget(self.content_stack)
         
         # Views
@@ -83,18 +117,17 @@ class MainWindow(QMainWindow):
         self.sidebar.dashboard_btn.setChecked(True)
 
     def setup_timer(self):
-        """Timer for periodic metric updates."""
         from PySide6.QtCore import QTimer
         self.metrics_timer = QTimer(self)
         self.metrics_timer.timeout.connect(self._update_metrics)
-        self.metrics_timer.start(5000) # 5 seconds
+        self.metrics_timer.start(5000)
 
     def _update_metrics(self):
-        if hasattr(self, "server_process") and self.server_process:
+        if self.server_process:
             usage = self.server_manager.get_resource_usage(self.server_process)
-            self.dashboard.metrics.update_metrics(usage["cpu"], usage["ram_gb"])
+            self.dashboard.update_metrics(usage["cpu"], usage["ram_gb"])
         else:
-            self.dashboard.metrics.update_metrics(0.0, 0.0)
+            self.dashboard.update_metrics(0.0, 0.0)
 
     def _on_launch_clicked(self, should_start):
         if should_start:
@@ -103,8 +136,8 @@ class MainWindow(QMainWindow):
             if exe_path:
                 self.controller.run_server(exe_path)
             else:
-                self.show_error("Server executable not found. Please check installation.")
-                self.dashboard.control._on_click() # Toggle back
+                self.log("ERROR: Server executable not found.")
+                # The ControlWidget state will be reset by the user manually or next click
         else:
             if self.server_process:
                 self.server_manager.stop_server(self.server_process)
@@ -121,7 +154,7 @@ class MainWindow(QMainWindow):
     def on_server_exit(self, result=None):
         self.server_process = None
         if self.dashboard.control.is_running:
-            self.dashboard.control._on_click() # Toggle UI back to "Launch"
+            self.dashboard.control._on_click()
         self.log("Server process exited.")
 
     def show_error(self, message: str):
@@ -133,5 +166,5 @@ class MainWindow(QMainWindow):
     def _create_placeholder(self, text):
         label = QLabel(text)
         label.setAlignment(Qt.AlignCenter)
-        label.setStyleSheet("font-size: 24px; color: #555555;")
+        label.setStyleSheet("font-size: 24px; color: #555555; background-color: rgba(20,20,20,200); border-radius: 20px; margin: 20px;")
         return label
