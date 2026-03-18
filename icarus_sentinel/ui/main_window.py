@@ -29,7 +29,10 @@ class MainWindow(QMainWindow):
             state_file=constants.STATE_FILE, 
             backup_manager=self.backup_manager
         )
-        self.ini_manager = INIManager(os.path.join(initial_server_path, "Icarus", "Saved", "Config", "WindowsServer"))
+        # INI Manager needs a file path, ensure directory exists
+        ini_dir = os.path.join(initial_server_path, "Icarus", "Saved", "Config", "WindowsServer")
+        os.makedirs(ini_dir, exist_ok=True)
+        self.ini_manager = INIManager(os.path.join(ini_dir, "ServerSettings.ini"))
         self.save_sync_manager = SaveSyncManager(
             server_path=initial_server_path,
             ini_manager=self.ini_manager
