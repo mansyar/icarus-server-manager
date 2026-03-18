@@ -5,7 +5,7 @@
     - [ ] Add PySide6 and pytest-qt to requirements.txt and update tech-stack.md.
 - [x] Task: Create `tests/ui/test_main_window.py` with failing test for window initialization. (d857b8c)
 - [x] Task: Implement `MainWindow` class inheriting from `QMainWindow` in `icarus_sentinel/ui/main_window.py`. (d7e6353)
-- [ ] Task: Refactor application entry point (`main.py`) to launch the PySide6 app.
+- [x] Task: Refactor application entry point (`main.py`) to launch the PySide6 app. (1d79a26)
 - [ ] Task: Conductor - User Manual Verification 'Phase 1: Environment and Core Window Setup' (Protocol in workflow.md)
 
 ## Phase 2: Modernizing Threading & MVC Wiring
