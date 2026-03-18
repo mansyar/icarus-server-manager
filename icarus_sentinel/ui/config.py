@@ -1,92 +1,143 @@
-import customtkinter as ctk
-from icarus_sentinel import constants
+from PySide6.QtWidgets import (
+    QWidget, QVBoxLayout, QHBoxLayout, QLabel, 
+    QPushButton, QLineEdit, QCheckBox, QFrame,
+    QScrollArea, QFormLayout
+)
+from PySide6.QtCore import Qt
+from icarus_sentinel import style_config, constants
 
-class ConfigView(ctk.CTkScrollableFrame):
-    """View for server configuration (Basic and Advanced)."""
-
-    def __init__(self, parent, app):
-        super().__init__(parent, fg_color="transparent")
+class ConfigView(QWidget):
+    """View for managing server configuration."""
+    def __init__(self, parent=None, app=None):
+        super().__init__(parent)
         self.app = app
-        self.init_widgets()
+        self.setup_ui()
+        self.load_settings()
 
-    def init_widgets(self):
-        self.config_subtabview = ctk.CTkTabview(self, command=self.app.on_config_tab_change)
-        self.config_subtabview.pack(fill="both", expand=True, padx=10, pady=10)
-        self.app.config_subtabview = self.config_subtabview
-
-        self.basic_config_tab = self.config_subtabview.add("Basic")
-        self.advanced_config_tab = self.config_subtabview.add("Advanced")
+    def setup_ui(self):
+        layout = QVBoxLayout(self)
+        layout.setContentsMargins(30, 30, 30, 30)
         
-        self.basic_config_tab.grid_columnconfigure(1, weight=1)
-        self.advanced_config_tab.grid_columnconfigure(0, weight=1)
-        self.advanced_config_tab.grid_rowconfigure(0, weight=1)
+        # Container
+        self.container = QFrame()
+        self.container.setStyleSheet(f"""
+            QFrame {{
+                background-color: rgba(20, 20, 20, 200);
+                border: 1px solid #444;
+                border-radius: 20px;
+            }}
+        """)
+        container_layout = QVBoxLayout(self.container)
+        container_layout.setContentsMargins(30, 30, 30, 30)
+        
+        # Header
+        header = QLabel("SERVER SETTINGS")
+        header.setStyleSheet(f"color: {style_config.ACCENT_COLOR}; font-family: 'Segoe UI Black'; font-size: 24px; border: none; background: transparent;")
+        container_layout.addWidget(header)
+        
+        # Form
+        form_frame = QFrame()
+        form_frame.setStyleSheet("border: none; background: transparent;")
+        form_layout = QFormLayout(form_frame)
+        form_layout.setSpacing(15)
+        
+        label_style = "color: #BBB; font-weight: bold; font-size: 13px;"
+        input_style = """
+            background-color: #111; 
+            border: 1px solid #444; 
+            border-radius: 5px; 
+            color: #EEE; 
+            padding: 8px;
+            font-family: 'Segoe UI';
+        """
+        
+        self.server_name_entry = QLineEdit()
+        self.server_name_entry.setStyleSheet(input_style)
+        
+        self.server_password_entry = QLineEdit()
+        self.server_password_entry.setEchoMode(QLineEdit.Password)
+        self.server_password_entry.setStyleSheet(input_style)
+        
+        self.admin_password_entry = QLineEdit()
+        self.admin_password_entry.setEchoMode(QLineEdit.Password)
+        self.admin_password_entry.setStyleSheet(input_style)
+        
+        self.port_entry = QLineEdit()
+        self.port_entry.setStyleSheet(input_style)
+        
+        self.query_port_entry = QLineEdit()
+        self.query_port_entry.setStyleSheet(input_style)
+        
+        self.update_on_launch_cb = QCheckBox("Update Server on Launch")
+        self.update_on_launch_cb.setStyleSheet("color: #BBB; font-weight: bold;")
+        
+        self.no_steam_cb = QCheckBox("Disable Steam Authentication (-NOSTEAM)")
+        self.no_steam_cb.setStyleSheet("color: #BBB; font-weight: bold;")
 
-        # Basic Config Fields
-        self.config_scroll = ctk.CTkScrollableFrame(self.basic_config_tab)
-        self.config_scroll.pack(fill="both", expand=True, padx=5, pady=5)
-        self.config_scroll.grid_columnconfigure(1, weight=1)
-
-        # Server Name
-        ctk.CTkLabel(self.config_scroll, text="Server Name:").grid(row=0, column=0, padx=10, pady=10, sticky="w")
-        self.server_name_entry = ctk.CTkEntry(self.config_scroll)
-        self.server_name_entry.grid(row=0, column=1, padx=10, pady=10, sticky="ew")
-        self.app.server_name_entry = self.server_name_entry
-
-        # Server Password
-        ctk.CTkLabel(self.config_scroll, text="Server Password:").grid(row=1, column=0, padx=10, pady=10, sticky="w")
-        self.server_password_entry = ctk.CTkEntry(self.config_scroll, show="*")
-        self.server_password_entry.grid(row=1, column=1, padx=10, pady=10, sticky="ew")
-        self.app.server_password_entry = self.server_password_entry
-
-        # Admin Password
-        ctk.CTkLabel(self.config_scroll, text="Admin Password/ID:").grid(row=2, column=0, padx=10, pady=10, sticky="w")
-        self.admin_password_entry = ctk.CTkEntry(self.config_scroll, show="*")
-        self.admin_password_entry.grid(row=2, column=1, padx=10, pady=10, sticky="ew")
-        self.app.admin_password_entry = self.admin_password_entry
-
-        # Port
-        ctk.CTkLabel(self.config_scroll, text="Server Port:").grid(row=3, column=0, padx=10, pady=10, sticky="w")
-        self.server_port_entry = ctk.CTkEntry(self.config_scroll)
-        self.server_port_entry.grid(row=3, column=1, padx=10, pady=10, sticky="ew")
-        self.app.server_port_entry = self.server_port_entry
-
-        # Query Port
-        ctk.CTkLabel(self.config_scroll, text="Query Port:").grid(row=4, column=0, padx=10, pady=10, sticky="w")
-        self.query_port_entry = ctk.CTkEntry(self.config_scroll)
-        self.query_port_entry.grid(row=4, column=1, padx=10, pady=10, sticky="ew")
-        self.app.query_port_entry = self.query_port_entry
-
-        # Update on Launch
-        self.update_on_launch_var = ctk.BooleanVar(value=False)
-        self.app.update_on_launch_var = self.update_on_launch_var
-        self.update_on_launch_checkbox = ctk.CTkCheckBox(
-            self.config_scroll, text="Update on Launch", variable=self.update_on_launch_var
-        )
-        self.update_on_launch_checkbox.grid(row=5, column=0, columnspan=2, padx=10, pady=5, sticky="w")
-
-        # Disable Steam Auth (NoSteam)
-        self.no_steam_var = ctk.BooleanVar(value=False)
-        self.app.no_steam_var = self.no_steam_var
-        self.no_steam_checkbox = ctk.CTkCheckBox(
-            self.config_scroll, text="Disable Steam Auth (-NOSTEAM)", variable=self.no_steam_var
-        )
-        self.no_steam_checkbox.grid(row=6, column=0, columnspan=2, padx=10, pady=5, sticky="w")
-
+        form_layout.addRow(self._create_label("SESSION NAME", label_style), self.server_name_entry)
+        form_layout.addRow(self._create_label("JOIN PASSWORD", label_style), self.server_password_entry)
+        form_layout.addRow(self._create_label("ADMIN PASSWORD", label_style), self.admin_password_entry)
+        form_layout.addRow(self._create_label("SERVER PORT", label_style), self.port_entry)
+        form_layout.addRow(self._create_label("QUERY PORT", label_style), self.query_port_entry)
+        form_layout.addRow("", self.update_on_launch_cb)
+        form_layout.addRow("", self.no_steam_cb)
+        
+        container_layout.addWidget(form_frame)
+        
         # Save Button
-        self.save_config_button = ctk.CTkButton(
-            self.config_scroll, text="Save Configuration", command=self.app.save_config
-        )
-        self.save_config_button.grid(row=7, column=0, columnspan=2, padx=10, pady=20)
+        self.save_btn = QPushButton("SAVE CONFIGURATION")
+        self.save_btn.setFixedSize(250, 45)
+        self.save_btn.setCursor(Qt.PointingHandCursor)
+        self.save_btn.clicked.connect(self.save_settings)
+        self.save_btn.setStyleSheet(f"""
+            QPushButton {{
+                background-color: #222;
+                color: {style_config.ACCENT_COLOR};
+                border: 1px solid {style_config.ACCENT_COLOR};
+                border-radius: 5px;
+                font-weight: bold;
+                font-size: 14px;
+            }}
+            QPushButton:hover {{
+                background-color: {style_config.ACCENT_COLOR};
+                color: black;
+            }}
+        """)
+        container_layout.addWidget(self.save_btn, 0, Qt.AlignCenter)
+        container_layout.addStretch()
         
-        # Advanced Config Fields
-        self.raw_ini_textbox = ctk.CTkTextbox(self.advanced_config_tab, font=("Consolas", 12))
-        self.raw_ini_textbox.grid(row=0, column=0, padx=10, pady=(10, 5), sticky="nsew")
-        self.app.raw_ini_textbox = self.raw_ini_textbox
+        layout.addWidget(self.container)
+
+    def _create_label(self, text, style):
+        l = QLabel(text)
+        l.setStyleSheet(style)
+        return l
+
+    def load_settings(self):
+        if not self.app or not self.app.ini_manager: return
+        ini = self.app.ini_manager
+        self.server_name_entry.setText(ini.get_setting("SessionName") or constants.DEFAULT_SERVER_NAME)
+        self.server_password_entry.setText(ini.get_setting("ServerPassword") or "")
+        self.admin_password_entry.setText(ini.get_setting("AdminPassword") or "")
+        self.port_entry.setText(ini.get_setting("Port") or constants.DEFAULT_PORT)
+        self.query_port_entry.setText(ini.get_setting("QueryPort") or constants.DEFAULT_QUERY_PORT)
         
-        self.save_advanced_button = ctk.CTkButton(
-            self.advanced_config_tab, text="Save Advanced Changes", command=self.app.save_advanced_config
-        )
-        self.save_advanced_button.grid(row=1, column=0, padx=10, pady=(5, 10))
+        update_val = ini.get_setting("UpdateOnLaunch", section=constants.SECTION_SENTINEL)
+        self.update_on_launch_cb.setChecked(update_val == "True")
         
-        # Initial populate
-        self.app.load_config_to_gui()
+        no_steam_val = ini.get_setting("NoSteam", section=constants.SECTION_SENTINEL)
+        self.no_steam_cb.setChecked(no_steam_val == "True")
+
+    def save_settings(self):
+        if not self.app or not self.app.ini_manager: return
+        ini = self.app.ini_manager
+        ini.set_setting("SessionName", self.server_name_entry.text())
+        ini.set_setting("ServerPassword", self.server_password_entry.text())
+        if self.admin_password_entry.text():
+            ini.set_setting("AdminPassword", self.admin_password_entry.text())
+        ini.set_setting("Port", self.port_entry.text())
+        ini.set_setting("QueryPort", self.query_port_entry.text())
+        ini.set_setting("UpdateOnLaunch", str(self.update_on_launch_cb.isChecked()), section=constants.SECTION_SENTINEL)
+        ini.set_setting("NoSteam", str(self.no_steam_cb.isChecked()), section=constants.SECTION_SENTINEL)
+        ini.save()
+        self.app.log("Configuration saved successfully.")
