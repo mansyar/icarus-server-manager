@@ -10,8 +10,8 @@ This feature adds a new "Mods" tab to the Icarus Sentinel UI, allowing users to 
     - Create the `\Icarus\Content\Paks\mods` directory if it does not exist.
     - If a `.zip` file is selected, extract the `.pak` file(s) from it.
     - Move/Copy the `.pak` files into the `mods` directory.
-- **Requirement 4:** A list view displaying currently installed `.pak` files in the server's `mods` directory.
-- **Requirement 5:** An "Uninstall" or "Remove" button to delete specific `.pak` files.
+- **Requirement 4:** A scrollable list view displaying currently installed `.pak` files with checkboxes for selection.
+- **Requirement 5:** A "Remove" button to delete all currently selected (checked) `.pak` files.
 - **Requirement 6:** **User Warning:** Display a clear warning in the UI that players joining the server must have the exact same `.pak` files installed locally to prevent version mismatch crashes.
 
 ## Acceptance Criteria

@@ -266,26 +266,27 @@ class App(ctk.CTk):
         )
         self.install_mod_btn.pack(side="left", padx=10)
 
+        self.select_all_var = ctk.BooleanVar(value=False)
+        self.select_all_cb = ctk.CTkCheckBox(
+            self.mods_header, text="Select All", variable=self.select_all_var, command=self.toggle_select_all_mods
+        )
+        self.select_all_cb.pack(side="left", padx=20)
+
         self.refresh_mods_btn = ctk.CTkButton(
             self.mods_header, text="Refresh", width=80, command=self.refresh_mod_list
         )
         self.refresh_mods_btn.pack(side="right", padx=10)
 
-        # Mod List
-        self.mod_list_frame = ctk.CTkFrame(self.mods_tab)
-        self.mod_list_frame.grid(row=1, column=0, padx=20, pady=10, sticky="nsew")
-        self.mod_list_frame.grid_columnconfigure(0, weight=1)
-        self.mod_list_frame.grid_rowconfigure(0, weight=1)
-
-        self.mod_list = ctk.CTkTextbox(self.mod_list_frame, height=200)
-        self.mod_list.grid(row=0, column=0, padx=10, pady=10, sticky="nsew")
+        # Mod List (Scrollable Checklist)
+        self.mod_list = ctk.CTkScrollableFrame(self.mods_tab, label_text="Installed Mods")
+        self.mod_list.grid(row=1, column=0, padx=20, pady=10, sticky="nsew")
         
-        # Action Buttons for selected mod
+        # Action Buttons for selected mods
         self.mod_actions_frame = ctk.CTkFrame(self.mods_tab, fg_color="transparent")
         self.mod_actions_frame.grid(row=2, column=0, padx=20, pady=5, sticky="ew")
         
         self.remove_mod_btn = ctk.CTkButton(
-            self.mod_actions_frame, text="Remove Selected Mod", fg_color="red", hover_color="darkred",
+            self.mod_actions_frame, text="Remove Selected Mods", fg_color="red", hover_color="darkred",
             command=self.remove_mod_ui
         )
         self.remove_mod_btn.pack(side="left", padx=10)
@@ -301,17 +302,32 @@ class App(ctk.CTk):
 
         self.refresh_mod_list()
 
+    def toggle_select_all_mods(self) -> None:
+        """Toggles selection for all mod checkboxes."""
+        val = self.select_all_var.get()
+        for cb in self.mod_list.winfo_children():
+            if isinstance(cb, ctk.CTkCheckBox):
+                if val:
+                    cb.select()
+                else:
+                    cb.deselect()
+
     def refresh_mod_list(self) -> None:
-        """Updates the list of installed mods from the manager."""
+        """Updates the list of installed mods using checkboxes."""
+        # Clear existing
+        for widget in self.mod_list.winfo_children():
+            widget.destroy()
+
         mods = self.mod_manager.list_mods()
-        self.mod_list.configure(state="normal")
-        self.mod_list.delete("0.0", "end")
         if not mods:
-            self.mod_list.insert("0.0", "No mods installed.")
+            ctk.CTkLabel(self.mod_list, text="No mods installed.").pack(pady=10)
+            self.select_all_cb.configure(state="disabled")
         else:
+            self.select_all_cb.configure(state="normal")
+            self.select_all_var.set(False)
             for mod in mods:
-                self.mod_list.insert("end", mod + "\n")
-        self.mod_list.configure(state="disabled")
+                cb = ctk.CTkCheckBox(self.mod_list, text=mod)
+                cb.pack(fill="x", padx=10, pady=5)
 
     def install_mod_ui(self) -> None:
         """Opens file dialog and installs selected mods."""
@@ -332,21 +348,32 @@ class App(ctk.CTk):
             self.refresh_mod_list()
 
     def remove_mod_ui(self) -> None:
-        """Prompts for mod name and removes it."""
-        # Simple implementation: ask for filename since Textbox doesn't easily support selection like a Listbox
-        # In a real app, I'd use a Listbox or similar.
-        mod_name = ctk.CTkInputDialog(text="Enter the exact filename of the mod to remove (e.g., MyMod.pak):", title="Remove Mod").get_input()
-        if mod_name:
-            if not mod_name.endswith(".pak"):
-                mod_name += ".pak"
+        """Removes all currently checked mods."""
+        to_remove = []
+        for cb in self.mod_list.winfo_children():
+            # Check for 'get' method which CTkCheckBox has to return its state
+            if hasattr(cb, "get") and cb.get():
+                to_remove.append(cb.cget("text"))
+
+        if not to_remove:
+            messagebox.showinfo("No Selection", "Please select at least one mod to remove.")
+            return
+
+        confirmed = messagebox.askyesno(
+            "Confirm Removal",
+            f"Are you sure you want to remove {len(to_remove)} selected mod(s)?"
+        )
+        
+        if confirmed:
+            for mod_name in to_remove:
+                self.log(f"Removing mod: {mod_name}...")
+                try:
+                    self.mod_manager.remove_mod(mod_name)
+                    self.log(f"Mod '{mod_name}' removed.")
+                except Exception as e:
+                    self.log(f"Error removing mod '{mod_name}': {str(e)}")
             
-            if mod_name in self.mod_manager.list_mods():
-                self.mod_manager.remove_mod(mod_name)
-                self.log(f"Removed mod: {mod_name}")
-                self.refresh_mod_list()
-            else:
-                self.log(f"Error: Mod '{mod_name}' not found.")
-                messagebox.showerror("Error", f"Mod '{mod_name}' not found.")
+            self.refresh_mod_list()
 
     def init_save_sync_tab(self) -> None:
         """Initializes the Save Sync tab UI."""
