@@ -9,26 +9,26 @@
     - [ ] Refactor the main entry point to use a new `App` class inheriting from `customtkinter.CTk`.
     - [ ] Write tests for `App` initialization and core structure.
     - [ ] Implement the base grid layout (Sidebar, Main Content, Bottom Console).
-- [x] **Task: Conductor - User Manual Verification 'Phase 1' (Protocol in workflow.md)**
+- [x] **Task: Conductor - User Manual Verification 'Phase 1' (Protocol in workflow.md)** 6a983eb
 
 ## Phase 2: Core UI Components Implementation
 - [x] **Task: Implement Sidebar Navigation** 4536b7e
     - [ ] Implement the left-aligned `SidebarFrame` with navigation buttons (Dashboard, Settings, Backups, etc.).
     - [ ] Write tests for sidebar button interactions.
     - [ ] Style the sidebar background and buttons.
-- [ ] **Task: Implement Dashboard Center Metrics**
+- [x] **Task: Implement Dashboard Center Metrics** a2cc55a
     - [ ] Implement `MetricsFrame` with styled horizontal `CTkProgressBar` widgets for CPU and RAM.
     - [ ] Write tests for metrics display updates.
     - [ ] Style labels and progress bars with accent colors.
-- [ ] **Task: Implement Server Control & Massive Button**
+- [x] **Task: Implement Server Control & Massive Button** a2cc55a
     - [ ] Implement `ControlFrame` featuring the massive "Initiate Orbital Launch" button.
     - [ ] Write tests for button callback functionality.
     - [ ] Style the button with large padding, bold fonts, and accent colors.
-- [ ] **Task: Implement Bottom Console**
+- [x] **Task: Implement Bottom Console** a8ae26b
     - [ ] Create a persistent `CTkTextbox` at the bottom of the window for real-time console logs.
     - [ ] Write tests for console log insertion and auto-scrolling.
     - [ ] Style the console with a pitch-black background and bright orange monospace text.
-- [ ] **Task: Conductor - User Manual Verification 'Phase 2' (Protocol in workflow.md)**
+- [x] **Task: Conductor - User Manual Verification 'Phase 2' (Protocol in workflow.md)** 9c0c6dd
 
 ## Phase 3: Integration & Styling Refinement
 - [ ] **Task: Final Styling and Padding Adjustments**
