@@ -6,7 +6,7 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ---
 
-- [ ] **Track: GUI Refactor - Icarus Sentinel Dashboard**
+- [x] **Track: GUI Refactor - Icarus Sentinel Dashboard**
 *Link: [./tracks/gui-refactor_20260318/](./tracks/gui-refactor_20260318/)*
 
 
