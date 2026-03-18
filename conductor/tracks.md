@@ -7,6 +7,7 @@ This file tracks all major tracks for the project. Each track has its own detail
 ---
 
 ## Archived Tracks
+- [x] **Track: refactor the files in @icarus_sentinel/ to not have more than 500 lines of code. I want them to be modular for easy maintenance** (Archived: 2026-03-18)
 - [x] **Track: GUI Refactor - Icarus Sentinel Dashboard** (Archived: 2026-03-18)
 - [x] **Track: Mod Management: Support for installing and updating Icarus server mods directly within the manager.** (Archived: 2026-03-18)
 - [x] **Track: Packaging & Distribution (MVP Release Prep)** - Local executable compilation, release bundling, and GitHub Actions CI/CD setup. (Archived: 2026-03-18)
@@ -19,8 +20,3 @@ This file tracks all major tracks for the project. Each track has its own detail
 - [x] **Track: server-config-ini_20260317** - Server Configuration & INI Management (Archived: 2026-03-17)
 - [x] **Track: save-sync_20260318** - Syncing (two ways) save files of local single player and dedicated server. (Archived: 2026-03-18)
 - [x] **Track: refactor-git-cleanup_20260318** - refactor the folder structure to use a flat layout with icarus_sentinel package and remove magicmock from git cache (Archived: 2026-03-18)
-
----
-
-- [x] **Track: refactor the files in @icarus_sentinel/ to not have more than 500 lines of code. I want them to be modular for easy maintenance**
-*Link: [./tracks/refactor-modularity_20260318/](./tracks/refactor-modularity_20260318/)*
