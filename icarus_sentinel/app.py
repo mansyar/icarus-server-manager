@@ -79,6 +79,7 @@ class App(ctk.CTk):
         super().__init__()
         self.title("Icarus Sentinel")
         self.geometry("1100x700")
+        self.minsize(800, 600)
         self.configure(fg_color=style_config.APP_BG)
         
         self.steam_manager = SteamManager()
@@ -171,8 +172,9 @@ class App(ctk.CTk):
 
         # View Frames (replacing Tabview)
         self.views = {}
-        self.server_view = ctk.CTkFrame(self.main_content_frame, fg_color="transparent")
-        self.config_view = ctk.CTkFrame(self.main_content_frame, fg_color="transparent")
+        # Server and Config views are scrollable to handle responsive resizing
+        self.server_view = ctk.CTkScrollableFrame(self.main_content_frame, fg_color="transparent")
+        self.config_view = ctk.CTkScrollableFrame(self.main_content_frame, fg_color="transparent")
         self.save_sync_view = ctk.CTkFrame(self.main_content_frame, fg_color="transparent")
         self.backups_view = ctk.CTkFrame(self.main_content_frame, fg_color="transparent")
         self.mods_view = ctk.CTkFrame(self.main_content_frame, fg_color="transparent")
@@ -227,10 +229,10 @@ class App(ctk.CTk):
         """Switch to the specified view and update UI selection."""
         # Hide all views
         for view in self.views.values():
-            view.pack_forget()
+            view.grid_forget()
         
         # Show selected view
-        self.views[name].pack(fill="both", expand=True)
+        self.views[name].grid(row=0, column=0, sticky="nsew")
 
         # Update button highlighting
         self.nav_dashboard_btn.configure(fg_color=("gray75", "gray25") if name == "Server" else "transparent")
@@ -306,12 +308,8 @@ class App(ctk.CTk):
         )
         self.orbital_launch_btn.grid(row=0, column=0, sticky="ew", padx=100)
         
-        # Redundant legacy labels removed (placeholders kept for logic)
-        self.legacy_cpu_label = ctk.CTkLabel(self.server_view, text="") 
-        self.legacy_ram_label = ctk.CTkLabel(self.server_view, text="") 
-
         # Smart Restart Settings
-        self.smart_restart_frame = ctk.CTkFrame(self.server_view)
+        self.smart_restart_frame = ctk.CTkFrame(self.server_view, corner_radius=style_config.CORNER_RADIUS)
         self.smart_restart_frame.grid(row=5, column=0, padx=10, pady=5, sticky="ew")
 
         self.smart_restart_var = ctk.BooleanVar(value=self.server_manager.smart_restart_enabled)
