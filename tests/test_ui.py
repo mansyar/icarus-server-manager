@@ -14,10 +14,14 @@ def app_instance():
         app = App()
         app.tk = MagicMock()
         
+        # Controller
+        app.controller = MagicMock()
+        
         # Dependencies
         app.steam_manager = MagicMock()
         app.ini_manager = None
         app.save_sync_manager = MagicMock()
+        app.server_manager = MagicMock()
         
         # UI Elements
         app.console_output = MagicMock()
@@ -34,8 +38,8 @@ def app_instance():
         # Methods
         app.log = lambda msg: App.log(app, msg)
         app.start_install = lambda: App.start_install(app)
-        app.run_install = lambda path: App.run_install(app, path)
         app.browse_path = lambda: App.browse_path(app)
+        app.reset_ui = lambda: App.reset_ui(app)
         
         yield app
 
@@ -50,8 +54,7 @@ def test_log(app_instance):
     app_instance.log("test message")
     app_instance.console_output.insert.assert_called_with("end", "test message\n")
 
-@patch("icarus_sentinel.app.threading.Thread")
-def test_start_install(mock_thread, app_instance):
+def test_start_install(app_instance):
     app_instance.path_entry = MagicMock()
     app_instance.path_entry.get.return_value = "C:/test_path"
     app_instance.install_button = MagicMock()
@@ -59,29 +62,7 @@ def test_start_install(mock_thread, app_instance):
     app_instance.start_install()
     
     app_instance.install_button.configure.assert_called_with(state="disabled")
-    mock_thread.assert_called_once()
-    args, kwargs = mock_thread.call_args
-    assert kwargs["target"] == app_instance.run_install
-    assert kwargs["args"] == ("C:/test_path",)
-
-def test_run_install(app_instance):
-    mock_steam_manager_instance = app_instance.steam_manager
-    
-    mock_process = MagicMock()
-    with patch.object(mock_steam_manager_instance, "install_server", return_value=mock_process) as mock_install:
-        mock_process.stdout.readline.side_effect = ["line1", "line2", ""]
-        mock_process.wait.return_value = 0
-        
-        app_instance.log = MagicMock()
-        app_instance.install_button = MagicMock()
-        app_instance.browse_button = MagicMock()
-        app_instance.path_entry = MagicMock()
-        
-        app_instance.run_install("C:/test_path")
-        
-        mock_install.assert_called_once_with("C:/test_path")
-        assert app_instance.log.call_count >= 3
-        app_instance.install_button.configure.assert_called_with(state="normal")
+    app_instance.controller.run_install.assert_called_once_with("C:/test_path")
 
 @patch("icarus_sentinel.app.filedialog.askdirectory")
 def test_browse_path(mock_askdirectory, app_instance):

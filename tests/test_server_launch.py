@@ -4,13 +4,23 @@ import pytest
 from unittest.mock import MagicMock, patch
 import os
 from icarus_sentinel.app import App
+from icarus_sentinel.controller import Controller
+
 @pytest.fixture
 def app_instance():
     with patch("icarus_sentinel.app.App.__init__", return_value=None):
         app = App()
         app.tk = MagicMock()
         app.log = MagicMock()
-        app.after = MagicMock()
+        
+        def side_effect(delay, func, *args):
+            if delay == 0 and callable(func):
+                func(*args)
+            return "mock_after_id"
+        app.after = MagicMock(side_effect=side_effect)
+        
+        # Controller
+        app.controller = Controller(app)
         
         # Dependencies
         app.server_manager = MagicMock()
@@ -19,9 +29,7 @@ def app_instance():
         # UI Elements
         app.update_on_launch_var = MagicMock()
         app.path_entry = MagicMock()
-        
-        # Methods
-        app.run_server = lambda path: App.run_server(app, path)
+        app.on_server_exit = MagicMock()
         
         yield app
 
@@ -41,7 +49,7 @@ def test_run_server_with_update_on_launch(app_instance):
     app_instance.steam_manager.install_server.return_value = mock_install_process
     
     # Action
-    app_instance.run_server("C:/icarus/IcarusServer.exe")
+    app_instance.controller.run_server("C:/icarus/IcarusServer.exe")
     
     # Verify: install_server was called BEFORE start_server
     app_instance.steam_manager.install_server.assert_called_once_with("C:/icarus")
@@ -57,7 +65,7 @@ def test_run_server_without_update_on_launch(app_instance):
     app_instance.server_manager.stream_logs = MagicMock()
     
     # Action
-    app_instance.run_server("C:/icarus/IcarusServer.exe")
+    app_instance.controller.run_server("C:/icarus/IcarusServer.exe")
     
     # Verify: install_server was NOT called
     app_instance.steam_manager.install_server.assert_not_called()

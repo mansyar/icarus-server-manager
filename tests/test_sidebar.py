@@ -1,6 +1,6 @@
 import pytest
 from unittest.mock import MagicMock, patch
-from icarus_sentinel import style_config
+from icarus_sentinel import style_config, constants
 
 @pytest.fixture
 def app_instance():
@@ -21,6 +21,14 @@ def app_instance():
         with patch("os.path.exists", return_value=True), \
              patch("os.listdir", return_value=[]):
             app = App()
+            
+            # Map constant names to the attributes created during init
+            app.server_view = app.views[constants.VIEW_SERVER]
+            app.config_view = app.views[constants.VIEW_CONFIG]
+            app.backups_view = app.views[constants.VIEW_BACKUPS]
+            app.save_sync_view = app.views[constants.VIEW_SYNC]
+            app.mods_view = app.views[constants.VIEW_MODS]
+            
             yield app
 
 def test_sidebar_buttons_exist(app_instance):
@@ -34,6 +42,7 @@ def test_sidebar_branding(app_instance):
     assert hasattr(app_instance, "sidebar_logo_label")
 
 def test_sidebar_navigation_interaction(app_instance):
+    # VIEW_SERVER is the initial view
     assert app_instance.server_view.grid.called
     
     app_instance.nav_settings_btn.invoke()

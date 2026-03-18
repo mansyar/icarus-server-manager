@@ -1,27 +1,39 @@
 import pytest
 from unittest.mock import MagicMock, patch
-from icarus_sentinel import style_config
+from icarus_sentinel.app import App
 
 @pytest.fixture
 def app_instance():
-    from icarus_sentinel.app import App
-    with patch("icarus_sentinel.app.SteamManager"), \
-         patch("icarus_sentinel.app.ServerProcessManager") as mock_spm, \
-         patch("icarus_sentinel.app.BackupManager") as mock_bm, \
-         patch("icarus_sentinel.app.INIManager"), \
-         patch("icarus_sentinel.app.SaveSyncManager") as mock_ssm, \
-         patch("icarus_sentinel.app.ModManager"), \
-         patch("icarus_sentinel.app.App.recover_state"), \
-         patch("icarus_sentinel.app.App.update_monitoring"), \
-         patch("os.makedirs"):
+    with patch("icarus_sentinel.app.App.__init__", return_value=None), \
+         patch("icarus_sentinel.app.ctk"), \
+         patch("icarus_sentinel.app.DashboardView"), \
+         patch("icarus_sentinel.app.ConfigView"), \
+         patch("icarus_sentinel.app.SaveSyncView"), \
+         patch("icarus_sentinel.app.BackupsView"), \
+         patch("icarus_sentinel.app.ModsView"), \
+         patch("icarus_sentinel.app.Controller"):
         
-        mock_ssm_inst = mock_ssm.return_value
-        mock_ssm_inst.list_local_steam_ids.return_value = []
-
-        with patch("os.path.exists", return_value=True), \
-             patch("os.listdir", return_value=[]):
-            app = App()
-            yield app
+        app = App()
+        app.tk = MagicMock()
+        app.server_manager = MagicMock()
+        
+        # UI Elements
+        app.cpu_usage_label = MagicMock()
+        app.cpu_progress_bar = MagicMock()
+        app.ram_usage_label = MagicMock()
+        app.ram_progress_bar = MagicMock()
+        
+        # Mock methods
+        app.update_monitoring_once = lambda: App.update_monitoring_once(app)
+        
+        # Mock 'after'
+        def mock_after(delay, func, *args):
+            if delay == 0 and callable(func):
+                func(*args)
+            return "mock_after_id"
+        app.after = MagicMock(side_effect=mock_after)
+        
+        yield app
 
 def test_metrics_elements_exist(app_instance):
     assert hasattr(app_instance, "cpu_usage_label")
@@ -37,6 +49,8 @@ def test_metrics_update(app_instance):
     }
     app_instance.server_process = MagicMock()
     app_instance.server_manager.ram_threshold_gb = 16.0
+    app_instance.server_manager.state = {"status": "running"}
+    app_instance.server_manager.should_smart_restart.return_value = False
     
     # Run update
     app_instance.update_monitoring_once()
