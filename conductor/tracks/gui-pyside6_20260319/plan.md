@@ -10,8 +10,8 @@
 
 ## Phase 2: Modernizing Threading & MVC Wiring
 - [x] Task: Create `tests/core/test_qthread_workers.py` to test Qt-based background workers. (ea23caa)
-- [ ] Task: Refactor the `Controller` class to manage `QThread` instances instead of standard Python threads for server launch, monitoring, and backups.
-- [ ] Task: Define Qt Signals (`Signal`) on workers to communicate state changes back to the main thread.
+- [x] Task: Refactor the `Controller` class to manage `QThread` instances instead of standard Python threads for server launch, monitoring, and backups. (4ce2bdf)
+- [x] Task: Define Qt Signals (`Signal`) on workers to communicate state changes back to the main thread. (4ce2bdf)
 - [ ] Task: Conductor - User Manual Verification 'Phase 2: Modernizing Threading & MVC Wiring' (Protocol in workflow.md)
 
 ## Phase 3: Sidebar and Navigation
