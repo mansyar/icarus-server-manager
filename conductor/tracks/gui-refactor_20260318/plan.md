@@ -12,7 +12,7 @@
 - [x] **Task: Conductor - User Manual Verification 'Phase 1' (Protocol in workflow.md)**
 
 ## Phase 2: Core UI Components Implementation
-- [ ] **Task: Implement Sidebar Navigation**
+- [x] **Task: Implement Sidebar Navigation** 4536b7e
     - [ ] Implement the left-aligned `SidebarFrame` with navigation buttons (Dashboard, Settings, Backups, etc.).
     - [ ] Write tests for sidebar button interactions.
     - [ ] Style the sidebar background and buttons.
