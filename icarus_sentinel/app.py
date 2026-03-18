@@ -102,8 +102,7 @@ class App(ctk.CTk):
             ini_manager=None # Will be updated when ini_manager is ready
         )
         self.selected_steam_id: Optional[str] = None
-        self.refresh_steam_ids()
-
+        
         # Initialize ModManager
         self.mod_manager = ModManager(server_root=initial_server_path)
 
@@ -118,7 +117,7 @@ class App(ctk.CTk):
         # Sidebar
         self.sidebar_frame = ctk.CTkFrame(self, width=200, corner_radius=0, fg_color=style_config.SIDEBAR_BG)
         self.sidebar_frame.grid(row=0, column=0, sticky="nsew")
-        self.sidebar_frame.grid_rowconfigure(5, weight=1) # Spacer
+        self.sidebar_frame.grid_rowconfigure(6, weight=1) # Spacer
 
         self.sidebar_logo_label = ctk.CTkLabel(
             self.sidebar_frame, 
@@ -149,12 +148,19 @@ class App(ctk.CTk):
         )
         self.nav_backups_btn.grid(row=3, column=0, sticky="ew")
 
+        self.nav_sync_btn = ctk.CTkButton(
+            self.sidebar_frame, text="Save Sync", corner_radius=0, height=40, border_spacing=10,
+            fg_color="transparent", text_color=("gray10", "gray90"), hover_color=("gray70", "gray30"),
+            anchor="w", command=lambda: self.select_tab("Save Sync")
+        )
+        self.nav_sync_btn.grid(row=4, column=0, sticky="ew")
+
         self.nav_mods_btn = ctk.CTkButton(
             self.sidebar_frame, text="Mods", corner_radius=0, height=40, border_spacing=10,
             fg_color="transparent", text_color=("gray10", "gray90"), hover_color=("gray70", "gray30"),
             anchor="w", command=lambda: self.select_tab("Mods")
         )
-        self.nav_mods_btn.grid(row=4, column=0, sticky="ew")
+        self.nav_mods_btn.grid(row=5, column=0, sticky="ew")
         
         # Main Content Frame
         self.main_content_frame = ctk.CTkFrame(self, fg_color="transparent")
@@ -163,26 +169,19 @@ class App(ctk.CTk):
         self.main_content_frame.grid_rowconfigure(0, weight=1) # Upper content
         self.main_content_frame.grid_rowconfigure(1, weight=0) # Console
 
-        # Temp Tabview inside main_content_frame (will be replaced by navigation in Phase 2)
-        self.tabview = ctk.CTkTabview(self.main_content_frame, command=self.on_tab_change)
-        self.tabview.grid(row=0, column=0, padx=0, pady=(0, 10), sticky="nsew")
-        self.server_tab = self.tabview.add("Server")
-        self.config_tab = self.tabview.add("Configuration")
-        self.save_sync_tab = self.tabview.add("Save Sync")
-        self.backups_tab = self.tabview.add("Backups")
-        self.mods_tab = self.tabview.add("Mods")
-        
-        self.server_tab.grid_columnconfigure(0, weight=1)
-        self.config_tab.grid_columnconfigure(0, weight=1)
-        self.save_sync_tab.grid_columnconfigure(0, weight=1)
-        self.mods_tab.grid_columnconfigure(0, weight=1)
+        # View Frames (replacing Tabview)
+        self.views = {}
+        self.server_view = ctk.CTkFrame(self.main_content_frame, fg_color="transparent")
+        self.config_view = ctk.CTkFrame(self.main_content_frame, fg_color="transparent")
+        self.save_sync_view = ctk.CTkFrame(self.main_content_frame, fg_color="transparent")
+        self.backups_view = ctk.CTkFrame(self.main_content_frame, fg_color="transparent")
+        self.mods_view = ctk.CTkFrame(self.main_content_frame, fg_color="transparent")
 
-        # Initialize Tabs
-        self.init_server_tab()
-        self.init_config_tab()
-        self.init_save_sync_tab()
-        self.init_backups_tab()
-        self.init_mods_tab()
+        self.views["Server"] = self.server_view
+        self.views["Configuration"] = self.config_view
+        self.views["Save Sync"] = self.save_sync_view
+        self.views["Backups"] = self.backups_view
+        self.views["Mods"] = self.mods_view
 
         # Console
         self.console_output = ctk.CTkTextbox(
@@ -193,7 +192,7 @@ class App(ctk.CTk):
             text_color=style_config.CONSOLE_TEXT,
             font=style_config.FONT_MONO
         )
-        self.console_output.grid(row=1, column=0, sticky="ew")
+        self.console_output.grid(row=1, column=0, sticky="ew", pady=(10, 0))
 
         # Bottom Frame (Status/Version)
         self.bottom_frame = ctk.CTkFrame(self.main_content_frame, fg_color="transparent")
@@ -208,16 +207,47 @@ class App(ctk.CTk):
         self.version_label = ctk.CTkLabel(self.bottom_frame, text=f"v{__version__}", font=(style_config.FONT_MAIN[0], 10))
         self.version_label.pack(side="right")
 
+        # Initialize Views
+        self.init_server_view()
+        self.init_config_view()
+        self.init_save_sync_view()
+        self.init_backups_view()
+        self.init_mods_view()
+
+        # Show initial view
+        self.select_tab("Server")
+
         # Recover state
         self.recover_state()
 
         # Start monitoring loop
         self.update_monitoring()
 
-    def init_server_tab(self) -> None:
-        """Initializes the Server management tab UI."""
-        # Path Selection Frame (inside Server Tab)
-        self.path_frame = ctk.CTkFrame(self.server_tab)
+    def select_tab(self, name: str) -> None:
+        """Switch to the specified view and update UI selection."""
+        # Hide all views
+        for view in self.views.values():
+            view.pack_forget()
+        
+        # Show selected view
+        self.views[name].pack(fill="both", expand=True)
+
+        # Update button highlighting
+        self.nav_dashboard_btn.configure(fg_color=("gray75", "gray25") if name == "Server" else "transparent")
+        self.nav_settings_btn.configure(fg_color=("gray75", "gray25") if name == "Configuration" else "transparent")
+        self.nav_backups_btn.configure(fg_color=("gray75", "gray25") if name == "Backups" else "transparent")
+        self.nav_sync_btn.configure(fg_color=("gray75", "gray25") if name == "Save Sync" else "transparent")
+        self.nav_mods_btn.configure(fg_color=("gray75", "gray25") if name == "Mods" else "transparent")
+
+        if name == "Backups":
+            self.refresh_backups_list()
+
+    def init_server_view(self) -> None:
+        """Initializes the Server management view UI."""
+        self.server_view.grid_columnconfigure(0, weight=1)
+
+        # Path Selection Frame
+        self.path_frame = ctk.CTkFrame(self.server_view)
         self.path_frame.grid(row=0, column=0, padx=10, pady=(10, 5), sticky="ew")
         self.path_frame.grid_columnconfigure(1, weight=1)
 
@@ -228,7 +258,6 @@ class App(ctk.CTk):
         self.path_entry.grid(row=0, column=1, padx=5, pady=10, sticky="ew")
         self.path_entry.insert(0, os.path.join(os.getcwd(), "icarus_server"))
         
-        # Now that path_entry is initialized, we can update INI manager
         self.update_ini_manager()
 
         self.browse_button = ctk.CTkButton(
@@ -236,8 +265,14 @@ class App(ctk.CTk):
         )
         self.browse_button.grid(row=0, column=2, padx=(5, 10), pady=10)
 
+        # Actions
+        self.install_button = ctk.CTkButton(
+            self.server_view, text="Install/Update Server", command=self.start_install
+        )
+        self.install_button.grid(row=1, column=0, padx=10, pady=5)
+
         # Metrics Frame (Center)
-        self.metrics_frame = ctk.CTkFrame(self.server_tab, fg_color="transparent")
+        self.metrics_frame = ctk.CTkFrame(self.server_view, fg_color="transparent")
         self.metrics_frame.grid(row=2, column=0, padx=10, pady=10, sticky="ew")
         self.metrics_frame.grid_columnconfigure(0, weight=1)
 
@@ -255,15 +290,9 @@ class App(ctk.CTk):
         self.ram_progress_bar.grid(row=3, column=0, sticky="ew", padx=20, pady=(5, 15))
         self.ram_progress_bar.set(0)
 
-        # Actions (inside Server Tab)
-        self.install_button = ctk.CTkButton(
-            self.server_tab, text="Install/Update Server", command=self.start_install
-        )
-        self.install_button.grid(row=3, column=0, padx=10, pady=5)
-
         # Server Control Frame (Massive Button)
-        self.control_frame = ctk.CTkFrame(self.server_tab, fg_color="transparent")
-        self.control_frame.grid(row=4, column=0, padx=10, pady=20, sticky="ew")
+        self.control_frame = ctk.CTkFrame(self.server_view, fg_color="transparent")
+        self.control_frame.grid(row=3, column=0, padx=10, pady=20, sticky="ew")
         self.control_frame.grid_columnconfigure(0, weight=1)
 
         self.orbital_launch_btn = ctk.CTkButton(
@@ -275,38 +304,15 @@ class App(ctk.CTk):
             hover_color="#e67e00", # Darker orange
             command=self.toggle_server
         )
-        self.orbital_launch_btn.grid(row=0, column=0, sticky="ew", padx=20)
+        self.orbital_launch_btn.grid(row=0, column=0, sticky="ew", padx=100)
         
-        # Legacy Resource Labels (Small) - Moved below massive button
-        self.legacy_metrics_frame = ctk.CTkFrame(self.server_tab, fg_color="transparent")
-        self.legacy_metrics_frame.grid(row=5, column=0, sticky="ew")
-        self.legacy_metrics_frame.grid_columnconfigure((0,1), weight=1)
+        # Redundant legacy labels removed (placeholders kept for logic)
+        self.legacy_cpu_label = ctk.CTkLabel(self.server_view, text="") 
+        self.legacy_ram_label = ctk.CTkLabel(self.server_view, text="") 
 
-        self.legacy_cpu_label = ctk.CTkLabel(self.legacy_metrics_frame, text="CPU: 0.0%", font=(style_config.FONT_MAIN[0], 10))
-        self.legacy_cpu_label.grid(row=0, column=0, padx=10, pady=5, sticky="e")
-        
-        self.legacy_ram_label = ctk.CTkLabel(self.legacy_metrics_frame, text="RAM: 0.00GB", font=(style_config.FONT_MAIN[0], 10))
-        self.legacy_ram_label.grid(row=0, column=1, padx=10, pady=5, sticky="w")
-
-        # Settings Frame (inside Server Tab)
-        self.settings_frame = ctk.CTkFrame(self.server_tab)
-        self.settings_frame.grid(row=6, column=0, padx=10, pady=5, sticky="ew")
-
-        self.threshold_label = ctk.CTkLabel(self.settings_frame, text="RAM Threshold (GB):")
-        self.threshold_label.grid(row=0, column=0, padx=(10, 5), pady=10)
-
-        self.threshold_entry = ctk.CTkEntry(self.settings_frame, width=60)
-        self.threshold_entry.grid(row=0, column=1, padx=5, pady=10)
-        self.threshold_entry.insert(0, str(self.server_manager.ram_threshold_gb))
-
-        self.save_settings_button = ctk.CTkButton(
-            self.settings_frame, text="Save Settings", width=100, command=self.save_settings
-        )
-        self.save_settings_button.grid(row=0, column=2, padx=(5, 10), pady=10)
-
-        # Smart Restart Settings (inside Server Tab)
-        self.smart_restart_frame = ctk.CTkFrame(self.server_tab)
-        self.smart_restart_frame.grid(row=4, column=0, padx=10, pady=5, sticky="ew")
+        # Smart Restart Settings
+        self.smart_restart_frame = ctk.CTkFrame(self.server_view)
+        self.smart_restart_frame.grid(row=5, column=0, padx=10, pady=5, sticky="ew")
 
         self.smart_restart_var = ctk.BooleanVar(value=self.server_manager.smart_restart_enabled)
         self.smart_restart_switch = ctk.CTkSwitch(
@@ -322,9 +328,9 @@ class App(ctk.CTk):
         self.restart_time_entry.grid(row=0, column=2, padx=5, pady=10)
         self.restart_time_entry.insert(0, self.server_manager.smart_restart_time)
 
-        # Backup Settings (inside Server Tab)
-        self.backup_settings_frame = ctk.CTkFrame(self.server_tab)
-        self.backup_settings_frame.grid(row=5, column=0, padx=10, pady=5, sticky="ew")
+        # Backup Settings
+        self.backup_settings_frame = ctk.CTkFrame(self.server_view)
+        self.backup_settings_frame.grid(row=6, column=0, padx=10, pady=5, sticky="ew")
 
         self.backup_interval_label = ctk.CTkLabel(self.backup_settings_frame, text="Backup Interval (min):")
         self.backup_interval_label.grid(row=0, column=0, padx=(10, 5), pady=10)
@@ -340,184 +346,25 @@ class App(ctk.CTk):
         self.backup_retention_entry.grid(row=0, column=3, padx=5, pady=10)
         self.backup_retention_entry.insert(0, str(self.backup_manager.retention_limit))
 
-    def init_mods_tab(self) -> None:
-        """Initializes the Mods management tab UI."""
-        self.mods_tab.grid_columnconfigure(0, weight=1)
-        self.mods_tab.grid_rowconfigure(1, weight=1)
+        # RAM Threshold Frame
+        self.settings_frame = ctk.CTkFrame(self.server_view)
+        self.settings_frame.grid(row=7, column=0, padx=10, pady=5, sticky="ew")
 
-        # Header with Install Button
-        self.mods_header = ctk.CTkFrame(self.mods_tab, fg_color="transparent")
-        self.mods_header.grid(row=0, column=0, padx=20, pady=10, sticky="ew")
-        
-        self.install_mod_btn = ctk.CTkButton(
-            self.mods_header, text="Install Mod (.pak or .zip)", command=self.install_mod_ui
+        self.threshold_label = ctk.CTkLabel(self.settings_frame, text="RAM Threshold (GB):")
+        self.threshold_label.grid(row=0, column=0, padx=(10, 5), pady=10)
+
+        self.threshold_entry = ctk.CTkEntry(self.settings_frame, width=60)
+        self.threshold_entry.grid(row=0, column=1, padx=5, pady=10)
+        self.threshold_entry.insert(0, str(self.server_manager.ram_threshold_gb))
+
+        self.save_settings_button = ctk.CTkButton(
+            self.settings_frame, text="Save Settings", width=100, command=self.save_settings
         )
-        self.install_mod_btn.pack(side="left", padx=10)
+        self.save_settings_button.grid(row=0, column=2, padx=(5, 10), pady=10)
 
-        self.select_all_var = ctk.BooleanVar(value=False)
-        self.select_all_cb = ctk.CTkCheckBox(
-            self.mods_header, text="Select All", variable=self.select_all_var, command=self.toggle_select_all_mods
-        )
-        self.select_all_cb.pack(side="left", padx=20)
-
-        self.refresh_mods_btn = ctk.CTkButton(
-            self.mods_header, text="Refresh", width=80, command=self.refresh_mod_list
-        )
-        self.refresh_mods_btn.pack(side="right", padx=10)
-
-        # Mod List (Scrollable Checklist)
-        self.mod_list = ctk.CTkScrollableFrame(self.mods_tab, label_text="Installed Mods")
-        self.mod_list.grid(row=1, column=0, padx=20, pady=10, sticky="nsew")
-        
-        # Action Buttons for selected mods
-        self.mod_actions_frame = ctk.CTkFrame(self.mods_tab, fg_color="transparent")
-        self.mod_actions_frame.grid(row=2, column=0, padx=20, pady=5, sticky="ew")
-        
-        self.remove_mod_btn = ctk.CTkButton(
-            self.mod_actions_frame, text="Remove Selected Mods", fg_color="red", hover_color="darkred",
-            command=self.remove_mod_ui
-        )
-        self.remove_mod_btn.pack(side="left", padx=10)
-
-        # Sync Warning
-        self.sync_warning_label = ctk.CTkLabel(
-            self.mods_tab, 
-            text="WARNING: Clients MUST have the exact same .pak files to join without crashing.",
-            text_color="orange",
-            font=("Arial", 12, "bold")
-        )
-        self.sync_warning_label.grid(row=3, column=0, padx=20, pady=10)
-
-        self.refresh_mod_list()
-
-    def toggle_select_all_mods(self) -> None:
-        """Toggles selection for all mod checkboxes."""
-        val = self.select_all_var.get()
-        for cb in self.mod_list.winfo_children():
-            if isinstance(cb, ctk.CTkCheckBox):
-                if val:
-                    cb.select()
-                else:
-                    cb.deselect()
-
-    def refresh_mod_list(self) -> None:
-        """Updates the list of installed mods using checkboxes."""
-        # Clear existing
-        for widget in self.mod_list.winfo_children():
-            widget.destroy()
-
-        mods = self.mod_manager.list_mods()
-        if not mods:
-            ctk.CTkLabel(self.mod_list, text="No mods installed.").pack(pady=10)
-            self.select_all_cb.configure(state="disabled")
-        else:
-            self.select_all_cb.configure(state="normal")
-            self.select_all_var.set(False)
-            for mod in mods:
-                cb = ctk.CTkCheckBox(self.mod_list, text=mod)
-                cb.pack(fill="x", padx=10, pady=5)
-
-    def install_mod_ui(self) -> None:
-        """Opens file dialog and installs selected mods."""
-        file_paths = filedialog.askopenfilenames(
-            title="Select Mod Files",
-            filetypes=[("Mod Files", "*.pak *.zip"), ("PAK Files", "*.pak"), ("ZIP Archives", "*.zip")]
-        )
-        if file_paths:
-            for file_path in file_paths:
-                self.log(f"Installing mod: {os.path.basename(file_path)}...")
-                try:
-                    self.mod_manager.install_mod(file_path)
-                    self.log(f"Mod '{os.path.basename(file_path)}' installed successfully.")
-                except Exception as e:
-                    self.log(f"Error installing mod '{os.path.basename(file_path)}': {str(e)}")
-                    messagebox.showerror("Installation Error", f"Failed to install mod '{os.path.basename(file_path)}': {str(e)}")
-            
-            self.refresh_mod_list()
-
-    def remove_mod_ui(self) -> None:
-        """Removes all currently checked mods."""
-        to_remove = []
-        for cb in self.mod_list.winfo_children():
-            # Check for 'get' method which CTkCheckBox has to return its state
-            if hasattr(cb, "get") and cb.get():
-                to_remove.append(cb.cget("text"))
-
-        if not to_remove:
-            messagebox.showinfo("No Selection", "Please select at least one mod to remove.")
-            return
-
-        confirmed = messagebox.askyesno(
-            "Confirm Removal",
-            f"Are you sure you want to remove {len(to_remove)} selected mod(s)?"
-        )
-        
-        if confirmed:
-            for mod_name in to_remove:
-                self.log(f"Removing mod: {mod_name}...")
-                try:
-                    self.mod_manager.remove_mod(mod_name)
-                    self.log(f"Mod '{mod_name}' removed.")
-                except Exception as e:
-                    self.log(f"Error removing mod '{mod_name}': {str(e)}")
-            
-            self.refresh_mod_list()
-
-    def init_save_sync_tab(self) -> None:
-        """Initializes the Save Sync tab UI."""
-        self.sync_frame = ctk.CTkFrame(self.save_sync_tab)
-        self.sync_frame.grid(row=0, column=0, padx=20, pady=20, sticky="nsew")
-        self.sync_frame.grid_columnconfigure(1, weight=1)
-
-        # SteamID Selection
-        ctk.CTkLabel(self.sync_frame, text="Local SteamID:").grid(row=0, column=0, padx=10, pady=10, sticky="w")
-        self.steam_id_dropdown = ctk.CTkOptionMenu(
-            self.sync_frame, 
-            values=["None Found"], 
-            command=self.on_steam_id_selected
-        )
-        self.steam_id_dropdown.grid(row=0, column=1, padx=10, pady=10, sticky="ew")
-
-        # Sync Button
-        self.manual_sync_btn = ctk.CTkButton(
-            self.sync_frame, text="Sync Now", command=self.perform_manual_sync
-        )
-        self.manual_sync_btn.grid(row=1, column=0, columnspan=2, padx=10, pady=20)
-
-        # Last Sync Info
-        self.last_sync_label = ctk.CTkLabel(
-            self.sync_frame, 
-            text=f"Last Sync: {self.server_manager.state.get('last_sync_timestamp', 'Never')}"
-        )
-        self.last_sync_label.grid(row=2, column=0, columnspan=2, padx=10, pady=10)
-
-        self.refresh_steam_ids()
-
-    def init_backups_tab(self) -> None:
-        """Initializes the Backups tab UI."""
-        self.backups_tab.grid_columnconfigure(0, weight=1)
-        self.backups_tab.grid_rowconfigure(1, weight=1)
-
-        self.backup_now_button = ctk.CTkButton(
-            self.backups_tab, text="Backup Now", command=self.manual_backup
-        )
-        self.backup_now_button.grid(row=0, column=0, padx=20, pady=20)
-
-        self.backups_list_frame = ctk.CTkScrollableFrame(self.backups_tab, label_text="Available Backups")
-        self.backups_list_frame.grid(row=1, column=0, padx=20, pady=(0, 20), sticky="nsew")
-
-        # Initial refresh
-        if hasattr(self, "tk") and self.tk:
-            self.refresh_backups_list()
-
-    def on_steam_id_selected(self, steam_id: str) -> None:
-        """Handles SteamID selection from the dropdown."""
-        self.selected_steam_id = steam_id
-        self.log(f"Save Sync: Selected SteamID {steam_id}")
-
-    def init_config_tab(self) -> None:
-        """Initializes the Configuration tab UI."""
-        self.config_subtabview = ctk.CTkTabview(self.config_tab, command=self.on_config_tab_change)
+    def init_config_view(self) -> None:
+        """Initializes the Configuration view UI."""
+        self.config_subtabview = ctk.CTkTabview(self.config_view, command=self.on_config_tab_change)
         self.config_subtabview.pack(fill="both", expand=True, padx=10, pady=10)
         
         self.basic_config_tab = self.config_subtabview.add("Basic")
@@ -577,167 +424,221 @@ class App(ctk.CTk):
         # Load initial values
         self.load_config_to_gui()
 
+    def init_save_sync_view(self) -> None:
+        """Initializes the Save Sync view UI."""
+        self.save_sync_view.grid_columnconfigure(0, weight=1)
+        self.sync_frame = ctk.CTkFrame(self.save_sync_view)
+        self.sync_frame.grid(row=0, column=0, padx=20, pady=20, sticky="nsew")
+        self.sync_frame.grid_columnconfigure(1, weight=1)
+
+        # SteamID Selection
+        ctk.CTkLabel(self.sync_frame, text="Local SteamID:").grid(row=0, column=0, padx=10, pady=10, sticky="w")
+        self.steam_id_dropdown = ctk.CTkOptionMenu(
+            self.sync_frame, 
+            values=["None Found"], 
+            command=self.on_steam_id_selected
+        )
+        self.steam_id_dropdown.grid(row=0, column=1, padx=10, pady=10, sticky="ew")
+
+        # Sync Button
+        self.manual_sync_btn = ctk.CTkButton(
+            self.sync_frame, text="Sync Now", command=self.perform_manual_sync
+        )
+        self.manual_sync_btn.grid(row=1, column=0, columnspan=2, padx=10, pady=20)
+
+        # Last Sync Info
+        self.last_sync_label = ctk.CTkLabel(
+            self.sync_frame, 
+            text=f"Last Sync: {self.server_manager.state.get('last_sync_timestamp', 'Never')}"
+        )
+        self.last_sync_label.grid(row=2, column=0, columnspan=2, padx=10, pady=10)
+
+        self.refresh_steam_ids()
+
+    def init_backups_view(self) -> None:
+        """Initializes the Backups view UI."""
+        self.backups_view.grid_columnconfigure(0, weight=1)
+        self.backups_view.grid_rowconfigure(1, weight=1)
+
+        self.backup_now_button = ctk.CTkButton(
+            self.backups_view, text="Backup Now", command=self.manual_backup
+        )
+        self.backup_now_button.grid(row=0, column=0, padx=20, pady=20)
+
+        self.backups_list_frame = ctk.CTkScrollableFrame(self.backups_view, label_text="Available Backups")
+        self.backups_list_frame.grid(row=1, column=0, padx=20, pady=(0, 20), sticky="nsew")
+
+        # Initial refresh
+        if hasattr(self, "tk") and self.tk:
+            self.refresh_backups_list()
+
+    def init_mods_view(self) -> None:
+        """Initializes the Mods management view UI."""
+        self.mods_view.grid_columnconfigure(0, weight=1)
+        self.mods_view.grid_rowconfigure(1, weight=1)
+
+        # Header with Install Button
+        self.mods_header = ctk.CTkFrame(self.mods_view, fg_color="transparent")
+        self.mods_header.grid(row=0, column=0, padx=20, pady=10, sticky="ew")
+        
+        self.install_mod_btn = ctk.CTkButton(
+            self.mods_header, text="Install Mod (.pak or .zip)", command=self.install_mod_ui
+        )
+        self.install_mod_btn.pack(side="left", padx=10)
+
+        self.select_all_var = ctk.BooleanVar(value=False)
+        self.select_all_cb = ctk.CTkCheckBox(
+            self.mods_header, text="Select All", variable=self.select_all_var, command=self.toggle_select_all_mods
+        )
+        self.select_all_cb.pack(side="left", padx=20)
+
+        self.refresh_mods_btn = ctk.CTkButton(
+            self.mods_header, text="Refresh", width=80, command=self.refresh_mod_list
+        )
+        self.refresh_mods_btn.pack(side="right", padx=10)
+
+        # Mod List (Scrollable Checklist)
+        self.mod_list = ctk.CTkScrollableFrame(self.mods_view, label_text="Installed Mods")
+        self.mod_list.grid(row=1, column=0, padx=20, pady=10, sticky="nsew")
+        
+        # Action Buttons for selected mods
+        self.mod_actions_frame = ctk.CTkFrame(self.mods_view, fg_color="transparent")
+        self.mod_actions_frame.grid(row=2, column=0, padx=20, pady=5, sticky="ew")
+        
+        self.remove_mod_btn = ctk.CTkButton(
+            self.mod_actions_frame, text="Remove Selected Mods", fg_color="red", hover_color="darkred",
+            command=self.remove_mod_ui
+        )
+        self.remove_mod_btn.pack(side="left", padx=10)
+
+        # Sync Warning
+        self.sync_warning_label = ctk.CTkLabel(
+            self.mods_view, 
+            text="WARNING: Clients MUST have the exact same .pak files to join without crashing.",
+            text_color="orange",
+            font=("Arial", 12, "bold")
+        )
+        self.sync_warning_label.grid(row=3, column=0, padx=20, pady=10)
+
+        self.refresh_mod_list()
+
+    def on_steam_id_selected(self, steam_id: str) -> None:
+        """Handles SteamID selection from the dropdown."""
+        self.selected_steam_id = steam_id
+        self.log(f"Save Sync: Selected SteamID {steam_id}")
+
     def on_config_tab_change(self) -> None:
-        """Handles internal configuration tab changes between Basic and Advanced."""
+        """Handles internal configuration tab changes."""
         if self.config_subtabview.get() == "Advanced":
             self.load_raw_ini_to_gui()
         else:
             self.load_config_to_gui()
 
     def load_raw_ini_to_gui(self) -> None:
-        """Loads the raw INI content from the disk into the advanced textbox."""
-        if not self.ini_manager:
-            return
-
+        """Loads the raw INI content from the disk."""
+        if not self.ini_manager: return
         raw_text = self.ini_manager.get_raw_text()
         self.raw_ini_textbox.delete("0.0", "end")
         self.raw_ini_textbox.insert("0.0", raw_text)
 
     def save_advanced_config(self) -> None:
-        """Saves the raw INI content from the advanced textbox back to the disk.
-
-        This also triggers a re-parsing of the INI file to update the basic fields.
-        """
-        if not self.ini_manager:
-            return
-
+        """Saves the raw INI content back to the disk."""
+        if not self.ini_manager: return
         raw_text = self.raw_ini_textbox.get("0.0", "end").strip()
         if raw_text:
             self.ini_manager.save_raw_text(raw_text)
-            self.log("Advanced configuration saved and re-parsed.")
-            # Sync back to basic fields
+            self.log("Advanced configuration saved.")
             self.load_config_to_gui()
+
     def load_config_to_gui(self) -> None:
         """Populates the Configuration GUI fields from INI manager."""
-        if not self.ini_manager:
-            return
-            
+        if not self.ini_manager: return
         self.server_name_entry.delete(0, "end")
         self.server_name_entry.insert(0, self.ini_manager.get_setting("SessionName") or "")
-        
         self.server_password_entry.delete(0, "end")
         self.server_password_entry.insert(0, self.ini_manager.get_setting("ServerPassword") or "")
-        
         self.admin_password_entry.delete(0, "end")
         self.admin_password_entry.insert(0, self.ini_manager.get_setting("AdminPassword") or "")
-        
         self.server_port_entry.delete(0, "end")
         self.server_port_entry.insert(0, self.ini_manager.get_setting("Port") or "17777")
-        
-        # Sentinel section for app-specific settings
         update_val = self.ini_manager.get_setting("UpdateOnLaunch", section="Sentinel")
         self.update_on_launch_var.set(update_val == "True")
 
     def save_config(self) -> None:
         """Saves values from the Configuration GUI back to INI file."""
-        if not self.ini_manager:
-            return
-            
+        if not self.ini_manager: return
         self.ini_manager.set_setting("SessionName", self.server_name_entry.get())
         self.ini_manager.set_setting("ServerPassword", self.server_password_entry.get())
         self.ini_manager.set_setting("AdminPassword", self.admin_password_entry.get())
         self.ini_manager.set_setting("Port", self.server_port_entry.get())
-        
         self.ini_manager.set_setting("UpdateOnLaunch", str(self.update_on_launch_var.get()), section="Sentinel")
-        
         self.ini_manager.save()
-        self.log("Configuration saved successfully to INI file.")
+        self.log("Configuration saved successfully.")
 
     def update_ini_manager(self) -> None:
         """Updates the INI manager with the current installation path."""
         install_dir = self.path_entry.get().strip() if hasattr(self, "path_entry") else os.path.join(os.getcwd(), "icarus_server")
-        ini_path = os.path.join(
-            install_dir, "Icarus", "Saved", "Config", "WindowsServer", "ServerSettings.ini"
-        )
-        
-        # Ensure directory exists for INI file
+        ini_path = os.path.join(install_dir, "Icarus", "Saved", "Config", "WindowsServer", "ServerSettings.ini")
         os.makedirs(os.path.dirname(ini_path), exist_ok=True)
-        
-        if not self.ini_manager:
-            self.ini_manager = INIManager(ini_path)
+        if not self.ini_manager: self.ini_manager = INIManager(ini_path)
         else:
             self.ini_manager.file_path = ini_path
             self.ini_manager.load()
-        
-        # Update SaveSyncManager with new server path and ini_manager
         self.save_sync_manager.server_path = install_dir
         self.save_sync_manager.ini_manager = self.ini_manager
-
-        # Ensure file exists on disk for verification/first-run
-        if not os.path.exists(ini_path):
-            self.ini_manager.save()
+        if not os.path.exists(ini_path): self.ini_manager.save()
 
     def refresh_steam_ids(self) -> None:
-        """Discovers local SteamIDs and sets a default if none selected."""
+        """Discovers local SteamIDs."""
         ids = self.save_sync_manager.list_local_steam_ids()
         if ids:
-            # Safer hasattr check to avoid recursion during mock init
-            if "steam_id_dropdown" in self.__dict__:
+            if hasattr(self, "steam_id_dropdown"):
                 self.steam_id_dropdown.configure(values=ids)
             if not self.selected_steam_id:
                 self.selected_steam_id = ids[0]
-                if "steam_id_dropdown" in self.__dict__:
+                if hasattr(self, "steam_id_dropdown"):
                     self.steam_id_dropdown.set(ids[0])
             
     def sync_saves(self, callback: Optional[Callable] = None) -> None:
-        """Triggers bidirectional save synchronization in a background thread."""
+        """Triggers bidirectional save synchronization."""
         if not self.selected_steam_id:
-            self.log("Save Sync: No SteamID selected. Skipping sync.")
+            self.log("Save Sync: No SteamID selected.")
             if callback: callback()
             return
-
         def _run_sync():
             self.after(0, self.log, f"Save Sync: Starting synchronization for SteamID {self.selected_steam_id}...")
             try:
                 self.save_sync_manager.sync_prospects(self.selected_steam_id)
-                
-                # Update last sync timestamp
                 timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
                 self.server_manager.state["last_sync_timestamp"] = timestamp
                 self.server_manager.save_state()
-
                 self.after(0, self.log, f"Save Sync: Synchronization complete at {timestamp}.")
                 if hasattr(self, "last_sync_label"):
                     self.after(0, lambda: self.last_sync_label.configure(text=f"Last Sync: {timestamp}"))
             except Exception as e:
                 self.after(0, self.log, f"Save Sync: Error during synchronization: {str(e)}")
-            if callback:
-                self.after(0, callback)
-
+            if callback: self.after(0, callback)
         threading.Thread(target=_run_sync, daemon=True).start()
 
     def perform_manual_sync(self) -> None:
-        """Manually triggers save synchronization, ensuring server is stopped."""
+        """Manually triggers save synchronization."""
         if self.server_process:
-            messagebox.showwarning(
-                "Server Running", 
-                "Please stop the server before performing a manual sync to avoid data corruption."
-            )
+            messagebox.showwarning("Server Running", "Please stop the server before sync.")
             return
-        
         self.sync_saves()
 
     def save_settings(self) -> None:
-        """Saves current settings from the UI to the manager."""
+        """Saves current settings from the UI."""
         try:
-            threshold = float(self.threshold_entry.get())
-            self.server_manager.ram_threshold_gb = threshold
-            
+            self.server_manager.ram_threshold_gb = float(self.threshold_entry.get())
             self.server_manager.smart_restart_enabled = self.smart_restart_var.get()
             self.server_manager.smart_restart_time = self.restart_time_entry.get().strip()
-            
-            # Update Backup Settings
             interval = float(self.backup_interval_entry.get())
-            retention = int(self.backup_retention_entry.get())
-            
-            # Stop timer if interval changed significantly or to restart with new interval
             if interval != self.backup_manager.interval_minutes:
                 self.backup_manager.stop_timer()
                 self.backup_manager.interval_minutes = interval
                 self.backup_manager.start_timer()
-            
-            self.backup_manager.retention_limit = retention
-            
+            self.backup_manager.retention_limit = int(self.backup_retention_entry.get())
             self.server_manager.save_state()
             self.log("Settings saved.")
         except ValueError:
@@ -752,22 +653,18 @@ class App(ctk.CTk):
                 if p.is_running():
                     self.log(f"Recovered existing server process (PID: {saved_pid})")
                     self.server_process = saved_pid
-                    self.start_button.configure(state="disabled")
-                    self.stop_button.configure(state="normal")
-                    self.restart_button.configure(state="normal")
-                else:
-                    self.reset_state()
-            except (psutil.NoSuchProcess, psutil.AccessDenied):
-                self.reset_state()
+                    self.orbital_launch_btn.configure(text="ABORT MISSION", fg_color="red", hover_color="darkred")
+                else: self.reset_state()
+            except (psutil.NoSuchProcess, psutil.AccessDenied): self.reset_state()
 
     def reset_state(self) -> None:
-        """Resets the server state in the manager."""
+        """Resets the server state."""
         self.server_manager.state["pid"] = None
         self.server_manager.state["status"] = "stopped"
         self.server_manager.save_state()
 
     def browse_path(self) -> None:
-        """Opens a directory dialog and updates the installation path entry."""
+        """Opens a directory dialog."""
         directory = filedialog.askdirectory()
         if directory:
             self.path_entry.delete(0, "end")
@@ -775,158 +672,91 @@ class App(ctk.CTk):
             self.update_ini_manager()
 
     def log(self, message: str) -> None:
-        """Appends a message to the console output text box.
-
-        Args:
-            message: The string message to log.
-        """
+        """Appends a message to the console output."""
         self.console_output.configure(state="normal")
         self.console_output.insert("end", message + "\n")
         self.console_output.configure(state="disabled")
         self.console_output.see("end")
 
     def start_install(self) -> None:
-        """Initiates the server installation process in a separate thread."""
+        """Initiates the server installation process."""
         install_dir = self.path_entry.get().strip()
         if not install_dir:
             self.log("Error: Please select a valid installation directory.")
             return
-
         self.install_button.configure(state="disabled")
         self.browse_button.configure(state="disabled")
         self.path_entry.configure(state="disabled")
-        
-        threading.Thread(
-            target=self.run_install, args=(install_dir,), daemon=True
-        ).start()
+        threading.Thread(target=self.run_install, args=(install_dir,), daemon=True).start()
 
     def run_install(self, install_dir: str) -> None:
-        """Executes the server installation and captures output for logging.
-
-        Args:
-            install_dir: The directory where the server should be installed.
-        """
+        """Executes the server installation."""
         self.log(f"Starting installation to: {install_dir}")
-        
         try:
             process = self.steam_manager.install_server(install_dir)
-            
-            # Read stdout line by line
             if process.stdout:
                 for line in iter(process.stdout.readline, ""):
-                    if line:
-                        self.after(0, self.log, line.strip())
+                    if line: self.after(0, self.log, line.strip())
                 process.stdout.close()
-            
             return_code = process.wait()
-            
-            if return_code == 0:
-                self.after(0, self.log, "Installation complete!")
-            else:
-                self.after(0, self.log, f"Installation failed with return code: {return_code}")
-        except Exception as e:
-            self.after(0, self.log, f"An error occurred: {str(e)}")
-        
+            if return_code == 0: self.after(0, self.log, "Installation complete!")
+            else: self.after(0, self.log, f"Installation failed: {return_code}")
+        except Exception as e: self.after(0, self.log, f"An error occurred: {str(e)}")
         self.after(0, self.reset_ui)
 
     def reset_ui(self) -> None:
-        """Re-enables UI elements after the installation process completes."""
+        """Re-enables UI elements after installation."""
         self.install_button.configure(state="normal")
         self.browse_button.configure(state="normal")
         self.path_entry.configure(state="normal")
 
     def get_server_executable(self, install_dir: str) -> Optional[str]:
-        """Resolves the path to the actual server executable.
-
-        Args:
-            install_dir: The base installation directory.
-
-        Returns:
-            The full path to the executable, or None if not found.
-        """
-        # Common relative path for Icarus Dedicated Server
-        shipping_exe = os.path.join(
-            install_dir, "Icarus", "Binaries", "Win64", "IcarusServer-Win64-Shipping.exe"
-        )
-        if os.path.exists(shipping_exe):
-            return shipping_exe
-        
-        # Fallback to root exe if present (though usually just a launcher)
+        """Resolves the path to the actual server executable."""
+        shipping_exe = os.path.join(install_dir, "Icarus", "Binaries", "Win64", "IcarusServer-Win64-Shipping.exe")
+        if os.path.exists(shipping_exe): return shipping_exe
         root_exe = os.path.join(install_dir, "IcarusServer.exe")
-        if os.path.exists(root_exe):
-            return root_exe
-            
+        if os.path.exists(root_exe): return root_exe
         return None
 
     def start_server(self) -> None:
-        """Starts the server process in a separate thread."""
+        """Starts the server process."""
         install_dir = self.path_entry.get().strip()
         if not install_dir or not os.path.exists(install_dir):
             self.log("Error: Invalid installation directory.")
             return
-
         exe_path = self.get_server_executable(install_dir)
         if not exe_path:
-            self.log("Error: Could not find IcarusServer executable in the selected directory.")
+            self.log("Error: Could not find IcarusServer executable.")
             return
-
-        # Pre-flight Check
         available_pct = self.server_manager.get_available_system_ram_pct()
-        if available_pct < 10.0:
-            RamOptimizationDialog(self, available_pct, lambda: self.launch_server(exe_path))
-        else:
-            self.launch_server(exe_path)
+        if available_pct < 10.0: RamOptimizationDialog(self, available_pct, lambda: self.launch_server(exe_path))
+        else: self.launch_server(exe_path)
 
     def toggle_server(self) -> None:
-        """Toggles the server between running and stopped states."""
-        if self.server_process:
-            self.stop_server()
-        else:
-            self.start_server()
+        """Toggles the server state."""
+        if self.server_process: self.stop_server()
+        else: self.start_server()
 
     def launch_server(self, exe_path: str) -> None:
         """Helper to actually launch the server thread."""
         self.orbital_launch_btn.configure(text="ABORT MISSION", fg_color="red", hover_color="darkred")
-        
-        # Update backup manager with latest server path
-        install_dir = self.path_entry.get().strip()
-        self.backup_manager.server_path = install_dir
-        
-        # Trigger Save Sync before launch
-        self.sync_saves(callback=lambda: threading.Thread(
-            target=self.run_server, args=(exe_path,), daemon=True
-        ).start())
+        self.backup_manager.server_path = self.path_entry.get().strip()
+        self.sync_saves(callback=lambda: threading.Thread(target=self.run_server, args=(exe_path,), daemon=True).start())
 
     def run_server(self, exe_path: str) -> None:
         """Starts the server and streams logs."""
         try:
-            # Check for Update on Launch
             if self.update_on_launch_var.get():
                 install_dir = self.path_entry.get().strip()
-                self.after(0, self.log, "Update on Launch enabled. Checking for updates...")
-                
+                self.after(0, self.log, "Checking for updates...")
                 process = self.steam_manager.install_server(install_dir)
-                
-                # Stream update output to console
                 if process.stdout:
                     for line in iter(process.stdout.readline, ""):
-                        if line:
-                            self.after(0, self.log, line.strip())
+                        if line: self.after(0, self.log, line.strip())
                     process.stdout.close()
-                
-                return_code = process.wait()
-                if return_code == 0:
-                    self.after(0, self.log, "Update complete. Starting server...")
-                else:
-                    self.after(0, self.log, f"Update failed (Code: {return_code}). Attempting to start server anyway...")
-
+                process.wait()
             self.server_process = self.server_manager.start_server(exe_path)
-            # self.log(f"Server started (PID: {self.server_process.pid})") # Removed to match test expectation or fix test
-            
-            # Start log streaming (blocks until process exit)
             self.server_manager.stream_logs(self.server_process, lambda line: self.after(0, self.log, line))
-            
-            # If stream_logs returns, the process has exited
             self.after(0, self.on_server_exit)
         except Exception as e:
             self.after(0, self.log, f"Server error: {str(e)}")
@@ -934,18 +764,10 @@ class App(ctk.CTk):
 
     def on_server_exit(self) -> None:
         """Handles server process exit UI updates."""
-        if self.server_process is None:
-            return
-
+        if self.server_process is None: return
         self.log("Server process has exited.")
         self.server_process = None
-        self.start_button.configure(state="normal")
-        self.stop_button.configure(state="disabled")
-        self.restart_button.configure(state="disabled")
-        self.cpu_label.configure(text="CPU: 0.0%")
-        self.ram_label.configure(text="RAM: 0.00GB")
-        
-        # Trigger Save Sync after stop
+        self.orbital_launch_btn.configure(text="INITIATE ORBITAL LAUNCH", fg_color=style_config.ACCENT_COLOR, hover_color="#e67e00")
         self.sync_saves()
 
     def stop_server(self) -> None:
@@ -953,20 +775,13 @@ class App(ctk.CTk):
         if self.server_process:
             self.log("Stopping server...")
             self.server_manager.stop_server(self.server_process)
-            
-            # If it's a PID (recovered process), the log reader thread isn't running,
-            # so we manually trigger the exit UI cleanup.
-            if isinstance(self.server_process, int):
-                self.on_server_exit()
-            self.log("Server stop signal sent successfully.")
+            if isinstance(self.server_process, int): self.on_server_exit()
 
     def restart_server(self) -> None:
         """Restarts the server process."""
-        exe_path = self.path_entry.get().strip()
-        if self.server_process and exe_path:
+        if self.server_process:
             self.log("Restarting server...")
             self.server_manager.stop_server(self.server_process)
-            # start_server will be called by the thread or manually
             self.start_server()
 
     def update_monitoring(self) -> None:
@@ -975,68 +790,36 @@ class App(ctk.CTk):
         self.after(5000, self.update_monitoring)
 
     def update_monitoring_once(self) -> None:
-        """Updates the resource usage labels and checks for threshold alerts."""
+        """Updates resource usage labels."""
         if self.server_process:
             old_status = self.server_manager.state["status"]
             usage = self.server_manager.get_resource_usage(self.server_process)
             new_status = self.server_manager.state["status"]
-            
-            # Update New Metrics
-            cpu_val = usage["cpu"]
-            ram_val = usage["ram_gb"]
+            cpu_val, ram_val = usage["cpu"], usage["ram_gb"]
             ram_limit = self.server_manager.ram_threshold_gb
-            
             self.after(0, lambda: self.cpu_usage_label.configure(text=f"CPU USAGE: {cpu_val}%"))
             self.after(0, lambda: self.cpu_progress_bar.set(cpu_val / 100.0))
-            
             self.after(0, lambda: self.ram_usage_label.configure(text=f"RAM USAGE: {ram_val}GB / {ram_limit}GB"))
             self.after(0, lambda: self.ram_progress_bar.set(min(1.0, ram_val / ram_limit) if ram_limit > 0 else 0))
-
-            # Update Legacy Labels (for test compatibility)
-            self.after(0, lambda: self.legacy_cpu_label.configure(text=f"CPU: {usage['cpu']}%"))
-            self.after(0, lambda: self.legacy_ram_label.configure(text=f"RAM: {usage['ram_gb']}GB"))
-            
             if new_status == "warning":
                 self.after(0, lambda: self.ram_usage_label.configure(text_color="orange"))
                 self.after(0, lambda: self.ram_progress_bar.configure(progress_color="orange"))
-                if old_status != "warning":
-                    self.log(f"WARNING: High RAM usage detected! (>{ram_limit}GB)")
+                if old_status != "warning": self.log(f"WARNING: High RAM usage! (>{ram_limit}GB)")
             else:
                 self.after(0, lambda: self.ram_usage_label.configure(text_color=style_config.TEXT_PRIMARY))
                 self.after(0, lambda: self.ram_progress_bar.configure(progress_color=style_config.ACCENT_COLOR))
-
-            # Check for smart restart
             if self.server_manager.should_smart_restart():
-                self.log("Smart Idle Restart condition met. Triggering restart...")
+                self.log("Smart Idle Restart condition met.")
                 self.after(0, self.restart_server)
-
-    def select_tab(self, name: str) -> None:
-        """Switch to the specified tab and update UI selection."""
-        self.tabview.set(name)
-        # We will add button highlighting here in Phase 3
-
-    def on_tab_change(self) -> None:
-        """Handles tab selection events."""
-        if self.tabview.get() == "Backups":
-            self.refresh_backups_list()
 
     def show_about(self) -> None:
         """Shows the About dialog."""
-        messagebox.showinfo(
-            "About Icarus Sentinel",
-            f"Icarus Sentinel v{__version__}\n\n"
-            "A modern, portable server manager for Icarus.\n"
-            "Built with CustomTkinter and PyInstaller.\n\n"
-            "Copyright (c) 2026 Icarus Sentinel Team"
-        )
+        messagebox.showinfo("About Icarus Sentinel", f"Icarus Sentinel v{__version__}\n\nA modern server manager for Icarus.\nCopyright (c) 2026")
 
     def manual_backup(self) -> None:
         """Triggers a manual backup."""
         self.log("Starting manual backup...")
-        # Update server path in case it changed
         self.backup_manager.server_path = self.path_entry.get().strip()
-        
-        # Run in thread to not block UI
         threading.Thread(target=self._run_manual_backup, daemon=True).start()
 
     def _run_manual_backup(self) -> None:
@@ -1047,79 +830,86 @@ class App(ctk.CTk):
 
     def refresh_backups_list(self) -> None:
         """Updates the backups list in the UI."""
-        # Clear existing
-        for widget in self.backups_list_frame.winfo_children():
-            widget.destroy()
-
+        for widget in self.backups_list_frame.winfo_children(): widget.destroy()
         if not os.path.exists(self.backup_manager.backup_path):
             ctk.CTkLabel(self.backups_list_frame, text="No backups found.").pack(pady=20)
             return
-
-        backups = [
-            f for f in os.listdir(self.backup_manager.backup_path)
-            if f.startswith("Prospects_") and f.endswith(".zip")
-        ]
-        backups.sort(reverse=True) # Newest first
-
+        backups = [f for f in os.listdir(self.backup_manager.backup_path) if f.startswith("Prospects_") and f.endswith(".zip")]
+        backups.sort(reverse=True)
         if not backups:
             ctk.CTkLabel(self.backups_list_frame, text="No backups found.").pack(pady=20)
             return
-
         for backup in backups:
             row = ctk.CTkFrame(self.backups_list_frame)
             row.pack(fill="x", padx=5, pady=2, side="top")
-            
-            # Format label (e.g., Prospects_2026-03-17_1000.zip -> 2026-03-17 10:00)
-            try:
-                ts_part = backup.replace("Prospects_", "").replace(".zip", "")
-                display_name = ts_part.replace("_", " ")
-            except Exception:
-                display_name = backup
-
-            label = ctk.CTkLabel(row, text=display_name, anchor="w")
-            label.pack(side="left", padx=10, fill="x", expand=True)
-            
-            restore_btn = ctk.CTkButton(
-                row, text="Restore", width=80, 
-                command=lambda b=backup: self.confirm_restore(b)
-            )
-            restore_btn.pack(side="right", padx=5, pady=2)
+            try: display_name = backup.replace("Prospects_", "").replace(".zip", "").replace("_", " ")
+            except Exception: display_name = backup
+            ctk.CTkLabel(row, text=display_name, anchor="w").pack(side="left", padx=10, fill="x", expand=True)
+            ctk.CTkButton(row, text="Restore", width=80, command=lambda b=backup: self.confirm_restore(b)).pack(side="right", padx=5, pady=2)
 
     def confirm_restore(self, backup_name: str) -> None:
-        """Shows a confirmation dialog before restoring a backup."""
-        # Ensure server is stopped
+        """Shows confirmation before restoring."""
         if self.server_process:
-            messagebox.showwarning(
-                "Server Running", 
-                "Please stop the server before restoring a backup."
-            )
+            messagebox.showwarning("Server Running", "Please stop the server before restore.")
             return
-
-        confirmed = messagebox.askyesno(
-            "Confirm Restore",
-            f"Are you sure you want to restore the backup '{backup_name}'?\n\n"
-            "This will OVERWRITE your current save progress."
-        )
-        if confirmed:
+        if messagebox.askyesno("Confirm Restore", f"Overwrite current progress with '{backup_name}'?"):
             self.perform_restore(backup_name)
 
     def perform_restore(self, backup_name: str) -> None:
-        """Executes the restore operation in a background thread."""
+        """Executes restore in a background thread."""
         self.log(f"Restoring backup: {backup_name}...")
-        threading.Thread(
-            target=self._run_restore, args=(backup_name,), daemon=True
-        ).start()
+        threading.Thread(target=self._run_restore, args=(backup_name,), daemon=True).start()
 
     def _run_restore(self, backup_name: str) -> None:
         """Helper to run restore in thread."""
-        success = self.backup_manager.restore_backup(backup_name)
-        if success:
+        if self.backup_manager.restore_backup(backup_name):
             self.after(0, self.log, f"Restore of '{backup_name}' successful.")
+        else: self.after(0, self.log, f"ERROR: Failed to restore '{backup_name}'.")
+
+    def toggle_select_all_mods(self) -> None:
+        """Toggles all mod checkboxes."""
+        val = self.select_all_var.get()
+        for cb in self.mod_list.winfo_children():
+            if isinstance(cb, ctk.CTkCheckBox):
+                if val: cb.select()
+                else: cb.deselect()
+
+    def refresh_mod_list(self) -> None:
+        """Updates the installed mods list."""
+        for widget in self.mod_list.winfo_children(): widget.destroy()
+        mods = self.mod_manager.list_mods()
+        if not mods:
+            ctk.CTkLabel(self.mod_list, text="No mods installed.").pack(pady=10)
+            self.select_all_cb.configure(state="disabled")
         else:
-            self.after(0, self.log, f"ERROR: Failed to restore '{backup_name}'.")
+            self.select_all_cb.configure(state="normal")
+            self.select_all_var.set(False)
+            for mod in mods: ctk.CTkCheckBox(self.mod_list, text=mod).pack(fill="x", padx=10, pady=5)
+
+    def install_mod_ui(self) -> None:
+        """Installs selected mods."""
+        file_paths = filedialog.askopenfilenames(title="Select Mod Files", filetypes=[("Mod Files", "*.pak *.zip")])
+        if file_paths:
+            for f in file_paths:
+                self.log(f"Installing: {os.path.basename(f)}...")
+                try:
+                    self.mod_manager.install_mod(f)
+                    self.log("Success.")
+                except Exception as e: self.log(f"Error: {str(e)}")
+            self.refresh_mod_list()
+
+    def remove_mod_ui(self) -> None:
+        """Removes checked mods."""
+        to_remove = [cb.cget("text") for cb in self.mod_list.winfo_children() if isinstance(cb, ctk.CTkCheckBox) and cb.get()]
+        if not to_remove: return
+        if messagebox.askyesno("Confirm", f"Remove {len(to_remove)} mod(s)?"):
+            for m in to_remove:
+                self.log(f"Removing: {m}...")
+                try: self.mod_manager.remove_mod(m)
+                except Exception as e: self.log(f"Error: {str(e)}")
+            self.refresh_mod_list()
 
 def main() -> None:
-    """Entry point for the application."""
     app = App()
     app.mainloop()
 

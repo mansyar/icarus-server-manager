@@ -23,19 +23,26 @@ def app_instance():
             app = App()
             yield app
 
-def test_sidebar_buttons_exist(app_instance):
-    assert hasattr(app_instance, "nav_dashboard_btn")
-    assert hasattr(app_instance, "nav_settings_btn")
-    assert hasattr(app_instance, "nav_backups_btn")
-    assert hasattr(app_instance, "nav_mods_btn")
-    assert hasattr(app_instance, "nav_sync_btn")
+def test_metrics_elements_exist(app_instance):
+    assert hasattr(app_instance, "cpu_usage_label")
+    assert hasattr(app_instance, "cpu_progress_bar")
+    assert hasattr(app_instance, "ram_usage_label")
+    assert hasattr(app_instance, "ram_progress_bar")
 
-def test_sidebar_branding(app_instance):
-    assert hasattr(app_instance, "sidebar_logo_label")
-
-def test_sidebar_navigation_interaction(app_instance):
-    assert app_instance.server_view.pack.called
+def test_metrics_update(app_instance):
+    # Setup usage
+    app_instance.server_manager.get_resource_usage.return_value = {
+        "cpu": 50.0,
+        "ram_gb": 8.0
+    }
+    app_instance.server_process = MagicMock()
+    app_instance.server_manager.ram_threshold_gb = 16.0
     
-    app_instance.nav_settings_btn.invoke()
-    assert app_instance.config_view.pack.called
-    assert app_instance.server_view.pack_forget.called
+    # Run update
+    app_instance.update_monitoring_once()
+    
+    # Verify elements were configured/set
+    assert app_instance.cpu_usage_label.configure.called
+    assert app_instance.cpu_progress_bar.set.called
+    assert app_instance.ram_usage_label.configure.called
+    assert app_instance.ram_progress_bar.set.called
