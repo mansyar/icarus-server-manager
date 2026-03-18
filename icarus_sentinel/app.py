@@ -345,6 +345,7 @@ class App(ctk.CTk):
                 self.log(f"Removed mod: {mod_name}")
                 self.refresh_mod_list()
             else:
+                self.log(f"Error: Mod '{mod_name}' not found.")
                 messagebox.showerror("Error", f"Mod '{mod_name}' not found.")
 
     def init_save_sync_tab(self) -> None:
