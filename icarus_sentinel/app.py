@@ -236,34 +236,61 @@ class App(ctk.CTk):
         )
         self.browse_button.grid(row=0, column=2, padx=(5, 10), pady=10)
 
+        # Metrics Frame (Center)
+        self.metrics_frame = ctk.CTkFrame(self.server_tab, fg_color="transparent")
+        self.metrics_frame.grid(row=2, column=0, padx=10, pady=10, sticky="ew")
+        self.metrics_frame.grid_columnconfigure(0, weight=1)
+
+        # CPU Metrics
+        self.cpu_usage_label = ctk.CTkLabel(self.metrics_frame, text="CPU USAGE: 0.0%", font=(style_config.FONT_MAIN[0], 14, "bold"))
+        self.cpu_usage_label.grid(row=0, column=0, sticky="w", padx=20)
+        self.cpu_progress_bar = ctk.CTkProgressBar(self.metrics_frame, height=15, progress_color=style_config.ACCENT_COLOR)
+        self.cpu_progress_bar.grid(row=1, column=0, sticky="ew", padx=20, pady=(5, 15))
+        self.cpu_progress_bar.set(0)
+
+        # RAM Metrics
+        self.ram_usage_label = ctk.CTkLabel(self.metrics_frame, text="RAM USAGE: 0.00GB / 0.00GB", font=(style_config.FONT_MAIN[0], 14, "bold"))
+        self.ram_usage_label.grid(row=2, column=0, sticky="w", padx=20)
+        self.ram_progress_bar = ctk.CTkProgressBar(self.metrics_frame, height=15, progress_color=style_config.ACCENT_COLOR)
+        self.ram_progress_bar.grid(row=3, column=0, sticky="ew", padx=20, pady=(5, 15))
+        self.ram_progress_bar.set(0)
+
         # Actions (inside Server Tab)
         self.install_button = ctk.CTkButton(
             self.server_tab, text="Install/Update Server", command=self.start_install
         )
-        self.install_button.grid(row=1, column=0, padx=10, pady=5)
+        self.install_button.grid(row=3, column=0, padx=10, pady=5)
 
-        # Server Control Frame (inside Server Tab)
-        self.mgmt_frame = ctk.CTkFrame(self.server_tab)
-        self.mgmt_frame.grid(row=2, column=0, padx=10, pady=5, sticky="ew")
+        # Server Control Frame (Massive Button)
+        self.control_frame = ctk.CTkFrame(self.server_tab, fg_color="transparent")
+        self.control_frame.grid(row=4, column=0, padx=10, pady=20, sticky="ew")
+        self.control_frame.grid_columnconfigure(0, weight=1)
+
+        self.orbital_launch_btn = ctk.CTkButton(
+            self.control_frame, 
+            text="INITIATE ORBITAL LAUNCH", 
+            font=(style_config.FONT_MAIN[0], 24, "bold"),
+            height=100,
+            fg_color=style_config.ACCENT_COLOR,
+            hover_color="#e67e00", # Darker orange
+            command=self.toggle_server
+        )
+        self.orbital_launch_btn.grid(row=0, column=0, sticky="ew", padx=20)
         
-        self.start_button = ctk.CTkButton(self.mgmt_frame, text="Start Server", command=self.start_server)
-        self.start_button.grid(row=0, column=0, padx=10, pady=10)
+        # Legacy Resource Labels (Small) - Moved below massive button
+        self.legacy_metrics_frame = ctk.CTkFrame(self.server_tab, fg_color="transparent")
+        self.legacy_metrics_frame.grid(row=5, column=0, sticky="ew")
+        self.legacy_metrics_frame.grid_columnconfigure((0,1), weight=1)
+
+        self.legacy_cpu_label = ctk.CTkLabel(self.legacy_metrics_frame, text="CPU: 0.0%", font=(style_config.FONT_MAIN[0], 10))
+        self.legacy_cpu_label.grid(row=0, column=0, padx=10, pady=5, sticky="e")
         
-        self.stop_button = ctk.CTkButton(self.mgmt_frame, text="Stop Server", command=self.stop_server, state="disabled")
-        self.stop_button.grid(row=0, column=1, padx=10, pady=10)
-        
-        self.restart_button = ctk.CTkButton(self.mgmt_frame, text="Restart Server", command=self.restart_server, state="disabled")
-        self.restart_button.grid(row=0, column=2, padx=10, pady=10)
-        
-        self.cpu_label = ctk.CTkLabel(self.mgmt_frame, text="CPU: 0.0%")
-        self.cpu_label.grid(row=0, column=3, padx=10, pady=10)
-        
-        self.ram_label = ctk.CTkLabel(self.mgmt_frame, text="RAM: 0.00GB")
-        self.ram_label.grid(row=0, column=4, padx=10, pady=10)
+        self.legacy_ram_label = ctk.CTkLabel(self.legacy_metrics_frame, text="RAM: 0.00GB", font=(style_config.FONT_MAIN[0], 10))
+        self.legacy_ram_label.grid(row=0, column=1, padx=10, pady=5, sticky="w")
 
         # Settings Frame (inside Server Tab)
         self.settings_frame = ctk.CTkFrame(self.server_tab)
-        self.settings_frame.grid(row=3, column=0, padx=10, pady=5, sticky="ew")
+        self.settings_frame.grid(row=6, column=0, padx=10, pady=5, sticky="ew")
 
         self.threshold_label = ctk.CTkLabel(self.settings_frame, text="RAM Threshold (GB):")
         self.threshold_label.grid(row=0, column=0, padx=(10, 5), pady=10)
@@ -850,11 +877,16 @@ class App(ctk.CTk):
         else:
             self.launch_server(exe_path)
 
+    def toggle_server(self) -> None:
+        """Toggles the server between running and stopped states."""
+        if self.server_process:
+            self.stop_server()
+        else:
+            self.start_server()
+
     def launch_server(self, exe_path: str) -> None:
         """Helper to actually launch the server thread."""
-        self.start_button.configure(state="disabled")
-        self.stop_button.configure(state="normal")
-        self.restart_button.configure(state="normal")
+        self.orbital_launch_btn.configure(text="ABORT MISSION", fg_color="red", hover_color="darkred")
         
         # Update backup manager with latest server path
         install_dir = self.path_entry.get().strip()
@@ -949,15 +981,29 @@ class App(ctk.CTk):
             usage = self.server_manager.get_resource_usage(self.server_process)
             new_status = self.server_manager.state["status"]
             
-            self.after(0, lambda: self.cpu_label.configure(text=f"CPU: {usage['cpu']}%"))
-            self.after(0, lambda: self.ram_label.configure(text=f"RAM: {usage['ram_gb']}GB"))
+            # Update New Metrics
+            cpu_val = usage["cpu"]
+            ram_val = usage["ram_gb"]
+            ram_limit = self.server_manager.ram_threshold_gb
+            
+            self.after(0, lambda: self.cpu_usage_label.configure(text=f"CPU USAGE: {cpu_val}%"))
+            self.after(0, lambda: self.cpu_progress_bar.set(cpu_val / 100.0))
+            
+            self.after(0, lambda: self.ram_usage_label.configure(text=f"RAM USAGE: {ram_val}GB / {ram_limit}GB"))
+            self.after(0, lambda: self.ram_progress_bar.set(min(1.0, ram_val / ram_limit) if ram_limit > 0 else 0))
+
+            # Update Legacy Labels (for test compatibility)
+            self.after(0, lambda: self.legacy_cpu_label.configure(text=f"CPU: {usage['cpu']}%"))
+            self.after(0, lambda: self.legacy_ram_label.configure(text=f"RAM: {usage['ram_gb']}GB"))
             
             if new_status == "warning":
-                self.after(0, lambda: self.ram_label.configure(text_color="orange"))
+                self.after(0, lambda: self.ram_usage_label.configure(text_color="orange"))
+                self.after(0, lambda: self.ram_progress_bar.configure(progress_color="orange"))
                 if old_status != "warning":
-                    self.log(f"WARNING: High RAM usage detected! (>{self.server_manager.ram_threshold_gb}GB)")
+                    self.log(f"WARNING: High RAM usage detected! (>{ram_limit}GB)")
             else:
-                self.after(0, lambda: self.ram_label.configure(text_color=["gray10", "gray90"])) # Default CTk color
+                self.after(0, lambda: self.ram_usage_label.configure(text_color=style_config.TEXT_PRIMARY))
+                self.after(0, lambda: self.ram_progress_bar.configure(progress_color=style_config.ACCENT_COLOR))
 
             # Check for smart restart
             if self.server_manager.should_smart_restart():
