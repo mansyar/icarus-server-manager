@@ -9,6 +9,7 @@ from icarus_sentinel.core.ini_manager import INIManager
 from icarus_sentinel.core.save_sync_manager import SaveSyncManager
 from icarus_sentinel.core.mod_manager import ModManager
 from icarus_sentinel.ui.sidebar import SidebarWidget
+from icarus_sentinel.ui.dashboard import DashboardView
 from icarus_sentinel import constants, style_config
 
 class MainWindow(QMainWindow):
@@ -43,6 +44,7 @@ class MainWindow(QMainWindow):
         self.controller = Controller(self)
         
         self.setup_ui()
+        self.setup_timer()
 
     def setup_ui(self):
         central_widget = QWidget()
@@ -61,9 +63,12 @@ class MainWindow(QMainWindow):
         self.content_stack = QStackedWidget()
         layout.addWidget(self.content_stack)
         
-        # View Placeholders
+        # Views
+        self.dashboard = DashboardView()
+        self.dashboard.control.action_triggered.connect(self._on_launch_clicked)
+        
         self.views = {
-            "dashboard": self._create_placeholder("Dashboard View"),
+            "dashboard": self.dashboard,
             "settings": self._create_placeholder("Settings View"),
             "backups": self._create_placeholder("Backups View"),
             "sync": self._create_placeholder("Save Sync View"),
@@ -77,21 +82,56 @@ class MainWindow(QMainWindow):
         self._on_nav_requested("dashboard")
         self.sidebar.dashboard_btn.setChecked(True)
 
-    def _create_placeholder(self, text):
-        label = QLabel(text)
-        label.setAlignment(Qt.AlignCenter)
-        label.setStyleSheet("font-size: 24px; color: #555555;")
-        return label
+    def setup_timer(self):
+        """Timer for periodic metric updates."""
+        from PySide6.QtCore import QTimer
+        self.metrics_timer = QTimer(self)
+        self.metrics_timer.timeout.connect(self._update_metrics)
+        self.metrics_timer.start(5000) # 5 seconds
+
+    def _update_metrics(self):
+        if hasattr(self, "server_process") and self.server_process:
+            usage = self.server_manager.get_resource_usage(self.server_process)
+            self.dashboard.metrics.update_metrics(usage["cpu"], usage["ram_gb"])
+        else:
+            self.dashboard.metrics.update_metrics(0.0, 0.0)
+
+    def _on_launch_clicked(self, should_start):
+        if should_start:
+            install_dir = os.path.join(os.getcwd(), constants.DEFAULT_INSTALL_DIR)
+            exe_path = self.controller.get_server_executable(install_dir)
+            if exe_path:
+                self.controller.run_server(exe_path)
+            else:
+                self.show_error("Server executable not found. Please check installation.")
+                self.dashboard.control._on_click() # Toggle back
+        else:
+            if self.server_process:
+                self.server_manager.stop_server(self.server_process)
+                self.server_process = None
+                self.log("Server stopped.")
 
     def _on_nav_requested(self, nav_id):
         if nav_id in self.views:
             self.content_stack.setCurrentWidget(self.views[nav_id])
 
     def log(self, message: str):
-        print(f"[LOG] {message}")
+        self.dashboard.console.log(message)
+
+    def on_server_exit(self, result=None):
+        self.server_process = None
+        if self.dashboard.control.is_running:
+            self.dashboard.control._on_click() # Toggle UI back to "Launch"
+        self.log("Server process exited.")
 
     def show_error(self, message: str):
-        print(f"[ERROR] {message}")
+        self.log(f"ERROR: {message}")
 
     def reset_ui(self):
         pass
+
+    def _create_placeholder(self, text):
+        label = QLabel(text)
+        label.setAlignment(Qt.AlignCenter)
+        label.setStyleSheet("font-size: 24px; color: #555555;")
+        return label
