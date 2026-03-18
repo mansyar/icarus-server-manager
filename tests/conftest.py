@@ -10,11 +10,13 @@ class MockCTk:
         self.grid = MagicMock()
         self.pack = MagicMock()
         self.pack_forget = MagicMock()
+        self.grid_forget = MagicMock()
         self.grid_columnconfigure = MagicMock()
         self.grid_rowconfigure = MagicMock()
         self.configure = MagicMock()
         self.title = MagicMock()
         self.geometry = MagicMock()
+        self.minsize = MagicMock()
         self.see = MagicMock()
         self.insert = MagicMock()
         self.delete = MagicMock()
@@ -25,6 +27,7 @@ class MockCTk:
         self.cget = MagicMock(return_value=None)
         self.destroy = MagicMock()
         self.winfo_children = MagicMock(return_value=[])
+        self.mainloop = MagicMock()
 
     def after(self, ms, func, *args):
         if ms == 0: func(*args)
@@ -48,7 +51,8 @@ def mock_ui_dependencies(request):
     ui_test_files = [
         "test_ui", "test_server_mgmt_ui", "test_mod_gui", 
         "test_new_app", "test_sidebar", "test_metrics", 
-        "test_console", "test_server_control", "test_style_config"
+        "test_console", "test_server_control", "test_style_config",
+        "test_responsive"
     ]
     
     is_ui_test = any(name in request.node.fspath.strpath for name in ui_test_files)

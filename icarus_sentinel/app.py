@@ -908,6 +908,10 @@ class App(ctk.CTk):
             self.refresh_mod_list()
 
 def main() -> None:
+    """Entry point for the application.
+    
+    Initializes and starts the main application loop.
+    """
     app = App()
     app.mainloop()
 

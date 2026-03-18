@@ -34,8 +34,8 @@ def test_sidebar_branding(app_instance):
     assert hasattr(app_instance, "sidebar_logo_label")
 
 def test_sidebar_navigation_interaction(app_instance):
-    assert app_instance.server_view.pack.called
+    assert app_instance.server_view.grid.called
     
     app_instance.nav_settings_btn.invoke()
-    assert app_instance.config_view.pack.called
-    assert app_instance.server_view.pack_forget.called
+    assert app_instance.config_view.grid.called
+    assert app_instance.server_view.grid_forget.called
