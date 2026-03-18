@@ -1,10 +1,10 @@
 # Implementation Plan: Refactor `@icarus_sentinel/` for Modularity
 
 ## Phase 1: Codebase Analysis and Test Coverage Assessment
-- [ ] Task: Setup and Initial Assessment
-    - [ ] Run existing test suite and coverage report to establish baseline metrics.
-    - [ ] Identify files in `@icarus_sentinel/` that exceed the 500-line limit.
-    - [ ] Map out the existing monolithic structure and identify logical boundaries for separation (e.g., UI vs. Core Logic).
+- [x] Task: Setup and Initial Assessment
+    - [x] Run existing test suite and coverage report to establish baseline metrics.
+    - [x] Identify files in `@icarus_sentinel/` that exceed the 500-line limit.
+    - [x] Map out the existing monolithic structure and identify logical boundaries for separation (e.g., UI vs. Core Logic).
 - [ ] Task: Conductor - User Manual Verification 'Codebase Analysis and Test Coverage Assessment' (Protocol in workflow.md)
 
 ## Phase 2: Refactoring Core Logic
