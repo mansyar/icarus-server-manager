@@ -3,6 +3,9 @@
 This file tracks all major tracks for the project. Each track has its own detailed plan in its respective folder.
 
 ## Active Tracks
+- [ ] **Track: Mod Management: Support for installing and updating Icarus server mods directly within the manager.**
+*Link: [./tracks/mod-management_20260318/](./tracks/mod-management_20260318/)*
+
 
 ## Archived Tracks
 - [x] **Track: Packaging & Distribution (MVP Release Prep)** - Local executable compilation, release bundling, and GitHub Actions CI/CD setup. (Archived: 2026-03-18)
