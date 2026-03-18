@@ -20,3 +20,9 @@
 
 ## Phase: Review Fixes
 - [x] Task: Apply review suggestions 284a84c
+
+## Phase 4: Bulk Mod Removal (Checklist-based)
+- [x] Task: Update `tests/test_mod_gui.py` to test the new checklist-based mod list and multi-removal flow. 9d30ef8
+- [x] Task: Replace `mod_list` (Textbox) with a scrollable frame of checkboxes in `app.py`. 9d30ef8
+- [x] Task: Implement `remove_mod_ui` to iterate through all checked mods and call `mod_manager.remove_mod`. 9d30ef8
+- [~] Task: Conductor - User Manual Verification 'Phase 4: Bulk Mod Removal' (Protocol in workflow.md)
