@@ -14,6 +14,7 @@ from icarus_sentinel.server_manager import ServerProcessManager
 from icarus_sentinel.backup_manager import BackupManager
 from icarus_sentinel.core.ini_manager import INIManager
 from icarus_sentinel.core.save_sync_manager import SaveSyncManager
+from icarus_sentinel.core.mod_manager import ModManager
 
 class RamOptimizationDialog(ctk.CTkToplevel):
     """Dialog shown when system RAM is low before server launch."""
@@ -98,6 +99,9 @@ class App(ctk.CTk):
         self.selected_steam_id: Optional[str] = None
         self.refresh_steam_ids()
 
+        # Initialize ModManager
+        self.mod_manager = ModManager(server_root=initial_server_path)
+
         # Start backup timer
         self.backup_manager.start_timer()
         
@@ -113,16 +117,19 @@ class App(ctk.CTk):
         self.config_tab = self.tabview.add("Configuration")
         self.save_sync_tab = self.tabview.add("Save Sync")
         self.backups_tab = self.tabview.add("Backups")
+        self.mods_tab = self.tabview.add("Mods")
         
         self.server_tab.grid_columnconfigure(0, weight=1)
         self.config_tab.grid_columnconfigure(0, weight=1)
         self.save_sync_tab.grid_columnconfigure(0, weight=1)
+        self.mods_tab.grid_columnconfigure(0, weight=1)
 
         # Initialize Tabs
         self.init_server_tab()
         self.init_config_tab()
         self.init_save_sync_tab()
         self.init_backups_tab()
+        self.init_mods_tab()
 
         self.console_output = ctk.CTkTextbox(self, height=150, state="disabled")
         self.console_output.grid(row=1, column=0, padx=20, pady=(0, 5), sticky="ew")
@@ -244,6 +251,99 @@ class App(ctk.CTk):
         self.backup_retention_entry = ctk.CTkEntry(self.backup_settings_frame, width=60)
         self.backup_retention_entry.grid(row=0, column=3, padx=5, pady=10)
         self.backup_retention_entry.insert(0, str(self.backup_manager.retention_limit))
+
+    def init_mods_tab(self) -> None:
+        """Initializes the Mods management tab UI."""
+        self.mods_tab.grid_columnconfigure(0, weight=1)
+        self.mods_tab.grid_rowconfigure(1, weight=1)
+
+        # Header with Install Button
+        self.mods_header = ctk.CTkFrame(self.mods_tab, fg_color="transparent")
+        self.mods_header.grid(row=0, column=0, padx=20, pady=10, sticky="ew")
+        
+        self.install_mod_btn = ctk.CTkButton(
+            self.mods_header, text="Install Mod (.pak or .zip)", command=self.install_mod_ui
+        )
+        self.install_mod_btn.pack(side="left", padx=10)
+
+        self.refresh_mods_btn = ctk.CTkButton(
+            self.mods_header, text="Refresh", width=80, command=self.refresh_mod_list
+        )
+        self.refresh_mods_btn.pack(side="right", padx=10)
+
+        # Mod List
+        self.mod_list_frame = ctk.CTkFrame(self.mods_tab)
+        self.mod_list_frame.grid(row=1, column=0, padx=20, pady=10, sticky="nsew")
+        self.mod_list_frame.grid_columnconfigure(0, weight=1)
+        self.mod_list_frame.grid_rowconfigure(0, weight=1)
+
+        self.mod_list = ctk.CTkTextbox(self.mod_list_frame, height=200)
+        self.mod_list.grid(row=0, column=0, padx=10, pady=10, sticky="nsew")
+        
+        # Action Buttons for selected mod
+        self.mod_actions_frame = ctk.CTkFrame(self.mods_tab, fg_color="transparent")
+        self.mod_actions_frame.grid(row=2, column=0, padx=20, pady=5, sticky="ew")
+        
+        self.remove_mod_btn = ctk.CTkButton(
+            self.mod_actions_frame, text="Remove Selected Mod", fg_color="red", hover_color="darkred",
+            command=self.remove_mod_ui
+        )
+        self.remove_mod_btn.pack(side="left", padx=10)
+
+        # Sync Warning
+        self.sync_warning_label = ctk.CTkLabel(
+            self.mods_tab, 
+            text="WARNING: Clients MUST have the exact same .pak files to join without crashing.",
+            text_color="orange",
+            font=("Arial", 12, "bold")
+        )
+        self.sync_warning_label.grid(row=3, column=0, padx=20, pady=10)
+
+        self.refresh_mod_list()
+
+    def refresh_mod_list(self) -> None:
+        """Updates the list of installed mods from the manager."""
+        mods = self.mod_manager.list_mods()
+        self.mod_list.configure(state="normal")
+        self.mod_list.delete("0.0", "end")
+        if not mods:
+            self.mod_list.insert("0.0", "No mods installed.")
+        else:
+            for mod in mods:
+                self.mod_list.insert("end", mod + "\n")
+        self.mod_list.configure(state="disabled")
+
+    def install_mod_ui(self) -> None:
+        """Opens file dialog and installs selected mod."""
+        file_path = filedialog.askopenfilename(
+            title="Select Mod File",
+            filetypes=[("Mod Files", "*.pak *.zip"), ("PAK Files", "*.pak"), ("ZIP Archives", "*.zip")]
+        )
+        if file_path:
+            self.log(f"Installing mod: {os.path.basename(file_path)}...")
+            try:
+                self.mod_manager.install_mod(file_path)
+                self.log("Mod installed successfully.")
+                self.refresh_mod_list()
+            except Exception as e:
+                self.log(f"Error installing mod: {str(e)}")
+                messagebox.showerror("Installation Error", f"Failed to install mod: {str(e)}")
+
+    def remove_mod_ui(self) -> None:
+        """Prompts for mod name and removes it."""
+        # Simple implementation: ask for filename since Textbox doesn't easily support selection like a Listbox
+        # In a real app, I'd use a Listbox or similar.
+        mod_name = ctk.CTkInputDialog(text="Enter the exact filename of the mod to remove (e.g., MyMod.pak):", title="Remove Mod").get_input()
+        if mod_name:
+            if not mod_name.endswith(".pak"):
+                mod_name += ".pak"
+            
+            if mod_name in self.mod_manager.list_mods():
+                self.mod_manager.remove_mod(mod_name)
+                self.log(f"Removed mod: {mod_name}")
+                self.refresh_mod_list()
+            else:
+                messagebox.showerror("Error", f"Mod '{mod_name}' not found.")
 
     def init_save_sync_tab(self) -> None:
         """Initializes the Save Sync tab UI."""

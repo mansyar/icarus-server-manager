@@ -34,7 +34,7 @@ class MockCTkFrame(MockCTk):
 def mock_ui_dependencies(request):
     """Automatically mocks UI dependencies only for UI-related tests."""
     # Only apply these mocks to files that start with 'test_ui' or 'test_server_mgmt_ui'
-    if "test_ui" in request.node.fspath.strpath or "test_server_mgmt_ui" in request.node.fspath.strpath:
+    if "test_ui" in request.node.fspath.strpath or "test_server_mgmt_ui" in request.node.fspath.strpath or "test_mod_gui" in request.node.fspath.strpath:
         # Mock the entire customtkinter module
         customtkinter = MagicMock()
         customtkinter.CTk = MockCTk
@@ -55,9 +55,12 @@ def mock_ui_dependencies(request):
             "server_manager": server_mgr_mock
         }):
             # Ensure 'app' is reloaded with the mocked dependencies if it was already imported
-            if "app" in sys.modules:
+            # and it's NOT already using our mock (to avoid redundant reloads/hangs)
+            if "icarus_sentinel.app" in sys.modules:
                 import importlib
-                importlib.reload(sys.modules["app"])
+                app_module = sys.modules["icarus_sentinel.app"]
+                if not isinstance(app_module.ctk, MagicMock):
+                    importlib.reload(app_module)
             yield
     else:
         yield
