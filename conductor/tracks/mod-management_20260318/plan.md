@@ -6,10 +6,11 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 1: Core Mod Logic' (Protocol in workflow.md) 69ae324
 
 ## Phase 2: UI Integration (TDD)
-- [ ] Task: Create `tests/test_mod_gui.py` with failing tests for tab structure, list display, and sync warning visibility.
-- [ ] Task: Implement the "Mods" tab and connect it to `ModManager`.
-- [ ] Task: Implement file picker dialog with `.pak` and `.zip` filters.
-- [ ] Task: Conductor - User Manual Verification 'Phase 2: UI Integration' (Protocol in workflow.md)
+- [x] Task: Create `tests/test_mod_gui.py` with failing tests for tab structure, list display, and sync warning visibility. d608184
+- [x] Task: Implement the "Mods" tab and connect it to `ModManager`. d608184
+- [x] Task: Implement file picker dialog with `.pak` and `.zip` filters. d608184
+- [ ] Task: Update `install_mod_ui` to support multiple file selection via `askopenfilenames`.
+- [~] Task: Conductor - User Manual Verification 'Phase 2: UI Integration' (Protocol in workflow.md)
 
 ## Phase 3: Final Verification and Polishing
 - [ ] Task: Run full test suite for the Mod Management feature.
