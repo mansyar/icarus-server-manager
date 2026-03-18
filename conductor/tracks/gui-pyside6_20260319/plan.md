@@ -22,7 +22,7 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 3: Sidebar and Navigation' (Protocol in workflow.md) (ed59e09)
 
 ## Phase 4: Recreating the Dashboard (The Mockup)
-- [ ] Task: Create `tests/ui/test_dashboard_view.py` with failing tests for dashboard components (metrics, console, massive button).
+- [x] Task: Create `tests/ui/test_dashboard_view.py` with failing tests for dashboard components (metrics, console, massive button). (9973f60)
 - [ ] Task: Implement `DashboardView` widget.
 - [ ] Task: Implement `MetricsWidget` with custom glowing progress bars using QSS or custom paint events.
 - [ ] Task: Implement the "Orbital Launch" `ControlWidget` utilizing the caution-striped texture.
