@@ -1,8 +1,0 @@
-{
-  "track_id": "packaging-distribution_20260318",
-  "type": "feature",
-  "status": "new",
-  "created_at": "2026-03-18T05:25:00Z",
-  "updated_at": "2026-03-18T05:25:00Z",
-  "description": "Packaging & Distribution (MVP Release Prep) Goal: Fulfill the non-functional requirement of portability (\"Single executable/folder distribution - No Python install required\"). * Task: Integrate PyInstaller or Nuitka to compile the Python application and its environment into a standalone executable (IcarusSentinel.exe). * Task: Create an installer script or .zip release structure that bundles the compiled app, required DLLs, and a default configuration. * Task: Add a versioning system and an \"About\" dialog to the UI."
-}
