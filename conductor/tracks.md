@@ -6,12 +6,8 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ---
 
-- [x] **Track: GUI Refactor - Icarus Sentinel Dashboard**
-*Link: [./tracks/gui-refactor_20260318/](./tracks/gui-refactor_20260318/)*
-
-
-
 ## Archived Tracks
+- [x] **Track: GUI Refactor - Icarus Sentinel Dashboard** (Archived: 2026-03-18)
 - [x] **Track: Mod Management: Support for installing and updating Icarus server mods directly within the manager.** (Archived: 2026-03-18)
 - [x] **Track: Packaging & Distribution (MVP Release Prep)** - Local executable compilation, release bundling, and GitHub Actions CI/CD setup. (Archived: 2026-03-18)
 - [x] **Track: data-protection_20260317**
