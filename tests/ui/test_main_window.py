@@ -38,3 +38,8 @@ def test_main_window_initialization(mock_listdir, mock_exists, mock_makedirs, mo
     assert window.controller is not None
     assert window.width() == 1250
     assert window.height() == 800
+    
+    # Check if AboutView is in the stack
+    assert "about" in window.views
+    from icarus_sentinel.ui.about_view import AboutView
+    assert isinstance(window.views["about"], AboutView)
