@@ -209,6 +209,12 @@ class Controller(QObject):
                 self.ui.backup_manager.start_timer()
             
             self.ui.backup_manager.retention_limit = int(data.get("retention_limit", 50))
+            
+            # Notifications
+            self.ui.server_manager.notify_server_started = data.get("notify_server_started", True)
+            self.ui.server_manager.notify_player_activity = data.get("notify_player_activity", True)
+            self.ui.server_manager.notify_server_error = data.get("notify_server_error", True)
+            
             self.ui.server_manager.save_state()
             self.ui.log("Sentinel settings saved.")
         except Exception as e:

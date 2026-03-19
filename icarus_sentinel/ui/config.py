@@ -216,7 +216,31 @@ class ConfigView(QWidget):
         
         layout.addWidget(grid_frame)
 
-        # 3. Actions
+        # 3. Desktop Notifications
+        notify_frame = QFrame()
+        notify_layout = QVBoxLayout(notify_frame)
+        notify_layout.setContentsMargins(0, 0, 0, 0)
+        
+        notify_header = self._create_label("DESKTOP NOTIFICATIONS", label_style)
+        notify_header.setStyleSheet(label_style + "margin-top: 10px;")
+        notify_layout.addWidget(notify_header)
+        
+        self.notify_server_started_cb = QCheckBox("Server Started")
+        self.notify_server_started_cb.setStyleSheet("color: #DDD;")
+        
+        self.notify_player_activity_cb = QCheckBox("Player Join / Leave")
+        self.notify_player_activity_cb.setStyleSheet("color: #DDD;")
+        
+        self.notify_server_error_cb = QCheckBox("Server Crash / Error")
+        self.notify_server_error_cb.setStyleSheet("color: #DDD;")
+        
+        notify_layout.addWidget(self.notify_server_started_cb)
+        notify_layout.addWidget(self.notify_player_activity_cb)
+        notify_layout.addWidget(self.notify_server_error_cb)
+        
+        layout.addWidget(notify_frame)
+
+        # 4. Actions
         action_layout = QHBoxLayout()
         
         self.install_server_btn = QPushButton("INSTALL / UPDATE SERVER")
@@ -329,7 +353,10 @@ class ConfigView(QWidget):
             "smart_restart": self.smart_restart_cb.isChecked(),
             "restart_time": self.restart_time_entry.text(),
             "backup_interval": self.backup_interval_entry.text(),
-            "retention_limit": self.retention_limit_entry.text()
+            "retention_limit": self.retention_limit_entry.text(),
+            "notify_server_started": self.notify_server_started_cb.isChecked(),
+            "notify_player_activity": self.notify_player_activity_cb.isChecked(),
+            "notify_server_error": self.notify_server_error_cb.isChecked()
         }
         self.app.controller.save_sentinel_settings(data)
 
@@ -359,6 +386,11 @@ class ConfigView(QWidget):
         self.restart_time_entry.setText(sm.smart_restart_time)
         self.backup_interval_entry.setText(str(int(bm.interval_minutes)))
         self.retention_limit_entry.setText(str(bm.retention_limit))
+        
+        # Notifications
+        self.notify_server_started_cb.setChecked(sm.notify_server_started)
+        self.notify_player_activity_cb.setChecked(sm.notify_player_activity)
+        self.notify_server_error_cb.setChecked(sm.notify_server_error)
 
     def save_settings(self):
         if not self.app or not self.app.ini_manager: return
