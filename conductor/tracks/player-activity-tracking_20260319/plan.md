@@ -23,10 +23,10 @@
     - [x] Ensure UI tests pass.
 - [x] Task: Conductor - User Manual Verification 'Phase 2: UI "Players" Tab Implementation' (Protocol in workflow.md)
 
-## Phase 3: Connect Logic to UI
+## Phase 3: Connect Logic to UI [checkpoint: 6673831]
 - [x] Task: Bind Background Thread Signals to UI 4b40549
     - [x] Write integration tests verifying that signals emitted by the background thread update the "Players" view model/table.
     - [x] Connect the background thread's data signal to the UI table population logic.
     - [x] Connect the background thread's error signal to the "Offline/Unreachable" UI state.
     - [x] Ensure all tests pass.
-- [ ] Task: Conductor - User Manual Verification 'Phase 3: Connect Logic to UI' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 3: Connect Logic to UI' (Protocol in workflow.md)
