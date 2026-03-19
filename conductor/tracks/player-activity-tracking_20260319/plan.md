@@ -1,10 +1,10 @@
 # Implementation Plan: Player Activity Tracking & A2S Integration
 
 ## Phase 1: Background A2S Query Integration
-- [ ] Task: Implement A2S Querying Logic
-    - [ ] Write failing unit tests for fetching server metrics and player list using `python-a2s` (mocking the server response).
-    - [ ] Implement the `A2SQueryService` to fetch and parse Name, Playtime, and Ping/Score.
-    - [ ] Ensure tests pass and the service gracefully handles network timeouts.
+- [x] Task: Implement A2S Querying Logic 580b7b0
+    - [x] Write failing unit tests for fetching server metrics and player list using `python-a2s` (mocking the server response).
+    - [x] Implement the `A2SQueryService` to fetch and parse Name, Playtime, and Ping/Score.
+    - [x] Ensure tests pass and the service gracefully handles network timeouts.
 - [ ] Task: Implement Background Query Thread
     - [ ] Write failing tests for a background worker thread that polls the `A2SQueryService` every 5 seconds.
     - [ ] Implement the threaded worker using PySide6 `QThread` or Python `threading` with signals to emit data.
