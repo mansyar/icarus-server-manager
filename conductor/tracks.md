@@ -6,7 +6,7 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ---
 
-- [ ] **Track: Create a dedicated 'About' dialog accessible from the sidebar. Display app version, developer credits, and basic system info (OS, RAM, CPU).**
+- [x] **Track: Create a dedicated 'About' dialog accessible from the sidebar. Display app version, developer credits, and basic system info (OS, RAM, CPU).**
 *Link: [./tracks/about-dialog_20260319/](./tracks/about-dialog_20260319/)*
 
 ---
