@@ -4,7 +4,7 @@
 - [x] Task: Update Configuration Model 87d3e4b
     - [ ] Write tests for new notification settings in the configuration manager.
     - [ ] Implement default settings and serialization logic for notification preferences.
-- [ ] Task: Implement Notifications UI in Configuration Tab
+- [x] Task: Implement Notifications UI in Configuration Tab fae5a59
     - [ ] Write tests to verify new UI toggle switches exist in the Configuration tab.
     - [ ] Implement the UI components (checkboxes for Server Started, Player Join/Leave, Crash/Error).
     - [ ] Connect UI signals to the configuration manager to save preferences on toggle.
