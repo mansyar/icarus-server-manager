@@ -1,13 +1,16 @@
 import datetime
 import os
 import psutil
-from typing import Optional, Callable, List
-from PySide6.QtCore import QThread
+from typing import Optional, Callable, List, Dict
+from PySide6.QtCore import QThread, QObject, Signal
 from icarus_sentinel import constants
-from icarus_sentinel.ui.workers import InstallWorker, SyncWorker, ServerWorker
+from icarus_sentinel.ui.workers import InstallWorker, SyncWorker, ServerWorker, BackupWorker, ModWorker
 
-class Controller:
+class Controller(QObject):
     """Orchestrates logic between UI and Managers for Icarus Sentinel (PySide6)."""
+    backups_updated = Signal()
+    mods_updated = Signal()
+    server_started = Signal(int)
     
     def __init__(self, ui_adapter):
         """Initializes the controller with a UI adapter.
@@ -15,9 +18,15 @@ class Controller:
         Args:
             ui_adapter: Object providing log(msg) and other UI update methods.
         """
+        super().__init__()
         self.ui = ui_adapter
         self.threads: List[QThread] = []
+        self.workers: List[QObject] = [] # Keep references to prevent GC
         
+    @property
+    def last_sync_timestamp(self):
+        return self.ui.server_manager.last_sync_timestamp
+
     def _run_worker(self, worker):
         """Helper to run a worker in a new thread."""
         thread = QThread()
@@ -28,7 +37,7 @@ class Controller:
         worker.finished.connect(thread.quit)
         worker.error.connect(thread.quit)
         
-        # Connect UI updates (assumes ui_adapter has log/error methods)
+        # Connect UI updates
         if hasattr(self.ui, "log"):
             worker.progress.connect(self.ui.log)
             worker.finished.connect(lambda m: self.ui.log(str(m)) if isinstance(m, str) else None)
@@ -40,16 +49,19 @@ class Controller:
 
         # Cleanup thread when finished
         thread.finished.connect(thread.deleteLater)
-        thread.finished.connect(lambda: self._prune_threads(thread))
+        thread.finished.connect(lambda: self._prune_threads(thread, worker))
         
         self.threads.append(thread)
+        self.workers.append(worker)
         thread.start()
         return thread, worker
 
-    def _prune_threads(self, thread):
-        """Removes a finished thread from the active list."""
+    def _prune_threads(self, thread, worker):
+        """Removes finished thread and worker from active lists."""
         if thread in self.threads:
             self.threads.remove(thread)
+        if worker in self.workers:
+            self.workers.remove(worker)
 
     def get_server_executable(self, install_dir: str) -> Optional[str]:
         """Resolves the path to the actual server executable."""
@@ -107,8 +119,12 @@ class Controller:
                 if p.is_running():
                     self.ui.log(f"Recovered existing server process (PID: {saved_pid})")
                     self.ui.server_process = saved_pid
-                    if hasattr(self.ui, "set_server_running_state"):
-                        self.ui.set_server_running_state(True)
+                    if hasattr(self.ui, "dashboard") and hasattr(self.ui.dashboard.control, "is_running"):
+                        if not self.ui.dashboard.control.is_running:
+                            # Safely toggle UI state
+                            self.ui.dashboard.control.is_running = True
+                            self.ui.dashboard.control.launch_btn.setText("ABORT MISSION")
+                            self.ui.dashboard.control.launch_btn.setStyleSheet(self.ui.dashboard.control.launch_btn.styleSheet().replace("#FF8C00", "#FF5252"))
                 else:
                     self.reset_state()
             except (psutil.NoSuchProcess, psutil.AccessDenied):
@@ -116,13 +132,6 @@ class Controller:
 
     def run_server(self, exe_path: str) -> None:
         """Starts the server and streams logs using a QThread."""
-        # Handle update on launch (simplified for now - ideally chained workers)
-        if hasattr(self.ui, "update_on_launch_var") and self.ui.update_on_launch_var.get():
-            # This is complex to do with QThreads without blocking. 
-            # For Phase 2, we will assume non-blocking workers.
-            # A full implementation might chain workers or use a single "LaunchWorker".
-            pass
-
         port = int(self.ui.ini_manager.get_setting("Port") or constants.DEFAULT_PORT)
         query_port = int(self.ui.ini_manager.get_setting("QueryPort") or constants.DEFAULT_QUERY_PORT)
         server_name = self.ui.ini_manager.get_setting("SessionName") or constants.DEFAULT_SERVER_NAME
@@ -143,11 +152,65 @@ class Controller:
 
         worker = ServerWorker(self.ui.server_manager, exe_path, **kwargs)
         
+        # Connect started signal directly
+        worker.started.connect(self.server_started.emit)
+
         if hasattr(self.ui, "on_server_exit"):
             worker.finished.connect(self.ui.on_server_exit)
             worker.error.connect(self.ui.on_server_exit)
             
         self._run_worker(worker)
+
+    def run_backup(self) -> None:
+        """Triggers a manual backup using a QThread."""
+        self.ui.log("Manual Backup: Starting...")
+        worker = BackupWorker(self.ui.backup_manager, mode="create")
+        worker.finished.connect(lambda _: self.backups_updated.emit())
+        self._run_worker(worker)
+
+    def run_restore(self, backup_name: str) -> None:
+        """Triggers a backup restore using a QThread."""
+        if self.ui.server_process:
+            self.ui.show_error("Please stop the server before restoring a backup.")
+            return
+            
+        self.ui.log(f"Restore: Starting restore of {backup_name}...")
+        worker = BackupWorker(self.ui.backup_manager, mode="restore", backup_name=backup_name)
+        self._run_worker(worker)
+
+    def run_mod_install(self, file_paths):
+        """Installs mods from provided paths using a QThread."""
+        worker = ModWorker(self.ui.mod_manager, mode="install", files=file_paths)
+        worker.finished.connect(lambda _: self.mods_updated.emit())
+        self._run_worker(worker)
+
+    def run_mod_remove(self, mod_names):
+        """Removes mods by name using a QThread."""
+        worker = ModWorker(self.ui.mod_manager, mode="remove", mod_names=mod_names)
+        worker.finished.connect(lambda _: self.mods_updated.emit())
+        self._run_worker(worker)
+
+    def save_sentinel_settings(self, data: Dict):
+        """Saves Sentinel-specific manager settings."""
+        try:
+            if data.get("restart_time") != self.ui.server_manager.smart_restart_time:
+                self.ui.server_manager.last_smart_restart_date = None
+            
+            self.ui.server_manager.ram_threshold_gb = float(data.get("ram_threshold", 12.0))
+            self.ui.server_manager.smart_restart_enabled = data.get("smart_restart", False)
+            self.ui.server_manager.smart_restart_time = data.get("restart_time", "04:00")
+            
+            interval = float(data.get("backup_interval", 30.0))
+            if interval != self.ui.backup_manager.interval_minutes:
+                self.ui.backup_manager.stop_timer()
+                self.ui.backup_manager.interval_minutes = interval
+                self.ui.backup_manager.start_timer()
+            
+            self.ui.backup_manager.retention_limit = int(data.get("retention_limit", 50))
+            self.ui.server_manager.save_state()
+            self.ui.log("Sentinel settings saved.")
+        except Exception as e:
+            self.ui.log(f"ERROR saving settings: {e}")
 
     def reset_state(self) -> None:
         """Resets the server state."""

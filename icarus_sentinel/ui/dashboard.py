@@ -38,7 +38,6 @@ class StatusBanner(QFrame):
         self.status_title = QLabel("SYSTEM STATUS: OFFLINE")
         self.status_title.setStyleSheet(f"color: {style_config.ACCENT_COLOR}; font-family: 'Segoe UI Black'; font-size: 16px; border: none; background: transparent;")
         
-        # Increased brightness from 0.8 opacity to 1.0/White for better contrast
         self.status_desc = QLabel("PRE-FLIGHT CHECKS OPTIMAL - SYSTEMS READY FOR INITIATION")
         self.status_desc.setStyleSheet(f"color: #EEE; font-family: 'Segoe UI'; font-size: 11px; font-weight: bold; border: none; background: transparent;")
         
@@ -71,7 +70,6 @@ class MetricsWidget(QFrame):
         self.bar.setTextVisible(False)
         self.bar.setFixedHeight(12)
 
-        # Increased brightness from #888 to #DDD
         self.status_label = QLabel("0% LOAD / 100% AVAILABLE")
         self.status_label.setStyleSheet("color: #DDD; font-family: 'Segoe UI'; font-size: 11px; font-weight: bold; border: none; background: transparent;")
 
@@ -151,15 +149,21 @@ class ControlWidget(QFrame):
         
         self.setStyleSheet("QFrame#ControlPanel { border-radius: 12px; }")
 
-    def _on_click(self):
-        self.is_running = not self.is_running
-        self.action_triggered.emit(self.is_running)
+    def set_running_state(self, running: bool):
+        """Programmatically update UI state without emitting signal."""
+        self.is_running = running
         if self.is_running:
             self.launch_btn.setText("ABORT MISSION")
             self.launch_btn.setStyleSheet(self.launch_btn.styleSheet().replace(style_config.ACCENT_COLOR, "#FF5252"))
         else:
             self.launch_btn.setText("INITIATE ORBITAL LAUNCH")
             self.launch_btn.setStyleSheet(self.launch_btn.styleSheet().replace("#FF5252", style_config.ACCENT_COLOR))
+
+    def _on_click(self):
+        # Local toggle triggers the signal for business logic
+        self.action_triggered.emit(not self.is_running)
+        # Note: We don't call set_running_state here directly because the 
+        # MainWindow will handle it via signals/direct calls to keep everything in sync.
 
 class ConsoleWidget(QFrame):
     """The persistent log terminal with metallic look."""
@@ -176,14 +180,12 @@ class ConsoleWidget(QFrame):
         self.text_area.setReadOnly(True)
         self.text_area.setFontFamily(style_config.FONT_MONO[0])
         self.text_area.setFontPointSize(10)
-        # Using a solid but dark background for logs to ensure text pop
         self.text_area.setStyleSheet("background-color: #050505; border: 1px solid #222; color: #FFA726; border-radius: 5px; padding: 10px;")
         
         layout.addWidget(self.text_area)
 
         self.setStyleSheet(f"QFrame#ConsolePanel {{ {PANEL_STYLE} }}")
         
-        # Title contrast and size increased to match user request
         self.title_label = QLabel("CONSOLE LOGS", self)
         self.title_label.setStyleSheet(f"color: {style_config.ACCENT_COLOR}; font-family: 'Segoe UI Black'; font-size: 14px; background: transparent; letter-spacing: 1px;")
         self.title_label.move(25, 10)
@@ -201,11 +203,10 @@ class DashboardView(QWidget):
 
     def setup_ui(self):
         self.outer_layout = QVBoxLayout(self)
-        self.outer_layout.setContentsMargins(30, 30, 30, 30)
+        self.outer_layout.setContentsMargins(0, 0, 0, 0)
         
         self.main_container = QFrame()
         self.main_container.setObjectName("DashboardContainer")
-        
         self.main_container.setStyleSheet(f"""
             QFrame#DashboardContainer {{
                 background-color: rgba(15, 15, 15, 230);
@@ -218,7 +219,7 @@ class DashboardView(QWidget):
         layout.setContentsMargins(40, 40, 40, 40)
         layout.setSpacing(20)
 
-        # Header contrast: Sub-label increased from #555 to #999
+        # Header
         header_layout = QVBoxLayout()
         header_label = QLabel("SERVER DASHBOARD")
         header_label.setStyleSheet(f"color: {style_config.ACCENT_COLOR}; font-family: 'Segoe UI Black'; font-size: 28px; background: transparent; letter-spacing: 1px;")
@@ -243,10 +244,8 @@ class DashboardView(QWidget):
         # 3. Control Panel
         self.control = ControlWidget()
         layout.addWidget(self.control, 0, Qt.AlignCenter)
-
-        # 4. Console
-        self.console = ConsoleWidget()
-        layout.addWidget(self.console, 1)
+        
+        layout.addStretch()
 
         self.outer_layout.addWidget(self.main_container)
 

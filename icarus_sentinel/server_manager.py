@@ -14,29 +14,9 @@ from icarus_sentinel.notification_manager import NotificationManager
 from icarus_sentinel.a2s_client import A2SClient
 
 class ServerProcessManager:
-    """Manages the lifecycle and resource monitoring of the Icarus server process.
-
-    Attributes:
-        state_file (str): Path to the JSON file for persisting server state.
-        state (dict): Current server state, including PID and status.
-        restart_count (int): Current count of automatic restarts since last manual start.
-        max_restarts (int): Maximum allowed automatic restarts upon crash.
-        ram_threshold_gb (float): Threshold in GB for RAM usage alerts.
-        notifications (NotificationManager): Handler for system notifications.
-        a2s_client (A2SClient): Handler for game server queries.
-        smart_restart_enabled (bool): Whether scheduled restarts are enabled.
-        smart_restart_time (str): The time (HH:MM) to perform the restart.
-    """
+    """Manages the lifecycle and resource monitoring of the Icarus server process."""
 
     def __init__(self, state_file="server_state.json", notification_manager=None, a2s_client=None, backup_manager=None):
-        """Initializes the ServerProcessManager and loads existing state.
-
-        Args:
-            state_file (str): Path to the state persistence file.
-            notification_manager (NotificationManager): Optional notification handler.
-            a2s_client (A2SClient): Optional A2S client for querying.
-            backup_manager (BackupManager): Optional backup handler.
-        """
         self.state_file = state_file
         self.state = {"pid": None, "status": "stopped"}
         self.restart_count = 0
@@ -52,10 +32,6 @@ class ServerProcessManager:
         self.load_state()
 
     def load_state(self):
-        """Loads the server state from the persistent JSON file.
-
-        Resets to default 'stopped' state if the file is missing or corrupted.
-        """
         if os.path.exists(self.state_file):
             try:
                 with open(self.state_file, "r") as f:
@@ -71,14 +47,8 @@ class ServerProcessManager:
                         self.backup_manager.retention_limit = self.state.get("backup_retention_limit", 50)
             except (json.JSONDecodeError, IOError):
                 self.state = {"pid": None, "status": "stopped"}
-                self.ram_threshold_gb = 16.0
-                self.smart_restart_enabled = False
-                self.smart_restart_time = "04:00"
-                self.last_smart_restart_date = None
 
     def save_state(self):
-        """Saves the current server state to the persistent JSON file.
-        """
         try:
             self.state["ram_threshold_gb"] = self.ram_threshold_gb
             self.state["smart_restart_enabled"] = self.smart_restart_enabled
@@ -96,21 +66,6 @@ class ServerProcessManager:
             pass
 
     def start_server(self, exe_path, port=17777, query_port=27015, server_name="Icarus Server", max_players=8, password=None, admin_password=None, no_steam=False):
-        """Starts the Icarus server process with the specified configuration.
-
-        Args:
-            exe_path (str): Full path to the IcarusServer executable.
-            port (int): The game port to use. Defaults to 17777.
-            query_port (int): The query port to use. Defaults to 27015.
-            server_name (str): The name for the Steam server.
-            max_players (int): Maximum player count.
-            password (str): Join password.
-            admin_password (str): Admin password.
-            no_steam (bool): Whether to disable Steam authentication.
-
-        Returns:
-            subprocess.Popen: The started process object.
-        """
         cmd = [
             exe_path,
             f"-Port={port}",
@@ -120,12 +75,9 @@ class ServerProcessManager:
             "-Log"
         ]
         
-        if no_steam:
-            cmd.append("-NOSTEAM")
-        if password:
-            cmd.append(f"-JoinPassword={password}")
-        if admin_password:
-            cmd.append(f"-AdminPassword={admin_password}")
+        if no_steam: cmd.append("-NOSTEAM")
+        if password: cmd.append(f"-JoinPassword={password}")
+        if admin_password: cmd.append(f"-AdminPassword={admin_password}")
         
         process = subprocess.Popen(
             cmd,
@@ -142,142 +94,53 @@ class ServerProcessManager:
         return process
 
     def stop_server(self, process):
-        """Gracefully stops the Icarus server process.
-
-        Args:
-            process (Union[subprocess.Popen, int]): The process object or PID to stop.
-        """
-        if not process:
-            return
-
+        if not process: return
         try:
-            if isinstance(process, int):
-                # Handle raw PID (from state recovery)
-                p = psutil.Process(process)
-                p.terminate()
-                try:
-                    p.wait(timeout=5)
-                except psutil.TimeoutExpired:
-                    p.kill()
-            else:
-                # Handle subprocess.Popen object
-                process.terminate()
-                try:
-                    process.wait(timeout=5)
-                except subprocess.TimeoutExpired:
-                    process.kill()
+            p = psutil.Process(process) if isinstance(process, int) else process
+            p.terminate()
+            try:
+                p.wait(timeout=5)
+            except (psutil.TimeoutExpired, subprocess.TimeoutExpired):
+                p.kill()
         except (psutil.NoSuchProcess, ProcessLookupError, psutil.AccessDenied):
             pass
         
-        # Trigger automated backup on stop
-        if self.backup_manager:
-            self.backup_manager.on_server_stop()
-        
+        if self.backup_manager: self.backup_manager.on_server_stop()
         self.state["pid"] = None
         self.state["status"] = "stopped"
         self.save_state()
 
-    def restart_server(self, old_process, exe_path, port=17777, query_port=27015):
-        """Restarts the server by stopping the old process and starting a new one.
-
-        Args:
-            old_process (Union[subprocess.Popen, int]): The current process to stop.
-            exe_path (str): Full path to the executable.
-            port (int): Game port.
-            query_port (int): Query port.
-
-        Returns:
-            subprocess.Popen: The new server process object.
-        """
-        self.stop_server(old_process)
-        return self.start_server(exe_path, port, query_port)
-
     def get_resource_usage(self, process):
-        """Calculates current resource usage of the server process.
-
-        Args:
-            process (Union[subprocess.Popen, int]): The process object or PID to monitor.
-
-        Returns:
-            dict: CPU percentage and RAM usage in GB.
-        """
-        if not process:
-            return {"cpu": 0.0, "ram_gb": 0.0}
-        
-        # Accept either a subprocess.Popen object or a raw PID (for recovery)
+        if not process: return {"cpu": 0.0, "ram_gb": 0.0}
         pid = process.pid if hasattr(process, "pid") else process
-        
-        # If it's a Popen object, check if it's still running
-        if hasattr(process, "poll") and process.poll() is not None:
-            return {"cpu": 0.0, "ram_gb": 0.0}
+        if hasattr(process, "poll") and process.poll() is not None: return {"cpu": 0.0, "ram_gb": 0.0}
         
         try:
             p = psutil.Process(pid)
-            if not p.is_running():
-                return {"cpu": 0.0, "ram_gb": 0.0}
-
+            if not p.is_running(): return {"cpu": 0.0, "ram_gb": 0.0}
             cpu = p.cpu_percent(interval=None)
-            ram_bytes = p.memory_info().rss
-            ram_gb = round(ram_bytes / (1024**3), 2)
+            ram_gb = round(p.memory_info().rss / (1024**3), 2)
             
-            # Threshold Monitoring
             if ram_gb > self.ram_threshold_gb:
                 if self.state["status"] == "running":
                     self.state["status"] = "warning"
                     self.save_state()
-                    self.notifications.notify(
-                        "High RAM Usage Alert",
-                        f"Icarus Server is using {ram_gb}GB of RAM, exceeding the {self.ram_threshold_gb}GB threshold."
-                    )
-            elif ram_gb <= self.ram_threshold_gb:
-                if self.state["status"] == "warning":
-                    self.state["status"] = "running"
-                    self.save_state()
+                    self.notifications.notify("High RAM Usage Alert", f"Icarus Server is using {ram_gb}GB of RAM.")
+            elif ram_gb <= self.ram_threshold_gb and self.state["status"] == "warning":
+                self.state["status"] = "running"
+                self.save_state()
 
             return {"cpu": cpu, "ram_gb": ram_gb}
         except (psutil.NoSuchProcess, psutil.AccessDenied):
             return {"cpu": 0.0, "ram_gb": 0.0}
 
     def stream_logs(self, process, callback):
-        """Streams real-time console logs from the server process.
-
-        Args:
-            process (subprocess.Popen): The process to read logs from.
-            callback (Callable[[str], None]): Function to call with each new line.
-        """
-        if not process or not process.stdout:
-            return
-
+        if not process or not process.stdout: return
         for line in iter(process.stdout.readline, ""):
-            if line:
-                callback(line.strip())
+            if line: callback(line.strip())
 
-    def handle_crash(self, exe_path):
-        """Attempts to recover from a crash by auto-restarting.
-
-        Args:
-            exe_path (str): Path to the server executable.
-
-        Returns:
-            Optional[subprocess.Popen]: The new process if restarted, else None.
-        """
-        if self.restart_count < self.max_restarts:
-            self.restart_count += 1
-            return self.start_server(exe_path)
-        else:
-            self.state["status"] = "crashed"
-            self.save_state()
-            return None
-
-    def should_smart_restart(self, query_port=27015):
-        """Checks if a smart restart should be triggered.
-
-        Args:
-            query_port (int): Query port for A2S.
-
-        Returns:
-            bool: True if restart should be triggered, else False.
-        """
+    def should_smart_restart(self, query_port=27015, log_func=None):
+        """Checks if a smart restart should be triggered."""
         if not self.smart_restart_enabled:
             return False
         
@@ -285,30 +148,38 @@ class ServerProcessManager:
         now_time = now_dt.strftime("%H:%M")
         today_date = now_dt.strftime("%Y-%m-%d")
 
-        if now_time != self.smart_restart_time:
+        target_time = self.smart_restart_time.strip() if self.smart_restart_time else ""
+        if target_time and len(target_time) == 4 and ":" in target_time:
+            target_time = "0" + target_time
+
+        # DEBUG: Log the time check if minute matches or if requested
+        if log_func:
+            log_func(f"DEBUG: Smart Restart Check - Current: {now_time}, Target: {target_time}, Enabled: {self.smart_restart_enabled}")
+
+        if now_time != target_time:
             return False
         
-        # Don't trigger multiple times in the same minute/day
         if self.last_smart_restart_date == today_date:
+            if log_func: log_func(f"DEBUG: Smart Restart already performed today ({today_date})")
             return False
         
-        # Only restart if server is running
         if self.state["status"] not in ["running", "warning"] or self.state["pid"] is None:
+            if log_func: log_func(f"DEBUG: Smart Restart skipped - Server status is {self.state['status']}")
             return False
 
         # Check player count
+        if log_func: log_func("DEBUG: Smart Restart time matched. Checking player count...")
         players = self.a2s_client.get_player_count(port=query_port)
+        
         if players == 0:
             self.last_smart_restart_date = today_date
+            self.save_state()
             return True
+        else:
+            if log_func: log_func(f"DEBUG: Smart Restart skipped - {players} players active.")
         
         return False
 
     def get_available_system_ram_pct(self):
-        """Calculates the percentage of available system RAM.
-
-        Returns:
-            float: Percentage of available RAM (0-100).
-        """
-        mem = psutil.virtual_memory()
+        mem = psutil.memory_info() if hasattr(psutil, "memory_info") else psutil.virtual_memory()
         return round((mem.available / mem.total) * 100, 2)
