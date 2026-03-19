@@ -1,4 +1,3 @@
-from icarus_sentinel.ui.dialogs import RamOptimizationDialog
 from icarus_sentinel.ui.dashboard import DashboardView
 from icarus_sentinel.ui.config import ConfigView
 from icarus_sentinel.ui.backups import BackupsView

@@ -6,6 +6,11 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ---
 
+- [x] **Track: GUI Overhaul: PySide6 Industrial Transition to achieve high-fidelity look from the mockup in @gui_mockup/**
+*Link: [./tracks/gui-pyside6_20260319/](./tracks/gui-pyside6_20260319/)*
+
+---
+
 ## Archived Tracks
 - [x] **Track: refactor the files in @icarus_sentinel/ to not have more than 500 lines of code. I want them to be modular for easy maintenance** (Archived: 2026-03-18)
 - [x] **Track: GUI Refactor - Icarus Sentinel Dashboard** (Archived: 2026-03-18)

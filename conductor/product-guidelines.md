@@ -12,11 +12,12 @@
   * Use encouraging language, especially during the initial setup phase.
 
 ## 3. Visual Branding & Theme
-* **Style:** Charcoal & Orange (Modern Industrial)
+* **Style:** Charcoal & Orange (High-Fidelity Industrial / Skeuomorphic)
 * **Guidelines:**
   * Base Palette: Use `#141414` for app background and `#1A1A1A` for sidebars.
-  * Accents: Use bright orange (`#FF8C00`) for primary action buttons, progress bar fills, and console text.
-  * Geometry: Apply rounded corners (`10px` - `15px`) to all container frames and buttons for a modern feel.
+  * Accents: Use bright glowing orange (`#FF8C00`) for primary action buttons, progress bar fills, and console text.
+  * Geometry: Apply rounded corners (`12px` - `25px`) to all container frames and buttons for a polished, modern industrial feel.
+  * Aesthetic: Use metallic-style panel borders, caution-striped accents for critical controls, and subtle space backgrounds to evoke a high-tech survival theme.
 
 ## 4. User Experience (UX) Layout
 * **Style:** Sidebar Navigation

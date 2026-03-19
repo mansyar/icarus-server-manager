@@ -6,8 +6,9 @@
   * **Virtual Environment (`venv`):** A standard Python virtual environment is used to isolate project-specific dependencies and ensure consistency across development environments.
 
 ## 2. Desktop UI Framework
-* **CustomTkinter**
-  * Recommended because it provides a modern, dark-mode native look while remaining significantly more lightweight (<100MB footprint) than alternatives like PyQt, perfectly aligning with the project's efficiency goals.
+* **PySide6**
+  * Chosen for its advanced styling capabilities (QSS/QML), robust signal/slot mechanism, and high-fidelity UI controls that accurately match the project's industrial dashboard mockup. It provides a more powerful and flexible foundation for professional-grade desktop applications than basic Tkinter.
+  * **pytest-qt:** Used for automated UI testing of PySide6 components.
 
 ## 3. System Management & Core Libraries
 * **psutil** & **subprocess**
