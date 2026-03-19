@@ -6,7 +6,8 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ---
 
-No active tracks.
+- [ ] **Track: Advanced Log Parsing & Desktop Notifications (Enhancement)**
+*Link: [./tracks/advanced-log-parsing_20260320/](./tracks/advanced-log-parsing_20260320/)*
 
 ---
 
