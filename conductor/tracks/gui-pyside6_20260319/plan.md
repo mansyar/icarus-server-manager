@@ -43,3 +43,6 @@
 - [x] Task: Delete legacy `test_ui.py`, `test_responsive.py`, etc., that relied on Tkinter. (378ae2c)
 - [x] Task: Verify executable compilation (`build_exe.py`) works correctly with PySide6. (8f51bc3)
 - [x] Task: Conductor - User Manual Verification 'Phase 6: Cleanup and Finalization' (Protocol in workflow.md) (8f51bc3)
+
+## Phase: Review Fixes
+- [x] Task: Apply review suggestions (3c8df49)
