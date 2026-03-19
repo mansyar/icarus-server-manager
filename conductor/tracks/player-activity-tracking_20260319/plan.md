@@ -12,16 +12,16 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 1: Background A2S Query Integration' (Protocol in workflow.md)
 
 ## Phase 2: UI "Players" Tab Implementation
-- [ ] Task: Create "Players" View Component
-    - [ ] Write UI tests (using `pytest-qt`) to verify the existence of a new "Players" tab in the sidebar navigation.
-    - [ ] Update the main UI layout to include the "Players" tab navigation item.
-    - [ ] Implement the "Players" view with a table or list widget containing columns for Name, Playtime, and Ping/Score.
-    - [ ] Ensure UI tests pass.
-- [ ] Task: Implement UI Error State
-    - [ ] Write UI tests for an "Offline/Unreachable" status indicator within the "Players" tab.
-    - [ ] Implement the offline indicator state in the UI.
-    - [ ] Ensure UI tests pass.
-- [ ] Task: Conductor - User Manual Verification 'Phase 2: UI "Players" Tab Implementation' (Protocol in workflow.md)
+- [x] Task: Create "Players" View Component 461b447
+    - [x] Write UI tests (using `pytest-qt`) to verify the existence of a new "Players" tab in the sidebar navigation.
+    - [x] Update the main UI layout to include the "Players" tab navigation item.
+    - [x] Implement the "Players" view with a table or list widget containing columns for Name, Playtime, and Ping/Score.
+    - [x] Ensure UI tests pass.
+- [x] Task: Implement UI Error State 461b447
+    - [x] Write UI tests for an "Offline/Unreachable" status indicator within the "Players" tab.
+    - [x] Implement the offline indicator state in the UI.
+    - [x] Ensure UI tests pass.
+- [x] Task: Conductor - User Manual Verification 'Phase 2: UI "Players" Tab Implementation' (Protocol in workflow.md)
 
 ## Phase 3: Connect Logic to UI
 - [ ] Task: Bind Background Thread Signals to UI
