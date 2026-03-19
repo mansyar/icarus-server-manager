@@ -74,6 +74,8 @@ class MainWindow(QMainWindow):
 
     def closeEvent(self, event):
         """Cleanup when closing the window."""
+        if hasattr(self, "metrics_timer"):
+            self.metrics_timer.stop()
         self.controller.stop_a2s_query()
         event.accept()
 
