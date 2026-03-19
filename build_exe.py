@@ -12,6 +12,7 @@ def build():
     # On Windows, use ';' as separator
     data_files = [
         ("icarus_sentinel/resources/server_state.json", "icarus_sentinel/resources"),
+        ("assets", "assets"),
     ]
     
     args = [
