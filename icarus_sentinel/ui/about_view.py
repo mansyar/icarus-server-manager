@@ -22,6 +22,7 @@ class AboutView(QWidget):
         self.setup_ui()
 
     def setup_ui(self):
+        """Initializes the UI components and layout for the About view."""
         self.outer_layout = QVBoxLayout(self)
         self.outer_layout.setContentsMargins(0, 0, 0, 0)
         
@@ -63,7 +64,7 @@ class AboutView(QWidget):
         credits_layout.setContentsMargins(20, 20, 20, 20)
         
         credits_header = QLabel("DEVELOPER CREDITS")
-        credits_header.setStyleSheet(f"color: {style_config.ACCENT_COLOR}; font-family: 'Segoe UI Black'; font-size: 14px; border: none; background: transparent;")
+        credits_header.setStyleSheet(f"color: {style_config.ACCENT_COLOR}; font-family: 'Segoe UI Black'; font-size: 14px; border: none; background: transparent;")       
         
         self.credits_label = QLabel("Icarus Sentinel Team\n\nLead Developer: Ansyar\nContributors: Open Source Community")
         self.credits_label.setStyleSheet("color: #EEE; font-family: 'Segoe UI'; font-size: 12px; border: none; background: transparent;")

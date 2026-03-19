@@ -2,8 +2,9 @@ import platform
 import psutil
 import re
 import os
+from typing import Dict
 
-def get_app_version():
+def get_app_version() -> str:
     """
     Reads the application version from version_info.txt.
     Looks for the ProductVersion field.
@@ -24,7 +25,7 @@ def get_app_version():
         
     return "Unknown"
 
-def get_system_info():
+def get_system_info() -> Dict[str, str]:
     """
     Fetches basic system information: OS, RAM, and CPU.
     """
