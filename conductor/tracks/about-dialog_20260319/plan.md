@@ -10,10 +10,10 @@
 - [x] Task: Implement the `AboutView` class (inheriting from `QWidget`) in `icarus_sentinel/ui/about_view.py`, populated with the data from Phase 1 and styled with the dark charcoal/orange theme. (5aed86f)
 - [x] Task: Conductor - User Manual Verification 'Phase 2: About View UI Implementation' (Protocol in workflow.md) (6f734d2)
 
-## Phase 3: Sidebar Integration
-- [ ] Task: Update `tests/ui/test_sidebar.py` (or relevant main window tests) with a failing test for the new "About" sidebar button and view routing.
-- [ ] Task: Implement the "About" button in `SidebarWidget` and integrate `AboutView` into the main window's `QStackedWidget`.
-- [ ] Task: Conductor - User Manual Verification 'Phase 3: Sidebar Integration' (Protocol in workflow.md)
+## Phase 3: Sidebar Integration [checkpoint: b58e490]
+- [x] Task: Update `tests/ui/test_sidebar.py` (or relevant main window tests) with a failing test for the new "About" sidebar button and view routing. (69274e1)
+- [x] Task: Implement the "About" button in `SidebarWidget` and integrate `AboutView` into the main window's `QStackedWidget`. (a87d563)
+- [x] Task: Conductor - User Manual Verification 'Phase 3: Sidebar Integration' (Protocol in workflow.md) (b58e490)
 
 ## Phase: Review Fixes
 - [ ] Task: Apply review suggestions
