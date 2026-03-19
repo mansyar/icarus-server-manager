@@ -12,6 +12,7 @@ def test_sidebar_initialization(qtbot):
     assert hasattr(sidebar, "backups_btn")
     assert hasattr(sidebar, "sync_btn")
     assert hasattr(sidebar, "mods_btn")
+    assert hasattr(sidebar, "about_btn")
 
 def test_sidebar_navigation_signals(qtbot):
     """Test that sidebar buttons emit signals when clicked."""
@@ -25,3 +26,7 @@ def test_sidebar_navigation_signals(qtbot):
     with qtbot.waitSignal(sidebar.nav_requested, timeout=1000) as blocker:
         sidebar.settings_btn.click()
     assert blocker.args == ["settings"]
+    
+    with qtbot.waitSignal(sidebar.nav_requested, timeout=1000) as blocker:
+        sidebar.about_btn.click()
+    assert blocker.args == ["about"]
