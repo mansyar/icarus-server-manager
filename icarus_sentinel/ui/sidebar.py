@@ -45,6 +45,7 @@ class SidebarWidget(QFrame):
 
         # Navigation Buttons
         self.dashboard_btn = self._create_nav_btn("Dashboard", "dashboard", "icon_dashboard.PNG")
+        self.players_btn = self._create_nav_btn("Players", "players", "icon_mods.PNG") # Using mods icon as placeholder
         self.settings_btn = self._create_nav_btn("Server Settings", "settings", "icon_settings.PNG")
         self.backups_btn = self._create_nav_btn("Backups", "backups", "icon_backup.PNG")
         self.sync_btn = self._create_nav_btn("Save Sync", "sync", "icon__save_sync.PNG")
@@ -52,6 +53,7 @@ class SidebarWidget(QFrame):
         self.about_btn = self._create_nav_btn("About", "about", "icon_dashboard.PNG")
 
         layout.addWidget(self.dashboard_btn)
+        layout.addWidget(self.players_btn)
         layout.addWidget(self.settings_btn)
         layout.addWidget(self.backups_btn)
         layout.addWidget(self.sync_btn)

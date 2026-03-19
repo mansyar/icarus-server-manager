@@ -15,6 +15,7 @@ from icarus_sentinel.ui.config import ConfigView
 from icarus_sentinel.ui.backups import BackupsView
 from icarus_sentinel.ui.save_sync import SaveSyncView
 from icarus_sentinel.ui.mods import ModsView
+from icarus_sentinel.ui.players import PlayersView
 from icarus_sentinel.ui.about_view import AboutView
 from icarus_sentinel import constants, style_config
 
@@ -112,6 +113,7 @@ class MainWindow(QMainWindow):
         self.dashboard = DashboardView()
         self.dashboard.control.action_triggered.connect(self._on_launch_clicked)
         
+        self.players_view = PlayersView()
         self.config_view = ConfigView(app=self)
         self.backups_view = BackupsView(app=self)
         self.sync_view = SaveSyncView(app=self)
@@ -120,6 +122,7 @@ class MainWindow(QMainWindow):
         
         self.views = {
             "dashboard": self.dashboard,
+            "players": self.players_view,
             "settings": self.config_view,
             "backups": self.backups_view,
             "sync": self.sync_view,
