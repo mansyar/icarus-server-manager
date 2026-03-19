@@ -32,11 +32,11 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 4: Recreating the Dashboard (The Mockup)' (Protocol in workflow.md) (d7a2d61)
 
 ## Phase 5: Migrating Remaining Views
-- [x] Task: Create test and implement `SettingsView` (mapping to INIManager). (ac5419c)
-- [x] Task: Create test and implement `BackupsView` (mapping to BackupManager). (ac5419c)
-- [x] Task: Create test and implement `SaveSyncView` (mapping to SaveSyncManager). (ac5419c)
-- [x] Task: Apply cohesive QSS styling to these secondary views to ensure they fit the industrial theme. (ac5419c)
-- [ ] Task: Conductor - User Manual Verification 'Phase 5: Migrating Remaining Views' (Protocol in workflow.md)
+- [x] Task: Create test and implement `SettingsView` (mapping to INIManager). (dfced84)
+- [x] Task: Create test and implement `BackupsView` (mapping to BackupManager). (dfced84)
+- [x] Task: Create test and implement `SaveSyncView` (mapping to SaveSyncManager). (dfced84)
+- [x] Task: Apply cohesive QSS styling to these secondary views to ensure they fit the industrial theme. (dfced84)
+- [x] Task: Conductor - User Manual Verification 'Phase 5: Migrating Remaining Views' (Protocol in workflow.md) (dfced84)
 
 ## Phase 6: Cleanup and Finalization
 - [ ] Task: Delete all obsolete CustomTkinter code (`app.py`, old ui folders).
