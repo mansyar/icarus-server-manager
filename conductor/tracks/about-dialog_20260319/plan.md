@@ -1,9 +1,9 @@
 # Implementation Plan: About Dialog & Versioning System
 
-## Phase 1: Backend System Info & Version Sourcing
-- [ ] Task: Create `tests/core/test_sys_info.py` to write failing tests for reading the application version and fetching basic system info (OS, CPU, Total RAM).
-- [ ] Task: Implement system info fetching and version reading logic in a suitable core module (e.g., `icarus_sentinel/core/sys_info.py` or an existing utility module).
-- [ ] Task: Conductor - User Manual Verification 'Phase 1: Backend System Info & Version Sourcing' (Protocol in workflow.md)
+## Phase 1: Backend System Info & Version Sourcing [checkpoint: 3a0a079]
+- [x] Task: Create `tests/core/test_sys_info.py` to write failing tests for reading the application version and fetching basic system info (OS, CPU, Total RAM). (82ca689)
+- [x] Task: Implement system info fetching and version reading logic in a suitable core module (e.g., `icarus_sentinel/core/sys_info.py` or an existing utility module). (d7cf20a)
+- [x] Task: Conductor - User Manual Verification 'Phase 1: Backend System Info & Version Sourcing' (Protocol in workflow.md) (3a0a079)
 
 ## Phase 2: About View UI Implementation
 - [ ] Task: Create `tests/ui/test_about_view.py` with failing tests for the `AboutView` widget (verifying UI elements for version, credits, and system info are created).
