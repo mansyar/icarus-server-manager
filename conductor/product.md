@@ -152,8 +152,13 @@
 * **Requirement 4.2:** **Sidebar-Driven Navigation:** Utilize a fixed left-aligned sidebar for primary navigation, separating functional views (Dashboard, Configuration, Save Sync, etc.) without top-level tabs.
 * **Requirement 4.3:** **Brand Visual Identity:** Apply a consistent dark charcoal and orange brand theme across the application, featuring massive, bold action buttons and horizontal progress bars for resource metrics.
 * **Requirement 4.4:** **About & Versioning:** Clearly display the application version and provide an "About" dialog for credits and system information.
+* **Requirement 4.5:** **Player Activity Tracking:**
+    * **Requirement 4.5.1:** Implement a background A2S query service to fetch real-time server metrics (ping, player count) and player lists.
+    * **Requirement 4.5.2:** Dedicated "Players" tab for displaying connected player names, playtime, and scores.
+    * **Requirement 4.5.3:** Automatic UI updates every 5 seconds without blocking the main thread.
+    * **Requirement 4.5.4:** Graceful handling of offline or unreachable server states with clear UI feedback.
 
-### 4.5 Mod Management
+### 4.6 Mod Management
 * **Requirement 5.1:** Dedicated "Mods" tab for installing and listing server mods.
 * **Requirement 5.2:** Support for manual selection of `.pak` and `.zip` mod files.
 * **Requirement 5.3:** Automatic extraction of `.pak` files from `.zip` archives.
@@ -213,4 +218,4 @@
 ---
 
 ## 8. Future Roadmap
-* **Player Activity Tracking:** Track player join/leave events and display a live player list in the UI.
+* **Auto-Discovery:** Automatically find the server executable without manual pathing.
