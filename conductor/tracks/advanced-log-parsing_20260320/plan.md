@@ -1,7 +1,7 @@
 # Implementation Plan: Advanced Log Parsing & Desktop Notifications
 
 ## Phase 1: Configuration & UI Updates
-- [ ] Task: Update Configuration Model
+- [x] Task: Update Configuration Model 87d3e4b
     - [ ] Write tests for new notification settings in the configuration manager.
     - [ ] Implement default settings and serialization logic for notification preferences.
 - [ ] Task: Implement Notifications UI in Configuration Tab
