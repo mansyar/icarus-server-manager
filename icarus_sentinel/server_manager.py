@@ -26,6 +26,9 @@ class ServerProcessManager:
         self.smart_restart_enabled = False
         self.smart_restart_time = "04:00"
         self.last_smart_restart_date = None
+        self.notify_server_started = True
+        self.notify_player_activity = True
+        self.notify_server_error = True
         self.notifications = notification_manager or NotificationManager()
         self.a2s_client = a2s_client or A2SClient()
         self.backup_manager = backup_manager
@@ -42,6 +45,9 @@ class ServerProcessManager:
                     self.smart_restart_time = self.state.get("smart_restart_time", "04:00")
                     self.last_smart_restart_date = self.state.get("last_smart_restart_date")
                     self.last_sync_timestamp = self.state.get("last_sync_timestamp")
+                    self.notify_server_started = self.state.get("notify_server_started", True)
+                    self.notify_player_activity = self.state.get("notify_player_activity", True)
+                    self.notify_server_error = self.state.get("notify_server_error", True)
                     
                     if self.backup_manager:
                         self.backup_manager.interval_minutes = self.state.get("backup_interval_minutes", 30.0)
@@ -56,6 +62,9 @@ class ServerProcessManager:
             self.state["smart_restart_time"] = self.smart_restart_time
             self.state["last_smart_restart_date"] = self.last_smart_restart_date
             self.state["last_sync_timestamp"] = self.last_sync_timestamp
+            self.state["notify_server_started"] = self.notify_server_started
+            self.state["notify_player_activity"] = self.notify_player_activity
+            self.state["notify_server_error"] = self.notify_server_error
             
             if self.backup_manager:
                 self.state["backup_interval_minutes"] = self.backup_manager.interval_minutes
