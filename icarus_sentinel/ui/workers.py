@@ -115,3 +115,39 @@ class ModWorker(GenericWorker):
                 self.finished.emit("Mod removal complete.")
         except Exception as e:
             self.error.emit(str(e))
+
+class A2SQueryWorker(GenericWorker):
+    """Worker for periodic A2S server querying."""
+    data_received = Signal(dict)
+
+    def __init__(self, a2s_service, host="127.0.0.1", port=27015, interval=5.0):
+        super().__init__()
+        self.a2s_service = a2s_service
+        self.host = host
+        self.port = port
+        self.interval = interval
+        self._running = True
+
+    def run(self):
+        """Main loop for periodic querying."""
+        import time
+        while self._running:
+            self.run_once()
+            # Sleep in small increments to allow responsive stopping
+            for _ in range(int(self.interval * 10)):
+                if not self._running:
+                    break
+                time.sleep(0.1)
+        self.finished.emit(True)
+
+    def run_once(self):
+        """Performs a single query and emits the result."""
+        try:
+            data = self.a2s_service.fetch_server_data(self.host, self.port)
+            self.data_received.emit(data)
+        except Exception as e:
+            self.error.emit(str(e))
+
+    def stop(self):
+        """Stops the worker loop."""
+        self._running = False
