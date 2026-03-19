@@ -6,7 +6,7 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ---
 
-- [~] **Track: GUI Overhaul: PySide6 Industrial Transition to achieve high-fidelity look from the mockup in @gui_mockup/**
+- [x] **Track: GUI Overhaul: PySide6 Industrial Transition to achieve high-fidelity look from the mockup in @gui_mockup/**
 *Link: [./tracks/gui-pyside6_20260319/](./tracks/gui-pyside6_20260319/)*
 
 ---
