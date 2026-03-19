@@ -2,7 +2,7 @@ from PySide6.QtWidgets import QWidget, QVBoxLayout, QPushButton, QLabel, QFrame
 from PySide6.QtCore import Signal, Qt, QSize
 from PySide6.QtGui import QIcon, QPixmap
 import os
-from icarus_sentinel import style_config
+from icarus_sentinel import style_config, constants
 
 class SidebarWidget(QFrame):
     """Sidebar navigation widget for Icarus Sentinel."""
@@ -66,7 +66,7 @@ class SidebarWidget(QFrame):
         btn.setCursor(Qt.PointingHandCursor)
         
         # Load Icon
-        icon_path = os.path.join("assets", icon_name)
+        icon_path = constants.get_resource_path(os.path.join("assets", icon_name))
         if os.path.exists(icon_path):
             btn.setIcon(QIcon(icon_path))
             btn.setIconSize(QSize(20, 20))

@@ -7,22 +7,23 @@ def test_dashboard_initialization(qtbot):
     view = DashboardView()
     qtbot.addWidget(view)
     
-    assert hasattr(view, "metrics")
+    assert hasattr(view, "cpu_metrics")
+    assert hasattr(view, "ram_metrics")
     assert hasattr(view, "control")
-    assert hasattr(view, "console")
-    assert isinstance(view.metrics, MetricsWidget)
+    # Console was moved to MainWindow
+    assert not hasattr(view, "console")
+    assert isinstance(view.cpu_metrics, MetricsWidget)
+    assert isinstance(view.ram_metrics, MetricsWidget)
     assert isinstance(view.control, ControlWidget)
-    assert isinstance(view.console, ConsoleWidget)
 
 def test_metrics_updates(qtbot):
     """Test that MetricsWidget updates values correctly."""
-    metrics = MetricsWidget()
+    metrics = MetricsWidget("CPU LOAD")
     qtbot.addWidget(metrics)
     
-    metrics.update_metrics(cpu=45.5, ram=12.2)
-    # Check if labels or internal state updated
-    assert "45.5%" in metrics.cpu_label.text()
-    assert "12.2GB" in metrics.ram_label.text()
+    metrics.update_value(45.5, "45.5% LOAD")
+    assert metrics.bar.value() == 45
+    assert "45.5% LOAD" in metrics.status_label.text()
 
 def test_console_append(qtbot):
     """Test that ConsoleWidget appends text correctly."""
@@ -39,4 +40,4 @@ def test_control_button_click(qtbot):
     
     with qtbot.waitSignal(control.action_triggered, timeout=1000) as blocker:
         control.launch_btn.click()
-    assert blocker.args == [True] # Assuming True for start
+    assert blocker.args == [True] # Assuming starts with False, toggles to True

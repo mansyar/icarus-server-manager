@@ -57,7 +57,7 @@ class MainWindow(QMainWindow):
         self.controller.recover_state()
 
     def apply_window_background(self):
-        bg_path = os.path.join("assets", "backgound_space.png")
+        bg_path = constants.get_resource_path(os.path.join("assets", "backgound_space.png"))
         if os.path.exists(bg_path):
             original_pixmap = QPixmap(bg_path)
             scaled_pixmap = original_pixmap.scaled(self.size(), Qt.KeepAspectRatioByExpanding, Qt.SmoothTransformation)
@@ -154,7 +154,7 @@ class MainWindow(QMainWindow):
             # Check for Smart Restart
             query_port_str = self.ini_manager.get_setting("QueryPort") or constants.DEFAULT_QUERY_PORT
             query_port = int(query_port_str)
-            if self.server_manager.should_smart_restart(query_port=query_port, log_func=self.log):
+            if self.server_manager.should_smart_restart(query_port=query_port):
                 self.log("Smart Idle Restart condition met. Restarting server...")
                 self._on_launch_clicked(False) # Stop
                 self._on_launch_clicked(True)  # Start

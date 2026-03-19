@@ -7,7 +7,7 @@ from PySide6.QtCore import Qt, Signal, QSize
 from PySide6.QtGui import QPixmap, QPalette, QBrush, QColor, QFont
 import os
 import datetime
-from icarus_sentinel import style_config
+from icarus_sentinel import style_config, constants
 
 # Pure QSS Industrial Style Helper
 PANEL_STYLE = f"""
@@ -30,7 +30,7 @@ class StatusBanner(QFrame):
         layout.setContentsMargins(25, 15, 25, 15)
         
         self.icon_label = QLabel()
-        icon_path = os.path.join("assets", "rocket.PNG")
+        icon_path = constants.get_resource_path(os.path.join("assets", "rocket.PNG"))
         if os.path.exists(icon_path):
             self.icon_label.setPixmap(QPixmap(icon_path).scaled(48, 48, Qt.KeepAspectRatio, Qt.SmoothTransformation))
         
@@ -112,7 +112,7 @@ class ControlWidget(QFrame):
         layout.setSpacing(0)
         self.setFixedSize(360, 90)
 
-        caution_path = os.path.join("assets", "caution_stripe.png").replace("\\", "/")
+        caution_path = constants.get_resource_path(os.path.join("assets", "caution_stripe.png")).replace("\\", "/")
         
         self.left_stripe = QFrame()
         self.left_stripe.setFixedWidth(40)

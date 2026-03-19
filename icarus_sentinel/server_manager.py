@@ -19,6 +19,7 @@ class ServerProcessManager:
     def __init__(self, state_file="server_state.json", notification_manager=None, a2s_client=None, backup_manager=None):
         self.state_file = state_file
         self.state = {"pid": None, "status": "stopped"}
+        self._process_obj = None # Persistent psutil.Process for accurate CPU tracking
         self.restart_count = 0
         self.max_restarts = 3
         self.ram_threshold_gb = 16.0
@@ -90,6 +91,7 @@ class ServerProcessManager:
         
         self.state["pid"] = process.pid
         self.state["status"] = "running"
+        self._process_obj = psutil.Process(process.pid)
         self.save_state()
         return process
 
@@ -108,18 +110,26 @@ class ServerProcessManager:
         if self.backup_manager: self.backup_manager.on_server_stop()
         self.state["pid"] = None
         self.state["status"] = "stopped"
+        self._process_obj = None
         self.save_state()
 
     def get_resource_usage(self, process):
         if not process: return {"cpu": 0.0, "ram_gb": 0.0}
         pid = process.pid if hasattr(process, "pid") else process
-        if hasattr(process, "poll") and process.poll() is not None: return {"cpu": 0.0, "ram_gb": 0.0}
         
+        if self._process_obj is None or self._process_obj.pid != pid:
+            try:
+                self._process_obj = psutil.Process(pid)
+            except (psutil.NoSuchProcess, psutil.AccessDenied):
+                return {"cpu": 0.0, "ram_gb": 0.0}
+
         try:
-            p = psutil.Process(pid)
-            if not p.is_running(): return {"cpu": 0.0, "ram_gb": 0.0}
-            cpu = p.cpu_percent(interval=None)
-            ram_gb = round(p.memory_info().rss / (1024**3), 2)
+            if not self._process_obj.is_running():
+                self._process_obj = None
+                return {"cpu": 0.0, "ram_gb": 0.0}
+            
+            cpu = self._process_obj.cpu_percent(interval=None)
+            ram_gb = round(self._process_obj.memory_info().rss / (1024**3), 2)
             
             if ram_gb > self.ram_threshold_gb:
                 if self.state["status"] == "running":
@@ -132,6 +142,7 @@ class ServerProcessManager:
 
             return {"cpu": cpu, "ram_gb": ram_gb}
         except (psutil.NoSuchProcess, psutil.AccessDenied):
+            self._process_obj = None
             return {"cpu": 0.0, "ram_gb": 0.0}
 
     def stream_logs(self, process, callback):
@@ -139,7 +150,7 @@ class ServerProcessManager:
         for line in iter(process.stdout.readline, ""):
             if line: callback(line.strip())
 
-    def should_smart_restart(self, query_port=27015, log_func=None):
+    def should_smart_restart(self, query_port=27015):
         """Checks if a smart restart should be triggered."""
         if not self.smart_restart_enabled:
             return False
@@ -152,34 +163,25 @@ class ServerProcessManager:
         if target_time and len(target_time) == 4 and ":" in target_time:
             target_time = "0" + target_time
 
-        # DEBUG: Log the time check if minute matches or if requested
-        if log_func:
-            log_func(f"DEBUG: Smart Restart Check - Current: {now_time}, Target: {target_time}, Enabled: {self.smart_restart_enabled}")
-
         if now_time != target_time:
             return False
         
         if self.last_smart_restart_date == today_date:
-            if log_func: log_func(f"DEBUG: Smart Restart already performed today ({today_date})")
             return False
         
         if self.state["status"] not in ["running", "warning"] or self.state["pid"] is None:
-            if log_func: log_func(f"DEBUG: Smart Restart skipped - Server status is {self.state['status']}")
             return False
 
         # Check player count
-        if log_func: log_func("DEBUG: Smart Restart time matched. Checking player count...")
         players = self.a2s_client.get_player_count(port=query_port)
         
         if players == 0:
             self.last_smart_restart_date = today_date
             self.save_state()
             return True
-        else:
-            if log_func: log_func(f"DEBUG: Smart Restart skipped - {players} players active.")
         
         return False
 
     def get_available_system_ram_pct(self):
-        mem = psutil.memory_info() if hasattr(psutil, "memory_info") else psutil.virtual_memory()
+        mem = psutil.virtual_memory()
         return round((mem.available / mem.total) * 100, 2)

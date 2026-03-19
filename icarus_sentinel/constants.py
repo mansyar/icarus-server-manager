@@ -1,6 +1,18 @@
 """Constants for Icarus Sentinel."""
 
 import os
+import sys
+
+def get_resource_path(relative_path):
+    """Get absolute path to resource, works for dev and for PyInstaller."""
+    try:
+        # PyInstaller creates a temp folder and stores path in _MEIPASS
+        base_path = sys._MEIPASS
+    except Exception:
+        # Fallback to the project root directory
+        base_path = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+
+    return os.path.normpath(os.path.join(base_path, relative_path))
 
 # View Names
 VIEW_SERVER = "Server"
@@ -12,8 +24,9 @@ VIEW_MODS = "Mods"
 # Default Paths
 DEFAULT_INSTALL_DIR = "icarus_server"
 DEFAULT_BACKUP_DIR = "backups"
-# Use absolute path relative to this file's directory to ensure it's always in resources/
-STATE_FILE = os.path.join(os.path.dirname(__file__), "resources", "server_state.json")
+
+# State File Path
+STATE_FILE = get_resource_path(os.path.join("icarus_sentinel", "resources", "server_state.json"))
 
 # INI Sections
 SECTION_SENTINEL = "Sentinel"
