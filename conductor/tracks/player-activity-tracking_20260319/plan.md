@@ -5,10 +5,10 @@
     - [x] Write failing unit tests for fetching server metrics and player list using `python-a2s` (mocking the server response).
     - [x] Implement the `A2SQueryService` to fetch and parse Name, Playtime, and Ping/Score.
     - [x] Ensure tests pass and the service gracefully handles network timeouts.
-- [ ] Task: Implement Background Query Thread
-    - [ ] Write failing tests for a background worker thread that polls the `A2SQueryService` every 5 seconds.
-    - [ ] Implement the threaded worker using PySide6 `QThread` or Python `threading` with signals to emit data.
-    - [ ] Ensure tests pass.
+- [x] Task: Implement Background Query Thread 84fb096
+    - [x] Write failing tests for a background worker thread that polls the `A2SQueryService` every 5 seconds.
+    - [x] Implement the threaded worker using PySide6 `QThread` or Python `threading` with signals to emit data.
+    - [x] Ensure tests pass.
 - [ ] Task: Conductor - User Manual Verification 'Phase 1: Background A2S Query Integration' (Protocol in workflow.md)
 
 ## Phase 2: UI "Players" Tab Implementation
