@@ -39,7 +39,7 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 5: Migrating Remaining Views' (Protocol in workflow.md) (dfced84)
 
 ## Phase 6: Cleanup and Finalization
-- [ ] Task: Delete all obsolete CustomTkinter code (`app.py`, old ui folders).
+- [~] Task: Delete all obsolete CustomTkinter code (`app.py`, old ui folders).
 - [ ] Task: Delete legacy `test_ui.py`, `test_responsive.py`, etc., that relied on Tkinter.
 - [ ] Task: Verify executable compilation (`build_exe.py`) works correctly with PySide6.
 - [ ] Task: Conductor - User Manual Verification 'Phase 6: Cleanup and Finalization' (Protocol in workflow.md)
