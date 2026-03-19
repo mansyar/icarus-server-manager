@@ -11,7 +11,7 @@
     - [x] Ensure tests pass.
 - [x] Task: Conductor - User Manual Verification 'Phase 1: Background A2S Query Integration' (Protocol in workflow.md)
 
-## Phase 2: UI "Players" Tab Implementation
+## Phase 2: UI "Players" Tab Implementation [checkpoint: a308cb7]
 - [x] Task: Create "Players" View Component 461b447
     - [x] Write UI tests (using `pytest-qt`) to verify the existence of a new "Players" tab in the sidebar navigation.
     - [x] Update the main UI layout to include the "Players" tab navigation item.
