@@ -49,12 +49,14 @@ class SidebarWidget(QFrame):
         self.backups_btn = self._create_nav_btn("Backups", "backups", "icon_backup.PNG")
         self.sync_btn = self._create_nav_btn("Save Sync", "sync", "icon__save_sync.PNG")
         self.mods_btn = self._create_nav_btn("Mods", "mods", "icon_mods.PNG")
+        self.about_btn = self._create_nav_btn("About", "about", "icon_dashboard.PNG")
 
         layout.addWidget(self.dashboard_btn)
         layout.addWidget(self.settings_btn)
         layout.addWidget(self.backups_btn)
         layout.addWidget(self.sync_btn)
         layout.addWidget(self.mods_btn)
+        layout.addWidget(self.about_btn)
 
         layout.addStretch()
 

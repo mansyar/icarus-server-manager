@@ -15,6 +15,7 @@ from icarus_sentinel.ui.config import ConfigView
 from icarus_sentinel.ui.backups import BackupsView
 from icarus_sentinel.ui.save_sync import SaveSyncView
 from icarus_sentinel.ui.mods import ModsView
+from icarus_sentinel.ui.about_view import AboutView
 from icarus_sentinel import constants, style_config
 
 class MainWindow(QMainWindow):
@@ -115,13 +116,15 @@ class MainWindow(QMainWindow):
         self.backups_view = BackupsView(app=self)
         self.sync_view = SaveSyncView(app=self)
         self.mods_view = ModsView(app=self)
+        self.about_view = AboutView()
         
         self.views = {
             "dashboard": self.dashboard,
             "settings": self.config_view,
             "backups": self.backups_view,
             "sync": self.sync_view,
-            "mods": self.mods_view
+            "mods": self.mods_view,
+            "about": self.about_view
         }
         
         for nav_id, view in self.views.items():
