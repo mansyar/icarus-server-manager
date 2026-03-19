@@ -6,12 +6,12 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ---
 
-- [x] **Track: Player Activity Tracking & A2S Integration**
-*Link: [./tracks/player-activity-tracking_20260319/](./tracks/player-activity-tracking_20260319/)*
+No active tracks.
 
 ---
 
 ## Archived Tracks
+- [x] **Track: Player Activity Tracking & A2S Integration** (Archived: 2026-03-20)
 - [x] **Track: Create a dedicated 'About' dialog accessible from the sidebar. Display app version, developer credits, and basic system info (OS, RAM, CPU).** (Archived: 2026-03-19)
 - [x] **Track: GUI Overhaul: PySide6 Industrial Transition to achieve high-fidelity look from the mockup in @gui_mockup/** (Archived: 2026-03-19)
 - [x] **Track: refactor the files in @icarus_sentinel/ to not have more than 500 lines of code. I want them to be modular for easy maintenance** (Archived: 2026-03-18)
