@@ -9,6 +9,7 @@ from icarus_sentinel.backup_manager import BackupManager
 from icarus_sentinel.core.ini_manager import INIManager
 from icarus_sentinel.core.save_sync_manager import SaveSyncManager
 from icarus_sentinel.core.mod_manager import ModManager
+from icarus_sentinel.a2s_client import A2SQueryService
 from icarus_sentinel.ui.sidebar import SidebarWidget
 from icarus_sentinel.ui.dashboard import DashboardView, ConsoleWidget
 from icarus_sentinel.ui.config import ConfigView
@@ -17,6 +18,7 @@ from icarus_sentinel.ui.save_sync import SaveSyncView
 from icarus_sentinel.ui.mods import ModsView
 from icarus_sentinel.ui.players import PlayersView
 from icarus_sentinel.ui.about_view import AboutView
+from icarus_sentinel.ui.workers import A2SQueryWorker
 from icarus_sentinel import constants, style_config
 
 class MainWindow(QMainWindow):
@@ -48,6 +50,7 @@ class MainWindow(QMainWindow):
             ini_manager=self.ini_manager
         )
         self.mod_manager = ModManager(server_root=initial_server_path)
+        self.a2s_service = A2SQueryService()
         
         # Initialize Controller
         self.controller = Controller(self)
@@ -56,7 +59,23 @@ class MainWindow(QMainWindow):
         self.server_process = None
         self.setup_ui()
         self.setup_timer()
+        self.setup_a2s_monitoring()
         self.controller.recover_state()
+
+    def setup_a2s_monitoring(self):
+        """Initializes and starts the background A2S querying."""
+        query_port_str = self.ini_manager.get_setting("QueryPort") or constants.DEFAULT_QUERY_PORT
+        try:
+            query_port = int(query_port_str)
+        except ValueError:
+            query_port = 27015
+            
+        self.controller.run_a2s_query(self.a2s_service, "127.0.0.1", query_port)
+
+    def closeEvent(self, event):
+        """Cleanup when closing the window."""
+        self.controller.stop_a2s_query()
+        event.accept()
 
     def apply_window_background(self):
         bg_path = constants.get_resource_path(os.path.join("assets", "backgound_space.png"))

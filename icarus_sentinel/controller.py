@@ -4,7 +4,7 @@ import psutil
 from typing import Optional, Callable, List, Dict
 from PySide6.QtCore import QThread, QObject, Signal
 from icarus_sentinel import constants
-from icarus_sentinel.ui.workers import InstallWorker, SyncWorker, ServerWorker, BackupWorker, ModWorker
+from icarus_sentinel.ui.workers import InstallWorker, SyncWorker, ServerWorker, BackupWorker, ModWorker, A2SQueryWorker
 
 class Controller(QObject):
     """Orchestrates logic between UI and Managers for Icarus Sentinel (PySide6)."""
@@ -22,6 +22,8 @@ class Controller(QObject):
         self.ui = ui_adapter
         self.threads: List[QThread] = []
         self.workers: List[QObject] = [] # Keep references to prevent GC
+        self.a2s_worker: Optional[A2SQueryWorker] = None
+        self.a2s_thread: Optional[QThread] = None
         
     @property
     def last_sync_timestamp(self):
@@ -217,3 +219,30 @@ class Controller(QObject):
         self.ui.server_manager.state["pid"] = None
         self.ui.server_manager.state["status"] = "stopped"
         self.ui.server_manager.save_state()
+
+    def run_a2s_query(self, service, host, port, interval=5.0):
+        """Starts periodic A2S querying in a background thread."""
+        if self.a2s_worker:
+            self.stop_a2s_query()
+            
+        self.a2s_worker = A2SQueryWorker(service, host, port, interval)
+        self.a2s_thread = QThread()
+        self.a2s_worker.moveToThread(self.a2s_thread)
+        
+        self.a2s_thread.started.connect(self.a2s_worker.run)
+        self.a2s_worker.finished.connect(self.a2s_thread.quit)
+        self.a2s_worker.finished.connect(self.a2s_thread.deleteLater)
+        
+        # Connect to UI
+        if hasattr(self.ui, "players_view"):
+            self.a2s_worker.data_received.connect(self.ui.players_view.update_data)
+        
+        self.a2s_thread.start()
+
+    def stop_a2s_query(self):
+        """Stops the A2S query worker."""
+        if self.a2s_worker:
+            self.a2s_worker.stop()
+            self.a2s_thread.wait(2000)
+            self.a2s_worker = None
+            self.a2s_thread = None
