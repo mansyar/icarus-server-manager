@@ -102,8 +102,8 @@
 
 ## 7. Technical Architecture
 * **Language:** Python 3.11+.
-* **UI:** CustomTkinter (Modern Dark Mode).
-* **Core Libs:** `psutil` (Monitoring), `subprocess` (SteamCMD), `shutil/zipfile` (Backups).
+* **UI:** PySide6 (High-Fidelity Industrial / Skeuomorphic Aesthetic).
+* **Core Libs:** `psutil` (Monitoring), `subprocess` (SteamCMD), `shutil/zipfile` (Backups), `python-a2s` (Player Query).
 
 ---
 
@@ -207,8 +207,8 @@
 
 ## 7. Technical Architecture
 * **Language:** Python 3.11+.
-* **UI:** CustomTkinter (Modern Dark Mode).
-* **Core Libs:** `psutil` (Monitoring), `subprocess` (SteamCMD), `shutil/zipfile` (Backups).
+* **UI:** PySide6 (High-Fidelity Industrial / Skeuomorphic Aesthetic).
+* **Core Libs:** `psutil` (Monitoring), `subprocess` (SteamCMD), `shutil/zipfile` (Backups), `python-a2s` (Player Query).
 
 ---
 
