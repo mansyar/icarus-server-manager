@@ -6,6 +6,9 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ---
 
+- [ ] **Track: Player Activity Tracking & A2S Integration**
+*Link: [./tracks/player-activity-tracking_20260319/](./tracks/player-activity-tracking_20260319/)*
+
 ---
 
 ## Archived Tracks
