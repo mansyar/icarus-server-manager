@@ -20,6 +20,6 @@ Apply the icon across the primary user interfaces.
 ## Phase 3: Build & Distribution
 Ensure the visual identity is preserved in the compiled executable.
 
-- [ ] Task: Create or update `build.py` (or PyInstaller spec) to include the `--icon=assets/app_icon.png` flag.
+- [x] Task: Create or update `build.py` (or PyInstaller spec) to include the `--icon=assets/app_icon.png` flag. 8085dc3
 - [ ] Task: Perform a trial PyInstaller build (dry run or metadata check) to verify the executable icon configuration.
 - [ ] Task: Conductor - User Manual Verification 'Phase 3: Build & Distribution' (Protocol in workflow.md)
