@@ -25,10 +25,10 @@
     - Ensure the toggles and selection are connected to save their state.
 - [x] Task: Conductor - User Manual Verification 'Phase 3: UI Implementation' (c080760)
 
-## Phase 4: Final Verification
-- [ ] Task: Unit & Integration Tests
+## Phase 4: Final Verification [checkpoint: 7636ea0]
+- [x] Task: Unit & Integration Tests (52a1992)
     - Create `tests/test_auto_sync_toggles.py`.
     - Verify settings persistence and trigger logic.
-- [ ] Task: Documentation & Cleanup
+- [x] Task: Documentation & Cleanup (7636ea0)
     - Update documentation if necessary and perform final code review.
-- [ ] Task: Conductor - User Manual Verification 'Phase 4: Final Verification' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 4: Final Verification' (e8069fe)
