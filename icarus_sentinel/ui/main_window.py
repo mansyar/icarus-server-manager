@@ -197,12 +197,15 @@ class MainWindow(QMainWindow):
 
     def _on_launch_clicked(self, should_start):
         if should_start:
-            install_dir = os.path.join(os.getcwd(), constants.DEFAULT_INSTALL_DIR)
-            exe_path = self.controller.get_server_executable(install_dir)
-            if exe_path:
-                self.controller.run_server(exe_path)
+            # Auto-Sync on Start
+            if self.server_manager.auto_sync_on_start and self.server_manager.selected_steam_id:
+                self.log(f"Auto-Sync: Starting sync for {self.server_manager.selected_steam_id} before launch...")
+                self.controller.sync_saves(
+                    self.server_manager.selected_steam_id,
+                    callback=self._start_server_after_sync
+                )
             else:
-                self.log("ERROR: Server executable not found.")
+                self._start_server_after_sync()
         else:
             if self.server_process:
                 self.server_manager.stop_server(self.server_process)
@@ -210,6 +213,19 @@ class MainWindow(QMainWindow):
                 self.log("Server stopped.")
                 # Update UI state
                 self.dashboard.control.set_running_state(False)
+                
+                # Auto-Sync on Stop
+                if self.server_manager.auto_sync_on_stop and self.server_manager.selected_steam_id:
+                    self.log(f"Auto-Sync: Starting sync for {self.server_manager.selected_steam_id} after stop...")
+                    self.controller.sync_saves(self.server_manager.selected_steam_id)
+
+    def _start_server_after_sync(self):
+        install_dir = os.path.join(os.getcwd(), constants.DEFAULT_INSTALL_DIR)
+        exe_path = self.controller.get_server_executable(install_dir)
+        if exe_path:
+            self.controller.run_server(exe_path)
+        else:
+            self.log("ERROR: Server executable not found.")
 
     def _on_server_started(self, pid):
         self.server_process = pid
