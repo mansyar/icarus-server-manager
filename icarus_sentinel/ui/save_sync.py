@@ -1,9 +1,10 @@
 from PySide6.QtWidgets import (
     QWidget, QVBoxLayout, QLabel, 
-    QPushButton, QFrame, QComboBox
+    QPushButton, QFrame, QComboBox, QHBoxLayout
 )
 from PySide6.QtCore import Qt
 from icarus_sentinel import style_config
+from icarus_sentinel.ui.components import ToggleSwitch
 
 class SaveSyncView(QWidget):
     """View for managing bidirectional save synchronization."""
@@ -12,6 +13,12 @@ class SaveSyncView(QWidget):
         self.app = app
         self.setup_ui()
         self.refresh_steam_ids()
+        self.load_settings()
+        
+        # Connect signals after initial load to avoid overwriting settings
+        self.steam_id_dropdown.currentTextChanged.connect(self._on_settings_changed)
+        self.sync_on_start_toggle.clicked.connect(self._on_settings_changed)
+        self.sync_on_stop_toggle.clicked.connect(self._on_settings_changed)
 
     def setup_ui(self):
         layout = QVBoxLayout(self)
@@ -57,7 +64,41 @@ class SaveSyncView(QWidget):
         
         container_layout.addSpacing(20)
         
-        self.sync_btn = QPushButton("PERFORM BIDIRECTIONAL SYNC")
+        # SYNC AUTOMATION Section
+        auto_header = QLabel("SYNC AUTOMATION")
+        auto_header.setStyleSheet("color: #BBB; font-weight: bold; font-size: 12px; background: transparent; border: none; margin-bottom: 5px;")
+        container_layout.addWidget(auto_header)
+
+        self.automation_frame = QFrame()
+        self.automation_frame.setStyleSheet("background: transparent; border: none;")
+        auto_layout = QVBoxLayout(self.automation_frame)
+        auto_layout.setContentsMargins(0, 0, 0, 0)
+        auto_layout.setSpacing(15)
+
+        # Sync on Start
+        start_layout = QHBoxLayout()
+        start_label = QLabel("Auto-Sync on Server Start (Local -> Server)")
+        start_label.setStyleSheet("color: #EEE; font-size: 13px; background: transparent;")
+        self.sync_on_start_toggle = ToggleSwitch()
+        start_layout.addWidget(start_label)
+        start_layout.addStretch()
+        start_layout.addWidget(self.sync_on_start_toggle)
+        auto_layout.addLayout(start_layout)
+
+        # Sync on Stop
+        stop_layout = QHBoxLayout()
+        stop_label = QLabel("Auto-Sync on Server Stop (Server -> Local)")
+        stop_label.setStyleSheet("color: #EEE; font-size: 13px; background: transparent;")
+        self.sync_on_stop_toggle = ToggleSwitch()
+        stop_layout.addWidget(stop_label)
+        stop_layout.addStretch()
+        stop_layout.addWidget(self.sync_on_stop_toggle)
+        auto_layout.addLayout(stop_layout)
+
+        container_layout.addWidget(self.automation_frame)
+        container_layout.addSpacing(30)
+        
+        self.sync_btn = QPushButton("PERFORM BIDIRECTIONAL SYNC NOW")
         self.sync_btn.setFixedSize(300, 50)
         self.sync_btn.setCursor(Qt.PointingHandCursor)
         self.sync_btn.clicked.connect(self.perform_sync)
@@ -83,6 +124,24 @@ class SaveSyncView(QWidget):
         
         container_layout.addStretch()
         layout.addWidget(self.container)
+
+    def load_settings(self):
+        if not self.app or not self.app.server_manager: return
+        sm = self.app.server_manager
+        self.sync_on_start_toggle.setChecked(sm.auto_sync_on_start)
+        self.sync_on_stop_toggle.setChecked(sm.auto_sync_on_stop)
+        
+        index = self.steam_id_dropdown.findText(sm.selected_steam_id or "")
+        if index >= 0:
+            self.steam_id_dropdown.setCurrentIndex(index)
+
+    def _on_settings_changed(self):
+        if not self.app or not self.app.server_manager: return
+        sm = self.app.server_manager
+        sm.auto_sync_on_start = self.sync_on_start_toggle.isChecked()
+        sm.auto_sync_on_stop = self.sync_on_stop_toggle.isChecked()
+        sm.selected_steam_id = self.steam_id_dropdown.currentText()
+        sm.save_state()
 
     def refresh_steam_ids(self):
         if not self.app or not self.app.save_sync_manager: return
