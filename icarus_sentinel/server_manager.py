@@ -9,6 +9,7 @@ import json
 import os
 import subprocess
 import psutil
+import re
 from datetime import datetime
 from icarus_sentinel.notification_manager import NotificationManager
 from icarus_sentinel.a2s_client import A2SClient
@@ -102,6 +103,20 @@ class ServerProcessManager:
         self.state["status"] = "running"
         self._process_obj = psutil.Process(process.pid)
         self.save_state()
+        
+        # Monitor for crash in background thread (Wait for exit)
+        def _monitor_crash():
+            ret = process.wait()
+            # If pid is still set, it means it wasn't a clean stop via stop_server
+            if self.state["pid"] == process.pid and ret != 0:
+                self.state["status"] = "error"
+                self.save_state()
+                if self.notify_server_error:
+                    self.notifications.notify("Server Crash", f"Icarus Server has crashed with code {ret}.")
+        
+        import threading
+        threading.Thread(target=_monitor_crash, daemon=True).start()
+        
         return process
 
     def stop_server(self, process):
@@ -157,7 +172,19 @@ class ServerProcessManager:
     def stream_logs(self, process, callback):
         if not process or not process.stdout: return
         for line in iter(process.stdout.readline, ""):
-            if line: callback(line.strip())
+            if line:
+                clean_line = line.strip()
+                callback(clean_line)
+                
+                # Parse for events and trigger notifications
+                event = self.parse_log_line(clean_line)
+                if event:
+                    if event["type"] == "server_started" and self.notify_server_started:
+                        self.notifications.notify("Icarus Server", "Server has started and is ready for players.")
+                    elif event["type"] == "player_join" and self.notify_player_activity:
+                        self.notifications.notify("Player Joined", f"{event['player']} has joined the server.")
+                    elif event["type"] == "player_leave" and self.notify_player_activity:
+                        self.notifications.notify("Player Left", f"{event['player']} has left the server.")
 
     def should_smart_restart(self, query_port=27015):
         """Checks if a smart restart should be triggered."""
@@ -194,3 +221,28 @@ class ServerProcessManager:
     def get_available_system_ram_pct(self):
         mem = psutil.virtual_memory()
         return round((mem.available / mem.total) * 100, 2)
+
+    def parse_log_line(self, line: str):
+        """Parses a single log line for key server events.
+        
+        Args:
+            line: The raw log line from Icarus server.
+            
+        Returns:
+            A dict containing event 'type' and 'player' if applicable, or None.
+        """
+        # 1. Server Started
+        if "LogIcarus: Display: Server started" in line:
+            return {"type": "server_started"}
+        
+        # 2. Player Join
+        join_match = re.search(r"LogNet: Join succeeded: (.*)", line)
+        if join_match:
+            return {"type": "player_join", "player": join_match.group(1).strip()}
+            
+        # 3. Player Leave
+        leave_match = re.search(r"LogNet: Client \((.*)\) closed connection", line)
+        if leave_match:
+            return {"type": "player_leave", "player": leave_match.group(1).strip()}
+            
+        return None
