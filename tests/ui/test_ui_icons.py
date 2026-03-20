@@ -22,6 +22,9 @@ def test_main_window_has_correct_icon(mock_listdir, mock_exists, mock_makedirs, 
     mock_server.return_value.ram_threshold_gb = 16.0
     mock_server.return_value.smart_restart_enabled = False
     mock_server.return_value.smart_restart_time = "04:00"
+    mock_server.return_value.selected_steam_id = None
+    mock_server.return_value.auto_sync_on_start = True
+    mock_server.return_value.auto_sync_on_stop = True
     mock_backup.return_value.server_path = "/mock/path"
     mock_backup.return_value.backup_path = "/mock/backups"
     mock_exists.return_value = True

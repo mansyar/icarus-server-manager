@@ -18,6 +18,9 @@ def mock_app():
     app.server_manager.ram_threshold_gb = 16.0
     app.server_manager.smart_restart_enabled = False
     app.server_manager.smart_restart_time = "04:00"
+    app.server_manager.selected_steam_id = None
+    app.server_manager.auto_sync_on_start = True
+    app.server_manager.auto_sync_on_stop = True
     app.backup_manager = MagicMock()
     app.backup_manager.server_path = "/mock/path"
     app.backup_manager.backup_path = "/mock/backups"
