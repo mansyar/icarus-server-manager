@@ -1,12 +1,12 @@
 # Implementation Plan: Auto-Sync Toggles for Server Start & Stop
 
-## Phase 1: Data Model & Persistence
+## Phase 1: Data Model & Persistence [checkpoint: f5c7c6f]
 - [x] Task: Update `ServerProcessManager` State (5dbdf97)
     - Add `auto_sync_on_start`, `auto_sync_on_stop`, and `selected_steam_id` to `ServerProcessManager`.
     - Update `load_state` and `save_state` in `icarus_sentinel/server_manager.py`.
 - [x] Task: Update `Controller` Settings Logic (9248c42)
     - Update `save_sentinel_settings` in `icarus_sentinel/controller.py` to handle the new settings.
-- [ ] Task: Conductor - User Manual Verification 'Phase 1: Data Model & Persistence' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 1: Data Model & Persistence' (f5c7c6f)
 
 ## Phase 2: Core Logic (Auto-Sync Triggers)
 - [ ] Task: Implement Sync on Start
