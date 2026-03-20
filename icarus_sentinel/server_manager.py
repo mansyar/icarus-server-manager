@@ -171,12 +171,24 @@ class ServerProcessManager:
 
     def stream_logs(self, process, callback):
         if not process or not process.stdout: return
+        
+        import time
+        last_emit = time.time()
+        batch = []
+        
         for line in iter(process.stdout.readline, ""):
             if line:
                 clean_line = line.strip()
-                callback(clean_line)
+                batch.append(clean_line)
                 
-                # Parse for events and trigger notifications
+                now = time.time()
+                # Emit batch every 100ms or if batch is getting large
+                if now - last_emit > 0.1 or len(batch) >= 20:
+                    callback("\n".join(batch))
+                    batch = []
+                    last_emit = now
+
+                # Parse for events and trigger notifications (keep these individual)
                 event = self.parse_log_line(clean_line)
                 if event:
                     if event["type"] == "server_started" and self.notify_server_started:
@@ -185,6 +197,10 @@ class ServerProcessManager:
                         self.notifications.notify("Player Joined", f"{event['player']} has joined the server.")
                     elif event["type"] == "player_leave" and self.notify_player_activity:
                         self.notifications.notify("Player Left", f"{event['player']} has left the server.")
+        
+        # Final flush
+        if batch:
+            callback("\n".join(batch))
 
     def should_smart_restart(self, query_port=27015):
         """Checks if a smart restart should be triggered."""
@@ -232,7 +248,7 @@ class ServerProcessManager:
             A dict containing event 'type' and 'player' if applicable, or None.
         """
         # 1. Server Started
-        if "LogIcarus: Display: Server started" in line:
+        if re.search(r"LogIcarus: Display: Server started", line, re.IGNORECASE):
             return {"type": "server_started"}
         
         # 2. Player Join

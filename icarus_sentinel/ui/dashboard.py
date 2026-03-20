@@ -174,7 +174,28 @@ class ConsoleWidget(QFrame):
 
     def setup_ui(self):
         layout = QVBoxLayout(self)
-        layout.setContentsMargins(15, 35, 15, 15)
+        layout.setContentsMargins(15, 10, 15, 15)
+
+        # Header with Title and Legend
+        header_layout = QHBoxLayout()
+        header_layout.setContentsMargins(10, 0, 10, 5)
+        
+        self.title_label = QLabel("CONSOLE LOGS")
+        self.title_label.setStyleSheet(f"color: {style_config.ACCENT_COLOR}; font-family: 'Segoe UI Black'; font-size: 14px; background: transparent; letter-spacing: 1px;")
+        header_layout.addWidget(self.title_label)
+        
+        header_layout.addStretch()
+        
+        # Legend
+        legend_layout = QHBoxLayout()
+        legend_layout.setSpacing(15)
+        legend_layout.addWidget(self._create_legend_item("SENTINEL", style_config.COLOR_SENTINEL))
+        legend_layout.addWidget(self._create_legend_item("SERVER", style_config.COLOR_SERVER))
+        legend_layout.addWidget(self._create_legend_item("SUCCESS", style_config.COLOR_SUCCESS))
+        legend_layout.addWidget(self._create_legend_item("ERROR", style_config.COLOR_ERROR))
+        header_layout.addLayout(legend_layout)
+        
+        layout.addLayout(header_layout)
 
         self.text_area = QTextEdit()
         self.text_area.setReadOnly(True)
@@ -185,15 +206,46 @@ class ConsoleWidget(QFrame):
         layout.addWidget(self.text_area)
 
         self.setStyleSheet(f"QFrame#ConsolePanel {{ {PANEL_STYLE} }}")
-        
-        self.title_label = QLabel("CONSOLE LOGS", self)
-        self.title_label.setStyleSheet(f"color: {style_config.ACCENT_COLOR}; font-family: 'Segoe UI Black'; font-size: 14px; background: transparent; letter-spacing: 1px;")
-        self.title_label.move(25, 10)
 
-    def log(self, message: str):
+    def _create_legend_item(self, text, color):
+        container = QWidget()
+        layout = QHBoxLayout(container)
+        layout.setContentsMargins(0, 0, 0, 0)
+        layout.setSpacing(4)
+        
+        dot = QLabel("●")
+        dot.setStyleSheet(f"color: {color}; font-size: 14px; background: transparent;")
+        
+        label = QLabel(text)
+        label.setStyleSheet("color: #888; font-family: 'Segoe UI'; font-size: 10px; font-weight: bold; background: transparent;")
+        
+        layout.addWidget(dot)
+        layout.addWidget(label)
+        return container
+
+    def log(self, message: str, source: str = "sentinel"):
         timestamp = datetime.datetime.now().strftime("[%H:%M:%S]")
-        self.text_area.append(f"{timestamp} {message}")
-        self.text_area.verticalScrollBar().setValue(self.text_area.verticalScrollBar().maximum())
+        
+        color = style_config.COLOR_SENTINEL
+        if source == "server":
+            color = style_config.COLOR_SERVER
+        elif source == "error":
+            color = style_config.COLOR_ERROR
+        elif source == "success":
+            color = style_config.COLOR_SUCCESS
+            
+        # Handle batched messages (split by newline)
+        lines = message.split("\n")
+        for line in lines:
+            if not line.strip():
+                continue
+            html_msg = f'<span style="color: #888;">{timestamp}</span> <span style="color: {color};">{line}</span>'
+            self.text_area.append(html_msg)
+        
+        # Auto-scroll logic: only scroll if the user hasn't scrolled up manually
+        scrollbar = self.text_area.verticalScrollBar()
+        if scrollbar.value() >= scrollbar.maximum() - 50:
+            scrollbar.setValue(scrollbar.maximum())
 
 class DashboardView(QWidget):
     """The main high-fidelity dashboard view."""

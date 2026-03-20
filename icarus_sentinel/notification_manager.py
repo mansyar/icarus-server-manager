@@ -22,9 +22,12 @@ class NotificationManager:
             title (str): The notification title.
             message (str): The notification message body.
         """
-        toast = Notification(
-            app_id=self.app_id,
-            title=title,
-            msg=message
-        )
-        toast.show()
+        try:
+            toast = Notification(
+                app_id=self.app_id,
+                title=title,
+                msg=message
+            )
+            toast.show()
+        except Exception as e:
+            print(f"DEBUG: Notification failed: {e}")
