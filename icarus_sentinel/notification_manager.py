@@ -1,3 +1,5 @@
+"""Module for handling Windows system notifications via winotify."""
+
 import os
 from winotify import Notification
 from icarus_sentinel import constants

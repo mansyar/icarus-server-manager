@@ -10,6 +10,8 @@ import os
 import subprocess
 import psutil
 import re
+import threading
+import time
 from datetime import datetime
 from icarus_sentinel.notification_manager import NotificationManager
 from icarus_sentinel.a2s_client import A2SClient
@@ -114,7 +116,6 @@ class ServerProcessManager:
                 if self.notify_server_error:
                     self.notifications.notify("Server Crash", f"Icarus Server has crashed with code {ret}.")
         
-        import threading
         threading.Thread(target=_monitor_crash, daemon=True).start()
         
         return process
@@ -172,7 +173,6 @@ class ServerProcessManager:
     def stream_logs(self, process, callback, event_callback=None):
         if not process or not process.stdout: return
         
-        import time
         last_emit = time.time()
         batch = []
         

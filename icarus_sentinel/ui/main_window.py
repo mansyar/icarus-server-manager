@@ -237,8 +237,8 @@ class MainWindow(QMainWindow):
         self.mods_view.refresh_mod_list()
         self.log(f"Server path updated to: {new_path}")
 
-    def log(self, message: str):
-        self.console.log(message)
+    def log(self, message: str, source: str = "sentinel"):
+        self.console.log(message, source=source)
 
     def on_server_exit(self, result=None):
         self.server_process = None
