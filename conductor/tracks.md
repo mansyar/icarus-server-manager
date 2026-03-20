@@ -6,6 +6,9 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ---
 
+- [ ] **Track: auto save sync feature on server start and stop with toggles**
+*Link: [./tracks/auto_save_sync_toggle_20260321/](./tracks/auto_save_sync_toggle_20260321/)*
+
 ---
 
 ## Archived Tracks
