@@ -7,8 +7,8 @@ from icarus_sentinel.ui.save_sync import SaveSyncView
 def mock_app():
     app = MagicMock()
     app.server_manager = MagicMock()
-    app.server_manager.auto_sync_on_start = False
-    app.server_manager.auto_sync_on_stop = False
+    app.server_manager.auto_sync_on_start = True
+    app.server_manager.auto_sync_on_stop = True
     app.server_manager.selected_steam_id = "123"
     app.server_manager.state = {"last_sync_timestamp": None}
     
@@ -32,14 +32,14 @@ def test_save_sync_view_toggle_start(qtbot, mock_app):
     view = SaveSyncView(app=mock_app)
     qtbot.addWidget(view)
     
-    # Initially False
-    assert mock_app.server_manager.auto_sync_on_start is False
+    # Initially True (per new defaults)
+    assert mock_app.server_manager.auto_sync_on_start is True
     
-    # Click to toggle ON
+    # Click to toggle OFF
     qtbot.mouseClick(view.sync_on_start_toggle, Qt.LeftButton)
     
-    assert view.sync_on_start_toggle.isChecked() is True
-    assert mock_app.server_manager.auto_sync_on_start is True
+    assert view.sync_on_start_toggle.isChecked() is False
+    assert mock_app.server_manager.auto_sync_on_start is False
     mock_app.server_manager.save_state.assert_called()
 
 def test_save_sync_view_change_steam_id(qtbot, mock_app):

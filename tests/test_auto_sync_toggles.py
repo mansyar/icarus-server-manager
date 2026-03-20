@@ -15,8 +15,8 @@ def test_server_manager_auto_sync_state_defaults(manager):
     assert hasattr(manager, "auto_sync_on_start")
     assert hasattr(manager, "auto_sync_on_stop")
     assert hasattr(manager, "selected_steam_id")
-    assert manager.auto_sync_on_start is False
-    assert manager.auto_sync_on_stop is False
+    assert manager.auto_sync_on_start is True
+    assert manager.auto_sync_on_stop is True
     assert manager.selected_steam_id is None
 
 def test_server_manager_save_load_auto_sync_state(state_file):

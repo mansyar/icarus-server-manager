@@ -36,8 +36,8 @@ class ServerProcessManager:
         self.a2s_client = a2s_client or A2SClient()
         self.backup_manager = backup_manager
         self.last_sync_timestamp = None
-        self.auto_sync_on_start = False
-        self.auto_sync_on_stop = False
+        self.auto_sync_on_start = True
+        self.auto_sync_on_stop = True
         self.selected_steam_id = None
         self.load_state()
 
@@ -54,8 +54,8 @@ class ServerProcessManager:
                     self.notify_server_started = self.state.get("notify_server_started", True)
                     self.notify_player_activity = self.state.get("notify_player_activity", True)
                     self.notify_server_error = self.state.get("notify_server_error", True)
-                    self.auto_sync_on_start = self.state.get("auto_sync_on_start", False)
-                    self.auto_sync_on_stop = self.state.get("auto_sync_on_stop", False)
+                    self.auto_sync_on_start = self.state.get("auto_sync_on_start", True)
+                    self.auto_sync_on_stop = self.state.get("auto_sync_on_stop", True)
                     self.selected_steam_id = self.state.get("selected_steam_id")
                     
                     if self.backup_manager:
