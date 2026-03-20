@@ -6,7 +6,7 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ---
 
-- [ ] **Track: apply the rocket icon in @assets/app_icon.png , as the GUI icon on task bar, etc**
+- [x] **Track: apply the rocket icon in @assets/app_icon.png , as the GUI icon on task bar, etc**
 *Link: [./tracks/gui-icon_20260320/](./tracks/gui-icon_20260320/)*
 
 ---
