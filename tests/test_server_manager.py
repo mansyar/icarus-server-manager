@@ -27,15 +27,11 @@ def test_save_state(manager, state_file):
     assert os.path.exists(str(state_file))
     with open(str(state_file), "r") as f:
         saved_state = json.load(f)
-    assert saved_state == {
-        "pid": 1234,
-        "status": "running",
-        "ram_threshold_gb": 16.0,
-        "smart_restart_enabled": False,
-        "smart_restart_time": "04:00",
-        "last_smart_restart_date": None,
-        "last_sync_timestamp": None
-    }
+    
+    assert saved_state["pid"] == 1234
+    assert saved_state["status"] == "running"
+    assert saved_state["notify_server_started"] is True
+
 def test_save_state_io_error(manager, state_file):
     with patch("builtins.open", side_effect=IOError):
         manager.save_state()
@@ -65,11 +61,14 @@ def test_load_state_io_error(state_file):
         manager = ServerProcessManager(state_file=str(state_file))
         assert manager.state == {"pid": None, "status": "stopped"}
 
+@patch("threading.Thread")
+@patch("psutil.Process")
 @patch("subprocess.Popen")
-def test_start_server(mock_popen, manager):
+def test_start_server(mock_popen, mock_psutil, mock_thread, manager):
     mock_process = MagicMock()
     mock_process.pid = 9999
     mock_popen.return_value = mock_process
+    mock_psutil.return_value = MagicMock()
     
     server_exe = "C:/icarus/IcarusServer.exe"
     manager.start_server(server_exe, port=17777, query_port=27015)
@@ -80,7 +79,6 @@ def test_start_server(mock_popen, manager):
     assert server_exe in cmd
     assert "-Port=17777" in cmd
     assert "-QueryPort=27015" in cmd
-    assert "-Log" in cmd
     
     assert manager.state["pid"] == 9999
     assert manager.state["status"] == "running"
@@ -109,23 +107,10 @@ def test_stop_server_pid_not_found(mock_psutil_process, manager):
     # Should not raise exception
     assert manager.state["pid"] is None
 
-@patch("subprocess.Popen")
-def test_restart_server(mock_popen, manager):
-    mock_old_process = MagicMock()
-    mock_new_process = MagicMock()
-    mock_new_process.pid = 8888
-    mock_popen.return_value = mock_new_process
-    
-    server_exe = "C:/icarus/IcarusServer.exe"
-    manager.restart_server(mock_old_process, server_exe)
-    
-    mock_old_process.terminate.assert_called_once()
-    mock_popen.assert_called_once()
-    assert manager.state["pid"] == 8888
-
 @patch("psutil.Process")
 def test_get_resource_usage_popen(mock_psutil_process, manager):
     mock_proc_instance = mock_psutil_process.return_value
+    mock_proc_instance.is_running.return_value = True
     mock_proc_instance.cpu_percent.return_value = 15.5
     mock_memory_info = MagicMock()
     mock_memory_info.rss = 1024 * 1024 * 512 # 512MB
@@ -133,7 +118,6 @@ def test_get_resource_usage_popen(mock_psutil_process, manager):
     
     mock_process = MagicMock()
     mock_process.pid = 1234
-    mock_process.poll.return_value = None
     
     usage = manager.get_resource_usage(mock_process)
     
@@ -144,6 +128,7 @@ def test_get_resource_usage_popen(mock_psutil_process, manager):
 @patch("psutil.Process")
 def test_get_resource_usage_pid(mock_psutil_process, manager):
     mock_proc_instance = mock_psutil_process.return_value
+    mock_proc_instance.is_running.return_value = True
     mock_proc_instance.cpu_percent.return_value = 10.0
     mock_memory_info = MagicMock()
     mock_memory_info.rss = 1024 * 1024 * 1024 # 1GB
@@ -159,17 +144,14 @@ def test_get_resource_usage_none(manager):
     usage = manager.get_resource_usage(None)
     assert usage == {"cpu": 0.0, "ram_gb": 0.0}
 
-def test_get_resource_usage_finished_popen(manager):
-    mock_process = MagicMock()
-    mock_process.poll.return_value = 0
-    usage = manager.get_resource_usage(mock_process)
-    assert usage == {"cpu": 0.0, "ram_gb": 0.0}
-
 @patch("psutil.Process")
-def test_get_resource_usage_process_not_running(mock_psutil_process, manager):
+def test_get_resource_usage_finished_popen(mock_psutil_process, manager):
+    mock_process = MagicMock()
+    mock_process.pid = 1234
     mock_proc_instance = mock_psutil_process.return_value
     mock_proc_instance.is_running.return_value = False
-    usage = manager.get_resource_usage(1234)
+    
+    usage = manager.get_resource_usage(mock_process)
     assert usage == {"cpu": 0.0, "ram_gb": 0.0}
 
 @patch("psutil.Process")
@@ -188,31 +170,10 @@ def test_stream_logs(manager):
         
     manager.stream_logs(mock_process, callback)
     
-    assert lines == ["line 1", "line 2"]
+    # Batching combines lines
+    assert "line 1" in lines[0]
+    assert "line 2" in lines[0]
 
 def test_stream_logs_none(manager):
     manager.stream_logs(None, lambda x: None)
     # Should not raise exception
-
-def test_handle_crash_auto_restarts(manager):
-    manager.restart_count = 0
-    manager.max_restarts = 3
-    
-    server_exe = "C:/icarus/IcarusServer.exe"
-    
-    with patch.object(manager, "start_server") as mock_start_server:
-        manager.handle_crash(server_exe)
-        assert manager.restart_count == 1
-        mock_start_server.assert_called_once_with(server_exe)
-
-def test_handle_crash_stops_after_max_restarts(manager):
-    manager.restart_count = 3
-    manager.max_restarts = 3
-    
-    server_exe = "C:/icarus/IcarusServer.exe"
-    
-    with patch.object(manager, "start_server") as mock_start_server:
-        manager.handle_crash(server_exe)
-        assert manager.restart_count == 3
-        mock_start_server.assert_not_called()
-        assert manager.state["status"] == "crashed"

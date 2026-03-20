@@ -22,6 +22,7 @@ def test_sidebar_has_players_button(qtbot):
     assert sidebar.players_btn.text() == "Players"
 
 @patch("icarus_sentinel.ui.main_window.A2SQueryService")
+@patch("icarus_sentinel.ui.main_window.MainWindow.setup_timer")
 @patch("icarus_sentinel.ui.main_window.MainWindow.setup_a2s_monitoring")
 @patch("icarus_sentinel.ui.main_window.Controller")
 @patch("icarus_sentinel.ui.main_window.SidebarWidget")
@@ -35,7 +36,7 @@ def test_sidebar_has_players_button(qtbot):
 def test_main_window_has_players_tab(mock_console, mock_about, mock_mods, mock_sync, 
                                      mock_backups, mock_config, mock_dashboard, 
                                      mock_sidebar, mock_controller, mock_setup, 
-                                     mock_service, qtbot):
+                                     mock_timer, mock_service, qtbot):
     # Configure mock controller
     mock_controller.return_value.server_started = MagicMock()
     

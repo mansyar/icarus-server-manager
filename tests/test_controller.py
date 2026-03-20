@@ -24,11 +24,23 @@ class TestController(unittest.TestCase):
             exe = self.controller.get_server_executable("C:/test")
             self.assertIsNone(exe)
 
-    @patch("threading.Thread")
-    def test_run_install_starts_thread(self, mock_thread):
+    @patch("icarus_sentinel.controller.QThread")
+    @patch("icarus_sentinel.controller.InstallWorker")
+    def test_run_install_starts_thread(self, mock_worker, mock_qthread):
+        # Mock worker to avoid signal connection errors with MagicMock
+        mock_worker_instance = MagicMock()
+        mock_worker.return_value = mock_worker_instance
+        
+        # We need to mock the signals as well to avoid Shiboken errors
+        mock_worker_instance.finished = MagicMock()
+        mock_worker_instance.error = MagicMock()
+        mock_worker_instance.progress = MagicMock()
+        mock_worker_instance.progress_source = MagicMock()
+        
         self.controller.run_install("C:/test")
-        mock_thread.assert_called_once()
-        self.assertTrue(mock_thread.return_value.daemon)
+        
+        mock_qthread.return_value.start.assert_called_once()
+        mock_worker.assert_called_once()
 
 if __name__ == "__main__":
     unittest.main()

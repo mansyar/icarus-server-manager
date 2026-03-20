@@ -61,12 +61,11 @@ def test_get_resource_usage_triggers_notification_on_high_ram(mock_psutil_proces
     manager.state["status"] = "running"
     
     manager.get_resource_usage(1234)
-    
+
     mock_notifications.notify.assert_called_once_with(
         "High RAM Usage Alert",
-        "Icarus Server is using 17.0GB of RAM, exceeding the 16.0GB threshold."
+        "Icarus Server is using 17.0GB of RAM."
     )
-
 @patch("psutil.Process")
 def test_get_resource_usage_does_not_spam_notifications(mock_psutil_process, manager):
     # Setup mock process with high RAM (17GB)

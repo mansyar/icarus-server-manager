@@ -9,6 +9,9 @@ class GenericWorker(QObject):
     progress_source = Signal(str, str) # Emits (message, source)
     error = Signal(str)
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
     def run(self):
         """Must be overridden by subclasses."""
         pass

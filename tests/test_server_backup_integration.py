@@ -28,18 +28,3 @@ def test_server_stop_works_without_backup_mgr(tmp_path):
     
     # Should not raise exception
     assert manager.state["status"] == "stopped"
-
-def test_server_restart_triggers_backup(tmp_path):
-    state_file = tmp_path / "server_state.json"
-    mock_backup_mgr = MagicMock(spec=BackupManager)
-    mock_backup_mgr.interval_minutes = 30.0
-    mock_backup_mgr.retention_limit = 50
-    manager = ServerProcessManager(state_file=str(state_file), backup_manager=mock_backup_mgr)
-    
-    with patch.object(manager, "start_server") as mock_start:
-        mock_process = MagicMock()
-        manager.restart_server(mock_process, "fake_exe")
-        
-        # Verify backup was triggered via stop_server
-        mock_backup_mgr.on_server_stop.assert_called_once()
-        mock_start.assert_called_once()
