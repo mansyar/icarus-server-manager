@@ -30,5 +30,5 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ---
 
-- [~] **Track: make a proper release pipeline for the app**
+- [x] **Track: make a proper release pipeline for the app**
 *Link: [./tracks/release-pipeline_20260320/](./tracks/release-pipeline_20260320/)*
