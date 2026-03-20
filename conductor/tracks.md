@@ -6,12 +6,10 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ---
 
-- [x] **Track: apply the rocket icon in @assets/app_icon.png , as the GUI icon on task bar, etc**
-*Link: [./tracks/gui-icon_20260320/](./tracks/gui-icon_20260320/)*
-
 ---
 
 ## Archived Tracks
+- [x] **Track: apply the rocket icon in @assets/app_icon.png , as the GUI icon on task bar, etc** (Archived: 2026-03-20)
 - [x] **Track: Advanced Log Parsing & Desktop Notifications (Enhancement)** (Archived: 2026-03-20)
 - [x] **Track: Player Activity Tracking & A2S Integration** (Archived: 2026-03-20)
 - [x] **Track: Create a dedicated 'About' dialog accessible from the sidebar. Display app version, developer credits, and basic system info (OS, RAM, CPU).** (Archived: 2026-03-19)
