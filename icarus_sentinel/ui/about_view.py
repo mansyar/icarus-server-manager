@@ -3,6 +3,8 @@ from PySide6.QtWidgets import (
     QFrame, QGridLayout
 )
 from PySide6.QtCore import Qt
+from PySide6.QtGui import QPixmap
+import icarus_sentinel.ui.resources_rc
 from icarus_sentinel import style_config
 from icarus_sentinel.core.sys_info import get_app_version, get_system_info
 
@@ -41,7 +43,14 @@ class AboutView(QWidget):
         layout.setSpacing(30)
 
         # Header
-        header_layout = QVBoxLayout()
+        header_h_layout = QHBoxLayout()
+        header_h_layout.setSpacing(25)
+
+        self.icon_label = QLabel()
+        self.icon_label.setPixmap(QPixmap(":/icons/app_icon.png").scaled(80, 80, Qt.KeepAspectRatio, Qt.SmoothTransformation))
+        self.icon_label.setStyleSheet("background: transparent; border: none;")
+        
+        header_text_layout = QVBoxLayout()
         self.title_label = QLabel("ICARUS SENTINEL")
         self.title_label.setStyleSheet(f"color: {style_config.ACCENT_COLOR}; font-family: 'Segoe UI Black'; font-size: 32px; background: transparent; letter-spacing: 2px;")
         
@@ -49,9 +58,14 @@ class AboutView(QWidget):
         self.version_label = QLabel(f"VERSION: {version}")
         self.version_label.setStyleSheet("color: #999; font-family: 'Segoe UI'; font-size: 14px; font-weight: bold; background: transparent;")
         
-        header_layout.addWidget(self.title_label)
-        header_layout.addWidget(self.version_label)
-        layout.addLayout(header_layout)
+        header_text_layout.addWidget(self.title_label)
+        header_text_layout.addWidget(self.version_label)
+        
+        header_h_layout.addWidget(self.icon_label)
+        header_h_layout.addLayout(header_text_layout)
+        header_h_layout.addStretch()
+        
+        layout.addLayout(header_h_layout)
 
         # Content Panels
         content_layout = QHBoxLayout()
