@@ -238,6 +238,26 @@ class ConfigView(QWidget):
         notify_layout.addWidget(self.notify_player_activity_cb)
         notify_layout.addWidget(self.notify_server_error_cb)
         
+        test_notify_btn = QPushButton("SEND TEST NOTIFICATION")
+        test_notify_btn.setFixedWidth(200)
+        test_notify_btn.setCursor(Qt.PointingHandCursor)
+        test_notify_btn.clicked.connect(self._on_test_notification)
+        test_notify_btn.setStyleSheet("""
+            QPushButton {
+                background-color: #333;
+                color: #AAA;
+                border: 1px solid #444;
+                border-radius: 3px;
+                font-size: 11px;
+                margin-top: 5px;
+            }
+            QPushButton:hover {
+                background-color: #444;
+                color: white;
+            }
+        """)
+        notify_layout.addWidget(test_notify_btn)
+        
         layout.addWidget(notify_frame)
 
         # 4. Actions
@@ -359,6 +379,14 @@ class ConfigView(QWidget):
             "notify_server_error": self.notify_server_error_cb.isChecked()
         }
         self.app.controller.save_sentinel_settings(data)
+
+    def _on_test_notification(self):
+        if not self.app: return
+        self.app.server_manager.notifications.notify(
+            "Sentinel Test", 
+            "This is a test notification from Icarus Sentinel."
+        )
+        self.app.log("Sentinel: Test notification triggered.")
 
     def load_settings(self):
         if not self.app: return

@@ -195,10 +195,13 @@ class ServerProcessManager:
                         event_callback(event)
                         
                     if event["type"] == "server_started" and self.notify_server_started:
+                        callback("Sentinel: Triggering 'Server Started' notification...")
                         self.notifications.notify("Icarus Server", "Server has started and is ready for players.")
                     elif event["type"] == "player_join" and self.notify_player_activity:
+                        callback(f"Sentinel: Triggering 'Player Joined' notification for {event['player']}...")
                         self.notifications.notify("Player Joined", f"{event['player']} has joined the server.")
                     elif event["type"] == "player_leave" and self.notify_player_activity:
+                        callback(f"Sentinel: Triggering 'Player Left' notification for {event['player']}...")
                         self.notifications.notify("Player Left", f"{event['player']} has left the server.")
         
         # Final flush
