@@ -17,9 +17,9 @@ Apply the icon across the primary user interfaces.
 - [x] Task: Write UI tests in `tests/test_ui_icons.py` to verify the main window has the correct icon set. ce5a8c5
 - [x] Task: Conductor - User Manual Verification 'Phase 2: UI Application' (Protocol in workflow.md) cdc413f
 
-## Phase 3: Build & Distribution
+## Phase 3: Build & Distribution [checkpoint: 9d56919]
 Ensure the visual identity is preserved in the compiled executable.
 
 - [x] Task: Create or update `build.py` (or PyInstaller spec) to include the `--icon=assets/app_icon.png` flag. 8085dc3
 - [x] Task: Perform a trial PyInstaller build (dry run or metadata check) to verify the executable icon configuration. b26bcdc
-- [ ] Task: Conductor - User Manual Verification 'Phase 3: Build & Distribution' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 3: Build & Distribution' (Protocol in workflow.md) 9d56919
