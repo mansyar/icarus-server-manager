@@ -1,9 +1,9 @@
 # Implementation Plan: Release Pipeline
 
 ## Phase 1: PyInstaller Build Preparation
-- [ ] Task: Create script for dynamic version injection
-    - [ ] Write failing test for version injection script
-    - [ ] Implement version injection logic
+- [x] Task: Create script for dynamic version injection 6747338
+    - [x] Write failing test for version injection script
+    - [x] Implement version injection logic
 - [ ] Task: Conductor - User Manual Verification 'Phase 1: PyInstaller Build Preparation' (Protocol in workflow.md)
 
 ## Phase 2: GitHub Actions Workflow Definition
