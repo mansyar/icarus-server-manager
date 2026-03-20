@@ -12,7 +12,7 @@ Establish the foundation for bundling assets into the application code for porta
 Apply the icon across the primary user interfaces.
 
 - [x] Task: Update `icarus_sentinel/ui/main_window.py` to import `resources_rc` and set the window icon using `self.setWindowIcon(QIcon(":/icons/app_icon.png"))`. 386bfec
-- [ ] Task: Update `icarus_sentinel/ui/about_view.py` to import `resources_rc` and display `app_icon.png` in a `QLabel` (Pixmap).
+- [x] Task: Update `icarus_sentinel/ui/about_view.py` to import `resources_rc` and display `app_icon.png` in a `QLabel` (Pixmap). c192846
 - [ ] Task: Update `icarus_sentinel/main.py` to implement a `QSplashScreen` that displays `app_icon.png` during the initialization phase.
 - [ ] Task: Write UI tests in `tests/test_ui_icons.py` to verify the main window has the correct icon set.
 - [ ] Task: Conductor - User Manual Verification 'Phase 2: UI Application' (Protocol in workflow.md)
