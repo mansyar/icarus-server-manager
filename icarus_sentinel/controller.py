@@ -247,8 +247,30 @@ class Controller(QObject):
 
     def stop_a2s_query(self):
         """Stops the A2S query worker."""
-        if self.a2s_worker:
+        if self.a2s_worker and self.a2s_thread:
             self.a2s_worker.stop()
-            self.a2s_thread.wait(2000)
+            if self.a2s_thread.isRunning():
+                self.a2s_thread.quit()
+                if not self.a2s_thread.wait(1000):
+                    self.a2s_thread.terminate()
             self.a2s_worker = None
             self.a2s_thread = None
+
+    def stop_all_threads(self):
+        """Gracefully stops all active background threads and workers."""
+        self.stop_a2s_query()
+        
+        # Stop any other active workers
+        for worker in list(self.workers):
+            if hasattr(worker, "stop"):
+                worker.stop()
+        
+        # Quit and wait for all threads
+        for thread in list(self.threads):
+            if thread.isRunning():
+                thread.quit()
+                if not thread.wait(500):
+                    thread.terminate()
+        
+        self.threads.clear()
+        self.workers.clear()

@@ -76,7 +76,7 @@ class MainWindow(QMainWindow):
         """Cleanup when closing the window."""
         if hasattr(self, "metrics_timer"):
             self.metrics_timer.stop()
-        self.controller.stop_a2s_query()
+        self.controller.stop_all_threads()
         event.accept()
 
     def apply_window_background(self):
