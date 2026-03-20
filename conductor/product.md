@@ -170,6 +170,11 @@
     * **Requirement 4.5.4:** Graceful handling of offline or unreachable server states with clear UI feedback.
 * **Requirement 4.6:** **Desktop Notifications:** Integrated Windows toast notifications for server lifecycle and player events, configurable by the user.
 
+### 4.7 Automated Release Pipeline
+* **Requirement 7.1:** Automated build and packaging of the application into a standalone Windows executable.
+* **Requirement 7.2:** Dynamic version injection into the executable and application metadata from Git tags.
+* **Requirement 7.3:** Automated GitHub Release creation with attached artifacts (EXE and ZIP) upon tagging a new version (e.g., `v1.2.3`).
+
 ### 4.6 Mod Management
 * **Requirement 5.1:** Dedicated "Mods" tab for installing and listing server mods.
 * **Requirement 5.2:** Support for manual selection of `.pak` and `.zip` mod files.

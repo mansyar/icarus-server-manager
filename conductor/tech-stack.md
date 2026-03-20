@@ -15,7 +15,15 @@
 * **psutil** & **subprocess**
   * `psutil`: Real-time monitoring of CPU and RAM usage.
   * `subprocess`: Executing SteamCMD and the Icarus Dedicated Server process.
+
+## 4. CI/CD & Distribution
+* **GitHub Actions**
+* Automates the release pipeline, including building on `windows-latest`, running version injection scripts, and publishing GitHub Releases.
+* **Custom Scripts**
+* `scripts/inject_version.py`: Dynamically updates `version_info.txt` and `icarus_sentinel/__init__.py` during the CI process to ensure version consistency.
+
 * **PyInstaller**
+
   * Compiles the Python application into a standalone Windows executable (`.exe`).
   * **Pillow:** Used as a build-time dependency for PyInstaller to handle automatic icon conversion (e.g., PNG to ICO) on Windows.
 * **winotify**
