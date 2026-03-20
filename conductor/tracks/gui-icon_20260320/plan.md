@@ -14,7 +14,7 @@ Apply the icon across the primary user interfaces.
 - [x] Task: Update `icarus_sentinel/ui/main_window.py` to import `resources_rc` and set the window icon using `self.setWindowIcon(QIcon(":/icons/app_icon.png"))`. 386bfec
 - [x] Task: Update `icarus_sentinel/ui/about_view.py` to import `resources_rc` and display `app_icon.png` in a `QLabel` (Pixmap). c192846
 - [x] Task: Update `icarus_sentinel/main.py` to implement a `QSplashScreen` that displays `app_icon.png` during the initialization phase. 8be9686
-- [ ] Task: Write UI tests in `tests/test_ui_icons.py` to verify the main window has the correct icon set.
+- [x] Task: Write UI tests in `tests/test_ui_icons.py` to verify the main window has the correct icon set. ce5a8c5
 - [ ] Task: Conductor - User Manual Verification 'Phase 2: UI Application' (Protocol in workflow.md)
 
 ## Phase 3: Build & Distribution
