@@ -6,6 +6,9 @@
     - Update `load_state` and `save_state` in `icarus_sentinel/server_manager.py`.
 - [x] Task: Update `Controller` Settings Logic (9248c42)
     - Update `save_sentinel_settings` in `icarus_sentinel/controller.py` to handle the new settings.
+- [x] Task: Set Default Toggle State to ON (e8069fe)
+    - Update `ServerProcessManager` to initialize `auto_sync_on_start` and `auto_sync_on_stop` as `True`.
+    - Update related tests to expect `True` as the default state.
 - [x] Task: Conductor - User Manual Verification 'Phase 1: Data Model & Persistence' (f5c7c6f)
 
 ## Phase 2: Core Logic (Auto-Sync Triggers) [checkpoint: 78d0698]
