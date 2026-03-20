@@ -5,7 +5,7 @@ Establish the foundation for bundling assets into the application code for porta
 
 - [x] Task: Create `icarus_sentinel/ui/resources.qrc` and include `assets/app_icon.png` (using prefix `icons`). 1f83730
 - [x] Task: Compile `resources.qrc` to `icarus_sentinel/ui/resources_rc.py` using `pyside6-rcc`. 6518d35
-- [ ] Task: Write unit tests in `tests/test_resources.py` to verify `QIcon(":/icons/app_icon.png")` returns a valid icon.
+- [x] Task: Write unit tests in `tests/test_resources.py` to verify `QIcon(":/icons/app_icon.png")` returns a valid icon. 3cd9bb9
 - [ ] Task: Conductor - User Manual Verification 'Phase 1: Resource Management & Scaffolding' (Protocol in workflow.md)
 
 ## Phase 2: UI Application
