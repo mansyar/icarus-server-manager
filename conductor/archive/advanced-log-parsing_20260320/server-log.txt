@@ -1,0 +1,1138 @@
+[12:51:40] Server tracked with PID: 18120
+[12:51:40] LogPakFile: Display: Found Pak file ../../../Icarus/Content/Paks/pakchunk0_s6-WindowsServer.pak attempting to mount.
+[12:51:40] LogPakFile: Display: Mounting pak file ../../../Icarus/Content/Paks/pakchunk0_s6-WindowsServer.pak.
+[12:51:40] LogShaderLibrary: Display: ShaderCodeLibraryPakFileMountedCallback: PakFile '../../../Icarus/Content/Paks/pakchunk0_s6-WindowsServer.pak' (chunk index 0, root '../../../Icarus/') mounted
+[12:51:40] LogShaderLibrary: Display: ShaderCodeLibraryPakFileMountedCallback: pending pak file info (ChunkID:0 Root:../../../Icarus/ File:../../../Icarus/Content/Paks/pakchunk0_s6-WindowsServer.pak)
+[12:51:40] LogPakFile: Display: Found Pak file ../../../Icarus/Content/Paks/pakchunk0_s5-WindowsServer.pak attempting to mount.
+[12:51:40] LogPakFile: Display: Mounting pak file ../../../Icarus/Content/Paks/pakchunk0_s5-WindowsServer.pak.
+[12:51:40] LogShaderLibrary: Display: ShaderCodeLibraryPakFileMountedCallback: PakFile '../../../Icarus/Content/Paks/pakchunk0_s5-WindowsServer.pak' (chunk index 0, root '../../../Icarus/Content/Maps/') mounted
+[12:51:40] LogShaderLibrary: Display: ShaderCodeLibraryPakFileMountedCallback: pending pak file info (ChunkID:0 Root:../../../Icarus/Content/Maps/ File:../../../Icarus/Content/Paks/pakchunk0_s5-WindowsServer.pak)
+[12:51:40] LogPakFile: Display: Found Pak file ../../../Icarus/Content/Paks/pakchunk0_s4-WindowsServer.pak attempting to mount.
+[12:51:40] LogPakFile: Display: Mounting pak file ../../../Icarus/Content/Paks/pakchunk0_s4-WindowsServer.pak.
+[12:51:40] LogShaderLibrary: Display: ShaderCodeLibraryPakFileMountedCallback: PakFile '../../../Icarus/Content/Paks/pakchunk0_s4-WindowsServer.pak' (chunk index 0, root '../../../Icarus/Content/Maps/') mounted
+[12:51:40] LogShaderLibrary: Display: ShaderCodeLibraryPakFileMountedCallback: pending pak file info (ChunkID:0 Root:../../../Icarus/Content/Maps/ File:../../../Icarus/Content/Paks/pakchunk0_s4-WindowsServer.pak)
+[12:51:40] LogPakFile: Display: Found Pak file ../../../Icarus/Content/Paks/pakchunk0_s3-WindowsServer.pak attempting to mount.
+[12:51:40] LogPakFile: Display: Mounting pak file ../../../Icarus/Content/Paks/pakchunk0_s3-WindowsServer.pak.
+[12:51:40] LogShaderLibrary: Display: ShaderCodeLibraryPakFileMountedCallback: PakFile '../../../Icarus/Content/Paks/pakchunk0_s3-WindowsServer.pak' (chunk index 0, root '../../../Icarus/Content/Maps/') mounted
+[12:51:40] LogShaderLibrary: Display: ShaderCodeLibraryPakFileMountedCallback: pending pak file info (ChunkID:0 Root:../../../Icarus/Content/Maps/ File:../../../Icarus/Content/Paks/pakchunk0_s3-WindowsServer.pak)
+[12:51:40] LogPakFile: Display: Found Pak file ../../../Icarus/Content/Paks/pakchunk0_s2-WindowsServer.pak attempting to mount.
+[12:51:40] LogPakFile: Display: Mounting pak file ../../../Icarus/Content/Paks/pakchunk0_s2-WindowsServer.pak.
+[12:51:40] LogShaderLibrary: Display: ShaderCodeLibraryPakFileMountedCallback: PakFile '../../../Icarus/Content/Paks/pakchunk0_s2-WindowsServer.pak' (chunk index 0, root '../../../Icarus/Content/Maps/') mounted
+[12:51:40] LogShaderLibrary: Display: ShaderCodeLibraryPakFileMountedCallback: pending pak file info (ChunkID:0 Root:../../../Icarus/Content/Maps/ File:../../../Icarus/Content/Paks/pakchunk0_s2-WindowsServer.pak)
+[12:51:40] LogPakFile: Display: Found Pak file ../../../Icarus/Content/Paks/pakchunk0_s1-WindowsServer.pak attempting to mount.
+[12:51:40] LogPakFile: Display: Mounting pak file ../../../Icarus/Content/Paks/pakchunk0_s1-WindowsServer.pak.
+[12:51:40] LogShaderLibrary: Display: ShaderCodeLibraryPakFileMountedCallback: PakFile '../../../Icarus/Content/Paks/pakchunk0_s1-WindowsServer.pak' (chunk index 0, root '../../../Icarus/Content/') mounted
+[12:51:40] LogShaderLibrary: Display: ShaderCodeLibraryPakFileMountedCallback: pending pak file info (ChunkID:0 Root:../../../Icarus/Content/ File:../../../Icarus/Content/Paks/pakchunk0_s1-WindowsServer.pak)
+[12:51:40] LogPakFile: Display: Found Pak file ../../../Icarus/Content/Paks/pakchunk0-WindowsServer.pak attempting to mount.
+[12:51:40] LogPakFile: Display: Mounting pak file ../../../Icarus/Content/Paks/pakchunk0-WindowsServer.pak.
+[12:51:40] LogShaderLibrary: Display: ShaderCodeLibraryPakFileMountedCallback: PakFile '../../../Icarus/Content/Paks/pakchunk0-WindowsServer.pak' (chunk index 0, root '../../../') mounted
+[12:51:40] LogShaderLibrary: Display: ShaderCodeLibraryPakFileMountedCallback: pending pak file info (ChunkID:0 Root:../../../ File:../../../Icarus/Content/Paks/pakchunk0-WindowsServer.pak)
+[12:51:40] LogPakFile: Display: Found Pak file ../../../Icarus/Content/Paks/mods/zenProgression_P.pak attempting to mount.
+[12:51:40] LogPakFile: Display: Mounting pak file ../../../Icarus/Content/Paks/mods/zenProgression_P.pak.
+[12:51:40] LogShaderLibrary: Display: ShaderCodeLibraryPakFileMountedCallback: PakFile '../../../Icarus/Content/Paks/mods/zenProgression_P.pak' (chunk index -1, root '../../../Icarus/Content/Data/Character/') mounted
+[12:51:40] LogShaderLibrary: Display: ShaderCodeLibraryPakFileMountedCallback: pending pak file info (ChunkID:-1 Root:../../../Icarus/Content/Data/Character/ File:../../../Icarus/Content/Paks/mods/zenProgression_P.pak)
+[12:51:40] LogPakFile: Display: Found Pak file ../../../Icarus/Content/Paks/mods/Tamed Animal EXP Multiplier - 2x_P.pak attempting to mount.
+[12:51:40] LogPakFile: Display: Mounting pak file ../../../Icarus/Content/Paks/mods/Tamed Animal EXP Multiplier - 2x_P.pak.
+[12:51:40] LogShaderLibrary: Display: ShaderCodeLibraryPakFileMountedCallback: PakFile '../../../Icarus/Content/Paks/mods/Tamed Animal EXP Multiplier - 2x_P.pak' (chunk index -1, root '../../../Icarus/Content/data/Talents/') mounted
+[12:51:40] LogShaderLibrary: Display: ShaderCodeLibraryPakFileMountedCallback: pending pak file info (ChunkID:-1 Root:../../../Icarus/Content/data/Talents/ File:../../../Icarus/Content/Paks/mods/Tamed Animal EXP Multiplier - 2x_P.pak)
+[12:51:40] LogPakFile: Display: Found Pak file ../../../Icarus/Content/Paks/mods/Mission Rewards Multiplier - 5x_P.pak attempting to mount.
+[12:51:40] LogPakFile: Display: Mounting pak file ../../../Icarus/Content/Paks/mods/Mission Rewards Multiplier - 5x_P.pak.
+[12:51:40] LogShaderLibrary: Display: ShaderCodeLibraryPakFileMountedCallback: PakFile '../../../Icarus/Content/Paks/mods/Mission Rewards Multiplier - 5x_P.pak' (chunk index -1, root '../../../Icarus/Content/data/Factions/') mounted
+[12:51:40] LogShaderLibrary: Display: ShaderCodeLibraryPakFileMountedCallback: pending pak file info (ChunkID:-1 Root:../../../Icarus/Content/data/Factions/ File:../../../Icarus/Content/Paks/mods/Mission Rewards Multiplier - 5x_P.pak)
+[12:51:41] LogPakFile: Display: Found Pak file ../../../Icarus/Content/Paks/mods/Crafting Cost + Speed Reduction - 50 Percent_P.pak attempting to mount.
+[12:51:41] LogPakFile: Display: Mounting pak file ../../../Icarus/Content/Paks/mods/Crafting Cost + Speed Reduction - 50 Percent_P.pak.
+[12:51:41] LogShaderLibrary: Display: ShaderCodeLibraryPakFileMountedCallback: PakFile '../../../Icarus/Content/Paks/mods/Crafting Cost + Speed Reduction - 50 Percent_P.pak' (chunk index -1, root '../../../Icarus/Content/data/Crafting/') mounted
+[12:51:41] LogShaderLibrary: Display: ShaderCodeLibraryPakFileMountedCallback: pending pak file info (ChunkID:-1 Root:../../../Icarus/Content/data/Crafting/ File:../../../Icarus/Content/Paks/mods/Crafting Cost + Speed Reduction - 50 Percent_P.pak)
+[12:51:41] LogPakFile: Display: Found Pak file ../../../Icarus/Content/Paks/mods/Caramel_stack_size.pak attempting to mount.
+[12:51:41] LogPakFile: Display: Mounting pak file ../../../Icarus/Content/Paks/mods/Caramel_stack_size.pak.
+[12:51:41] LogShaderLibrary: Display: ShaderCodeLibraryPakFileMountedCallback: PakFile '../../../Icarus/Content/Paks/mods/Caramel_stack_size.pak' (chunk index -1, root '../../../Icarus/Content/data/') mounted
+[12:51:41] LogShaderLibrary: Display: ShaderCodeLibraryPakFileMountedCallback: pending pak file info (ChunkID:-1 Root:../../../Icarus/Content/data/ File:../../../Icarus/Content/Paks/mods/Caramel_stack_size.pak)
+[12:51:41] LogInit: Display: Loading text-based GConfig....
+[12:51:41] TomlLog: Display: WITH_TOML_RELOAD=0
+[12:51:41] LogSteamShared: Display: Loading Steam SDK 1.51
+[12:51:41] LogLuminAPIImpl: Warning: MLSDK not found. This likely means the MLSDK environment variable is not set.
+[12:51:41] LogStreaming: Display: Async Loading initialized: Event Driven Loader: true, Async Loading Thread: false, Async Post Load: false
+[12:51:41] LogHAL: Display: Platform has ~ 32 GB [34116603904 / 34359738368 / 32], which maps to Largest [LargestMinGB=32, LargerMinGB=12, DefaultMinGB=8, SmallerMinGB=6, SmallestMinGB=0)
+[12:51:41] LogInit: Warning: Creating unregistered Device Profile CVar: [[r.VT.MaxUploadsPerFrameInEditor:4]]
+[12:51:41] LogStreaming: Display: FlushAsyncLoading: 1 QueuedPackages, 0 AsyncPackages
+[12:51:41] LogSerialization: Display: AllowBulkDataInIoStore: 'true'
+[12:51:41] LogAudioCaptureCore: Display: No Audio Capture implementations found. Audio input will be silent.
+[12:51:41] LogAudioCaptureCore: Display: No Audio Capture implementations found. Audio input will be silent.
+[12:51:41] LogGauntlet: Display: Gauntlet Initialized
+[12:51:41] LogFMOD: Error: 'FMOD::Debug_Initialize(FMOD_DEBUG_LEVEL_WARNING, FMOD_DEBUG_MODE_CALLBACK, FMODLogCallback)' returned 'A command issued was not supported by this object. Possibly a plugin without certain callbacks specified.'
+[12:51:41] LogFMOD: Error: 'FMOD::Debug_Initialize(flags, FMOD_DEBUG_MODE_CALLBACK, FMODLogCallback)' returned 'A command issued was not supported by this object. Possibly a plugin without certain callbacks specified.'
+[12:51:41] LogShaderLibrary: Display: ShaderCodeLibraryPakFileMountedCallback: PakFile 'C:/Users/Ansyar/Documents/Upskilling/games/icarus-server-manager/icarus_server/Icarus/Content/Data/data.pak' (chunk index -1, root '../../../Icarus/Content/Data/') mounted
+[12:51:41] LogShaderLibrary: Display: ShaderCodeLibraryPakFileMountedCallback: pending pak file info (ChunkID:-1 Root:../../../Icarus/Content/Data/ File:C:/Users/Ansyar/Documents/Upskilling/games/icarus-server-manager/icarus_server/Icarus/Content/Data/data.pak)
+[12:51:41] LogStreaming: Error: Couldn't find file for package /Script/FunctionalTesting requested by async loading code. NameToLoad: /Script/FunctionalTesting
+[12:51:41] LogStreaming: Error: Found 1 dependent packages...
+[12:51:41] LogStreaming: Error: /Game/BP/Tools/CheatFunctions/CF_TakeScreenshotUI
+[12:51:41] LogProperty: Error: Struct type unknown for property 'StructProperty /Game/BP/Tools/CheatFunctions/CF_TakeScreenshotUI.CF_TakeScreenshotUI_C:ExecuteUbergraph_CF_TakeScreenshotUI:K2Node_MakeStruct_AutomationScreenshotOptions'; perhaps the USTRUCT() was renamed or deleted?
+[12:51:43] LogProperty: Error: Struct type unknown for property 'StructProperty /Game/BP/Tools/CheatFunctions/CF_TakeScreenshot.CF_TakeScreenshot_C:ExecuteUbergraph_CF_TakeScreenshot:K2Node_MakeStruct_AutomationScreenshotOptions'; perhaps the USTRUCT() was renamed or deleted?
+[12:51:43] IcarusUtilitiesLog: Warning: D_AssetReferences was unexpectedly requested for load, was expected to load during the 'PostEngineInit' phase
+[12:51:44] IcarusUtilitiesLog: Warning: D_PlayerTrackers was unexpectedly requested for load, was expected to load during the 'PostContentServer' phase
+[12:51:44] IcarusOSSLog: Error: Login() failed: Empty Id
+[12:51:44] LogInit: Display: Game Engine Initialized.
+[12:51:44] IcarusUtilitiesLog: Warning: D_Talents was unexpectedly requested for load, was expected to load during the 'PostContentServer' phase
+[12:51:44] IcarusUtilitiesLog: Warning: D_TalentTrees was unexpectedly requested for load, was expected to load during the 'PostContentServer' phase
+[12:51:49] IcarusUtilitiesLog: Warning: D_TalentArchetypes was unexpectedly requested for load, was expected to load during the 'PostContentServer' phase
+[12:51:49] IcarusUtilitiesLog: Warning: D_PlayerTalentModifiers was unexpectedly requested for load, was expected to load during the 'PostContentServer' phase
+[12:51:49] IcarusUtilitiesLog: Warning: D_ProspectList was unexpectedly requested for load, was expected to load during the 'PostContentServer' phase
+[12:51:49] IcarusUtilitiesLog: Warning: D_LivingItemShopItems was unexpectedly requested for load, was expected to load during the 'PostContentServer' phase
+[12:51:49] IcarusUtilitiesLog: Warning: D_WorkshopItems was unexpectedly requested for load, was expected to load during the 'PostContentServer' phase
+[12:51:49] LogInit: Display: Starting Game.
+[12:51:50] LogNet: Display: SteamNetDriver_2147481863 bound to port 17777
+[12:51:50] Server is ready for players!
+[12:51:50] Sentinel: Triggering 'Server Started' notification...
+[12:51:50] LogGameMode: Display: Match State Changed from EnteringMap to WaitingToStart
+[12:51:50] LogLocalSessionSubsystem: Display: ResetActiveProspect - ProspectID: NULL | ProspectDTKey: NULL
+[12:51:50] LogContent: Warning: Pak meta issues found for files at: C:/Users/Ansyar/Documents/Upskilling/games/icarus-server-manager/icarus_server/Icarus/Content/Paks
+[12:51:50] LogLocalSessionSubsystem: Display: ResetActiveProspect - ProspectID: NULL | ProspectDTKey: NULL
+[12:51:50] LogLocalSessionSubsystem: Display: SetActiveProspectInfo - ProspectID: NEW WORLD | ProspectDTKey: Outpost006_Olympus
+[12:51:50] LogLocalSessionSubsystem: Display: SetActiveProspectSaveState - ProspectID: NEW WORLD
+[12:51:50] LogInit: Display: Engine is initialized. Leaving FEngineLoop::Init()
+[12:51:50] LogConsoleManager: Warning: Setting the console variable 'r.RTXGI.DDGI' with 'SetByGameSetting' was ignored as it is lower priority than the previous 'SetByProjectSetting'. Value remains 'true'
+[12:51:50] LogConsoleManager: Warning: Setting the console variable 'r.RayTracing.AmbientOcclusion' with 'SetByGameSetting' was ignored as it is lower priority than the previous 'SetByProjectSetting'. Value remains '0'
+[12:51:50] LogConsoleManager: Warning: Setting the console variable 'r.RayTracing.Shadows' with 'SetByGameSetting' was ignored as it is lower priority than the previous 'SetByProjectSetting'. Value remains '0'
+[12:51:50] LogConsoleManager: Warning: Setting the console variable 'r.RayTracing.Reflections' with 'SetByGameSetting' was ignored as it is lower priority than the previous 'SetByProjectSetting'. Value remains '0'
+[12:51:50] LogConsoleManager: Warning: Setting the console variable 'r.RayTracing.DebugForceOpaque' with 'SetByGameSetting' was ignored as it is lower priority than the previous 'SetByProjectSetting'. Value remains '1'
+[12:51:50] LogConsoleManager: Warning: Setting the console variable 'r.Shadow.CSM.MaxCascades' with 'SetByScalability' was ignored as it is lower priority than the previous 'SetByGameSetting'. Value remains '2'
+[12:51:50] LogConsoleManager: Warning: Setting the console variable 'r.ContactShadows' with 'SetByScalability' was ignored as it is lower priority than the previous 'SetByGameSetting'. Value remains '1'
+[12:51:50] LogConsoleManager: Warning: Setting the console variable 'r.Streaming.LimitPoolSizeToVRAM' with 'SetByScalability' was ignored as it is lower priority than the previous 'SetByGameSetting'. Value remains '1'
+[12:51:50] LogConsoleManager: Warning: Setting the console variable 'r.Streaming.PoolSize' with 'SetByScalability' was ignored as it is lower priority than the previous 'SetByGameSetting'. Value remains '4500'
+[12:51:50] IcarusOSSLog: Error: OnResUserTicket : No player found
+[12:51:53] LogGameMode: Display: Match State Changed from WaitingToStart to LeavingMap
+[12:51:59] LogNet: Display: SteamNetDriver_2147481438 bound to port 17777
+[12:51:59] LogLevel: Warning: Detected duplicate WorldSettings actor - UE-62934
+[12:51:59] LogLevel: Warning: Detected duplicate WorldSettings actor - UE-62934
+[12:51:59] LogLocalSessionSubsystem: Display: SetActiveProspectSaveState - ProspectID: NEW WORLD
+[12:51:59] LogGameMode: Display: Match State Changed from EnteringMap to WaitingToStart
+[12:51:59] LogTemp: Warning: GetDerivedClasses failed to find singleton
+[12:51:59] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_EnzymeGeyser10 | Recorder: EnzymeGeyserRecorderComponent_0
+[12:51:59] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_EnzymeGeyser11 | Recorder: EnzymeGeyserRecorderComponent_0
+[12:51:59] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_EnzymeGeyser12 | Recorder: EnzymeGeyserRecorderComponent_0
+[12:51:59] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_EnzymeGeyser13 | Recorder: EnzymeGeyserRecorderComponent_0
+[12:51:59] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_EnzymeGeyser14 | Recorder: EnzymeGeyserRecorderComponent_0
+[12:51:59] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_EnzymeGeyser15 | Recorder: EnzymeGeyserRecorderComponent_0
+[12:51:59] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_EnzymeGeyser16 | Recorder: EnzymeGeyserRecorderComponent_0
+[12:51:59] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_EnzymeGeyser17 | Recorder: EnzymeGeyserRecorderComponent_0
+[12:51:59] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_EnzymeGeyser18 | Recorder: EnzymeGeyserRecorderComponent_0
+[12:51:59] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_EnzymeGeyser19 | Recorder: EnzymeGeyserRecorderComponent_0
+[12:51:59] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_EnzymeGeyser2 | Recorder: EnzymeGeyserRecorderComponent_0
+[12:51:59] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_EnzymeGeyser20 | Recorder: EnzymeGeyserRecorderComponent_0
+[12:51:59] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_EnzymeGeyser21 | Recorder: EnzymeGeyserRecorderComponent_0
+[12:51:59] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_EnzymeGeyser3 | Recorder: EnzymeGeyserRecorderComponent_0
+[12:51:59] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_EnzymeGeyser4 | Recorder: EnzymeGeyserRecorderComponent_0
+[12:51:59] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_EnzymeGeyser5 | Recorder: EnzymeGeyserRecorderComponent_0
+[12:51:59] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_EnzymeGeyser6 | Recorder: EnzymeGeyserRecorderComponent_0
+[12:51:59] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_EnzymeGeyser7 | Recorder: EnzymeGeyserRecorderComponent_0
+[12:51:59] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_EnzymeGeyser8_11 | Recorder: EnzymeGeyserRecorderComponent_0
+[12:51:59] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_EnzymeGeyser9 | Recorder: EnzymeGeyserRecorderComponent_0
+[12:51:59] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_EnzymeGeyser_2 | Recorder: EnzymeGeyserRecorderComponent_0
+[12:51:59] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_IcarusCaveAISpawner_GP_1 | Recorder: CaveAIRecorderComponent_0
+[12:51:59] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_IcarusCaveAISpawner_GP_2 | Recorder: CaveAIRecorderComponent_0
+[12:51:59] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_OilGeyser10 | Recorder: OilGeyserRecorderComponent_0
+[12:51:59] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_OilGeyser11 | Recorder: OilGeyserRecorderComponent_0
+[12:51:59] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_OilGeyser12 | Recorder: OilGeyserRecorderComponent_0
+[12:51:59] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_OilGeyser13 | Recorder: OilGeyserRecorderComponent_0
+[12:51:59] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_OilGeyser14 | Recorder: OilGeyserRecorderComponent_0
+[12:51:59] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_OilGeyser15 | Recorder: OilGeyserRecorderComponent_0
+[12:51:59] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_OilGeyser16 | Recorder: OilGeyserRecorderComponent_0
+[12:51:59] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_OilGeyser17 | Recorder: OilGeyserRecorderComponent_0
+[12:51:59] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_OilGeyser18 | Recorder: OilGeyserRecorderComponent_0
+[12:51:59] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_OilGeyser19 | Recorder: OilGeyserRecorderComponent_0
+[12:51:59] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_OilGeyser2 | Recorder: OilGeyserRecorderComponent_0
+[12:51:59] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_OilGeyser20 | Recorder: OilGeyserRecorderComponent_0
+[12:51:59] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_OilGeyser21 | Recorder: OilGeyserRecorderComponent_0
+[12:51:59] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_OilGeyser3 | Recorder: OilGeyserRecorderComponent_0
+[12:51:59] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_OilGeyser4 | Recorder: OilGeyserRecorderComponent_0
+[12:51:59] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_OilGeyser5 | Recorder: OilGeyserRecorderComponent_0
+[12:52:01] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_OilGeyser6 | Recorder: OilGeyserRecorderComponent_0
+[12:52:01] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_OilGeyser7 | Recorder: OilGeyserRecorderComponent_0
+[12:52:01] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_OilGeyser8 | Recorder: OilGeyserRecorderComponent_0
+[12:52:01] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_OilGeyser9 | Recorder: OilGeyserRecorderComponent_0
+[12:52:01] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_OilGeyser_2 | Recorder: OilGeyserRecorderComponent_0
+[12:52:01] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_GH_DenEntrance_RockGolem_2 | Recorder: BaseLevelTeleportRecorderComponent_0
+[12:52:01] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_IcarusGameMode_C_2147481439 | Recorder: GameModeStateRecorderComponent
+[12:52:01] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: MapManager_C_2147481290 | Recorder: MapManagerRecorderComponent
+[12:52:01] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: WeatherForecastManager_2147481289 | Recorder: WeatherForecastRecorderComponent
+[12:52:01] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_WeatherController_C_2147481288 | Recorder: WeatherControllerRecorderComponent
+[12:52:01] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_WorldBossManager_C_2147481286 | Recorder: WorldBossManagerRecorderComponent_2147481285
+[12:52:01] LogLocalSessionSubsystem: Display: UpdateActiveProspectInfo - ProspectID: NEW WORLD | ProspectDTKey: Outpost006_Olympus
+[12:52:01] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_IcarusFLOD_Default_C_2147481284 | Recorder: FLODRecorderComponent
+[12:52:01] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: InventoryContainerManager_2147481281 | Recorder: IcarusContainerManagerRecorderComponent_2147481280
+[12:52:01] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: QuestManager_2147481279 | Recorder: IcarusQuestManagerRecorderComponent_2147481278
+[12:52:01] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: WorldTalentManager_2147481277 | Recorder: WorldTalentManagerRecorderComponent_2147481276
+[12:52:01] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: PlayerHistoryTracker_2147481273 | Recorder: PlayerHistoryRecorderComponent_2147481272
+[12:52:01] LogStreaming: Display: ULevelStreaming::RequestLevel(/Game/Maps/Terrain_016_OLY/Sublevels/Generated/T016_Generated_Vista) is flushing async loading
+[12:52:01] LogLevel: Warning: Detected duplicate WorldSettings actor - UE-62934
+[12:52:02] LogIcarusGameStateRecording: Display: ReadFromProspectSaveState - NumRecorders: 1259
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: FLODTile_T016_Generated_x6_y2_2147479856 | Recorder: FLODTileRecorderComponent
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: FLODTile_HeightMap_x6_y1_2147479835 | Recorder: FLODTileRecorderComponent
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: FLODTile_T016_Generated_x5_y2_2147479730 | Recorder: FLODTileRecorderComponent
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: FLODTile_T016_Generated_x5_y1_2147479709 | Recorder: FLODTileRecorderComponent
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: FLODTile_T016_Generated_x6_y1_2147479688 | Recorder: FLODTileRecorderComponent
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: FLODTile_HeightMap_x5_y2_2147479683 | Recorder: FLODTileRecorderComponent
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_IcarusDynamicDropShipSpawn_C_2147479577 | Recorder: DynamicRocketSpawnRecorderComponent_2147479576
+[12:52:02] LogUObjectGlobals: Warning: Failed to find object 'Blueprint None.BP_Mount_Moa_C'
+[12:52:02] LogUObjectGlobals: Warning: Failed to find object 'Object None./Game/BP/Mounts/BP_Mount_Moa'
+[12:52:02] LogTalentGame: Warning: CREATURE_NONE - CreatureTalentController:tried to query the view object when we explicity have stated we don't have one. Please harden the surrounding code to ensure this call is not being invoked erroneously.(HasAuthority: false, IsLocalPlayer: false, IsServer: true)
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mount_Moa_C_2147479573 | Recorder: IcarusMountCharacterRecorderComponent_2147479563
+[12:52:02] LogTemp: Warning: Server's TalentCount: 12
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147479534 | Recorder: SpawnedVoxelRecorderComponent_2147479533
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147479532 | Recorder: SpawnedVoxelRecorderComponent_2147479531
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147479530 | Recorder: SpawnedVoxelRecorderComponent_2147479529
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147479528 | Recorder: SpawnedVoxelRecorderComponent_2147479527
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147479526 | Recorder: SpawnedVoxelRecorderComponent_2147479525
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147479524 | Recorder: SpawnedVoxelRecorderComponent_2147479523
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147479522 | Recorder: SpawnedVoxelRecorderComponent_2147479521
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147479520 | Recorder: SpawnedVoxelRecorderComponent_2147479519
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147479518 | Recorder: SpawnedVoxelRecorderComponent_2147479517
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147479516 | Recorder: SpawnedVoxelRecorderComponent_2147479515
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147479514 | Recorder: SpawnedVoxelRecorderComponent_2147479513
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147479512 | Recorder: SpawnedVoxelRecorderComponent_2147479511
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147479510 | Recorder: SpawnedVoxelRecorderComponent_2147479509
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147479508 | Recorder: SpawnedVoxelRecorderComponent_2147479507
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147479506 | Recorder: SpawnedVoxelRecorderComponent_2147479505
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147479504 | Recorder: SpawnedVoxelRecorderComponent_2147479503
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147479502 | Recorder: SpawnedVoxelRecorderComponent_2147479501
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147479500 | Recorder: SpawnedVoxelRecorderComponent_2147479499
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147479498 | Recorder: SpawnedVoxelRecorderComponent_2147479497
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147479496 | Recorder: SpawnedVoxelRecorderComponent_2147479495
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147479494 | Recorder: SpawnedVoxelRecorderComponent_2147479493
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147479492 | Recorder: SpawnedVoxelRecorderComponent_2147479491
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147479490 | Recorder: SpawnedVoxelRecorderComponent_2147479489
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147479488 | Recorder: SpawnedVoxelRecorderComponent_2147479487
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147479486 | Recorder: SpawnedVoxelRecorderComponent_2147479485
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147479484 | Recorder: SpawnedVoxelRecorderComponent_2147479483
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147479482 | Recorder: SpawnedVoxelRecorderComponent_2147479481
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147479480 | Recorder: SpawnedVoxelRecorderComponent_2147479479
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147479478 | Recorder: SpawnedVoxelRecorderComponent_2147479477
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479476 | Recorder: ResourceDepositRecorderComponent_2147479475
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479474 | Recorder: ResourceDepositRecorderComponent_2147479473
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479472 | Recorder: ResourceDepositRecorderComponent_2147479471
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479470 | Recorder: ResourceDepositRecorderComponent_2147479469
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479468 | Recorder: ResourceDepositRecorderComponent_2147479467
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479466 | Recorder: ResourceDepositRecorderComponent_2147479465
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479464 | Recorder: ResourceDepositRecorderComponent_2147479463
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479462 | Recorder: ResourceDepositRecorderComponent_2147479461
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479460 | Recorder: ResourceDepositRecorderComponent_2147479459
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479458 | Recorder: ResourceDepositRecorderComponent_2147479457
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479456 | Recorder: ResourceDepositRecorderComponent_2147479455
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479454 | Recorder: ResourceDepositRecorderComponent_2147479453
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479452 | Recorder: ResourceDepositRecorderComponent_2147479451
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479450 | Recorder: ResourceDepositRecorderComponent_2147479449
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479448 | Recorder: ResourceDepositRecorderComponent_2147479447
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479446 | Recorder: ResourceDepositRecorderComponent_2147479445
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479444 | Recorder: ResourceDepositRecorderComponent_2147479443
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479442 | Recorder: ResourceDepositRecorderComponent_2147479441
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479440 | Recorder: ResourceDepositRecorderComponent_2147479439
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479438 | Recorder: ResourceDepositRecorderComponent_2147479437
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479436 | Recorder: ResourceDepositRecorderComponent_2147479435
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479434 | Recorder: ResourceDepositRecorderComponent_2147479433
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479432 | Recorder: ResourceDepositRecorderComponent_2147479431
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479430 | Recorder: ResourceDepositRecorderComponent_2147479429
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479428 | Recorder: ResourceDepositRecorderComponent_2147479427
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479426 | Recorder: ResourceDepositRecorderComponent_2147479425
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479424 | Recorder: ResourceDepositRecorderComponent_2147479423
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479422 | Recorder: ResourceDepositRecorderComponent_2147479421
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479420 | Recorder: ResourceDepositRecorderComponent_2147479419
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479418 | Recorder: ResourceDepositRecorderComponent_2147479417
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479416 | Recorder: ResourceDepositRecorderComponent_2147479415
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479414 | Recorder: ResourceDepositRecorderComponent_2147479413
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479412 | Recorder: ResourceDepositRecorderComponent_2147479411
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479410 | Recorder: ResourceDepositRecorderComponent_2147479409
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479408 | Recorder: ResourceDepositRecorderComponent_2147479407
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479406 | Recorder: ResourceDepositRecorderComponent_2147479405
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479404 | Recorder: ResourceDepositRecorderComponent_2147479403
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479402 | Recorder: ResourceDepositRecorderComponent_2147479401
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479400 | Recorder: ResourceDepositRecorderComponent_2147479399
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479398 | Recorder: ResourceDepositRecorderComponent_2147479397
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479396 | Recorder: ResourceDepositRecorderComponent_2147479395
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479394 | Recorder: ResourceDepositRecorderComponent_2147479393
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479392 | Recorder: ResourceDepositRecorderComponent_2147479391
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479390 | Recorder: ResourceDepositRecorderComponent_2147479389
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479388 | Recorder: ResourceDepositRecorderComponent_2147479387
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479386 | Recorder: ResourceDepositRecorderComponent_2147479385
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479384 | Recorder: ResourceDepositRecorderComponent_2147479383
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479382 | Recorder: ResourceDepositRecorderComponent_2147479381
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479380 | Recorder: ResourceDepositRecorderComponent_2147479379
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479378 | Recorder: ResourceDepositRecorderComponent_2147479377
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479376 | Recorder: ResourceDepositRecorderComponent_2147479375
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479374 | Recorder: ResourceDepositRecorderComponent_2147479373
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479372 | Recorder: ResourceDepositRecorderComponent_2147479371
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479370 | Recorder: ResourceDepositRecorderComponent_2147479369
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479368 | Recorder: ResourceDepositRecorderComponent_2147479367
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479366 | Recorder: ResourceDepositRecorderComponent_2147479365
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479364 | Recorder: ResourceDepositRecorderComponent_2147479363
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479362 | Recorder: ResourceDepositRecorderComponent_2147479361
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479360 | Recorder: ResourceDepositRecorderComponent_2147479359
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479358 | Recorder: ResourceDepositRecorderComponent_2147479357
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479356 | Recorder: ResourceDepositRecorderComponent_2147479355
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479354 | Recorder: ResourceDepositRecorderComponent_2147479353
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479352 | Recorder: ResourceDepositRecorderComponent_2147479351
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479350 | Recorder: ResourceDepositRecorderComponent_2147479349
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479348 | Recorder: ResourceDepositRecorderComponent_2147479347
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479346 | Recorder: ResourceDepositRecorderComponent_2147479345
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479344 | Recorder: ResourceDepositRecorderComponent_2147479343
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479342 | Recorder: ResourceDepositRecorderComponent_2147479341
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479340 | Recorder: ResourceDepositRecorderComponent_2147479339
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479338 | Recorder: ResourceDepositRecorderComponent_2147479337
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479336 | Recorder: ResourceDepositRecorderComponent_2147479335
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479334 | Recorder: ResourceDepositRecorderComponent_2147479333
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479332 | Recorder: ResourceDepositRecorderComponent_2147479331
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479330 | Recorder: ResourceDepositRecorderComponent_2147479329
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479328 | Recorder: ResourceDepositRecorderComponent_2147479327
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479326 | Recorder: ResourceDepositRecorderComponent_2147479325
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479324 | Recorder: ResourceDepositRecorderComponent_2147479323
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479322 | Recorder: ResourceDepositRecorderComponent_2147479321
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479320 | Recorder: ResourceDepositRecorderComponent_2147479319
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479318 | Recorder: ResourceDepositRecorderComponent_2147479317
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479316 | Recorder: ResourceDepositRecorderComponent_2147479315
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479314 | Recorder: ResourceDepositRecorderComponent_2147479313
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479312 | Recorder: ResourceDepositRecorderComponent_2147479311
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479310 | Recorder: ResourceDepositRecorderComponent_2147479309
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479308 | Recorder: ResourceDepositRecorderComponent_2147479307
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479306 | Recorder: ResourceDepositRecorderComponent_2147479305
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479304 | Recorder: ResourceDepositRecorderComponent_2147479303
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479302 | Recorder: ResourceDepositRecorderComponent_2147479301
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479300 | Recorder: ResourceDepositRecorderComponent_2147479299
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479298 | Recorder: ResourceDepositRecorderComponent_2147479297
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479296 | Recorder: ResourceDepositRecorderComponent_2147479295
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479294 | Recorder: ResourceDepositRecorderComponent_2147479293
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479292 | Recorder: ResourceDepositRecorderComponent_2147479291
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479290 | Recorder: ResourceDepositRecorderComponent_2147479289
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479288 | Recorder: ResourceDepositRecorderComponent_2147479287
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479286 | Recorder: ResourceDepositRecorderComponent_2147479285
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479284 | Recorder: ResourceDepositRecorderComponent_2147479283
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479282 | Recorder: ResourceDepositRecorderComponent_2147479281
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479280 | Recorder: ResourceDepositRecorderComponent_2147479279
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479278 | Recorder: ResourceDepositRecorderComponent_2147479277
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479276 | Recorder: ResourceDepositRecorderComponent_2147479275
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479274 | Recorder: ResourceDepositRecorderComponent_2147479273
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479272 | Recorder: ResourceDepositRecorderComponent_2147479271
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479270 | Recorder: ResourceDepositRecorderComponent_2147479269
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479268 | Recorder: ResourceDepositRecorderComponent_2147479267
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479266 | Recorder: ResourceDepositRecorderComponent_2147479265
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479264 | Recorder: ResourceDepositRecorderComponent_2147479263
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479262 | Recorder: ResourceDepositRecorderComponent_2147479261
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479260 | Recorder: ResourceDepositRecorderComponent_2147479259
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479258 | Recorder: ResourceDepositRecorderComponent_2147479257
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479256 | Recorder: ResourceDepositRecorderComponent_2147479255
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479254 | Recorder: ResourceDepositRecorderComponent_2147479253
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479252 | Recorder: ResourceDepositRecorderComponent_2147479251
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479250 | Recorder: ResourceDepositRecorderComponent_2147479249
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479248 | Recorder: ResourceDepositRecorderComponent_2147479247
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479246 | Recorder: ResourceDepositRecorderComponent_2147479245
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479244 | Recorder: ResourceDepositRecorderComponent_2147479243
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479242 | Recorder: ResourceDepositRecorderComponent_2147479241
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479240 | Recorder: ResourceDepositRecorderComponent_2147479239
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479238 | Recorder: ResourceDepositRecorderComponent_2147479237
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479236 | Recorder: ResourceDepositRecorderComponent_2147479235
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479234 | Recorder: ResourceDepositRecorderComponent_2147479233
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479232 | Recorder: ResourceDepositRecorderComponent_2147479231
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479230 | Recorder: ResourceDepositRecorderComponent_2147479229
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479228 | Recorder: ResourceDepositRecorderComponent_2147479227
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479226 | Recorder: ResourceDepositRecorderComponent_2147479225
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479224 | Recorder: ResourceDepositRecorderComponent_2147479223
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479222 | Recorder: ResourceDepositRecorderComponent_2147479221
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479220 | Recorder: ResourceDepositRecorderComponent_2147479219
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479218 | Recorder: ResourceDepositRecorderComponent_2147479217
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479216 | Recorder: ResourceDepositRecorderComponent_2147479215
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479214 | Recorder: ResourceDepositRecorderComponent_2147479213
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479212 | Recorder: ResourceDepositRecorderComponent_2147479211
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479210 | Recorder: ResourceDepositRecorderComponent_2147479209
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479208 | Recorder: ResourceDepositRecorderComponent_2147479207
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479206 | Recorder: ResourceDepositRecorderComponent_2147479205
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479204 | Recorder: ResourceDepositRecorderComponent_2147479203
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479202 | Recorder: ResourceDepositRecorderComponent_2147479201
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479200 | Recorder: ResourceDepositRecorderComponent_2147479199
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479198 | Recorder: ResourceDepositRecorderComponent_2147479197
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479196 | Recorder: ResourceDepositRecorderComponent_2147479195
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479194 | Recorder: ResourceDepositRecorderComponent_2147479193
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479192 | Recorder: ResourceDepositRecorderComponent_2147479191
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479190 | Recorder: ResourceDepositRecorderComponent_2147479189
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479188 | Recorder: ResourceDepositRecorderComponent_2147479187
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479186 | Recorder: ResourceDepositRecorderComponent_2147479185
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479184 | Recorder: ResourceDepositRecorderComponent_2147479183
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479182 | Recorder: ResourceDepositRecorderComponent_2147479181
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479180 | Recorder: ResourceDepositRecorderComponent_2147479179
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479178 | Recorder: ResourceDepositRecorderComponent_2147479177
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479176 | Recorder: ResourceDepositRecorderComponent_2147479175
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479174 | Recorder: ResourceDepositRecorderComponent_2147479173
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479172 | Recorder: ResourceDepositRecorderComponent_2147479171
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479170 | Recorder: ResourceDepositRecorderComponent_2147479169
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479168 | Recorder: ResourceDepositRecorderComponent_2147479167
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479166 | Recorder: ResourceDepositRecorderComponent_2147479165
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479164 | Recorder: ResourceDepositRecorderComponent_2147479163
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479162 | Recorder: ResourceDepositRecorderComponent_2147479161
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479160 | Recorder: ResourceDepositRecorderComponent_2147479159
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479158 | Recorder: ResourceDepositRecorderComponent_2147479157
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479156 | Recorder: ResourceDepositRecorderComponent_2147479155
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479154 | Recorder: ResourceDepositRecorderComponent_2147479153
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479152 | Recorder: ResourceDepositRecorderComponent_2147479151
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479150 | Recorder: ResourceDepositRecorderComponent_2147479149
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479148 | Recorder: ResourceDepositRecorderComponent_2147479147
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479146 | Recorder: ResourceDepositRecorderComponent_2147479145
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479144 | Recorder: ResourceDepositRecorderComponent_2147479143
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479142 | Recorder: ResourceDepositRecorderComponent_2147479141
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479140 | Recorder: ResourceDepositRecorderComponent_2147479139
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479138 | Recorder: ResourceDepositRecorderComponent_2147479137
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479136 | Recorder: ResourceDepositRecorderComponent_2147479135
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479134 | Recorder: ResourceDepositRecorderComponent_2147479133
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479132 | Recorder: ResourceDepositRecorderComponent_2147479131
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479130 | Recorder: ResourceDepositRecorderComponent_2147479129
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479128 | Recorder: ResourceDepositRecorderComponent_2147479127
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479126 | Recorder: ResourceDepositRecorderComponent_2147479125
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479124 | Recorder: ResourceDepositRecorderComponent_2147479123
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479122 | Recorder: ResourceDepositRecorderComponent_2147479121
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479120 | Recorder: ResourceDepositRecorderComponent_2147479119
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479118 | Recorder: ResourceDepositRecorderComponent_2147479117
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479116 | Recorder: ResourceDepositRecorderComponent_2147479115
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479114 | Recorder: ResourceDepositRecorderComponent_2147479113
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479112 | Recorder: ResourceDepositRecorderComponent_2147479111
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479110 | Recorder: ResourceDepositRecorderComponent_2147479109
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479108 | Recorder: ResourceDepositRecorderComponent_2147479107
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479106 | Recorder: ResourceDepositRecorderComponent_2147479105
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479104 | Recorder: ResourceDepositRecorderComponent_2147479103
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479102 | Recorder: ResourceDepositRecorderComponent_2147479101
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479100 | Recorder: ResourceDepositRecorderComponent_2147479099
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479098 | Recorder: ResourceDepositRecorderComponent_2147479097
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479096 | Recorder: ResourceDepositRecorderComponent_2147479095
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479094 | Recorder: ResourceDepositRecorderComponent_2147479093
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479092 | Recorder: ResourceDepositRecorderComponent_2147479091
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479090 | Recorder: ResourceDepositRecorderComponent_2147479089
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479088 | Recorder: ResourceDepositRecorderComponent_2147479087
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479086 | Recorder: ResourceDepositRecorderComponent_2147479085
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479084 | Recorder: ResourceDepositRecorderComponent_2147479083
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479082 | Recorder: ResourceDepositRecorderComponent_2147479081
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479080 | Recorder: ResourceDepositRecorderComponent_2147479079
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479078 | Recorder: ResourceDepositRecorderComponent_2147479077
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479076 | Recorder: ResourceDepositRecorderComponent_2147479075
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479074 | Recorder: ResourceDepositRecorderComponent_2147479073
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479072 | Recorder: ResourceDepositRecorderComponent_2147479071
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479070 | Recorder: ResourceDepositRecorderComponent_2147479069
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479068 | Recorder: ResourceDepositRecorderComponent_2147479067
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479066 | Recorder: ResourceDepositRecorderComponent_2147479065
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479064 | Recorder: ResourceDepositRecorderComponent_2147479063
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479062 | Recorder: ResourceDepositRecorderComponent_2147479061
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479060 | Recorder: ResourceDepositRecorderComponent_2147479059
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479058 | Recorder: ResourceDepositRecorderComponent_2147479057
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479056 | Recorder: ResourceDepositRecorderComponent_2147479055
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479054 | Recorder: ResourceDepositRecorderComponent_2147479053
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479052 | Recorder: ResourceDepositRecorderComponent_2147479051
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479050 | Recorder: ResourceDepositRecorderComponent_2147479049
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479048 | Recorder: ResourceDepositRecorderComponent_2147479047
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479046 | Recorder: ResourceDepositRecorderComponent_2147479045
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479044 | Recorder: ResourceDepositRecorderComponent_2147479043
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479042 | Recorder: ResourceDepositRecorderComponent_2147479041
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479040 | Recorder: ResourceDepositRecorderComponent_2147479039
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479038 | Recorder: ResourceDepositRecorderComponent_2147479037
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479036 | Recorder: ResourceDepositRecorderComponent_2147479035
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479034 | Recorder: ResourceDepositRecorderComponent_2147479033
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479032 | Recorder: ResourceDepositRecorderComponent_2147479031
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479030 | Recorder: ResourceDepositRecorderComponent_2147479029
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479028 | Recorder: ResourceDepositRecorderComponent_2147479027
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479026 | Recorder: ResourceDepositRecorderComponent_2147479025
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479024 | Recorder: ResourceDepositRecorderComponent_2147479023
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479022 | Recorder: ResourceDepositRecorderComponent_2147479021
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479020 | Recorder: ResourceDepositRecorderComponent_2147479019
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479018 | Recorder: ResourceDepositRecorderComponent_2147479017
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479016 | Recorder: ResourceDepositRecorderComponent_2147479015
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479014 | Recorder: ResourceDepositRecorderComponent_2147479013
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479012 | Recorder: ResourceDepositRecorderComponent_2147479011
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479010 | Recorder: ResourceDepositRecorderComponent_2147479009
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479008 | Recorder: ResourceDepositRecorderComponent_2147479007
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479006 | Recorder: ResourceDepositRecorderComponent_2147479005
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479004 | Recorder: ResourceDepositRecorderComponent_2147479003
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479002 | Recorder: ResourceDepositRecorderComponent_2147479001
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147479000 | Recorder: ResourceDepositRecorderComponent_2147478999
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478998 | Recorder: ResourceDepositRecorderComponent_2147478997
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478996 | Recorder: ResourceDepositRecorderComponent_2147478995
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478994 | Recorder: ResourceDepositRecorderComponent_2147478993
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478992 | Recorder: ResourceDepositRecorderComponent_2147478991
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478990 | Recorder: ResourceDepositRecorderComponent_2147478989
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478988 | Recorder: ResourceDepositRecorderComponent_2147478987
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478986 | Recorder: ResourceDepositRecorderComponent_2147478985
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478984 | Recorder: ResourceDepositRecorderComponent_2147478983
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478982 | Recorder: ResourceDepositRecorderComponent_2147478981
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478980 | Recorder: ResourceDepositRecorderComponent_2147478979
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478978 | Recorder: ResourceDepositRecorderComponent_2147478977
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478976 | Recorder: ResourceDepositRecorderComponent_2147478975
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478974 | Recorder: ResourceDepositRecorderComponent_2147478973
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478972 | Recorder: ResourceDepositRecorderComponent_2147478971
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478970 | Recorder: ResourceDepositRecorderComponent_2147478969
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478968 | Recorder: ResourceDepositRecorderComponent_2147478967
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478966 | Recorder: ResourceDepositRecorderComponent_2147478965
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478964 | Recorder: ResourceDepositRecorderComponent_2147478963
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478962 | Recorder: ResourceDepositRecorderComponent_2147478961
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478960 | Recorder: ResourceDepositRecorderComponent_2147478959
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478958 | Recorder: ResourceDepositRecorderComponent_2147478957
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478956 | Recorder: ResourceDepositRecorderComponent_2147478955
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478954 | Recorder: ResourceDepositRecorderComponent_2147478953
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478952 | Recorder: ResourceDepositRecorderComponent_2147478951
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478950 | Recorder: ResourceDepositRecorderComponent_2147478949
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478948 | Recorder: ResourceDepositRecorderComponent_2147478947
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478946 | Recorder: ResourceDepositRecorderComponent_2147478945
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478944 | Recorder: ResourceDepositRecorderComponent_2147478943
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478942 | Recorder: ResourceDepositRecorderComponent_2147478941
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478940 | Recorder: ResourceDepositRecorderComponent_2147478939
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478938 | Recorder: ResourceDepositRecorderComponent_2147478937
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478936 | Recorder: ResourceDepositRecorderComponent_2147478935
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478934 | Recorder: ResourceDepositRecorderComponent_2147478933
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478932 | Recorder: ResourceDepositRecorderComponent_2147478931
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478930 | Recorder: ResourceDepositRecorderComponent_2147478929
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478928 | Recorder: ResourceDepositRecorderComponent_2147478927
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478926 | Recorder: ResourceDepositRecorderComponent_2147478925
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478924 | Recorder: ResourceDepositRecorderComponent_2147478923
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478922 | Recorder: ResourceDepositRecorderComponent_2147478921
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478920 | Recorder: ResourceDepositRecorderComponent_2147478919
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478918 | Recorder: ResourceDepositRecorderComponent_2147478917
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478916 | Recorder: ResourceDepositRecorderComponent_2147478915
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478914 | Recorder: ResourceDepositRecorderComponent_2147478913
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478912 | Recorder: ResourceDepositRecorderComponent_2147478911
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478910 | Recorder: ResourceDepositRecorderComponent_2147478909
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478908 | Recorder: ResourceDepositRecorderComponent_2147478907
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478906 | Recorder: ResourceDepositRecorderComponent_2147478905
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478904 | Recorder: ResourceDepositRecorderComponent_2147478903
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478902 | Recorder: ResourceDepositRecorderComponent_2147478901
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478900 | Recorder: ResourceDepositRecorderComponent_2147478899
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478898 | Recorder: ResourceDepositRecorderComponent_2147478897
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478896 | Recorder: ResourceDepositRecorderComponent_2147478895
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478894 | Recorder: ResourceDepositRecorderComponent_2147478893
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478892 | Recorder: ResourceDepositRecorderComponent_2147478891
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478890 | Recorder: ResourceDepositRecorderComponent_2147478889
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478888 | Recorder: ResourceDepositRecorderComponent_2147478887
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478886 | Recorder: ResourceDepositRecorderComponent_2147478885
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478884 | Recorder: ResourceDepositRecorderComponent_2147478883
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478882 | Recorder: ResourceDepositRecorderComponent_2147478881
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478880 | Recorder: ResourceDepositRecorderComponent_2147478879
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478878 | Recorder: ResourceDepositRecorderComponent_2147478877
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478876 | Recorder: ResourceDepositRecorderComponent_2147478875
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478874 | Recorder: ResourceDepositRecorderComponent_2147478873
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478872 | Recorder: ResourceDepositRecorderComponent_2147478871
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478870 | Recorder: ResourceDepositRecorderComponent_2147478869
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478868 | Recorder: ResourceDepositRecorderComponent_2147478867
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478866 | Recorder: ResourceDepositRecorderComponent_2147478865
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478864 | Recorder: ResourceDepositRecorderComponent_2147478863
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478862 | Recorder: ResourceDepositRecorderComponent_2147478861
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478860 | Recorder: ResourceDepositRecorderComponent_2147478859
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478858 | Recorder: ResourceDepositRecorderComponent_2147478857
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478856 | Recorder: ResourceDepositRecorderComponent_2147478855
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478854 | Recorder: ResourceDepositRecorderComponent_2147478853
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478852 | Recorder: ResourceDepositRecorderComponent_2147478851
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478850 | Recorder: ResourceDepositRecorderComponent_2147478849
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478848 | Recorder: ResourceDepositRecorderComponent_2147478847
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478846 | Recorder: ResourceDepositRecorderComponent_2147478845
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478844 | Recorder: ResourceDepositRecorderComponent_2147478843
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478842 | Recorder: ResourceDepositRecorderComponent_2147478841
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478840 | Recorder: ResourceDepositRecorderComponent_2147478839
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478838 | Recorder: ResourceDepositRecorderComponent_2147478837
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478836 | Recorder: ResourceDepositRecorderComponent_2147478835
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478834 | Recorder: ResourceDepositRecorderComponent_2147478833
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478832 | Recorder: ResourceDepositRecorderComponent_2147478831
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478830 | Recorder: ResourceDepositRecorderComponent_2147478829
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478828 | Recorder: ResourceDepositRecorderComponent_2147478827
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478826 | Recorder: ResourceDepositRecorderComponent_2147478825
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478824 | Recorder: ResourceDepositRecorderComponent_2147478823
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478822 | Recorder: ResourceDepositRecorderComponent_2147478821
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478820 | Recorder: ResourceDepositRecorderComponent_2147478819
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478818 | Recorder: ResourceDepositRecorderComponent_2147478817
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478816 | Recorder: ResourceDepositRecorderComponent_2147478815
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478814 | Recorder: ResourceDepositRecorderComponent_2147478813
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478812 | Recorder: ResourceDepositRecorderComponent_2147478811
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478810 | Recorder: ResourceDepositRecorderComponent_2147478809
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478808 | Recorder: ResourceDepositRecorderComponent_2147478807
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478806 | Recorder: ResourceDepositRecorderComponent_2147478805
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478804 | Recorder: ResourceDepositRecorderComponent_2147478803
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478802 | Recorder: ResourceDepositRecorderComponent_2147478801
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478800 | Recorder: ResourceDepositRecorderComponent_2147478799
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478798 | Recorder: ResourceDepositRecorderComponent_2147478797
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478796 | Recorder: ResourceDepositRecorderComponent_2147478795
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478794 | Recorder: ResourceDepositRecorderComponent_2147478793
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478792 | Recorder: ResourceDepositRecorderComponent_2147478791
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478790 | Recorder: ResourceDepositRecorderComponent_2147478789
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478788 | Recorder: ResourceDepositRecorderComponent_2147478787
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478786 | Recorder: ResourceDepositRecorderComponent_2147478785
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478784 | Recorder: ResourceDepositRecorderComponent_2147478783
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478782 | Recorder: ResourceDepositRecorderComponent_2147478781
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478780 | Recorder: ResourceDepositRecorderComponent_2147478779
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478778 | Recorder: ResourceDepositRecorderComponent_2147478777
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478776 | Recorder: ResourceDepositRecorderComponent_2147478775
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478774 | Recorder: ResourceDepositRecorderComponent_2147478773
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478772 | Recorder: ResourceDepositRecorderComponent_2147478771
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478770 | Recorder: ResourceDepositRecorderComponent_2147478769
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478768 | Recorder: ResourceDepositRecorderComponent_2147478767
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478766 | Recorder: ResourceDepositRecorderComponent_2147478765
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478764 | Recorder: ResourceDepositRecorderComponent_2147478763
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478762 | Recorder: ResourceDepositRecorderComponent_2147478761
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478760 | Recorder: ResourceDepositRecorderComponent_2147478759
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478758 | Recorder: ResourceDepositRecorderComponent_2147478757
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478756 | Recorder: ResourceDepositRecorderComponent_2147478755
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478754 | Recorder: ResourceDepositRecorderComponent_2147478753
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478752 | Recorder: ResourceDepositRecorderComponent_2147478751
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478750 | Recorder: ResourceDepositRecorderComponent_2147478749
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478748 | Recorder: ResourceDepositRecorderComponent_2147478747
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478746 | Recorder: ResourceDepositRecorderComponent_2147478745
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478744 | Recorder: ResourceDepositRecorderComponent_2147478743
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478742 | Recorder: ResourceDepositRecorderComponent_2147478741
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478740 | Recorder: ResourceDepositRecorderComponent_2147478739
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478738 | Recorder: ResourceDepositRecorderComponent_2147478737
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478736 | Recorder: ResourceDepositRecorderComponent_2147478735
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478734 | Recorder: ResourceDepositRecorderComponent_2147478733
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478732 | Recorder: ResourceDepositRecorderComponent_2147478731
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478730 | Recorder: ResourceDepositRecorderComponent_2147478729
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478728 | Recorder: ResourceDepositRecorderComponent_2147478727
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478726 | Recorder: ResourceDepositRecorderComponent_2147478725
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478724 | Recorder: ResourceDepositRecorderComponent_2147478723
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478722 | Recorder: ResourceDepositRecorderComponent_2147478721
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478720 | Recorder: ResourceDepositRecorderComponent_2147478719
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478718 | Recorder: ResourceDepositRecorderComponent_2147478717
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478716 | Recorder: ResourceDepositRecorderComponent_2147478715
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478714 | Recorder: ResourceDepositRecorderComponent_2147478713
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478712 | Recorder: ResourceDepositRecorderComponent_2147478711
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478710 | Recorder: ResourceDepositRecorderComponent_2147478709
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478708 | Recorder: ResourceDepositRecorderComponent_2147478707
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478706 | Recorder: ResourceDepositRecorderComponent_2147478705
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478704 | Recorder: ResourceDepositRecorderComponent_2147478703
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478702 | Recorder: ResourceDepositRecorderComponent_2147478701
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478700 | Recorder: ResourceDepositRecorderComponent_2147478699
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478698 | Recorder: ResourceDepositRecorderComponent_2147478697
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478696 | Recorder: ResourceDepositRecorderComponent_2147478695
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478694 | Recorder: ResourceDepositRecorderComponent_2147478693
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478692 | Recorder: ResourceDepositRecorderComponent_2147478691
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478690 | Recorder: ResourceDepositRecorderComponent_2147478689
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478688 | Recorder: ResourceDepositRecorderComponent_2147478687
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478686 | Recorder: ResourceDepositRecorderComponent_2147478685
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478684 | Recorder: ResourceDepositRecorderComponent_2147478683
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478682 | Recorder: ResourceDepositRecorderComponent_2147478681
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478680 | Recorder: ResourceDepositRecorderComponent_2147478679
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478678 | Recorder: ResourceDepositRecorderComponent_2147478677
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478676 | Recorder: ResourceDepositRecorderComponent_2147478675
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478674 | Recorder: ResourceDepositRecorderComponent_2147478673
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478672 | Recorder: ResourceDepositRecorderComponent_2147478671
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478670 | Recorder: ResourceDepositRecorderComponent_2147478669
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478668 | Recorder: ResourceDepositRecorderComponent_2147478667
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478666 | Recorder: ResourceDepositRecorderComponent_2147478665
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478664 | Recorder: ResourceDepositRecorderComponent_2147478663
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478662 | Recorder: ResourceDepositRecorderComponent_2147478661
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478660 | Recorder: ResourceDepositRecorderComponent_2147478659
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478658 | Recorder: ResourceDepositRecorderComponent_2147478657
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478656 | Recorder: ResourceDepositRecorderComponent_2147478655
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478654 | Recorder: ResourceDepositRecorderComponent_2147478653
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478652 | Recorder: ResourceDepositRecorderComponent_2147478651
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478650 | Recorder: ResourceDepositRecorderComponent_2147478649
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478648 | Recorder: ResourceDepositRecorderComponent_2147478647
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478646 | Recorder: ResourceDepositRecorderComponent_2147478645
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478644 | Recorder: ResourceDepositRecorderComponent_2147478643
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478642 | Recorder: ResourceDepositRecorderComponent_2147478641
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478640 | Recorder: ResourceDepositRecorderComponent_2147478639
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478638 | Recorder: ResourceDepositRecorderComponent_2147478637
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478636 | Recorder: ResourceDepositRecorderComponent_2147478635
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478634 | Recorder: ResourceDepositRecorderComponent_2147478633
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478632 | Recorder: ResourceDepositRecorderComponent_2147478631
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478630 | Recorder: ResourceDepositRecorderComponent_2147478629
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478628 | Recorder: ResourceDepositRecorderComponent_2147478627
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478626 | Recorder: ResourceDepositRecorderComponent_2147478625
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478624 | Recorder: ResourceDepositRecorderComponent_2147478623
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478622 | Recorder: ResourceDepositRecorderComponent_2147478621
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478620 | Recorder: ResourceDepositRecorderComponent_2147478619
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478618 | Recorder: ResourceDepositRecorderComponent_2147478617
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478616 | Recorder: ResourceDepositRecorderComponent_2147478615
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478614 | Recorder: ResourceDepositRecorderComponent_2147478613
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478612 | Recorder: ResourceDepositRecorderComponent_2147478611
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478610 | Recorder: ResourceDepositRecorderComponent_2147478609
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478608 | Recorder: ResourceDepositRecorderComponent_2147478607
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478606 | Recorder: ResourceDepositRecorderComponent_2147478605
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478604 | Recorder: ResourceDepositRecorderComponent_2147478603
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478602 | Recorder: ResourceDepositRecorderComponent_2147478601
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478600 | Recorder: ResourceDepositRecorderComponent_2147478599
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478598 | Recorder: ResourceDepositRecorderComponent_2147478597
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478596 | Recorder: ResourceDepositRecorderComponent_2147478595
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478594 | Recorder: ResourceDepositRecorderComponent_2147478593
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478592 | Recorder: ResourceDepositRecorderComponent_2147478591
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478590 | Recorder: ResourceDepositRecorderComponent_2147478589
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478588 | Recorder: ResourceDepositRecorderComponent_2147478587
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478586 | Recorder: ResourceDepositRecorderComponent_2147478585
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478584 | Recorder: ResourceDepositRecorderComponent_2147478583
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478582 | Recorder: ResourceDepositRecorderComponent_2147478581
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478580 | Recorder: ResourceDepositRecorderComponent_2147478579
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478578 | Recorder: ResourceDepositRecorderComponent_2147478577
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478576 | Recorder: ResourceDepositRecorderComponent_2147478575
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478574 | Recorder: ResourceDepositRecorderComponent_2147478573
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478572 | Recorder: ResourceDepositRecorderComponent_2147478571
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478570 | Recorder: ResourceDepositRecorderComponent_2147478569
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478568 | Recorder: ResourceDepositRecorderComponent_2147478567
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478566 | Recorder: ResourceDepositRecorderComponent_2147478565
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478564 | Recorder: ResourceDepositRecorderComponent_2147478563
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478562 | Recorder: ResourceDepositRecorderComponent_2147478561
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478560 | Recorder: ResourceDepositRecorderComponent_2147478559
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478558 | Recorder: ResourceDepositRecorderComponent_2147478557
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478556 | Recorder: ResourceDepositRecorderComponent_2147478555
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478554 | Recorder: ResourceDepositRecorderComponent_2147478553
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478552 | Recorder: ResourceDepositRecorderComponent_2147478551
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478550 | Recorder: ResourceDepositRecorderComponent_2147478549
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478548 | Recorder: ResourceDepositRecorderComponent_2147478547
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478546 | Recorder: ResourceDepositRecorderComponent_2147478545
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478544 | Recorder: ResourceDepositRecorderComponent_2147478543
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478542 | Recorder: ResourceDepositRecorderComponent_2147478541
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478540 | Recorder: ResourceDepositRecorderComponent_2147478539
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478538 | Recorder: ResourceDepositRecorderComponent_2147478537
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478536 | Recorder: ResourceDepositRecorderComponent_2147478535
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478534 | Recorder: ResourceDepositRecorderComponent_2147478533
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478532 | Recorder: ResourceDepositRecorderComponent_2147478531
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478530 | Recorder: ResourceDepositRecorderComponent_2147478529
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478528 | Recorder: ResourceDepositRecorderComponent_2147478527
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478526 | Recorder: ResourceDepositRecorderComponent_2147478525
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478524 | Recorder: ResourceDepositRecorderComponent_2147478523
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478522 | Recorder: ResourceDepositRecorderComponent_2147478521
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478520 | Recorder: ResourceDepositRecorderComponent_2147478519
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478518 | Recorder: ResourceDepositRecorderComponent_2147478517
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478516 | Recorder: ResourceDepositRecorderComponent_2147478515
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478514 | Recorder: ResourceDepositRecorderComponent_2147478513
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478512 | Recorder: ResourceDepositRecorderComponent_2147478511
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478510 | Recorder: ResourceDepositRecorderComponent_2147478509
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478508 | Recorder: ResourceDepositRecorderComponent_2147478507
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478506 | Recorder: ResourceDepositRecorderComponent_2147478505
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478504 | Recorder: ResourceDepositRecorderComponent_2147478503
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478502 | Recorder: ResourceDepositRecorderComponent_2147478501
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478500 | Recorder: ResourceDepositRecorderComponent_2147478499
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478498 | Recorder: ResourceDepositRecorderComponent_2147478497
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478496 | Recorder: ResourceDepositRecorderComponent_2147478495
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478494 | Recorder: ResourceDepositRecorderComponent_2147478493
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478492 | Recorder: ResourceDepositRecorderComponent_2147478491
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478490 | Recorder: ResourceDepositRecorderComponent_2147478489
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478488 | Recorder: ResourceDepositRecorderComponent_2147478487
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478486 | Recorder: ResourceDepositRecorderComponent_2147478485
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478484 | Recorder: ResourceDepositRecorderComponent_2147478483
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478482 | Recorder: ResourceDepositRecorderComponent_2147478481
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478480 | Recorder: ResourceDepositRecorderComponent_2147478479
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478478 | Recorder: ResourceDepositRecorderComponent_2147478477
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_C_2147478476 | Recorder: ResourceDepositRecorderComponent_2147478475
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478474 | Recorder: ResourceDepositRecorderComponent_2147478473
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478472 | Recorder: ResourceDepositRecorderComponent_2147478471
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478470 | Recorder: ResourceDepositRecorderComponent_2147478469
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478468 | Recorder: ResourceDepositRecorderComponent_2147478467
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478466 | Recorder: ResourceDepositRecorderComponent_2147478465
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478464 | Recorder: ResourceDepositRecorderComponent_2147478463
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478462 | Recorder: ResourceDepositRecorderComponent_2147478461
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478460 | Recorder: ResourceDepositRecorderComponent_2147478459
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478458 | Recorder: ResourceDepositRecorderComponent_2147478457
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478456 | Recorder: ResourceDepositRecorderComponent_2147478455
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478454 | Recorder: ResourceDepositRecorderComponent_2147478453
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478452 | Recorder: ResourceDepositRecorderComponent_2147478451
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478450 | Recorder: ResourceDepositRecorderComponent_2147478449
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478448 | Recorder: ResourceDepositRecorderComponent_2147478447
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478446 | Recorder: ResourceDepositRecorderComponent_2147478445
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478444 | Recorder: ResourceDepositRecorderComponent_2147478443
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478442 | Recorder: ResourceDepositRecorderComponent_2147478441
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478440 | Recorder: ResourceDepositRecorderComponent_2147478439
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478438 | Recorder: ResourceDepositRecorderComponent_2147478437
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478436 | Recorder: ResourceDepositRecorderComponent_2147478435
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478434 | Recorder: ResourceDepositRecorderComponent_2147478433
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478432 | Recorder: ResourceDepositRecorderComponent_2147478431
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478430 | Recorder: ResourceDepositRecorderComponent_2147478429
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478428 | Recorder: ResourceDepositRecorderComponent_2147478427
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478426 | Recorder: ResourceDepositRecorderComponent_2147478425
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478424 | Recorder: ResourceDepositRecorderComponent_2147478423
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478422 | Recorder: ResourceDepositRecorderComponent_2147478421
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478420 | Recorder: ResourceDepositRecorderComponent_2147478419
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478418 | Recorder: ResourceDepositRecorderComponent_2147478417
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478416 | Recorder: ResourceDepositRecorderComponent_2147478415
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478414 | Recorder: ResourceDepositRecorderComponent_2147478413
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478412 | Recorder: ResourceDepositRecorderComponent_2147478411
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478410 | Recorder: ResourceDepositRecorderComponent_2147478409
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478408 | Recorder: ResourceDepositRecorderComponent_2147478407
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478406 | Recorder: ResourceDepositRecorderComponent_2147478405
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478404 | Recorder: ResourceDepositRecorderComponent_2147478403
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478402 | Recorder: ResourceDepositRecorderComponent_2147478401
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478400 | Recorder: ResourceDepositRecorderComponent_2147478399
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478398 | Recorder: ResourceDepositRecorderComponent_2147478397
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478396 | Recorder: ResourceDepositRecorderComponent_2147478395
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478394 | Recorder: ResourceDepositRecorderComponent_2147478393
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478392 | Recorder: ResourceDepositRecorderComponent_2147478391
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478390 | Recorder: ResourceDepositRecorderComponent_2147478389
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478388 | Recorder: ResourceDepositRecorderComponent_2147478387
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478386 | Recorder: ResourceDepositRecorderComponent_2147478385
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478384 | Recorder: ResourceDepositRecorderComponent_2147478383
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478382 | Recorder: ResourceDepositRecorderComponent_2147478381
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478380 | Recorder: ResourceDepositRecorderComponent_2147478379
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478378 | Recorder: ResourceDepositRecorderComponent_2147478377
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478376 | Recorder: ResourceDepositRecorderComponent_2147478375
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478374 | Recorder: ResourceDepositRecorderComponent_2147478373
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478372 | Recorder: ResourceDepositRecorderComponent_2147478371
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478370 | Recorder: ResourceDepositRecorderComponent_2147478369
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478368 | Recorder: ResourceDepositRecorderComponent_2147478367
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478366 | Recorder: ResourceDepositRecorderComponent_2147478365
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478364 | Recorder: ResourceDepositRecorderComponent_2147478363
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478362 | Recorder: ResourceDepositRecorderComponent_2147478361
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478360 | Recorder: ResourceDepositRecorderComponent_2147478359
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478358 | Recorder: ResourceDepositRecorderComponent_2147478357
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478356 | Recorder: ResourceDepositRecorderComponent_2147478355
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478354 | Recorder: ResourceDepositRecorderComponent_2147478353
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478352 | Recorder: ResourceDepositRecorderComponent_2147478351
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478350 | Recorder: ResourceDepositRecorderComponent_2147478349
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478348 | Recorder: ResourceDepositRecorderComponent_2147478347
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478346 | Recorder: ResourceDepositRecorderComponent_2147478345
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478344 | Recorder: ResourceDepositRecorderComponent_2147478343
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478342 | Recorder: ResourceDepositRecorderComponent_2147478341
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478340 | Recorder: ResourceDepositRecorderComponent_2147478339
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478338 | Recorder: ResourceDepositRecorderComponent_2147478337
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478336 | Recorder: ResourceDepositRecorderComponent_2147478335
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478334 | Recorder: ResourceDepositRecorderComponent_2147478333
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478332 | Recorder: ResourceDepositRecorderComponent_2147478331
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478330 | Recorder: ResourceDepositRecorderComponent_2147478329
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478328 | Recorder: ResourceDepositRecorderComponent_2147478327
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478326 | Recorder: ResourceDepositRecorderComponent_2147478325
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478324 | Recorder: ResourceDepositRecorderComponent_2147478323
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478322 | Recorder: ResourceDepositRecorderComponent_2147478321
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478320 | Recorder: ResourceDepositRecorderComponent_2147478319
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478318 | Recorder: ResourceDepositRecorderComponent_2147478317
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478316 | Recorder: ResourceDepositRecorderComponent_2147478315
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478314 | Recorder: ResourceDepositRecorderComponent_2147478313
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478312 | Recorder: ResourceDepositRecorderComponent_2147478311
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478310 | Recorder: ResourceDepositRecorderComponent_2147478309
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478308 | Recorder: ResourceDepositRecorderComponent_2147478307
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478306 | Recorder: ResourceDepositRecorderComponent_2147478305
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478304 | Recorder: ResourceDepositRecorderComponent_2147478303
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478302 | Recorder: ResourceDepositRecorderComponent_2147478301
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478300 | Recorder: ResourceDepositRecorderComponent_2147478299
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478298 | Recorder: ResourceDepositRecorderComponent_2147478297
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478296 | Recorder: ResourceDepositRecorderComponent_2147478295
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478294 | Recorder: ResourceDepositRecorderComponent_2147478293
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478292 | Recorder: ResourceDepositRecorderComponent_2147478291
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478290 | Recorder: ResourceDepositRecorderComponent_2147478289
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478288 | Recorder: ResourceDepositRecorderComponent_2147478287
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478286 | Recorder: ResourceDepositRecorderComponent_2147478285
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478284 | Recorder: ResourceDepositRecorderComponent_2147478283
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478282 | Recorder: ResourceDepositRecorderComponent_2147478281
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478280 | Recorder: ResourceDepositRecorderComponent_2147478279
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478278 | Recorder: ResourceDepositRecorderComponent_2147478277
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478276 | Recorder: ResourceDepositRecorderComponent_2147478275
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478274 | Recorder: ResourceDepositRecorderComponent_2147478273
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478272 | Recorder: ResourceDepositRecorderComponent_2147478271
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478270 | Recorder: ResourceDepositRecorderComponent_2147478269
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478268 | Recorder: ResourceDepositRecorderComponent_2147478267
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478266 | Recorder: ResourceDepositRecorderComponent_2147478265
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478264 | Recorder: ResourceDepositRecorderComponent_2147478263
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478262 | Recorder: ResourceDepositRecorderComponent_2147478261
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478260 | Recorder: ResourceDepositRecorderComponent_2147478259
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478258 | Recorder: ResourceDepositRecorderComponent_2147478257
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478256 | Recorder: ResourceDepositRecorderComponent_2147478255
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478254 | Recorder: ResourceDepositRecorderComponent_2147478253
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478252 | Recorder: ResourceDepositRecorderComponent_2147478251
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478250 | Recorder: ResourceDepositRecorderComponent_2147478249
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478248 | Recorder: ResourceDepositRecorderComponent_2147478247
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478246 | Recorder: ResourceDepositRecorderComponent_2147478245
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478244 | Recorder: ResourceDepositRecorderComponent_2147478243
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478242 | Recorder: ResourceDepositRecorderComponent_2147478241
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478240 | Recorder: ResourceDepositRecorderComponent_2147478239
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478238 | Recorder: ResourceDepositRecorderComponent_2147478237
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478236 | Recorder: ResourceDepositRecorderComponent_2147478235
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478234 | Recorder: ResourceDepositRecorderComponent_2147478233
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478232 | Recorder: ResourceDepositRecorderComponent_2147478231
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478230 | Recorder: ResourceDepositRecorderComponent_2147478229
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478228 | Recorder: ResourceDepositRecorderComponent_2147478227
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478226 | Recorder: ResourceDepositRecorderComponent_2147478225
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478224 | Recorder: ResourceDepositRecorderComponent_2147478223
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478222 | Recorder: ResourceDepositRecorderComponent_2147478221
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478220 | Recorder: ResourceDepositRecorderComponent_2147478219
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478218 | Recorder: ResourceDepositRecorderComponent_2147478217
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478216 | Recorder: ResourceDepositRecorderComponent_2147478215
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478214 | Recorder: ResourceDepositRecorderComponent_2147478213
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478212 | Recorder: ResourceDepositRecorderComponent_2147478211
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478210 | Recorder: ResourceDepositRecorderComponent_2147478209
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478208 | Recorder: ResourceDepositRecorderComponent_2147478207
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478206 | Recorder: ResourceDepositRecorderComponent_2147478205
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478204 | Recorder: ResourceDepositRecorderComponent_2147478203
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478202 | Recorder: ResourceDepositRecorderComponent_2147478201
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478200 | Recorder: ResourceDepositRecorderComponent_2147478199
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478198 | Recorder: ResourceDepositRecorderComponent_2147478197
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Ore_Deposit_Cave_C_2147478196 | Recorder: ResourceDepositRecorderComponent_2147478195
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: FLODTile_HeightMap_x6_y2_2147478194 | Recorder: FLODTileRecorderComponent
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Campfire_C_2147478125 | Recorder: DeployableRecorderComponent_2147478122
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Door_Wood_C_2147478096 | Recorder: DeployableRecorderComponent_2147478093
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: FLODTile_HeightMap_x5_y1_2147478078 | Recorder: FLODTileRecorderComponent
+[12:52:02] LogUObjectGlobals: Warning: Failed to find object 'Blueprint None.BP_MetaDeposit_Conifer_C'
+[12:52:02] LogUObjectGlobals: Warning: Failed to find object 'Object None./Game/BP/Objects/World/Resources/Meta/BP_MetaDeposit_Conifer'
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_MetaDeposit_Conifer_C_2147477998 | Recorder: ResourceDepositRecorderComponent_2147477996
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_MetaDeposit_Conifer_C_2147477995 | Recorder: ResourceDepositRecorderComponent_2147477993
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_MetaDeposit_Conifer_C_2147477992 | Recorder: ResourceDepositRecorderComponent_2147477990
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Communication_Upgradeable_C_2147477989 | Recorder: DeployableRecorderComponent_2147477979
+[12:52:02] LogScript: Warning: Script Msg: Attempted to access index 5 from array 'ScreenWidgets' of length 5 in '/Game/BP/Objects/World/Items/Deployables/MissionCommunication/BP_Mission_Communication_Upgradeable.BP_Mission_Communication_Upgradeable_C'!
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Composter_Wood_C_2147477951 | Recorder: DeployableRecorderComponent_2147477950
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Grid_Base_C_2147477928 | Recorder: BuildingGridRecorderComponent_2147477927
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: FLODTile_T016_Generated_x5_y3_2147477001 | Recorder: FLODTileRecorderComponent
+[12:52:02] LogUObjectGlobals: Warning: Failed to find object 'Blueprint None.BP_Mount_Horse_C'
+[12:52:02] LogUObjectGlobals: Warning: Failed to find object 'Object None./Game/BP/Mounts/BP_Mount_Horse'
+[12:52:02] LogTalentGame: Warning: CREATURE_NONE - CreatureTalentController:tried to query the view object when we explicity have stated we don't have one. Please harden the surrounding code to ensure this call is not being invoked erroneously.(HasAuthority: false, IsLocalPlayer: false, IsServer: true)
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mount_Horse_C_2147476988 | Recorder: IcarusMountCharacterRecorderComponent_2147476979
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: FLODTile_T016_Generated_x6_y3_2147476963 | Recorder: FLODTileRecorderComponent
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: FLODTile_HeightMap_x6_y3_2147476955 | Recorder: FLODTileRecorderComponent
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: FLODTile_HeightMap_x5_y3_2147476887 | Recorder: FLODTileRecorderComponent
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: FLODTile_T016_Generated_x3_y1_2147476804 | Recorder: FLODTileRecorderComponent
+[12:52:02] LogUObjectGlobals: Warning: Failed to find object 'Blueprint None.BP_Water_Purifier_T1_Water_C'
+[12:52:02] LogUObjectGlobals: Warning: Failed to find object 'Object None./Game/BP/Objects/World/Items/Deployables/WaterPurifier/BP_Water_Purifier_T1_Water'
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Water_Purifier_T1_Water_C_2147476797 | Recorder: DeployableRecorderComponent_2147476796
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Oxite_Dissolver_C_2147476775 | Recorder: DeployableRecorderComponent_2147476774
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: FLODTile_T016_Generated_x4_y2_2147476733 | Recorder: FLODTileRecorderComponent
+[12:52:02] LogUObjectGlobals: Warning: Failed to find object 'Blueprint None.BP_Seed_Extractor_C'
+[12:52:02] LogUObjectGlobals: Warning: Failed to find object 'Object None./Game/BP/Objects/World/Items/Deployables/Farming/BP_Seed_Extractor'
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Seed_Extractor_C_2147476728 | Recorder: DeployableRecorderComponent_2147476726
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Bed_Bedroll_C_2147476705 | Recorder: BedRecorderComponent_2147476704
+[12:52:02] LogDataTable: Warning: UDataTable::FindRow : 'UTraitComponent::GetDataSafely' requested invalid row 'None' from DataTable '/Engine/Transient.D_Interactable'.
+[12:52:02] LogIcarusTraits: Warning: Failed to retrieve trait data. TraitName: Interactable, TraitOwner: BP_Seat_Bed_C_2147476690, InDataRowHandle: None, RowName: None
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_AlterationBench_C_2147476689 | Recorder: DeployableRecorderComponent_2147476688
+[12:52:02] LogUObjectGlobals: Warning: Failed to find object 'Blueprint None.BP_Wood_Crate_Medium_Flat_C'
+[12:52:02] LogUObjectGlobals: Warning: Failed to find object 'Object None./Game/BP/Objects/World/Items/Deployables/Containers/BP_Wood_Crate_Medium_Flat'
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Wood_Crate_Medium_Flat_C_2147476665 | Recorder: DeployableRecorderComponent_2147476664
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: FLODTile_HeightMap_x4_y2_2147476644 | Recorder: FLODTileRecorderComponent
+[12:52:02] LogUObjectGlobals: Warning: Failed to find object 'Blueprint None.BP_Deep_Mining_Drill_Biofuel_C'
+[12:52:02] LogUObjectGlobals: Warning: Failed to find object 'Object None./Game/BP/Objects/World/Items/Deployables/Drill/BP_Deep_Mining_Drill_Biofuel'
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Drill_Biofuel_C_2147476627 | Recorder: DrillRecorderComponent_2147476625
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Seed_Extractor_C_2147476600 | Recorder: DeployableRecorderComponent_2147476598
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Kitchen_Stove_C_2147476577 | Recorder: DeployableRecorderComponent_2147476576
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_PlanterBox_SML_C_2147476551 | Recorder: CropPlotRecorderComponent_2147476550
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Exotic_Delivery_Interface_C_2147476520 | Recorder: DeployableRecorderComponent_2147476519
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_DryingRack_C_2147476502 | Recorder: DeployableRecorderComponent_2147476501
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Crop_Plot_T2_v2_C_2147476481 | Recorder: CropPlotRecorderComponent_2147476480
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Masonry_Bench_C_2147476452 | Recorder: DeployableRecorderComponent_2147476451
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Crop_Plot_T2_v2_C_2147476430 | Recorder: CropPlotRecorderComponent_2147476429
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Crop_Plot_T2_v2_C_2147476401 | Recorder: CropPlotRecorderComponent_2147476400
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Crop_Plot_T2_v2_C_2147476372 | Recorder: CropPlotRecorderComponent_2147476371
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_IcarusSplineActor_C_2147476343 | Recorder: SplineRecorderComponent
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_PlanterBox_SML_C_2147476340 | Recorder: CropPlotRecorderComponent_2147476339
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_PlanterBox_SML_C_2147476309 | Recorder: CropPlotRecorderComponent_2147476308
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Crop_Plot_T2_v2_C_2147476278 | Recorder: CropPlotRecorderComponent_2147476277
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_PlanterBox_SML_C_2147476249 | Recorder: CropPlotRecorderComponent_2147476248
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Crop_Plot_T2_v2_C_2147476218 | Recorder: CropPlotRecorderComponent_2147476217
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_IceBox_C_2147476189 | Recorder: DeployableRecorderComponent_2147476188
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147476169 | Recorder: SpawnedVoxelRecorderComponent_2147476168
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Carpentry_Bench_C_2147476167 | Recorder: DeployableRecorderComponent_2147476166
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: FLODTile_T016_Generated_x4_y1_2147476144 | Recorder: FLODTileRecorderComponent
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: FLODTile_T016_Generated_x4_y3_2147476134 | Recorder: FLODTileRecorderComponent
+[12:52:02] LogTalentGame: Warning: CREATURE_NONE - CreatureTalentController:tried to query the view object when we explicity have stated we don't have one. Please harden the surrounding code to ensure this call is not being invoked erroneously.(HasAuthority: false, IsLocalPlayer: false, IsServer: true)
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mount_Horse_C_2147476129 | Recorder: IcarusMountCharacterRecorderComponent_2147476122
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_PlanterBox_SML_C_2147476106 | Recorder: CropPlotRecorderComponent_2147476105
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Cement_Mixer_C_2147476075 | Recorder: DeployableRecorderComponent_2147476073
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_WindTurbine_C_2147476050 | Recorder: DeployableRecorderComponent_2147476048
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147476031 | Recorder: SpawnedVoxelRecorderComponent_2147476030
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147476029 | Recorder: SpawnedVoxelRecorderComponent_2147476028
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147476027 | Recorder: SpawnedVoxelRecorderComponent_2147476026
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147476025 | Recorder: SpawnedVoxelRecorderComponent_2147476024
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147476023 | Recorder: SpawnedVoxelRecorderComponent_2147476022
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147476021 | Recorder: SpawnedVoxelRecorderComponent_2147476020
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147476019 | Recorder: SpawnedVoxelRecorderComponent_2147476018
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147476017 | Recorder: SpawnedVoxelRecorderComponent_2147476016
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147476015 | Recorder: SpawnedVoxelRecorderComponent_2147476014
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_IcarusSplineActor_C_2147476013 | Recorder: SplineRecorderComponent
+[12:52:02] LogUObjectGlobals: Warning: Failed to find object 'Blueprint None.BP_Animal_Bench_C'
+[12:52:02] LogUObjectGlobals: Warning: Failed to find object 'Object None./Game/BP/Objects/World/Items/Deployables/CraftingBenches/BP_Animal_Bench'
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Animal_Bench_C_2147476009 | Recorder: DeployableRecorderComponent_2147476008
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Door_Wood_C_2147475986 | Recorder: DeployableRecorderComponent_2147475984
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_PlanterBox_SML_C_2147475969 | Recorder: CropPlotRecorderComponent_2147475968
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Anvil_Bench_T3_C_2147475938 | Recorder: DeployableRecorderComponent_2147475937
+[12:52:02] LogUObjectGlobals: Warning: Failed to find object 'Blueprint None.BP_Faction_Mission_DeployableSnapActor_C'
+[12:52:02] LogUObjectGlobals: Warning: Failed to find object 'Object None./Game/BP/Objects/World/Items/WorldObjects/Missions/BP_Faction_Mission_DeployableSnapActor'
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Faction_Mission_DeployableSnapActor_C_2147475913 | Recorder: ActorStateRecorderComponent_2147475912
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: FLODTile_HeightMap_x3_y0_2147475909 | Recorder: FLODTileRecorderComponent
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: FLODTile_HeightMap_x4_y1_2147475845 | Recorder: FLODTileRecorderComponent
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: FLODTile_HeightMap_x5_y0_2147475767 | Recorder: FLODTileRecorderComponent
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: FLODTile_HeightMap_x4_y0_2147475705 | Recorder: FLODTileRecorderComponent
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: FLODTile_HeightMap_x3_y1_2147475642 | Recorder: FLODTileRecorderComponent
+[12:52:02] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_PlanterBox_SML_C_2147475518 | Recorder: CropPlotRecorderComponent_2147475517
+[12:52:02] LogUObjectGlobals: Warning: Failed to find object 'Blueprint None.BP_Homestead_Kitchen_Bench_C'
+[12:52:02] LogUObjectGlobals: Warning: Failed to find object 'Object None./Game/BP/Objects/World/Items/Deployables/CraftingBenches/BP_Homestead_Kitchen_Bench'
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Homestead_Kitchen_Bench_C_2147475486 | Recorder: DeployableRecorderComponent_2147475485
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Composter_C_2147475461 | Recorder: DeployableRecorderComponent_2147475460
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_SnareTrap_C_2147475438 | Recorder: CharacterTrapRecorderComponent_2147475435
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_SnareTrap_C_2147475417 | Recorder: CharacterTrapRecorderComponent_2147475414
+[12:52:03] LogUObjectGlobals: Warning: Failed to find object 'Blueprint None.BP_Tamed_Wolf_C'
+[12:52:03] LogUObjectGlobals: Warning: Failed to find object 'Object None./Game/BP/Mounts/BP_Tamed_Wolf'
+[12:52:03] LogTalentGame: Warning: CREATURE_NONE - CreatureTalentController:tried to query the view object when we explicity have stated we don't have one. Please harden the surrounding code to ensure this call is not being invoked erroneously.(HasAuthority: false, IsLocalPlayer: false, IsServer: true)
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Tamed_Wolf_C_2147475390 | Recorder: IcarusMountCharacterRecorderComponent_2147475381
+[12:52:03] LogTemp: Warning: Server's TalentCount: 8
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_SnareTrap_C_2147475367 | Recorder: CharacterTrapRecorderComponent_2147475364
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_SnareTrap_C_2147475348 | Recorder: CharacterTrapRecorderComponent_2147475345
+[12:52:03] LogTalentGame: Warning: CREATURE_NONE - CreatureTalentController:tried to query the view object when we explicity have stated we don't have one. Please harden the surrounding code to ensure this call is not being invoked erroneously.(HasAuthority: false, IsLocalPlayer: false, IsServer: true)
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Tamed_Wolf_C_2147475329 | Recorder: IcarusMountCharacterRecorderComponent_2147475322
+[12:52:03] LogTemp: Warning: Server's TalentCount: 5
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147475306 | Recorder: SpawnedVoxelRecorderComponent_2147475305
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147475304 | Recorder: SpawnedVoxelRecorderComponent_2147475303
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147475302 | Recorder: SpawnedVoxelRecorderComponent_2147475301
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147475300 | Recorder: SpawnedVoxelRecorderComponent_2147475299
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147475298 | Recorder: SpawnedVoxelRecorderComponent_2147475297
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147475296 | Recorder: SpawnedVoxelRecorderComponent_2147475295
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147475294 | Recorder: SpawnedVoxelRecorderComponent_2147475293
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147475292 | Recorder: SpawnedVoxelRecorderComponent_2147475291
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147475290 | Recorder: SpawnedVoxelRecorderComponent_2147475289
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147475288 | Recorder: SpawnedVoxelRecorderComponent_2147475287
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_IcarusSplineActor_C_2147475286 | Recorder: SplineRecorderComponent
+[12:52:03] LogTalentGame: Warning: CREATURE_NONE - CreatureTalentController:tried to query the view object when we explicity have stated we don't have one. Please harden the surrounding code to ensure this call is not being invoked erroneously.(HasAuthority: false, IsLocalPlayer: false, IsServer: true)
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Tamed_Wolf_C_2147475283 | Recorder: IcarusMountCharacterRecorderComponent_2147475276
+[12:52:03] LogTemp: Warning: Server's TalentCount: 7
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_IcarusSplineActor_C_2147475262 | Recorder: SplineRecorderComponent
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_PlanterBox_SML_C_2147475259 | Recorder: CropPlotRecorderComponent_2147475258
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_IcarusSplineActor_C_2147475228 | Recorder: SplineRecorderComponent
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_PlanterBox_SML_C_2147475225 | Recorder: CropPlotRecorderComponent_2147475224
+[12:52:03] LogTalentGame: Warning: CREATURE_NONE - CreatureTalentController:tried to query the view object when we explicity have stated we don't have one. Please harden the surrounding code to ensure this call is not being invoked erroneously.(HasAuthority: false, IsLocalPlayer: false, IsServer: true)
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Tamed_Wolf_C_2147475194 | Recorder: IcarusMountCharacterRecorderComponent_2147475187
+[12:52:03] LogTemp: Warning: Server's TalentCount: 6
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Water_Trough_C_2147475173 | Recorder: DeployableRecorderComponent_2147475172
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_IcarusSplineActor_C_2147475154 | Recorder: SplineRecorderComponent
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_IcarusSplineActor_C_2147475151 | Recorder: SplineRecorderComponent
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_PlanterBox_SML_C_2147475148 | Recorder: CropPlotRecorderComponent_2147475147
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_PlanterBox_SML_C_2147475118 | Recorder: CropPlotRecorderComponent_2147475117
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_PlanterBox_SML_C_2147475087 | Recorder: CropPlotRecorderComponent_2147475086
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_PlanterBox_SML_C_2147475056 | Recorder: CropPlotRecorderComponent_2147475055
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_PlanterBox_SML_C_2147475025 | Recorder: CropPlotRecorderComponent_2147475024
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_IcarusSplineActor_C_2147474994 | Recorder: SplineRecorderComponent
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_PlanterBox_SML_C_2147474991 | Recorder: CropPlotRecorderComponent_2147474990
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_PlanterBox_SML_C_2147474960 | Recorder: CropPlotRecorderComponent_2147474959
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_PlanterBox_SML_C_2147474929 | Recorder: CropPlotRecorderComponent_2147474928
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_PlanterBox_SML_C_2147474898 | Recorder: CropPlotRecorderComponent_2147474897
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Smoker_T3_C_2147474867 | Recorder: DeployableRecorderComponent_2147474866
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Food_Trough_C_2147474841 | Recorder: DeployableRecorderComponent_2147474840
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Composter_C_2147474822 | Recorder: DeployableRecorderComponent_2147474821
+[12:52:03] LogUObjectGlobals: Warning: Failed to find object 'Blueprint None.BP_Water_Barrel_C'
+[12:52:03] LogUObjectGlobals: Warning: Failed to find object 'Object None./Game/BP/Objects/World/Items/Deployables/Batteries/BP_Water_Barrel'
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Water_Barrel_C_2147474799 | Recorder: DeployableRecorderComponent_2147474798
+[12:52:03] LogResourceComponent: Warning: Multiple resource storage components attached to 'BP_Water_Barrel_C_2147474799'!
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_IcarusSplineActor_C_2147474778 | Recorder: SplineRecorderComponent
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147474775 | Recorder: SpawnedVoxelRecorderComponent_2147474774
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Drill_Biofuel_C_2147474773 | Recorder: DrillRecorderComponent_2147474771
+[12:52:03] LogUObjectGlobals: Warning: Failed to find object 'Blueprint None.BP_DeadProspect_Dynamic_C'
+[12:52:03] LogUObjectGlobals: Warning: Failed to find object 'Object None./Game/BP/Objects/World/Items/WorldObjects/Missions/BP_DeadProspect_Dynamic'
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_DeadProspect_Dynamic_C_2147474748 | Recorder: ActorStateRecorderComponent_2147474747
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_IcarusSplineActor_C_2147474744 | Recorder: SplineRecorderComponent
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_IcarusSplineActor_C_2147474741 | Recorder: SplineRecorderComponent
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_IcarusSplineActor_C_2147474738 | Recorder: SplineRecorderComponent
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_IcarusSplineActor_C_2147474735 | Recorder: SplineRecorderComponent
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_IcarusSplineActor_C_2147474732 | Recorder: SplineRecorderComponent
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_IcarusSplineActor_C_2147474729 | Recorder: SplineRecorderComponent
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_IcarusSplineActor_C_2147474726 | Recorder: SplineRecorderComponent
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_IcarusSplineActor_C_2147474723 | Recorder: SplineRecorderComponent
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_IcarusSplineActor_C_2147474720 | Recorder: SplineRecorderComponent
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_IcarusSplineActor_C_2147474717 | Recorder: SplineRecorderComponent
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Drill_Biofuel_C_2147474714 | Recorder: DrillRecorderComponent_2147474712
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_IcarusSplineActor_C_2147474689 | Recorder: SplineRecorderComponent
+[12:52:03] LogUObjectGlobals: Warning: Failed to find object 'Blueprint None.BP_Biofuel_WaterPump_C'
+[12:52:03] LogUObjectGlobals: Warning: Failed to find object 'Object None./Game/BP/Objects/World/Items/Deployables/Pump/BP_Biofuel_WaterPump'
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Biofuel_WaterPump_C_2147474686 | Recorder: DeployableRecorderComponent_2147474685
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_IcarusSplineActor_C_2147474664 | Recorder: SplineRecorderComponent
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_IcarusSplineActor_C_2147474661 | Recorder: SplineRecorderComponent
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_IcarusSplineActor_C_2147474658 | Recorder: SplineRecorderComponent
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_IcarusSplineActor_C_2147474655 | Recorder: SplineRecorderComponent
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_IcarusSplineActor_C_2147474652 | Recorder: SplineRecorderComponent
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_IcarusSplineActor_C_2147474649 | Recorder: SplineRecorderComponent
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147474646 | Recorder: SpawnedVoxelRecorderComponent_2147474645
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_GlassworkingBench_V2_C_2147474644 | Recorder: DeployableRecorderComponent_2147474643
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_IcarusSplineActor_C_2147474620 | Recorder: SplineRecorderComponent
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_IcarusSplineActor_C_2147474617 | Recorder: SplineRecorderComponent
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_IcarusSplineActor_C_2147474614 | Recorder: SplineRecorderComponent
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_PlanterBox_SML_C_2147474611 | Recorder: CropPlotRecorderComponent_2147474610
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_IcarusSplineActor_C_2147474580 | Recorder: SplineRecorderComponent
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_IcarusSplineActor_C_2147474577 | Recorder: SplineRecorderComponent
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_IcarusSplineActor_C_2147474574 | Recorder: SplineRecorderComponent
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_IcarusSplineActor_C_2147474571 | Recorder: SplineRecorderComponent
+[12:52:03] LogUObjectGlobals: Warning: Failed to find object 'Blueprint None.BP_Water_Purifier_T2_C'
+[12:52:03] LogUObjectGlobals: Warning: Failed to find object 'Object None./Game/BP/Objects/World/Items/Deployables/WaterPurifier/BP_Water_Purifier_T2'
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Water_Purifier_T2_C_2147474567 | Recorder: DeployableRecorderComponent_2147474566
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_IcarusSplineActor_C_2147474516 | Recorder: SplineRecorderComponent
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_IcarusSplineActor_C_2147474513 | Recorder: SplineRecorderComponent
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: FLODTile_T016_Generated_x3_y2_2147474510 | Recorder: FLODTileRecorderComponent
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: FLODTile_HeightMap_x3_y2_2147474506 | Recorder: FLODTileRecorderComponent
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_IcarusSplineActor_C_2147474467 | Recorder: SplineRecorderComponent
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_IcarusSplineActor_C_2147474464 | Recorder: SplineRecorderComponent
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_IcarusSplineActor_C_2147474461 | Recorder: SplineRecorderComponent
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_IcarusSplineActor_C_2147474458 | Recorder: SplineRecorderComponent
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147474455 | Recorder: SpawnedVoxelRecorderComponent_2147474454
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147474453 | Recorder: SpawnedVoxelRecorderComponent_2147474452
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147474451 | Recorder: SpawnedVoxelRecorderComponent_2147474450
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147474449 | Recorder: SpawnedVoxelRecorderComponent_2147474448
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147474447 | Recorder: SpawnedVoxelRecorderComponent_2147474446
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147474445 | Recorder: SpawnedVoxelRecorderComponent_2147474444
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147474443 | Recorder: SpawnedVoxelRecorderComponent_2147474442
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147474441 | Recorder: SpawnedVoxelRecorderComponent_2147474440
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147474439 | Recorder: SpawnedVoxelRecorderComponent_2147474438
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147474437 | Recorder: SpawnedVoxelRecorderComponent_2147474436
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147474435 | Recorder: SpawnedVoxelRecorderComponent_2147474434
+[12:52:03] LogTalentGame: Warning: CREATURE_NONE - CreatureTalentController:tried to query the view object when we explicity have stated we don't have one. Please harden the surrounding code to ensure this call is not being invoked erroneously.(HasAuthority: false, IsLocalPlayer: false, IsServer: true)
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Tamed_Wolf_C_2147474433 | Recorder: IcarusMountCharacterRecorderComponent_2147474426
+[12:52:03] LogTemp: Warning: Server's TalentCount: 6
+[12:52:03] LogTalentGame: Warning: CREATURE_NONE - CreatureTalentController:tried to query the view object when we explicity have stated we don't have one. Please harden the surrounding code to ensure this call is not being invoked erroneously.(HasAuthority: false, IsLocalPlayer: false, IsServer: true)
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Tamed_Wolf_C_2147474412 | Recorder: IcarusMountCharacterRecorderComponent_2147474405
+[12:52:03] LogTemp: Warning: Server's TalentCount: 5
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_IcarusSplineActor_C_2147474391 | Recorder: SplineRecorderComponent
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_IcarusSplineActor_C_2147474388 | Recorder: SplineRecorderComponent
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_PlanterBox_SML_C_2147474385 | Recorder: CropPlotRecorderComponent_2147474384
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_IcarusSplineActor_C_2147474354 | Recorder: SplineRecorderComponent
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_IcarusSplineActor_C_2147474351 | Recorder: SplineRecorderComponent
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_PlanterBox_SML_C_2147474348 | Recorder: CropPlotRecorderComponent_2147474347
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_PlanterBox_SML_C_2147474317 | Recorder: CropPlotRecorderComponent_2147474316
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_PlanterBox_SML_C_2147474286 | Recorder: CropPlotRecorderComponent_2147474285
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_IcarusSplineActor_C_2147474255 | Recorder: SplineRecorderComponent
+[12:52:03] LogTalentGame: Warning: CREATURE_NONE - CreatureTalentController:tried to query the view object when we explicity have stated we don't have one. Please harden the surrounding code to ensure this call is not being invoked erroneously.(HasAuthority: false, IsLocalPlayer: false, IsServer: true)
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Tamed_Wolf_C_2147474252 | Recorder: IcarusMountCharacterRecorderComponent_2147474245
+[12:52:03] LogTemp: Warning: Server's TalentCount: 6
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_IcarusSplineActor_C_2147474231 | Recorder: SplineRecorderComponent
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_IcarusSplineActor_C_2147474228 | Recorder: SplineRecorderComponent
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147474225 | Recorder: SpawnedVoxelRecorderComponent_2147474224
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_IcarusSplineActor_C_2147474223 | Recorder: SplineRecorderComponent
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_IcarusSplineActor_C_2147474220 | Recorder: SplineRecorderComponent
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_IcarusSplineActor_C_2147474217 | Recorder: SplineRecorderComponent
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_IcarusSplineActor_C_2147474214 | Recorder: SplineRecorderComponent
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_IcarusSplineActor_C_2147474211 | Recorder: SplineRecorderComponent
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_IcarusSplineActor_C_2147474208 | Recorder: SplineRecorderComponent
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147474205 | Recorder: SpawnedVoxelRecorderComponent_2147474204
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_PlanterBox_SML_C_2147474203 | Recorder: CropPlotRecorderComponent_2147474202
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_PlanterBox_SML_C_2147474172 | Recorder: CropPlotRecorderComponent_2147474171
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_PlanterBox_SML_C_2147474141 | Recorder: CropPlotRecorderComponent_2147474140
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_WindTurbine_C_2147474110 | Recorder: DeployableRecorderComponent_2147474108
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Advanced_Armor_Bench_C_2147474091 | Recorder: DeployableRecorderComponent_2147474090
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_PlanterBox_SML_C_2147474068 | Recorder: CropPlotRecorderComponent_2147474067
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_PlanterBox_SML_C_2147474037 | Recorder: CropPlotRecorderComponent_2147474036
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_PlanterBox_SML_C_2147474006 | Recorder: CropPlotRecorderComponent_2147474005
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_PlanterBox_SML_C_2147473975 | Recorder: CropPlotRecorderComponent_2147473974
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_PlanterBox_SML_C_2147473944 | Recorder: CropPlotRecorderComponent_2147473943
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_PlanterBox_SML_C_2147473913 | Recorder: CropPlotRecorderComponent_2147473912
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_PlanterBox_SML_C_2147473882 | Recorder: CropPlotRecorderComponent_2147473881
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_PlanterBox_SML_C_2147473851 | Recorder: CropPlotRecorderComponent_2147473850
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_PlanterBox_SML_C_2147473820 | Recorder: CropPlotRecorderComponent_2147473819
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_IcarusSplineActor_C_2147473789 | Recorder: SplineRecorderComponent
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147473786 | Recorder: SpawnedVoxelRecorderComponent_2147473785
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147473784 | Recorder: SpawnedVoxelRecorderComponent_2147473783
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_IcarusSplineActor_C_2147473782 | Recorder: SplineRecorderComponent
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147473779 | Recorder: SpawnedVoxelRecorderComponent_2147473778
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Fabricator_C_2147473777 | Recorder: DeployableRecorderComponent_2147473776
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_ElectricFurnace_Large_C_2147473753 | Recorder: DeployableRecorderComponent_2147473752
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_IcarusSplineActor_C_2147473729 | Recorder: SplineRecorderComponent
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Deep_Mining_Drill_Biofuel_C_2147473726 | Recorder: DrillRecorderComponent_2147473724
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_WindTurbine_C_2147473701 | Recorder: DeployableRecorderComponent_2147473699
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_MaterialProcessor_C_2147473680 | Recorder: DeployableRecorderComponent_2147473679
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_IcarusDynamicDropShipSpawn_C_2147473656 | Recorder: DynamicRocketSpawnRecorderComponent_2147473655
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147473614 | Recorder: SpawnedVoxelRecorderComponent_2147473613
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147473612 | Recorder: SpawnedVoxelRecorderComponent_2147473611
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147473610 | Recorder: SpawnedVoxelRecorderComponent_2147473609
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147473608 | Recorder: SpawnedVoxelRecorderComponent_2147473607
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147473606 | Recorder: SpawnedVoxelRecorderComponent_2147473605
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147473604 | Recorder: SpawnedVoxelRecorderComponent_2147473603
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147473602 | Recorder: SpawnedVoxelRecorderComponent_2147473601
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147473600 | Recorder: SpawnedVoxelRecorderComponent_2147473599
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Mission_Meta_Voxel_C_2147473598 | Recorder: SpawnedVoxelRecorderComponent_2147473597
+[12:52:03] LogUObjectGlobals: Warning: Failed to find object 'Blueprint None.BPQ_DYN_Collect_C'
+[12:52:03] LogUObjectGlobals: Warning: Failed to find object 'Object None./Game/BP/Quests/Dynamic/Collect/BPQ_DYN_Collect'
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BPQ_DYN_Collect_C_2147473596 | Recorder: IcarusQuestRecorderComponent_2147473595
+[12:52:03] Server is ready for players!
+[12:52:03] Sentinel: Triggering 'Server Started' notification...
+[12:52:03] LogUObjectGlobals: Warning: Failed to find object 'Blueprint None.BPQ_DYN_Collect_Deliver_C'
+[12:52:03] LogUObjectGlobals: Warning: Failed to find object 'Object None./Game/BP/Quests/Dynamic/Collect/BPQ_DYN_Collect_Deliver'
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BPQ_DYN_Collect_Deliver_C_2147473594 | Recorder: IcarusQuestRecorderComponent_2147473593
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Retrieval_Transport_Pod_C_2147473592 | Recorder: ActorStateRecorderComponent_2147473591
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_MapSearchArea_C_2147473586 | Recorder: MapSearchAreaRecorder_2147473585
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_DeadProspect_Dynamic_C_2147473582 | Recorder: ActorStateRecorderComponent_2147473581
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_DeadProspect_Dynamic_C_2147473578 | Recorder: ActorStateRecorderComponent_2147473577
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_DeadProspect_Dynamic_C_2147473574 | Recorder: ActorStateRecorderComponent_2147473573
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_DeadProspect_Dynamic_C_2147473570 | Recorder: ActorStateRecorderComponent_2147473569
+[12:52:03] LogIcarusStateRecorderComponent: Display: BeginRecording - OwningActor: BP_Anvil_Bench_T4_C_2147473566 | Recorder: DeployableRecorderComponent_2147473564
+[12:52:03] LogIcarusGameStateRecording: Display: ReadFromProspectSaveState complete
+[12:52:03] LogStreamableManager: Error: RequestAsyncLoad called with empty or only null assets!
