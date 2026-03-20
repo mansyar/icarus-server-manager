@@ -8,14 +8,14 @@ Establish the foundation for bundling assets into the application code for porta
 - [x] Task: Write unit tests in `tests/test_resources.py` to verify `QIcon(":/icons/app_icon.png")` returns a valid icon. 3cd9bb9
 - [x] Task: Conductor - User Manual Verification 'Phase 1: Resource Management & Scaffolding' (Protocol in workflow.md) a4c5d85
 
-## Phase 2: UI Application
+## Phase 2: UI Application [checkpoint: cdc413f]
 Apply the icon across the primary user interfaces.
 
 - [x] Task: Update `icarus_sentinel/ui/main_window.py` to import `resources_rc` and set the window icon using `self.setWindowIcon(QIcon(":/icons/app_icon.png"))`. 386bfec
 - [x] Task: Update `icarus_sentinel/ui/about_view.py` to import `resources_rc` and display `app_icon.png` in a `QLabel` (Pixmap). c192846
 - [x] Task: Update `icarus_sentinel/main.py` to implement a `QSplashScreen` that displays `app_icon.png` during the initialization phase. 8be9686
 - [x] Task: Write UI tests in `tests/test_ui_icons.py` to verify the main window has the correct icon set. ce5a8c5
-- [ ] Task: Conductor - User Manual Verification 'Phase 2: UI Application' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 2: UI Application' (Protocol in workflow.md) cdc413f
 
 ## Phase 3: Build & Distribution
 Ensure the visual identity is preserved in the compiled executable.
