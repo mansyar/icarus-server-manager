@@ -18,9 +18,9 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 2: Core Logic (Auto-Sync Triggers)' (78d0698)
 
 ## Phase 3: UI Implementation
-- [ ] Task: Create `ToggleSwitch` Component
+- [x] Task: Create `ToggleSwitch` Component (151bca3)
     - Create `icarus_sentinel/ui/components.py` with a custom styled toggle switch (orange/charcoal).
-- [ ] Task: Update `SaveSyncView` UI
+- [x] Task: Update `SaveSyncView` UI (f940c14)
     - Add the two toggles and a SteamID selection memory to `icarus_sentinel/ui/save_sync.py`.
     - Ensure the toggles and selection are connected to save their state.
 - [ ] Task: Conductor - User Manual Verification 'Phase 3: UI Implementation' (Protocol in workflow.md)
