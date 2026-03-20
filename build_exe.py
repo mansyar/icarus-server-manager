@@ -21,6 +21,7 @@ def build():
         "--onefile",
         "--windowed",
         "--clean",
+        "--icon=assets/app_icon.png",
         "--version-file=version_info.txt",
     ]
     
