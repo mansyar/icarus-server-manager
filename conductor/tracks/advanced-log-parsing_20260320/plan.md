@@ -1,6 +1,6 @@
 # Implementation Plan: Advanced Log Parsing & Desktop Notifications
 
-## Phase 1: Configuration & UI Updates
+## Phase 1: Configuration & UI Updates [checkpoint: 226ce66]
 - [x] Task: Update Configuration Model 87d3e4b
     - [ ] Write tests for new notification settings in the configuration manager.
     - [ ] Implement default settings and serialization logic for notification preferences.
@@ -8,7 +8,7 @@
     - [ ] Write tests to verify new UI toggle switches exist in the Configuration tab.
     - [ ] Implement the UI components (checkboxes for Server Started, Player Join/Leave, Crash/Error).
     - [ ] Connect UI signals to the configuration manager to save preferences on toggle.
-- [ ] Task: Conductor - User Manual Verification 'Configuration & UI Updates' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Configuration & UI Updates' (Protocol in workflow.md) 226ce66
 
 ## Phase 2: Console Color-Coding
 - [ ] Task: Enhance Persistent Console Widget
