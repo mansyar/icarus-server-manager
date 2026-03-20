@@ -31,3 +31,38 @@ def test_server_manager_save_load_auto_sync_state(state_file):
     assert new_manager.auto_sync_on_start is True
     assert new_manager.auto_sync_on_stop is True
     assert new_manager.selected_steam_id == "123456789"
+
+def test_controller_save_sentinel_settings_auto_sync(manager):
+    from icarus_sentinel.controller import Controller
+    from unittest.mock import MagicMock
+    
+    mock_ui = MagicMock()
+    mock_ui.server_manager = manager
+    mock_ui.backup_manager = MagicMock()
+    mock_ui.backup_manager.interval_minutes = 30.0
+    
+    controller = Controller(mock_ui)
+    
+    settings_data = {
+        "auto_sync_on_start": True,
+        "auto_sync_on_stop": True,
+        "selected_steam_id": "987654321",
+        "ram_threshold": "14.0",
+        "smart_restart": True,
+        "restart_time": "05:00",
+        "backup_interval": "60.0",
+        "retention_limit": "100",
+        "notify_server_started": False,
+        "notify_player_activity": False,
+        "notify_server_error": False
+    }
+    
+    controller.save_sentinel_settings(settings_data)
+    
+    assert manager.auto_sync_on_start is True
+    assert manager.auto_sync_on_stop is True
+    assert manager.selected_steam_id == "987654321"
+    assert manager.ram_threshold_gb == 14.0
+    assert manager.smart_restart_enabled is True
+    assert manager.smart_restart_time == "05:00"
+    assert manager.notify_server_started is False

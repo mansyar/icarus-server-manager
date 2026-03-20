@@ -217,6 +217,11 @@ class Controller(QObject):
             self.ui.server_manager.notify_player_activity = data.get("notify_player_activity", True)
             self.ui.server_manager.notify_server_error = data.get("notify_server_error", True)
             
+            # Auto-Sync Toggles
+            self.ui.server_manager.auto_sync_on_start = data.get("auto_sync_on_start", False)
+            self.ui.server_manager.auto_sync_on_stop = data.get("auto_sync_on_stop", False)
+            self.ui.server_manager.selected_steam_id = data.get("selected_steam_id")
+            
             self.ui.server_manager.save_state()
             self.ui.log("Sentinel settings saved.")
         except Exception as e:
