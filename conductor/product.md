@@ -55,6 +55,15 @@
 * **Requirement 5.4:** Automatic creation of the server's mod directory if missing.
 * **Requirement 5.5:** "Client Sync Warning" to inform users about mod version matching.
 
+### 4.6 Advanced Logging & Notifications
+* **Requirement 6.1:** Real-time log parsing for key server events:
+    * **Server Started:** Detection of successful server initialization.
+    * **Player Activity:** Detection of player join and leave events.
+    * **Server Errors:** Detection of crashes or fatal log entries.
+* **Requirement 6.2:** Native Windows desktop notifications (toasts) for all parsed events.
+* **Requirement 6.3:** User-configurable notification toggles within the Settings tab.
+* **Requirement 6.4:** Color-coded console output to distinguish between Sentinel (Blue) and Server (Orange) logs.
+
 ---
 
 ## 5. Core Workflows (The Logic Flow)
@@ -131,7 +140,7 @@
 ### 4.1 Server Lifecycle Management
 * **Requirement 1.1:** Auto-install/update server via SteamCMD (AppID: 2089300).
 * **Requirement 1.2:** One-click Start/Stop/Restart functionality.
-* **Requirement 1.3:** Optional "Update on Launch" check.
+* **Requirement 1.3:** Optional "Update on Launch" check with real-time log streaming.
 * **Requirement 1.4:** Crash detection with optional auto-restart. Specifically, implement a **Hybrid** recovery system that auto-restarts the server up to 3 times before prompting the user if failures continue.
 
 ### 4.2 Smart Resource Management
@@ -143,13 +152,13 @@
 ### 4.3 Configuration & Backup
 * **Requirement 3.1:** GUI for basic settings (Name, Password, Admin ID, Port).
 * **Requirement 3.2:** Advanced tab for direct `.ini` file manipulation.
-* **Requirement 3.3:** Automated `.zip backups every 30m and upon shutdown.
+* **Requirement 3.3:** Automated `.zip` backups every 30m and upon shutdown.
 * **Requirement 3.4:** Backup browser with one-click restore (overwrite current save with backup).
 * **Requirement 3.5:** Backup Retention: Permanently **Delete Oldest** backups when the retention limit is reached to save space.
 
 ### 4.4 UI/UX Experience
 * **Requirement 4.1:** **Detailed Feedback:** Display real-time console output from SteamCMD and server initialization within a persistent, monospace orange-on-black textbox anchored at the bottom of the window.
-* **Requirement 4.2:** **Sidebar-Driven Navigation:** Utilize a fixed left-aligned sidebar for primary navigation, separating functional views (Dashboard, Configuration, Save Sync, etc.) without top-level tabs.
+* **Requirement 4.2:** **Sidebar-Driven Navigation:** Utilize a fixed left-aligned sidebar for primary navigation, separating functional views (Dashboard, Configuration, Save Sync, etc.) without top-level tabs. Use color-coded legend (Sentinel, Server, Success, Error) for the console.
 * **Requirement 4.3:** **Brand Visual Identity:** Apply a consistent dark charcoal and orange brand theme across the application, featuring massive, bold action buttons and horizontal progress bars for resource metrics.
 * **Requirement 4.4:** **About & Versioning:** Clearly display the application version and provide an "About" dialog for credits and system information.
 * **Requirement 4.5:** **Player Activity Tracking:**
@@ -157,6 +166,7 @@
     * **Requirement 4.5.2:** Dedicated "Players" tab for displaying connected player names, playtime, and scores.
     * **Requirement 4.5.3:** Automatic UI updates every 5 seconds without blocking the main thread.
     * **Requirement 4.5.4:** Graceful handling of offline or unreachable server states with clear UI feedback.
+* **Requirement 4.6:** **Desktop Notifications:** Integrated Windows toast notifications for server lifecycle and player events, configurable by the user.
 
 ### 4.6 Mod Management
 * **Requirement 5.1:** Dedicated "Mods" tab for installing and listing server mods.
