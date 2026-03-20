@@ -211,13 +211,15 @@ class ConsoleWidget(QFrame):
         container = QWidget()
         layout = QHBoxLayout(container)
         layout.setContentsMargins(0, 0, 0, 0)
-        layout.setSpacing(4)
+        layout.setSpacing(6)
+        layout.setAlignment(Qt.AlignVCenter)
         
         dot = QLabel("●")
-        dot.setStyleSheet(f"color: {color}; font-size: 14px; background: transparent;")
+        # Set a slightly smaller font size for the dot and ensure no padding/margins
+        dot.setStyleSheet(f"color: {color}; font-size: 12px; background: transparent; padding: 0px; margin: 0px;")
         
         label = QLabel(text)
-        label.setStyleSheet("color: #888; font-family: 'Segoe UI'; font-size: 10px; font-weight: bold; background: transparent;")
+        label.setStyleSheet("color: #888; font-family: 'Segoe UI'; font-size: 10px; font-weight: bold; background: transparent; padding: 0px; margin: 0px;")
         
         layout.addWidget(dot)
         layout.addWidget(label)

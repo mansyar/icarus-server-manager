@@ -177,13 +177,15 @@ class ConfigView(QWidget):
         
         layout.addWidget(path_frame)
 
-        # 2. Settings Grid
-        grid_frame = QFrame()
-        grid_layout = QGridLayout(grid_frame)
-        grid_layout.setSpacing(15)
+        # 2. Settings Form
+        settings_frame = QFrame()
+        settings_layout = QFormLayout(settings_frame)
+        settings_layout.setSpacing(15)
+        settings_layout.setContentsMargins(0, 0, 0, 0)
+        settings_layout.setFieldGrowthPolicy(QFormLayout.FieldsStayAtSizeHint)
         
         label_style = "color: #BBB; font-weight: bold; font-size: 12px;"
-        input_style = "background-color: #111; color: #EEE; border: 1px solid #444; padding: 5px; border-radius: 3px;"
+        input_style = "background-color: #111; color: #EEE; border: 1px solid #444; padding: 2px 5px; border-radius: 3px;"
 
         self.ram_threshold_entry = QLineEdit()
         self.ram_threshold_entry.setFixedWidth(80)
@@ -204,17 +206,13 @@ class ConfigView(QWidget):
         self.retention_limit_entry.setFixedWidth(80)
         self.retention_limit_entry.setStyleSheet(input_style)
 
-        grid_layout.addWidget(self._create_label("RAM THRESHOLD (GB):", label_style), 0, 0)
-        grid_layout.addWidget(self.ram_threshold_entry, 0, 1)
-        grid_layout.addWidget(self.smart_restart_cb, 1, 0, 1, 2)
-        grid_layout.addWidget(self._create_label("RESTART TIME (HH:MM):", label_style), 2, 0)
-        grid_layout.addWidget(self.restart_time_entry, 2, 1)
-        grid_layout.addWidget(self._create_label("BACKUP INTERVAL (MIN):", label_style), 3, 0)
-        grid_layout.addWidget(self.backup_interval_entry, 3, 1)
-        grid_layout.addWidget(self._create_label("MAX BACKUPS:", label_style), 4, 0)
-        grid_layout.addWidget(self.retention_limit_entry, 4, 1)
+        settings_layout.addRow(self._create_label("RAM THRESHOLD (GB):", label_style), self.ram_threshold_entry)
+        settings_layout.addRow(self.smart_restart_cb)
+        settings_layout.addRow(self._create_label("RESTART TIME (HH:MM):", label_style), self.restart_time_entry)
+        settings_layout.addRow(self._create_label("BACKUP INTERVAL (MIN):", label_style), self.backup_interval_entry)
+        settings_layout.addRow(self._create_label("MAX BACKUPS:", label_style), self.retention_limit_entry)
         
-        layout.addWidget(grid_frame)
+        layout.addWidget(settings_frame)
 
         # 3. Desktop Notifications
         notify_frame = QFrame()
@@ -225,6 +223,9 @@ class ConfigView(QWidget):
         notify_header.setStyleSheet(label_style + "margin-top: 10px;")
         notify_layout.addWidget(notify_header)
         
+        cb_layout = QHBoxLayout()
+        cb_layout.setSpacing(20)
+        
         self.notify_server_started_cb = QCheckBox("Server Started")
         self.notify_server_started_cb.setStyleSheet("color: #DDD;")
         
@@ -234,9 +235,12 @@ class ConfigView(QWidget):
         self.notify_server_error_cb = QCheckBox("Server Crash / Error")
         self.notify_server_error_cb.setStyleSheet("color: #DDD;")
         
-        notify_layout.addWidget(self.notify_server_started_cb)
-        notify_layout.addWidget(self.notify_player_activity_cb)
-        notify_layout.addWidget(self.notify_server_error_cb)
+        cb_layout.addWidget(self.notify_server_started_cb)
+        cb_layout.addWidget(self.notify_player_activity_cb)
+        cb_layout.addWidget(self.notify_server_error_cb)
+        cb_layout.addStretch()
+        
+        notify_layout.addLayout(cb_layout)
         
         test_notify_btn = QPushButton("SEND TEST NOTIFICATION")
         test_notify_btn.setFixedWidth(200)
