@@ -4,7 +4,7 @@
 - [x] Task: Update `ServerProcessManager` State (5dbdf97)
     - Add `auto_sync_on_start`, `auto_sync_on_stop`, and `selected_steam_id` to `ServerProcessManager`.
     - Update `load_state` and `save_state` in `icarus_sentinel/server_manager.py`.
-- [ ] Task: Update `Controller` Settings Logic
+- [x] Task: Update `Controller` Settings Logic (9248c42)
     - Update `save_sentinel_settings` in `icarus_sentinel/controller.py` to handle the new settings.
 - [ ] Task: Conductor - User Manual Verification 'Phase 1: Data Model & Persistence' (Protocol in workflow.md)
 
