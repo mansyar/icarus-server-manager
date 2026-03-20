@@ -7,7 +7,7 @@ def manager():
 
 def test_parse_server_started(manager):
     """Verify detection of 'Server started' message."""
-    line = "[2026.03.20-10.00.00:000][  0]LogIcarus: Display: Server started"
+    line = "[12:41:02] LogIcarusGameStateRecording: Display: ReadFromProspectSaveState complete"
     event = manager.parse_log_line(line)
     assert event["type"] == "server_started"
 

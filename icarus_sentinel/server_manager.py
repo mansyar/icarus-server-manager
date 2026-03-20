@@ -247,17 +247,17 @@ class ServerProcessManager:
         Returns:
             A dict containing event 'type' and 'player' if applicable, or None.
         """
-        # 1. Server Started
-        if re.search(r"LogIcarus: Display: Server started", line, re.IGNORECASE):
+        # 1. Server Started (Actual message found in logs)
+        if re.search(r"ReadFromProspectSaveState complete", line, re.IGNORECASE):
             return {"type": "server_started"}
         
         # 2. Player Join
-        join_match = re.search(r"LogNet: Join succeeded: (.*)", line)
+        join_match = re.search(r"LogNet: Join succeeded: (.*)", line, re.IGNORECASE)
         if join_match:
             return {"type": "player_join", "player": join_match.group(1).strip()}
             
         # 3. Player Leave
-        leave_match = re.search(r"LogNet: Client \((.*)\) closed connection", line)
+        leave_match = re.search(r"LogNet: Client \((.*)\) closed connection", line, re.IGNORECASE)
         if leave_match:
             return {"type": "player_leave", "player": leave_match.group(1).strip()}
             
