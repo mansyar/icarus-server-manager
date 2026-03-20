@@ -11,18 +11,21 @@
 - [x] Task: Conductor - User Manual Verification 'Configuration & UI Updates' (Protocol in workflow.md) 226ce66
 
 ## Phase 2: Console Color-Coding
-- [ ] Task: Enhance Persistent Console Widget
+- [x] Task: Enhance Persistent Console Widget fae5a59
     - [ ] Write tests to verify HTML/styled text injection into the console widget.
     - [ ] Implement color-coding logic (e.g., wrap incoming server logs in orange span tags, Sentinel logs in blue span tags).
     - [ ] Ensure auto-scrolling works seamlessly with styled text.
-- [ ] Task: Conductor - User Manual Verification 'Console Color-Coding' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Console Color-Coding' (Protocol in workflow.md) fae5a59
 
 ## Phase 3: Log Parsing & Notifications
-- [ ] Task: Implement Log Parser
+- [x] Task: Implement Log Parser 3958f89
     - [ ] Write tests to simulate incoming server log strings and verify correct event extraction (Started, Join/Leave, Crash).
     - [ ] Implement non-blocking parser logic to read the `IcarusServer.exe` output stream.
-- [ ] Task: Integrate `winotify`
+- [x] Task: Integrate `winotify` 3958f89
     - [ ] Write tests/mocks for the notification dispatcher to ensure it triggers correctly.
     - [ ] Implement the notification sender using `winotify` to trigger native Windows toasts.
     - [ ] Connect the log parser events to the notification dispatcher, checking user configuration preferences first.
-- [ ] Task: Conductor - User Manual Verification 'Log Parsing & Notifications' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Log Parsing & Notifications' (Protocol in workflow.md) 3958f89
+
+## Phase: Review Fixes
+- [x] Task: Apply review suggestions b590768
