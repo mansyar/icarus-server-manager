@@ -159,8 +159,10 @@
 ### 4.4 UI/UX Experience
 * **Requirement 4.1:** **Detailed Feedback:** Display real-time console output from SteamCMD and server initialization within a persistent, monospace orange-on-black textbox anchored at the bottom of the window.
 * **Requirement 4.2:** **Sidebar-Driven Navigation:** Utilize a fixed left-aligned sidebar for primary navigation, separating functional views (Dashboard, Configuration, Save Sync, etc.) without top-level tabs. Use color-coded legend (Sentinel, Server, Success, Error) for the console.
-* **Requirement 4.3:** **Brand Visual Identity:** Apply a consistent dark charcoal and orange brand theme across the application, featuring massive, bold action buttons and horizontal progress bars for resource metrics.
-* **Requirement 4.4:** **About & Versioning:** Clearly display the application version and provide an "About" dialog for credits and system information.
+* Requirement 4.3: **Brand Visual Identity:** Apply a consistent dark charcoal and orange brand theme across the application, featuring massive, bold action buttons and horizontal progress bars for resource metrics.
+* **Requirement 4.4.1:** **Unified Iconography:** Use the official rocket icon (`assets/app_icon.png`) as the window icon, taskbar identifier, and within the UI (About dialog, Splash Screen) to solidify brand identity.
+* Requirement 4.4: **About & Versioning:** Clearly display the application version and provide an "About" dialog for credits and system information.
+
 * **Requirement 4.5:** **Player Activity Tracking:**
     * **Requirement 4.5.1:** Implement a background A2S query service to fetch real-time server metrics (ping, player count) and player lists.
     * **Requirement 4.5.2:** Dedicated "Players" tab for displaying connected player names, playtime, and scores.

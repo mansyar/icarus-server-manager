@@ -9,6 +9,7 @@
 * **PySide6**
   * Chosen for its advanced styling capabilities (QSS/QML), robust signal/slot mechanism, and high-fidelity UI controls that accurately match the project's industrial dashboard mockup. It provides a more powerful and flexible foundation for professional-grade desktop applications than basic Tkinter.
   * **pytest-qt:** Used for automated UI testing of PySide6 components.
+  * **Qt Resource System:** Utilizes `.qrc` files and `pyside6-rcc` to bundle static assets (icons, images) directly into the Python application code for portability.
 
 ## 3. System Management & Core Libraries
 * **psutil** & **subprocess**
@@ -16,6 +17,7 @@
   * `subprocess`: Executing SteamCMD and the Icarus Dedicated Server process.
 * **PyInstaller**
   * Compiles the Python application into a standalone Windows executable (`.exe`).
+  * **Pillow:** Used as a build-time dependency for PyInstaller to handle automatic icon conversion (e.g., PNG to ICO) on Windows.
 * **winotify**
   * Used for sending Windows system notifications (toasts) for threshold alerts.
 * **shutil** & **os.path**
