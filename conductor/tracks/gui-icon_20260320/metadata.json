@@ -1,0 +1,8 @@
+{
+  "track_id": "gui-icon_20260320",
+  "type": "feature",
+  "status": "new",
+  "created_at": "2026-03-20T14:30:00Z",
+  "updated_at": "2026-03-20T14:30:00Z",
+  "description": "apply the rocket icon in @assets/app_icon.png , as the GUI icon on task bar, etc"
+}
