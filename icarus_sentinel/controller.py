@@ -42,12 +42,13 @@ class Controller(QObject):
         # Connect UI updates
         if hasattr(self.ui, "log"):
             worker.progress.connect(self.ui.log)
-            worker.finished.connect(lambda m: self.ui.log(str(m)) if isinstance(m, str) else None)
+            worker.progress_source.connect(self.ui.log)
+            worker.finished.connect(lambda m: self.ui.log(str(m), source="success") if isinstance(m, str) else None)
         
         if hasattr(self.ui, "show_error"):
             worker.error.connect(self.ui.show_error)
         elif hasattr(self.ui, "log"):
-            worker.error.connect(lambda e: self.ui.log(f"ERROR: {e}"))
+            worker.error.connect(lambda e: self.ui.log(f"ERROR: {e}", source="error"))
 
         # Cleanup thread when finished
         thread.finished.connect(thread.deleteLater)
@@ -154,8 +155,9 @@ class Controller(QObject):
 
         worker = ServerWorker(self.ui.server_manager, exe_path, **kwargs)
         
-        # Connect started signal directly
+        # Connect signals
         worker.started.connect(self.server_started.emit)
+        worker.ready.connect(lambda: self.ui.log("Server is ready for players!", source="success"))
 
         if hasattr(self.ui, "on_server_exit"):
             worker.finished.connect(self.ui.on_server_exit)

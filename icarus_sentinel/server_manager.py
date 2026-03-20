@@ -169,7 +169,7 @@ class ServerProcessManager:
             self._process_obj = None
             return {"cpu": 0.0, "ram_gb": 0.0}
 
-    def stream_logs(self, process, callback):
+    def stream_logs(self, process, callback, event_callback=None):
         if not process or not process.stdout: return
         
         import time
@@ -191,6 +191,9 @@ class ServerProcessManager:
                 # Parse for events and trigger notifications (keep these individual)
                 event = self.parse_log_line(clean_line)
                 if event:
+                    if event_callback:
+                        event_callback(event)
+                        
                     if event["type"] == "server_started" and self.notify_server_started:
                         self.notifications.notify("Icarus Server", "Server has started and is ready for players.")
                     elif event["type"] == "player_join" and self.notify_player_activity:
@@ -247,8 +250,10 @@ class ServerProcessManager:
         Returns:
             A dict containing event 'type' and 'player' if applicable, or None.
         """
-        # 1. Server Started (Actual message found in logs)
-        if re.search(r"ReadFromProspectSaveState complete", line, re.IGNORECASE):
+        # 1. Server Started (Various indicators)
+        if re.search(r"ReadFromProspectSaveState complete", line, re.IGNORECASE) or \
+           re.search(r"LogIcarus: Display: Server started", line, re.IGNORECASE) or \
+           re.search(r"Engine is initialized\. Leaving FEngineLoop::Init", line, re.IGNORECASE):
             return {"type": "server_started"}
         
         # 2. Player Join

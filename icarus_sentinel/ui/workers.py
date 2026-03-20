@@ -6,6 +6,7 @@ class GenericWorker(QObject):
     """Base class for background workers using Qt signals."""
     finished = Signal(object)
     progress = Signal(str)
+    progress_source = Signal(str, str) # Emits (message, source)
     error = Signal(str)
 
     def run(self):
@@ -53,6 +54,7 @@ class SyncWorker(GenericWorker):
 class ServerWorker(GenericWorker):
     """Worker for running the server and streaming logs."""
     started = Signal(int) # Emits PID as soon as it starts
+    ready = Signal()      # Emits when the server is ready for players
 
     def __init__(self, server_manager, exe_path, **kwargs):
         super().__init__()
@@ -65,8 +67,16 @@ class ServerWorker(GenericWorker):
             process = self.server_manager.start_server(self.exe_path, **self.kwargs)
             self.started.emit(process.pid)
             
+            def event_handler(event):
+                if event["type"] == "server_started":
+                    self.ready.emit()
+
             # stream_logs is blocking until process ends
-            self.server_manager.stream_logs(process, self.progress.emit)
+            self.server_manager.stream_logs(
+                process, 
+                lambda m: self.progress_source.emit(m, "server"),
+                event_callback=event_handler
+            )
             self.finished.emit(process.pid)
         except Exception as e:
             self.error.emit(str(e))
