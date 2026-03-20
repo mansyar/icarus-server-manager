@@ -36,6 +36,9 @@ class ServerProcessManager:
         self.a2s_client = a2s_client or A2SClient()
         self.backup_manager = backup_manager
         self.last_sync_timestamp = None
+        self.auto_sync_on_start = False
+        self.auto_sync_on_stop = False
+        self.selected_steam_id = None
         self.load_state()
 
     def load_state(self):
@@ -51,6 +54,9 @@ class ServerProcessManager:
                     self.notify_server_started = self.state.get("notify_server_started", True)
                     self.notify_player_activity = self.state.get("notify_player_activity", True)
                     self.notify_server_error = self.state.get("notify_server_error", True)
+                    self.auto_sync_on_start = self.state.get("auto_sync_on_start", False)
+                    self.auto_sync_on_stop = self.state.get("auto_sync_on_stop", False)
+                    self.selected_steam_id = self.state.get("selected_steam_id")
                     
                     if self.backup_manager:
                         self.backup_manager.interval_minutes = self.state.get("backup_interval_minutes", 30.0)
@@ -68,6 +74,9 @@ class ServerProcessManager:
             self.state["notify_server_started"] = self.notify_server_started
             self.state["notify_player_activity"] = self.notify_player_activity
             self.state["notify_server_error"] = self.notify_server_error
+            self.state["auto_sync_on_start"] = self.auto_sync_on_start
+            self.state["auto_sync_on_stop"] = self.auto_sync_on_stop
+            self.state["selected_steam_id"] = self.selected_steam_id
             
             if self.backup_manager:
                 self.state["backup_interval_minutes"] = self.backup_manager.interval_minutes
