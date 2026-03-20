@@ -11,7 +11,7 @@ This feature introduces two user-configurable toggles to enable or disable the a
    - Use high-fidelity orange/charcoal toggle switches consistent with the industrial brand identity.
 2. **Core Logic**:
    - **Independent Control**: Each toggle independently controls its respective sync event.
-   - **Default State (Both OFF)**: Both toggles are disabled by default.
+   - **Default State (Both ON)**: Both toggles are enabled by default.
    - **Start Sync Logic**: If "Sync on Start" is ON, trigger local-to-server sync on server launch.
    - **Stop Sync Logic**: If "Sync on Stop" is ON, trigger server-to-local sync on server shutdown.
 3. **Configuration Persistence**:
@@ -20,8 +20,8 @@ This feature introduces two user-configurable toggles to enable or disable the a
 
 ## Acceptance Criteria
 - Two new toggle switches are present in the **Save Sync** tab.
-- When a toggle is OFF (default), its respective server event does NOT trigger a save sync.
-- When a toggle is ON, the corresponding server event triggers the sync operation.
+- When a toggle is OFF, its respective server event does NOT trigger a save sync.
+- When a toggle is ON (default), the corresponding server event triggers the sync operation.
 - Both toggle states are correctly saved and loaded between application sessions.
 
 ## Out of Scope
