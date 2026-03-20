@@ -1,7 +1,8 @@
 import os
 from PySide6.QtWidgets import QMainWindow, QWidget, QHBoxLayout, QVBoxLayout, QStackedWidget, QLabel, QFrame
 from PySide6.QtCore import Qt
-from PySide6.QtGui import QPixmap, QPalette, QBrush
+from PySide6.QtGui import QPixmap, QPalette, QBrush, QIcon
+import icarus_sentinel.ui.resources_rc
 from icarus_sentinel.controller import Controller
 from icarus_sentinel.steam_manager import SteamManager
 from icarus_sentinel.server_manager import ServerProcessManager
@@ -25,6 +26,7 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Icarus Sentinel")
+        self.setWindowIcon(QIcon(":/icons/app_icon.png"))
         self.resize(1250, 800)
         
         # Set Window Background
