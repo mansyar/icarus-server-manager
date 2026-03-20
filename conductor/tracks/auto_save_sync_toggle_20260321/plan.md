@@ -9,10 +9,10 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 1: Data Model & Persistence' (f5c7c6f)
 
 ## Phase 2: Core Logic (Auto-Sync Triggers)
-- [ ] Task: Implement Sync on Start
+- [x] Task: Implement Sync on Start (52a1992)
     - Modify `MainWindow._on_launch_clicked` in `icarus_sentinel/ui/main_window.py`.
     - If `auto_sync_on_start` is enabled, call `controller.sync_saves` and wait for completion before calling `controller.run_server`.
-- [ ] Task: Implement Sync on Stop
+- [x] Task: Implement Sync on Stop (52a1992)
     - Modify `MainWindow._on_launch_clicked` (stop case) in `icarus_sentinel/ui/main_window.py`.
     - If `auto_sync_on_stop` is enabled, call `controller.sync_saves` after stopping the server.
 - [ ] Task: Conductor - User Manual Verification 'Phase 2: Core Logic (Auto-Sync Triggers)' (Protocol in workflow.md)
