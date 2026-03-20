@@ -2,16 +2,8 @@
 
 This file tracks all major tracks for the project. Each track has its own detailed plan in its respective folder.
 
-## Active Tracks
-
----
-
-- [x] **Track: auto save sync feature on server start and stop with toggles**
-*Link: [./tracks/auto_save_sync_toggle_20260321/](./tracks/auto_save_sync_toggle_20260321/)*
-
----
-
 ## Archived Tracks
+- [x] **Track: auto save sync feature on server start and stop with toggles** (Archived: 2026-03-21)
 - [x] **Track: apply the rocket icon in @assets/app_icon.png , as the GUI icon on task bar, etc** (Archived: 2026-03-20)
 - [x] **Track: Advanced Log Parsing & Desktop Notifications (Enhancement)** (Archived: 2026-03-20)
 - [x] **Track: Player Activity Tracking & A2S Integration** (Archived: 2026-03-20)
