@@ -45,8 +45,9 @@
 ### 4.4 Save File Synchronization
 * **Requirement 4.1:** Two-way synchronization of world saves between local and server.
 * **Requirement 4.2:** "Keep Newest" conflict policy based on file modification timestamps.
-* **Requirement 4.3:** Automatic sync triggers on server Start (Local -> Server) and Stop (Server -> Local).
+* **Requirement 4.3:** Automatic sync triggers on server Start (Local -> Server) and Stop (Server -> Local), with user-configurable toggles to enable or disable each trigger.
 * **Requirement 4.4:** Manual sync trigger with SteamID discovery.
+* **Requirement 4.5:** Persistent selection of the SteamID to be used for synchronization across application sessions.
 
 ### 4.5 Mod Management
 * **Requirement 5.1:** Dedicated "Mods" tab for installing and listing server mods.
