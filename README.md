@@ -104,18 +104,48 @@ icarus-server-manager/
 ## Visual Previews
 
 ### Dashboard
-![Dashboard Placeholder](https://via.placeholder.com/800x450/222222/FF9900?text=Icarus+Sentinel+Dashboard)
+![Dashboard Preview](assets/dashboard_preview.png)
 
 ### Configuration
-![Configuration Placeholder](https://via.placeholder.com/800x450/222222/FF9900?text=Industrial+Config+UI)
+![Configuration Preview](assets/config_preview.png)
 
 ### Workflow Diagram
-![Workflow Placeholder](https://via.placeholder.com/800x450/222222/FF9900?text=Safe+Launch+Logic+Flow)
+```mermaid
+flowchart TD
+    subgraph Initialization
+    A[Launch Manager] --> B{Check SteamCMD}
+    B -- Missing --> C[Download SteamCMD]
+    B -- Exists --> D[Check Server Files]
+    C --> D
+    end
+
+    subgraph Operation
+    D --> E[Check Resources/RAM]
+    E --> F{Needs Update?}
+    F -- Yes --> G[SteamCMD Update]
+    G --> H[Start Icarus Server]
+    F -- No --> H
+    H --> I[Monitor Active Server]
+    end
+
+    subgraph Monitoring
+    I --> J[Player Tracking A2S]
+    I --> K[Auto Backup 30m]
+    I --> L[Save Sync]
+    end
+
+    subgraph Shutdown
+    M[Stop User Stop] --> N[Final Backup]
+    N --> O[Kill Process]
+    end
+    
+    I -.-> M
+```
 
 ---
 
 ## License
-Distributed under the MIT License. See `LICENSE` (placeholder) for more information.
+Distributed under the MIT License. See `LICENSE` for more information.
 
 ---
 *Built with ❤️ for the Icarus community.*
