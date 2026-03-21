@@ -23,11 +23,19 @@ def bundle():
         zipf.write(exe_path, os.path.basename(exe_path))
         # Add User Guide
         zipf.write(guide_path, os.path.basename(guide_path))
-        # Add Assets folder (required for icons/previews in User Guide)
-        for root, dirs, files in os.walk(assets_dir):
-            for file in files:
-                file_path = os.path.join(root, file)
-                zipf.write(file_path, file_path)
+        
+        # Add ONLY relevant assets for the User Guide
+        relevant_assets = [
+            "assets/app_icon.png",
+            "assets/dashboard_preview.png",
+            "assets/config_preview.png"
+        ]
+        
+        for asset in relevant_assets:
+            if os.path.exists(asset):
+                zipf.write(asset, asset)
+            else:
+                print(f"Warning: Asset {asset} not found.")
         
     print(f"Successfully created {zip_name}")
 
