@@ -14,7 +14,7 @@
   - [x] Draft Core Workflows (First Run, Safe Launch, Smart Backup, Save Sync).
   - [x] Draft Project Structure description.
 
-## Phase 2: Refinement & Validation
+## Phase 2: Refinement & Validation [checkpoint: d1b0fbd]
 
 - [x] **Task: Assemble & Format README.md**
   - [x] Combine drafted sections into a single `README.md` in the project root.
