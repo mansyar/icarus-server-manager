@@ -113,32 +113,34 @@ icarus-server-manager/
 ```mermaid
 flowchart TD
     subgraph Initialization
-    A[Launch Manager] --> B{Check SteamCMD}
-    B -- Missing --> C[Download SteamCMD]
-    B -- Exists --> D[Check Server Files]
-    C --> D
+        A[Launch Manager] --> B{Check SteamCMD}
+        B -- Missing --> C[Download SteamCMD]
+        B -- Exists --> D[Check Server Files]
+        C --> D
     end
 
     subgraph Operation
-    D --> E[Check Resources/RAM]
-    E --> F{Needs Update?}
-    F -- Yes --> G[SteamCMD Update]
-    G --> H[Start Icarus Server]
-    F -- No --> H
-    H --> I[Monitor Active Server]
+        D --> E[Check Resources/RAM]
+        E --> F{Needs Update?}
+        F -- Yes --> G[SteamCMD Update]
+        G --> H[Start Icarus Server]
+        F -- No --> H
+        H --> I[Monitor Active Server]
     end
 
     subgraph Monitoring
-    I --> J[Player Tracking A2S]
-    I --> K[Auto Backup 30m]
-    I --> L[Save Sync]
+        J[Player Tracking A2S]
+        K[Auto Backup 30m]
+        L[Save Sync]
     end
-
     subgraph Shutdown
-    M[Stop User Stop] --> N[Final Backup]
-    N --> O[Kill Process]
+        M[User Stop Request] --> N[Final Backup]
+        N --> O[Kill Process]
     end
     
+    I --> J
+    I --> K
+    I --> L
     I -.-> M
 ```
 
