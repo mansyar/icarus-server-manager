@@ -212,7 +212,7 @@ class MainWindow(QMainWindow):
                 self.server_process = None
                 self.log("Server stopped.")
                 # Update UI state
-                self.dashboard.control.set_running_state(False)
+                self.dashboard.set_running_state(False)
                 
                 # Auto-Sync on Stop
                 if self.server_manager.auto_sync_on_stop and self.server_manager.selected_steam_id:
@@ -231,7 +231,7 @@ class MainWindow(QMainWindow):
         self.server_process = pid
         self.log(f"Server tracked with PID: {pid}")
         # Update UI state
-        self.dashboard.control.set_running_state(True)
+        self.dashboard.set_running_state(True)
 
     def _on_nav_requested(self, nav_id):
         if nav_id in self.views:
@@ -261,7 +261,7 @@ class MainWindow(QMainWindow):
     def on_server_exit(self, result=None):
         self.server_process = None
         self.log("Server process exited.")
-        self.dashboard.control.set_running_state(False)
+        self.dashboard.set_running_state(False)
 
     def show_error(self, message: str):
         self.log(f"ERROR: {message}")

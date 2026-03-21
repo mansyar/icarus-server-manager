@@ -50,6 +50,16 @@ class StatusBanner(QFrame):
         
         self.setStyleSheet(f"QFrame#StatusBanner {{ {PANEL_STYLE} }}")
 
+    def set_status(self, online: bool):
+        if online:
+            self.status_title.setText("SYSTEM STATUS: ONLINE")
+            self.status_desc.setText("ALL SYSTEMS NOMINAL - MISSION IN PROGRESS")
+            self.status_title.setStyleSheet(f"color: {style_config.COLOR_SUCCESS}; font-family: 'Segoe UI Black'; font-size: 16px; border: none; background: transparent;")
+        else:
+            self.status_title.setText("SYSTEM STATUS: OFFLINE")
+            self.status_desc.setText("PRE-FLIGHT CHECKS OPTIMAL - SYSTEMS READY FOR INITIATION")
+            self.status_title.setStyleSheet(f"color: {style_config.ACCENT_COLOR}; font-family: 'Segoe UI Black'; font-size: 16px; border: none; background: transparent;")
+
 class MetricsWidget(QFrame):
     """Displays CPU and RAM metrics with an industrial look."""
     def __init__(self, title, parent=None):
@@ -309,3 +319,7 @@ class DashboardView(QWidget):
         self.cpu_metrics.update_value(cpu, f"{cpu:.1f}% LOAD / {100-cpu:.1f}% AVAILABLE")
         self.ram_metrics.update_value((ram / total_ram) * 100 if total_ram > 0 else 0, 
                                      f"{ram:.1f}GB ALLOCATED / {total_ram:.1f}GB TOTAL")
+
+    def set_running_state(self, running: bool):
+        self.status_banner.set_status(running)
+        self.control.set_running_state(running)

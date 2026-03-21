@@ -122,12 +122,8 @@ class Controller(QObject):
                 if p.is_running():
                     self.ui.log(f"Recovered existing server process (PID: {saved_pid})")
                     self.ui.server_process = saved_pid
-                    if hasattr(self.ui, "dashboard") and hasattr(self.ui.dashboard.control, "is_running"):
-                        if not self.ui.dashboard.control.is_running:
-                            # Safely toggle UI state
-                            self.ui.dashboard.control.is_running = True
-                            self.ui.dashboard.control.launch_btn.setText("ABORT MISSION")
-                            self.ui.dashboard.control.launch_btn.setStyleSheet(self.ui.dashboard.control.launch_btn.styleSheet().replace("#FF8C00", "#FF5252"))
+                    if hasattr(self.ui, "dashboard") and hasattr(self.ui.dashboard, "set_running_state"):
+                        self.ui.dashboard.set_running_state(True)
                 else:
                     self.reset_state()
             except (psutil.NoSuchProcess, psutil.AccessDenied):
