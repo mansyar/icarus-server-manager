@@ -3,6 +3,7 @@
 This file tracks all major tracks for the project. Each track has its own detailed plan in its respective folder.
 
 ## Archived Tracks
+- [x] **Track: Create a complete README.md in project root about the product** (Archived: 2026-03-21)
 - [x] **Track: auto save sync feature on server start and stop with toggles** (Archived: 2026-03-21)
 - [x] **Track: apply the rocket icon in @assets/app_icon.png , as the GUI icon on task bar, etc** (Archived: 2026-03-20)
 - [x] **Track: Advanced Log Parsing & Desktop Notifications (Enhancement)** (Archived: 2026-03-20)
@@ -28,6 +29,3 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ---
 ---
-
-- [x] **Track: Create a complete README.md in project root about the product**
-*Link: [./tracks/create-product-readme_20260321/](./tracks/create-product-readme_20260321/)*
